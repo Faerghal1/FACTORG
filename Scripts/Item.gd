@@ -9,7 +9,7 @@ func _process(_delta):
 
 func _on_belt_entered(area):
 	if area.has_meta("Direction") and area.get_meta("Direction")>=0:
-		print(area.get_meta("Direction"))
+		print(area.get_meta("Direction"),"directionmeta")
 		move = 1
 		var dir = area.get_meta("Direction")
 		rotation_degrees = dir*90
