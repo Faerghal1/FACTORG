@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b05iho5c44hkr"]
+
+[ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor Temp.png" id="1_xvguv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7jx5"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_u7jx5")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-5.96046e-08, 0)
+scale = Vector2(10, 10)
+texture = ExtResource("1_xvguv")
