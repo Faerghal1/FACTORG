@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1jdu6t53eq3s"]
+
+[ext_resource type="Script" path="res://Scripts/belt.gd" id="1_w6dqq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpy2d"]
+size = Vector2(16.1616, 16.0808)
+
+[sub_resource type="PrismMesh" id="PrismMesh_1n8om"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ropeh"]
+
+[node name="Area2D" type="Area2D"]
+self_modulate = Color(1, 1, 1, 0.25098)
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_w6dqq")
+metadata/Direction = -6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.63404e-07, -0.10101)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("RectangleShape2D_tpy2d")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+rotation = -1.57079
+scale = Vector2(40, 40)
+mesh = SubResource("PrismMesh_1n8om")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+modulate = Color(1, 1, 1, 0.0352941)
+self_modulate = Color(1, 1, 1, 0.0509804)
+rotation = -1.57079
+scale = Vector2(40, 40)
+mesh = SubResource("BoxMesh_ropeh")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
