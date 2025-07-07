@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://grkud06u2t6y"]
+
+[ext_resource type="Script" path="res://Scripts/Camera.gd" id="1_0ib3v"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("1_0ib3v")
+
+[node name="Timer" type="Timer" parent="Camera2D"]
+wait_time = 0.1
+one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 693.0
+offset_bottom = 278.0
+
+[connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]
