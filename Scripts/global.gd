@@ -1,5 +1,7 @@
 extends Node
 
+var mouse_entered_belt = false
+var mouse_entered_extractor = false
 var belt = false
 var extractor = false
 var basic_resource = 0

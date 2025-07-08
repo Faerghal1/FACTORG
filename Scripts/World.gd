@@ -4,8 +4,6 @@ extends Node2D
 
 @export var belt_scene: PackedScene
 @export var extractor_scene: PackedScene
-var mouse_entered_belt = false
-var mouse_entered_extractor = false
 var direction = 0
 var bitmap: BitMap = BitMap.new()
 var height = 10000
@@ -19,31 +17,15 @@ func _ready():
 	$Camera2D.position.y += height*25/3
 
 
-func _on_mouse_entered_belt(area):
-	if area.has_meta("Belt"):
-		mouse_entered_belt = true
-		print("enter")
-
-
-func _on_mouse_exited_belt(area):
-	if area.has_meta("Belt"):
-		mouse_entered_belt = false
-
-
-func _on_mouse_entered_extractor(area):
-	if area.has_meta("Extractor"):
-		mouse_entered_extractor = true
-
-
-func _on_mouse_exited_extractor(area):
-	if area.has_meta("Extractor"):
-		mouse_entered_extractor = false
-
 func _process(_delta):
-	if mouse_entered_belt == true:
+	if global.mouse_entered_belt == true and Input.is_action_just_pressed("Left_click") \
+	or Input.is_action_just_pressed("Hotbar_1"):
 		global.belt = true
-	if mouse_entered_extractor == true:
+		global.extractor = false
+	if global.mouse_entered_extractor == true and Input.is_action_just_pressed("Left_click") \
+	or Input.is_action_just_pressed("Hotbar_2"):
 		global.extractor = true
+		global.belt = false
 	if Input.is_action_pressed("Left_click") and global.belt == true:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
