@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://oiec24pi2b32"]
 
-[ext_resource type="Script" path="res://Scripts/Belt.gd" id="1_w6dqq"]
+[ext_resource type="Script" path="res://Scripts/belt.gd" id="1_w6dqq"]
 [ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Belt_Temp.png" id="2_o2csj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpy2d"]

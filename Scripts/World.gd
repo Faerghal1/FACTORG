@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var global = get_node("/root/Global")
+
 @export var belt_scene: PackedScene
 @export var extractor_scene: PackedScene
 var direction = 0
@@ -15,13 +17,20 @@ func _ready():
 	$Camera2D.position.y += height*25/3
 
 
-func _hotbar():
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _belt_selection(arg):
+	print("belt")
 	if Input.is_action_pressed("Left_click"):
+		print("click")
+
+
+func _extractor_selection(arg):
+	print("extractor")
+	if Input.is_action_pressed("Left_click"):
+		print("click")
+
+
+func _process(_delta):
+	if Input.is_action_pressed("Left_click") and global.belt == true:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
 			print(pos)
@@ -37,16 +46,7 @@ func _process(delta):
 			add_sibling(belt)
 			belt.clone = 1
 			bitmap.set_bit(pos.x, pos.y, true)
-	if Input.is_action_pressed("Right_click"):
-		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-		if bitmap.get_bit(pos.x, pos.y):
-			bitmap.set_bit(pos.x, pos.y, false)
-	if Input.is_action_just_pressed("Rotate(R)"):
-		direction += 90
-
-
-func _extractor():
-	if Input.is_action_pressed("Left_click"):
+	if Input.is_action_pressed("Left_click") and global.extractor == true:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
 			print(pos)

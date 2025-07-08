@@ -2,7 +2,6 @@ extends Area2D
 
 @onready var global = get_node("/root/Global")
 
-var mouse = true
 var clone = 0
 var direction = 0
 var delete = 0
@@ -17,7 +16,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if mouse == true:
+	if global.extractor == true:
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 		position.x -= 8
 		position.y -= 8
@@ -35,7 +34,7 @@ func _on_mouse_exited():
 	delete = 0
 
 
-func _generation(delta):
+func _generation(_delta):
 	$Timer.start()
 
 func _resource():

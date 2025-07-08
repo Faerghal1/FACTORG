@@ -5,7 +5,7 @@ var temperature = FastNoiseLite.new()
 var altitude = FastNoiseLite.new()
 var width = 190
 var height = 110
-@onready var player = get_parent().get_parent().get_child(2)
+@onready var player = get_parent().get_parent().get_child(3)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,7 +14,7 @@ func _ready():
 	altitude.seed = randi()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	generate_chunk(player.position)
 	
 func generate_chunk(position):

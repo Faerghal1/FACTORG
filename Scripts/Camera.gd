@@ -7,7 +7,7 @@ var temppos_x := 10000.0 * 25/3
 var move_y = true
 var move_x = true
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("Shift"):
 		$Timer.wait_time = 0.01
 	else:
