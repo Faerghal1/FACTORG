@@ -1,18 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://b05iho5c44hkr"]
+[gd_scene load_steps=5 format=3 uid="uid://b05iho5c44hkr"]
 
+[ext_resource type="Script" path="res://Scripts/Extractor.gd" id="1_6uykh"]
 [ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor Temp.png" id="1_pfimx"]
+[ext_resource type="PackedScene" uid="uid://bu2bvfahpmb5" path="res://Scenes/Resource.tscn" id="3_mavdy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7jx5"]
+size = Vector2(2.5, 2.5)
 
-[node name="Node2D" type="Node2D"]
+[node name="Area2D" type="Area2D"]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_6uykh")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1.86264e-06, 2.04891e-06)
 scale = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_u7jx5")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-5.96046e-08, 0)
-scale = Vector2(10, 10)
+scale = Vector2(1.255, 1.255)
 texture = ExtResource("1_pfimx")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Resource" parent="." instance=ExtResource("3_mavdy")]
+visible = false
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)

@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://csh41ocwjuk7"]
+
+[ext_resource type="Script" path="res://Scripts/World.gd" id="1_pqhfs"]
+[ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/Belt.tscn" id="2_0b5rt"]
+[ext_resource type="PackedScene" uid="uid://b05iho5c44hkr" path="res://Scenes/Extractor.tscn" id="3_ofrym"]
+[ext_resource type="PackedScene" uid="uid://ch5vnan7amu2m" path="res://Scenes/tile_map.tscn" id="4_6tc2v"]
+[ext_resource type="PackedScene" uid="uid://grkud06u2t6y" path="res://Scenes/Camera.tscn" id="5_fo33q"]
+[ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Belt_Temp.png" id="6_7m4c6"]
+[ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor Temp.png" id="7_eqtyl"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_pqhfs")
+belt_scene = ExtResource("2_0b5rt")
+extractor_scene = ExtResource("3_ofrym")
+
+[node name="Map__Scene" parent="." instance=ExtResource("4_6tc2v")]
+modulate = Color(1, 1, 1, 0.858824)
+
+[node name="Extractor" parent="." instance=ExtResource("3_ofrym")]
+visible = false
+position = Vector2(44, 44)
+
+[node name="Belt" parent="." instance=ExtResource("2_0b5rt")]
+position = Vector2(44, 44)
+
+[node name="Camera2D" parent="." instance=ExtResource("5_fo33q")]
+
+[node name="Control" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -150.0
+offset_top = 243.0
+offset_right = 150.0
+offset_bottom = 323.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Control"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 80.0
+
+[node name="Belt" type="Sprite2D" parent="Camera2D/Control"]
+position = Vector2(39, 40)
+scale = Vector2(2, 2)
+texture = ExtResource("6_7m4c6")
+
+[node name="Extractor" type="Sprite2D" parent="Camera2D/Control"]
+position = Vector2(119, 40)
+scale = Vector2(2, 2)
+texture = ExtResource("7_eqtyl")
