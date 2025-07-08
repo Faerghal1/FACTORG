@@ -16,7 +16,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if global.extractor == true:
+	if clone == 0 and global.extractor == true:
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 		position.x -= 8
 		position.y -= 8

@@ -4,6 +4,8 @@ extends Node2D
 
 @export var belt_scene: PackedScene
 @export var extractor_scene: PackedScene
+var mouse_entered_belt = false
+var mouse_entered_extractor = false
 var direction = 0
 var bitmap: BitMap = BitMap.new()
 var height = 10000
@@ -17,25 +19,36 @@ func _ready():
 	$Camera2D.position.y += height*25/3
 
 
-func _belt_selection(arg):
-	print("belt")
-	if Input.is_action_pressed("Left_click"):
-		print("click")
+func _on_mouse_entered_belt(area):
+	if area.has_meta("Belt"):
+		mouse_entered_belt = true
+		print("enter")
 
 
-func _extractor_selection(arg):
-	print("extractor")
-	if Input.is_action_pressed("Left_click"):
-		print("click")
+func _on_mouse_exited_belt(area):
+	if area.has_meta("Belt"):
+		mouse_entered_belt = false
 
+
+func _on_mouse_entered_extractor(area):
+	if area.has_meta("Extractor"):
+		mouse_entered_extractor = true
+
+
+func _on_mouse_exited_extractor(area):
+	if area.has_meta("Extractor"):
+		mouse_entered_extractor = false
 
 func _process(_delta):
+	if mouse_entered_belt == true:
+		global.belt = true
+	if mouse_entered_extractor == true:
+		global.extractor = true
 	if Input.is_action_pressed("Left_click") and global.belt == true:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
 			print(pos)
 			var belt = belt_scene.instantiate()
-			belt.mouse = false
 			belt.position = pos*16
 			belt.position.x -= 8
 			belt.position.y -= 8
@@ -51,7 +64,6 @@ func _process(_delta):
 		if not bitmap.get_bit(pos.x , pos.y ):
 			print(pos)
 			var extractor = extractor_scene.instantiate()
-			extractor.mouse = false
 			extractor.position = pos*16
 			extractor.position.x -= 8
 			extractor.position.y -= 8
@@ -68,3 +80,4 @@ func _process(_delta):
 			bitmap.set_bit(pos.x, pos.y, false)
 	if Input.is_action_just_pressed("Rotate(R)"):
 		direction += 90
+		

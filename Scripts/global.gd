@@ -1,5 +1,5 @@
 extends Node
 
-var belt = true
+var belt = false
 var extractor = false
 var basic_resource = 0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_pqhfs"]
-[ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/Belt.tscn" id="2_0b5rt"]
+[ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/belt.tscn" id="2_0b5rt"]
 [ext_resource type="PackedScene" uid="uid://b05iho5c44hkr" path="res://Scenes/Extractor.tscn" id="3_ofrym"]
 [ext_resource type="PackedScene" uid="uid://ch5vnan7amu2m" path="res://Scenes/tile_map.tscn" id="4_6tc2v"]
 [ext_resource type="PackedScene" uid="uid://grkud06u2t6y" path="res://Scenes/Camera.tscn" id="5_fo33q"]
@@ -23,7 +23,6 @@ extractor_scene = ExtResource("3_ofrym")
 modulate = Color(1, 1, 1, 0.858824)
 
 [node name="Extractor" parent="." instance=ExtResource("3_ofrym")]
-visible = false
 position = Vector2(44, 44)
 
 [node name="Belt" parent="." instance=ExtResource("2_0b5rt")]
@@ -40,32 +39,35 @@ offset_right = 150.0
 offset_bottom = 323.0
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Hotbar"]
-layout_mode = 0
 offset_right = 300.0
 offset_bottom = 80.0
 
 [node name="Area2D" type="Area2D" parent="Camera2D/Hotbar"]
 position = Vector2(39, 40)
 scale = Vector2(2, 2)
-
-[node name="Belt" type="Sprite2D" parent="Camera2D/Hotbar/Area2D"]
-texture = ExtResource("6_7m4c6")
+metadata/Belt = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Hotbar/Area2D"]
 position = Vector2(0, -0.25)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_0ex65")
 
+[node name="Belt" type="Sprite2D" parent="Camera2D/Hotbar/Area2D"]
+texture = ExtResource("6_7m4c6")
+
 [node name="Area2D2" type="Area2D" parent="Camera2D/Hotbar"]
 position = Vector2(119, 40)
 scale = Vector2(2, 2)
-
-[node name="Extractor" type="Sprite2D" parent="Camera2D/Hotbar/Area2D2"]
-texture = ExtResource("7_eqtyl")
+metadata/Extractor = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Hotbar/Area2D2"]
 position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_3h0ht")
 
-[connection signal="area_entered" from="Camera2D/Hotbar/Area2D" to="." method="_belt_selection"]
-[connection signal="area_entered" from="Camera2D/Hotbar/Area2D2" to="." method="_extractor_selection"]
+[node name="Extractor" type="Sprite2D" parent="Camera2D/Hotbar/Area2D2"]
+texture = ExtResource("7_eqtyl")
+
+[connection signal="area_entered" from="Camera2D/Hotbar/Area2D" to="." method="_on_mouse_entered_belt"]
+[connection signal="area_exited" from="Camera2D/Hotbar/Area2D" to="." method="_on_mouse_exited_belt"]
+[connection signal="area_entered" from="Camera2D/Hotbar/Area2D2" to="." method="_on_mouse_entered_extractor"]
+[connection signal="area_exited" from="Camera2D/Hotbar/Area2D2" to="." method="_on_mouse_exited_extractor"]
