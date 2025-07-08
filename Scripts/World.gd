@@ -18,14 +18,14 @@ func _ready():
 
 
 func _process(_delta):
-	if global.mouse_entered_belt == true and Input.is_action_just_pressed("Left_click") \
-	or Input.is_action_just_pressed("Hotbar_1"):
+	if global.mouse_entered_belt == true or Input.is_action_just_pressed("Hotbar_1"):
 		global.belt = true
 		global.extractor = false
-	if global.mouse_entered_extractor == true and Input.is_action_just_pressed("Left_click") \
-	or Input.is_action_just_pressed("Hotbar_2"):
+		global.mouse_entered_extractor = false
+	if global.mouse_entered_extractor == true or Input.is_action_just_pressed("Hotbar_2"):
 		global.extractor = true
 		global.belt = false
+		global.mouse_entered_belt = false
 	if Input.is_action_pressed("Left_click") and global.belt == true:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
@@ -62,4 +62,3 @@ func _process(_delta):
 			bitmap.set_bit(pos.x, pos.y, false)
 	if Input.is_action_just_pressed("Rotate(R)"):
 		direction += 90
-		

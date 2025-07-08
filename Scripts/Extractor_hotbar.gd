@@ -1,11 +1,7 @@
-extends Area2D
+extends Button
 
 @onready var global = get_node("/root/Global")
 
-func _on_mouse_entered_extractor(area):
-	if area.has_meta("Extractor"):
-		global.mouse_entered_extractor = true
-
-
-func _on_mouse_exited_extractor(area):
-	pass
+func _on_extractor_selected():
+	global.mouse_entered_extractor = true
+	global.mouse_entered_belt = false
