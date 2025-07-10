@@ -21,12 +21,10 @@ position = Vector2(-5.96046e-08, 0)
 scale = Vector2(1.255, 1.255)
 texture = ExtResource("1_pfimx")
 
-[node name="Timer" type="Timer" parent="."]
-
 [node name="Resource" parent="." instance=ExtResource("3_mavdy")]
 visible = false
 rotation = 1.5708
-scale = Vector2(1.5, 1.5)
+scale = Vector2(0.75, 0.75)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

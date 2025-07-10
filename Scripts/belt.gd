@@ -7,13 +7,6 @@ var direction = 0
 var delete = 0
 var pos = Vector2i(0,0)
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	print(get_meta("Direction"))
-	pos = Vector2i(position.x + 8,position.y + 8)
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if clone == 0 and global.belt == true:

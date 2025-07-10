@@ -4,11 +4,14 @@ extends Node2D
 
 @export var belt_scene: PackedScene
 @export var extractor_scene: PackedScene
+@export var resource_scene: PackedScene
 var direction = 0
 var bitmap: BitMap = BitMap.new()
 var height = 10000
 var width = 10000# needs to be even number
 var placed = false
+var extractor_placed = false
+var extractor_position = Vector2i(0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,7 +40,7 @@ func _process(_delta):
 			belt.modulate.a = 50
 			belt.rotation_degrees = direction
 			belt.direction = rotation/90
-			belt.set_meta("Direction", direction/90)
+			belt.set_meta("Direction_belt", direction/90)
 			add_sibling(belt)
 			belt.clone = 1
 			bitmap.set_bit(pos.x, pos.y, true)
@@ -52,13 +55,34 @@ func _process(_delta):
 			extractor.modulate.a = 50
 			extractor.rotation_degrees = direction
 			extractor.direction = rotation/90
-			extractor.set_meta("Direction", direction/90)
+			extractor.set_meta("Direction_extractor", direction/90)
 			add_sibling(extractor)
 			extractor.clone = 1
 			bitmap.set_bit(pos.x, pos.y, true)
+			extractor_placed = true
 	if Input.is_action_pressed("Right_click"):
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if bitmap.get_bit(pos.x, pos.y):
 			bitmap.set_bit(pos.x, pos.y, false)
 	if Input.is_action_just_pressed("Rotate(R)"):
 		direction += 90
+
+
+func _resource():
+	if extractor_placed == true:
+		var pos = Vector2i(extractor_position)
+		if not bitmap.get_bit(pos.x , pos.y ):
+			print(pos)
+			var resource = resource_scene.instantiate()
+			resource.position = pos*16
+			resource.position.x -= 8
+			resource.position.y -= 8
+			resource.modulate.a = 50
+			resource.rotation_degrees = direction
+			resource.direction = rotation/90
+			resource.set_meta("Direction_resource", direction/90)
+			add_sibling(resource)
+			resource.clone = 1
+			bitmap.set_bit(pos.x, pos.y, true)
+			print("cloned")
+			resource.show()
