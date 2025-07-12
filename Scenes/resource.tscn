@@ -2,29 +2,26 @@
 
 [ext_resource type="Script" path="res://Scripts/Item.gd" id="1_chsbp"]
 [ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Resource_Temp.png" id="2_qavul"]
+[ext_resource type="Script" path="res://Scripts/Resource_sprite.gd" id="3_ompfr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22j22"]
 size = Vector2(31.8725, 31.8725)
 
-[sub_resource type="SphereMesh" id="SphereMesh_t0bps"]
-
 [node name="Area2D" type="Area2D"]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_chsbp")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.255, 1.255)
-texture = ExtResource("2_qavul")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.98023e-07, 5.96046e-07)
 scale = Vector2(1.255, 1.255)
 shape = SubResource("RectangleShape2D_22j22")
 
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(6.5, 0.5)
-scale = Vector2(20.5195, 14.1963)
-mesh = SubResource("SphereMesh_t0bps")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.255, 1.255)
+texture = ExtResource("2_qavul")
+script = ExtResource("3_ompfr")
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="." to="." method="_on_belt_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

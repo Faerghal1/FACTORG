@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=10 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/belt.tscn" id="2_0b5rt"]
 [ext_resource type="PackedScene" uid="uid://b05iho5c44hkr" path="res://Scenes/Extractor.tscn" id="3_ofrym"]
 [ext_resource type="PackedScene" uid="uid://ch5vnan7amu2m" path="res://Scenes/tile_map.tscn" id="4_6tc2v"]
-[ext_resource type="PackedScene" uid="uid://bu2bvfahpmb5" path="res://Scenes/Resource.tscn" id="4_x713r"]
 [ext_resource type="PackedScene" uid="uid://grkud06u2t6y" path="res://Scenes/Camera.tscn" id="5_fo33q"]
 [ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Belt_Temp.png" id="6_7m4c6"]
 [ext_resource type="Script" path="res://Scripts/Belt_hotbar.gd" id="6_ksayx"]
@@ -15,7 +14,6 @@
 script = ExtResource("1_pqhfs")
 belt_scene = ExtResource("2_0b5rt")
 extractor_scene = ExtResource("3_ofrym")
-resource_scene = ExtResource("4_x713r")
 
 [node name="Map__Scene" parent="." instance=ExtResource("4_6tc2v")]
 modulate = Color(1, 1, 1, 0.858824)
@@ -43,20 +41,20 @@ offset_right = 300.0
 offset_bottom = 80.0
 
 [node name="Extractor" type="Sprite2D" parent="Camera2D/Hotbar"]
-position = Vector2(119, 40)
+position = Vector2(121, 40)
 scale = Vector2(2, 2)
 texture = ExtResource("7_eqtyl")
 
 [node name="Belt" type="Sprite2D" parent="Camera2D/Hotbar"]
-position = Vector2(39, 40)
+position = Vector2(42, 40)
 scale = Vector2(2, 2)
 texture = ExtResource("6_7m4c6")
 
 [node name="BeltButton" type="Button" parent="Camera2D/Hotbar"]
 layout_mode = 0
-offset_left = 3.0
+offset_left = 6.0
 offset_top = 5.0
-offset_right = 39.0
+offset_right = 42.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
 script = ExtResource("6_ksayx")
@@ -64,21 +62,13 @@ metadata/Belt = true
 
 [node name="ExtractorButton" type="Button" parent="Camera2D/Hotbar"]
 layout_mode = 0
-offset_left = 84.0
+offset_left = 86.0
 offset_top = 5.0
-offset_right = 119.0
+offset_right = 121.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
 script = ExtResource("8_lpojc")
 metadata/Extractor = true
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
-[node name="Area2D" parent="." instance=ExtResource("4_x713r")]
-position = Vector2(44, 44)
-
 [connection signal="pressed" from="Camera2D/Hotbar/BeltButton" to="Camera2D/Hotbar/BeltButton" method="_on_belt_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/ExtractorButton" to="Camera2D/Hotbar/ExtractorButton" method="_on_extractor_selected"]
-[connection signal="timeout" from="Timer" to="." method="_resource"]

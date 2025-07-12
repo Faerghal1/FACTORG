@@ -7,6 +7,7 @@ var direction = 0
 var delete = 0
 var pos = Vector2i(0,0)
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if clone == 0 and global.belt == true:

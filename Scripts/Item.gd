@@ -13,12 +13,12 @@ func _process(_delta):
 		position.x -= 8
 		position.y -= 8
 	if move == 1:	
-		move_local_x(50)
+		move_local_x(16)
 		move = 0
+	
 
 func _on_belt_entered(area):
 	if area.has_meta("Direction_belt") and area.get_meta("Direction_belt")>=0:
-		print(area.get_meta("Direction_belt"),"directionmeta")
 		move = 1
 		var dir = area.get_meta("Direction_belt")
 		rotation_degrees = dir*90
