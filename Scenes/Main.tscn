@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_1v225"]
 [ext_resource type="PackedScene" uid="uid://c1jdu6t53eq3s" path="res://Scenes/Belt.tscn" id="2_y7tin"]
-[ext_resource type="PackedScene" uid="uid://bu2bvfahpmb5" path="res://Scenes/resource.tscn" id="5_h6bgu"]
+[ext_resource type="PackedScene" uid="uid://bu2bvfahpmb5" path="res://Scenes/Resource.tscn" id="5_h6bgu"]
 [ext_resource type="PackedScene" uid="uid://duxgwxtl60kum" path="res://Scenes/tile_map.tscn" id="6_ug1h5"]
 
 [node name="Main" type="Node2D"]

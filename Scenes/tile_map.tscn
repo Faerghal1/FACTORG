@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://duxgwxtl60kum"]
 
 [ext_resource type="Texture2D" uid="uid://brqo8thr6iyno" path="res://Assets/tiles2.png" id="1_466rs"]
-[ext_resource type="Script" path="res://tile_map.gd" id="2_7xrpl"]
-[ext_resource type="PackedScene" uid="uid://dukd6cmc408j5" path="res://Scenes/Fcamera.tscn" id="3_yscqc"]
+[ext_resource type="Script" path="res://Scripts/tile_map.gd" id="2_7xrpl"]
+[ext_resource type="PackedScene" uid="uid://grkud06u2t6y" path="res://Scenes/Camera.tscn" id="3_mn8yg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_krpv0"]
 texture = ExtResource("1_466rs")
@@ -33,4 +33,4 @@ tile_set = SubResource("TileSet_ggshd")
 format = 2
 script = ExtResource("2_7xrpl")
 
-[node name="Camera" parent="." instance=ExtResource("3_yscqc")]
+[node name="Camera" parent="." instance=ExtResource("3_mn8yg")]

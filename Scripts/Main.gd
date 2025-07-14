@@ -7,8 +7,8 @@ var width = 10000# needs to be even number
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	bitmap.resize(Vector2i(width,height))
-	#$Map_Cam_Scene/Camera.position.x += width*25/3
-	#$Map_Cam_Scene/Camera.position.y += height*25/3
+	$Map_Cam_Scene/Camera.position.x += width*25/3
+	$Map_Cam_Scene/Camera.position.y += height*25/3
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
