@@ -9,7 +9,7 @@ size = Vector2(16, 16)
 [sub_resource type="BoxMesh" id="BoxMesh_ropeh"]
 
 [node name="Area2D" type="Area2D"]
-self_modulate = Color(1, 1, 1, 0.25098)
+modulate = Color(1, 1, 1, 0.588235)
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_w6dqq")
 metadata/Direction = -6

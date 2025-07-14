@@ -18,6 +18,11 @@ func _process(_delta):
 		rotation_degrees += 90
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		queue_free()
+	if clone == 0:
+		if global.slot == 2:
+			hide()
+		if global.slot == 1:
+			show()
 
 
 func _on_mouse_entered():

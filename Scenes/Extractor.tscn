@@ -18,13 +18,10 @@ scale = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_u7jx5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(-5.96046e-08, 0)
 scale = Vector2(1.255, 1.255)
 texture = ExtResource("1_pfimx")
-
-[node name="Resource" parent="." instance=ExtResource("3_mavdy")]
-visible = false
-scale = Vector2(0.75, 0.75)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

@@ -11,6 +11,7 @@ var width = 10000 # needs to be even number
 var placed = false
 var extractor_position = Vector2i(0,0)
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	bitmap.resize(Vector2i(width,height))
@@ -23,10 +24,12 @@ func _process(_delta):
 		global.belt = true
 		global.extractor = false
 		global.mouse_entered_extractor = false
+		global.slot = 1
 	if global.mouse_entered_extractor == true or Input.is_action_just_pressed("Hotbar_2"):
 		global.extractor = true
 		global.belt = false
 		global.mouse_entered_belt = false
+		global.slot = 2
 	if Input.is_action_pressed("Left_click") and global.belt == true:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
@@ -35,7 +38,7 @@ func _process(_delta):
 			belt.position = pos*16
 			belt.position.x -= 8
 			belt.position.y -= 8
-			belt.modulate.a = 50
+			belt.modulate.a = 1
 			belt.rotation_degrees = direction
 			belt.direction = rotation/90
 			belt.set_meta("Direction_belt", direction/90)
@@ -50,7 +53,7 @@ func _process(_delta):
 			extractor.position = pos*16
 			extractor.position.x -= 8
 			extractor.position.y -= 8
-			extractor.modulate.a = 50
+			extractor.modulate.a = 255
 			extractor.rotation_degrees = direction
 			extractor.direction = rotation/90
 			extractor.set_meta("Direction_extractor", direction/90)
