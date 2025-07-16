@@ -4,6 +4,7 @@ extends Node2D
 
 @export var belt_scene: PackedScene
 @export var extractor_scene: PackedScene
+@export var refiner_scene: PackedScene
 var direction = 0
 var bitmap: BitMap = BitMap.new()
 var height = 10000
@@ -23,13 +24,24 @@ func _process(_delta):
 	if global.mouse_entered_belt == true or Input.is_action_just_pressed("Hotbar_1"):
 		global.belt = true
 		global.extractor = false
+		global.refiner = false
 		global.mouse_entered_extractor = false
+		global.mouse_entered_refiner = false
 		global.slot = 1
 	if global.mouse_entered_extractor == true or Input.is_action_just_pressed("Hotbar_2"):
 		global.extractor = true
 		global.belt = false
+		global.refiner = false
 		global.mouse_entered_belt = false
+		global.mouse_entered_refiner = false
 		global.slot = 2
+	if global.mouse_entered_refiner == true or Input.is_action_just_pressed("Hotbar_3"):
+		global.refiner = true
+		global.belt = false
+		global.extractor = false
+		global.mouse_entered_belt = false
+		global.mouse_entered_extractor = false
+		global.slot = 3
 	if Input.is_action_pressed("Left_click") and global.belt == true:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
@@ -53,7 +65,7 @@ func _process(_delta):
 			extractor.position = pos*16
 			extractor.position.x -= 8
 			extractor.position.y -= 8
-			extractor.modulate.a = 255
+			extractor.modulate.a = 1
 			extractor.rotation_degrees = direction
 			extractor.direction = rotation/90
 			extractor.set_meta("Direction_extractor", direction/90)
@@ -61,6 +73,19 @@ func _process(_delta):
 			extractor.clone = 1
 			bitmap.set_bit(pos.x, pos.y, true)
 			global.extractor_placed = true
+	if Input.is_action_pressed("Left_click") and global.refiner == true:
+		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
+		if not bitmap.get_bit(pos.x , pos.y ):
+			print(pos)
+			var refiner = refiner_scene.instantiate()
+			refiner.position = pos*16
+			refiner.modulate.a = 1
+			refiner.rotation_degrees = direction
+			refiner.direction = rotation/90
+			refiner.set_meta("Direction_refiner", direction/90)
+			add_sibling(refiner)
+			refiner.clone = 1
+			bitmap.set_bit(pos.x, pos.y, true)
 	if Input.is_action_pressed("Right_click"):
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if bitmap.get_bit(pos.x, pos.y):

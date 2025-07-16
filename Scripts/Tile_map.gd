@@ -5,7 +5,7 @@ var temperature = FastNoiseLite.new()
 var altitude = FastNoiseLite.new()
 var width = 190
 var height = 110
-@onready var player = get_parent().get_parent().get_child(3)
+@onready var player = get_parent().get_parent().get_child(1)
 
 
 # Called when the node enters the scene tree for the first time.

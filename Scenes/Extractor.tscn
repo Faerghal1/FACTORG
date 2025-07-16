@@ -8,6 +8,7 @@
 size = Vector2(2.5, 2.5)
 
 [node name="Area2D" type="Area2D"]
+modulate = Color(1, 1, 1, 0.745098)
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_6uykh")
 resource_scene = ExtResource("3_mavdy")
