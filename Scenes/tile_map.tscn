@@ -1,11 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://duxgwxtl60kum"]
 
-[ext_resource type="Texture2D" uid="uid://brqo8thr6iyno" path="res://Assets/tiles2.png" id="1_466rs"]
+[ext_resource type="Texture2D" uid="uid://t3qbg52ty83v" path="res://Assets/single_tile_tileset.png" id="1_bdlr5"]
 [ext_resource type="Script" path="res://Scripts/tile_map.gd" id="2_7xrpl"]
 [ext_resource type="PackedScene" uid="uid://grkud06u2t6y" path="res://Scenes/Camera.tscn" id="3_mn8yg"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_krpv0"]
-texture = ExtResource("1_466rs")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s7dow"]
+texture = ExtResource("1_bdlr5")
+texture_region_size = Vector2i(10, 10)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -13,23 +14,23 @@ texture = ExtResource("1_466rs")
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
-3:1/0 = 0
 0:2/0 = 0
 1:2/0 = 0
 2:2/0 = 0
-3:2/0 = 0
 0:3/0 = 0
 1:3/0 = 0
 2:3/0 = 0
 3:3/0 = 0
+4:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_ggshd"]
-sources/0 = SubResource("TileSetAtlasSource_krpv0")
+sources/1 = SubResource("TileSetAtlasSource_s7dow")
 
 [node name="Node2D" type="Node2D"]
 
 [node name="GeneratedMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ggshd")
+rendering_quadrant_size = 8
 format = 2
 script = ExtResource("2_7xrpl")
 

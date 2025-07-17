@@ -3,7 +3,7 @@ extends Area2D
 
 var move = 0
 func _process(_delta):
-	if move == 1:	
+	if move == 1:
 		move_local_x(50)
 		move = 0
 
