@@ -21,6 +21,8 @@ func _process(_delta):
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		queue_free()
 	if clone == 0:
+		if global.slot == 0:
+			hide()
 		if global.slot == 2:
 			show()
 		if global.slot == 1:
@@ -33,7 +35,7 @@ func _on_timer_timeout():
 	if clone == 1 and global.extractor_placed == true:
 		var resource = resource_scene.instantiate()
 		resource.position = position
-		resource.modulate.a = 50
+		resource.modulate.a = 1
 		resource.rotation = rotation
 		resource.direction = rotation/90
 		resource.set_meta("Direction_resource", direction/90)

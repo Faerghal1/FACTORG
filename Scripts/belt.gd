@@ -19,6 +19,8 @@ func _process(_delta):
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		queue_free()
 	if clone == 0:
+		if global.slot == 0:
+			hide()
 		if global.slot == 2:
 			hide()
 		if global.slot == 1:

@@ -21,6 +21,14 @@ func _ready():
 
 
 func _process(_delta):
+	if Input.is_action_just_pressed("Hotbar_0"):
+		global.belt = false
+		global.extractor = false
+		global.refiner = false
+		global.mouse_entered_belt = false
+		global.mouse_entered_extractor = false
+		global.mouse_entered_refiner = false
+		global.slot = 0
 	if global.mouse_entered_belt == true or Input.is_action_just_pressed("Hotbar_1"):
 		global.belt = true
 		global.extractor = false
@@ -65,7 +73,7 @@ func _process(_delta):
 			extractor.position = pos*16
 			extractor.position.x -= 8
 			extractor.position.y -= 8
-			extractor.modulate.a = 1
+			extractor.modulate.a = 255
 			extractor.rotation_degrees = direction
 			extractor.direction = rotation/90
 			extractor.set_meta("Direction_extractor", direction/90)

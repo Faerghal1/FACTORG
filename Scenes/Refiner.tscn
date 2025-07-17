@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpql1vm2gnpml"]
+[gd_scene load_steps=6 format=3 uid="uid://cpql1vm2gnpml"]
 
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Refiner.png" id="1_g7mch"]
 [ext_resource type="Script" path="res://Scripts/Refiner.gd" id="1_tm5hi"]
+[ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Ingot_Temp.png" id="3_b2xjd"]
+[ext_resource type="Texture2D" uid="uid://cshbe5cqr5jtv" path="res://Assets/Recipe_List.png" id="4_whqqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0rc1"]
 size = Vector2(80, 80)
@@ -18,5 +20,21 @@ shape = SubResource("RectangleShape2D_c0rc1")
 scale = Vector2(1.255, 1.255)
 texture = ExtResource("1_g7mch")
 
+[node name="Ingot" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 20)
+texture = ExtResource("3_b2xjd")
+
+[node name="Recipe" type="Button" parent="."]
+offset_left = -15.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 65.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("4_whqqv")
+icon_alignment = 1
+expand_icon = true
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="Recipe" to="." method="_on_recipe_selected"]

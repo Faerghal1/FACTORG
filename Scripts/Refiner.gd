@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var global = get_node("/root/Global")
 
+@export var ingot_scene: PackedScene
 var clone = 0
 var direction = 0
 var delete = 0
@@ -18,6 +19,8 @@ func _process(_delta):
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		queue_free()
 	if clone == 0:
+		if global.slot == 0:
+			hide()
 		if global.slot == 2:
 			hide()
 		if global.slot == 1:
@@ -32,3 +35,9 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	delete = 0
+
+
+func _on_recipe_selected():
+	if clone == 1 and $Recipe.visible == true:
+		$Recipe.hide()
+		$Ingot.show()
