@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://2frehtr7kvp6"]
+[gd_scene load_steps=6 format=3 uid="uid://2frehtr7kvp6"]
 
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Ingot_Temp.png" id="1_aake4"]
 [ext_resource type="Script" path="res://Scripts/Ingot.gd" id="1_d5gub"]
+[ext_resource type="Script" path="res://Scripts/Item_sprites.gd" id="3_ygfop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8cko"]
 
@@ -24,9 +25,12 @@ scale = Vector2(2.5, 2.5)
 shape = SubResource("RectangleShape2D_rlib0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+z_index = 1
 scale = Vector2(1.255, 1.255)
 texture = ExtResource("1_aake4")
+script = ExtResource("3_ygfop")
+metadata/Direction_ingot = true
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_belt_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
 [connection signal="ready" from="Area2D" to="." method="_on_ready"]

@@ -19,7 +19,7 @@ func _process(_delta):
 			move = 0
 
 
-func _on_belt_entered(area):
+func _on_area_entered(area):
 	if area.has_meta("Direction_belt") and area.get_meta("Direction_belt")>=0:
 		move = 1
 		var dir = area.get_meta("Direction_belt")
@@ -32,4 +32,5 @@ func _on_area_exited(area):
 
 
 func _on_ready():
-	move_local_y(16)
+	move_local_y(8)
+	move_local_x(-24)

@@ -6,4 +6,5 @@ extends Button
 func _on_belt_selected():
 	global.mouse_entered_belt = true
 	global.mouse_entered_extractor = false
-	global.mouse_entered_refiner = false
+	global.mouse_entered_smelter = false
+	global.mouse_entered_constructor = false

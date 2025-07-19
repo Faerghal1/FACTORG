@@ -4,7 +4,8 @@ extends Node2D
 
 @export var belt_scene: PackedScene
 @export var extractor_scene: PackedScene
-@export var refiner_scene: PackedScene
+@export var smelter_scene: PackedScene
+@export var constructor_scene: PackedScene
 var direction = 0
 var bitmap: BitMap = BitMap.new()
 var height = 10000
@@ -24,32 +25,49 @@ func _process(_delta):
 	if Input.is_action_just_pressed("Hotbar_0"):
 		global.belt = false
 		global.extractor = false
-		global.refiner = false
+		global.smelter = false
+		global.constructor = false
 		global.mouse_entered_belt = false
 		global.mouse_entered_extractor = false
-		global.mouse_entered_refiner = false
+		global.mouse_entered_smelter = false
+		global.mouse_entered_constructor = false
 		global.slot = 0
 	if global.mouse_entered_belt == true or Input.is_action_just_pressed("Hotbar_1"):
 		global.belt = true
 		global.extractor = false
-		global.refiner = false
+		global.smelter = false
+		global.constructor = false
 		global.mouse_entered_extractor = false
-		global.mouse_entered_refiner = false
+		global.mouse_entered_smelter = false
+		global.mouse_entered_constructor = false
 		global.slot = 1
 	if global.mouse_entered_extractor == true or Input.is_action_just_pressed("Hotbar_2"):
 		global.extractor = true
 		global.belt = false
-		global.refiner = false
+		global.smelter = false
+		global.constructor = false
 		global.mouse_entered_belt = false
-		global.mouse_entered_refiner = false
+		global.mouse_entered_smelter = false
+		global.mouse_entered_constructor = false
 		global.slot = 2
-	if global.mouse_entered_refiner == true or Input.is_action_just_pressed("Hotbar_3"):
-		global.refiner = true
+	if global.mouse_entered_smelter == true or Input.is_action_just_pressed("Hotbar_3"):
+		global.smelter = true
 		global.belt = false
 		global.extractor = false
+		global.constructor = false
 		global.mouse_entered_belt = false
 		global.mouse_entered_extractor = false
+		global.mouse_entered_constructor = false
 		global.slot = 3
+	if global.mouse_entered_constructor == true or Input.is_action_just_pressed("Hotbar_4"):
+		global.constructor = true
+		global.belt = false
+		global.extractor = false
+		global.smelter = false
+		global.mouse_entered_belt = false
+		global.mouse_entered_extractor = false
+		global.mouse_entered_smelter = false
+		global.slot = 4
 	if Input.is_action_pressed("Left_click") and global.belt == true:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
@@ -81,18 +99,31 @@ func _process(_delta):
 			extractor.clone = 1
 			bitmap.set_bit(pos.x, pos.y, true)
 			global.extractor_placed = true
-	if Input.is_action_pressed("Left_click") and global.refiner == true:
+	if Input.is_action_pressed("Left_click") and global.smelter == true:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
 			print(pos)
-			var refiner = refiner_scene.instantiate()
-			refiner.position = pos*16
-			refiner.modulate.a = 1
-			refiner.rotation_degrees = direction
-			refiner.direction = rotation/90
-			refiner.set_meta("Direction_refiner", direction/90)
-			add_sibling(refiner)
-			refiner.clone = 1
+			var smelter = smelter_scene.instantiate()
+			smelter.position = pos*16
+			smelter.modulate.a = 1
+			smelter.rotation_degrees = direction
+			smelter.direction = rotation/90
+			smelter.set_meta("Direction_smelter", direction/90)
+			add_sibling(smelter)
+			smelter.clone = 1
+			bitmap.set_bit(pos.x, pos.y, true)
+	if Input.is_action_pressed("Left_click") and global.constructor == true:
+		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
+		if not bitmap.get_bit(pos.x , pos.y ):
+			print(pos)
+			var constructor = constructor_scene.instantiate()
+			constructor.position = pos*16
+			constructor.modulate.a = 1
+			constructor.rotation_degrees = direction
+			constructor.direction = rotation/90
+			constructor.set_meta("Direction_constructor", direction/90)
+			add_sibling(constructor)
+			constructor.clone = 1
 			bitmap.set_bit(pos.x, pos.y, true)
 	if Input.is_action_pressed("Right_click"):
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)

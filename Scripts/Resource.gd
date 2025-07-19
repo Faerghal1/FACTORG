@@ -19,11 +19,13 @@ func _process(_delta):
 			move = 0
 
 
-func _on_belt_entered(area):
+func _on_area_entered(area):
 	if area.has_meta("Direction_belt") and area.get_meta("Direction_belt")>=0:
 		move = 1
 		var dir = area.get_meta("Direction_belt")
 		rotation_degrees = dir*90
+	if area.has_meta("Direction_smelter") and area.get_meta("Direction_smelter")>=0:
+		queue_free()
 
 
 func _on_area_exited(area):

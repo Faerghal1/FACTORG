@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=16 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/belt.tscn" id="2_0b5rt"]
@@ -8,16 +8,20 @@
 [ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Belt_Temp.png" id="6_7m4c6"]
 [ext_resource type="Script" path="res://Scripts/Belt_hotbar.gd" id="6_ksayx"]
 [ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor Temp.png" id="7_eqtyl"]
-[ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Refiner.png" id="8_lgqs7"]
 [ext_resource type="Script" path="res://Scripts/Extractor_hotbar.gd" id="8_lpojc"]
-[ext_resource type="PackedScene" uid="uid://cpql1vm2gnpml" path="res://Scenes/Refiner.tscn" id="10_glyoi"]
-[ext_resource type="Script" path="res://Scripts/Refiner_hotbar.gd" id="11_6dldg"]
+[ext_resource type="Texture2D" uid="uid://satlknjxuauh" path="res://Assets/Smelter.png" id="9_kuaow"]
+[ext_resource type="PackedScene" uid="uid://cpql1vm2gnpml" path="res://Scenes/Smelter.tscn" id="10_glyoi"]
+[ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="10_ydavp"]
+[ext_resource type="Script" path="res://Scripts/Smelter_hotbar.gd" id="11_6dldg"]
+[ext_resource type="Script" path="res://Scripts/Constructor_hotbar.gd" id="14_5awit"]
+[ext_resource type="PackedScene" uid="uid://40e7gnocdmnt" path="res://Scenes/Constructor.tscn" id="15_wbpsv"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_pqhfs")
 belt_scene = ExtResource("2_0b5rt")
 extractor_scene = ExtResource("3_ofrym")
-refiner_scene = ExtResource("10_glyoi")
+smelter_scene = ExtResource("10_glyoi")
+constructor_scene = ExtResource("15_wbpsv")
 
 [node name="Map__Scene" parent="." instance=ExtResource("4_6tc2v")]
 modulate = Color(1, 1, 1, 0.858824)
@@ -35,7 +39,7 @@ offset_bottom = 212.0
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Hotbar"]
 layout_mode = 0
-offset_right = 300.0
+offset_right = 328.0
 offset_bottom = 80.0
 
 [node name="Extractor" type="Sprite2D" parent="Camera2D/Hotbar"]
@@ -48,9 +52,13 @@ position = Vector2(42, 40)
 scale = Vector2(2, 2)
 texture = ExtResource("6_7m4c6")
 
-[node name="Refiner" type="Sprite2D" parent="Camera2D/Hotbar"]
+[node name="Smelter" type="Sprite2D" parent="Camera2D/Hotbar"]
 position = Vector2(201, 40)
-texture = ExtResource("8_lgqs7")
+texture = ExtResource("9_kuaow")
+
+[node name="Constructor" type="Sprite2D" parent="Camera2D/Hotbar"]
+position = Vector2(282, 40)
+texture = ExtResource("10_ydavp")
 
 [node name="BeltButton" type="Button" parent="Camera2D/Hotbar"]
 layout_mode = 0
@@ -72,7 +80,7 @@ scale = Vector2(2, 2)
 script = ExtResource("8_lpojc")
 metadata/Extractor = true
 
-[node name="RefinerButton" type="Button" parent="Camera2D/Hotbar"]
+[node name="SmelterButton" type="Button" parent="Camera2D/Hotbar"]
 layout_mode = 0
 offset_left = 166.0
 offset_top = 5.0
@@ -80,15 +88,27 @@ offset_right = 236.0
 offset_bottom = 75.0
 script = ExtResource("11_6dldg")
 
+[node name="ConstructorButton" type="Button" parent="Camera2D/Hotbar"]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 5.0
+offset_right = 319.0
+offset_bottom = 76.0
+script = ExtResource("14_5awit")
+
 [node name="Extractor" parent="." instance=ExtResource("3_ofrym")]
 position = Vector2(44, 44)
 
 [node name="Belt" parent="." instance=ExtResource("2_0b5rt")]
 position = Vector2(44, 44)
 
-[node name="Refiner" parent="." instance=ExtResource("10_glyoi")]
+[node name="Smelter" parent="." instance=ExtResource("10_glyoi")]
+position = Vector2(36, 36)
+
+[node name="Constructor" parent="." instance=ExtResource("15_wbpsv")]
 position = Vector2(36, 36)
 
 [connection signal="pressed" from="Camera2D/Hotbar/BeltButton" to="Camera2D/Hotbar/BeltButton" method="_on_belt_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/ExtractorButton" to="Camera2D/Hotbar/ExtractorButton" method="_on_extractor_selected"]
-[connection signal="pressed" from="Camera2D/Hotbar/RefinerButton" to="Camera2D/Hotbar/RefinerButton" method="_on_refiner_selected"]
+[connection signal="pressed" from="Camera2D/Hotbar/SmelterButton" to="Camera2D/Hotbar/SmelterButton" method="_on_smelter_selected"]
+[connection signal="pressed" from="Camera2D/Hotbar/ConstructorButton" to="Camera2D/Hotbar/ConstructorButton" method="_on_constructor_selected"]

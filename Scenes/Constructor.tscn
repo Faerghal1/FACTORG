@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://40e7gnocdmnt"]
+
+[ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="1_gcfcv"]
+[ext_resource type="Script" path="res://Scripts/Constructor.gd" id="1_lq4kr"]
+[ext_resource type="Texture2D" uid="uid://cshbe5cqr5jtv" path="res://Assets/Recipe_List.png" id="2_758gw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifi30"]
+size = Vector2(80, 79)
+
+[node name="Area2D" type="Area2D"]
+modulate = Color(1, 1, 1, 0.588235)
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_lq4kr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ifi30")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.255, 1.255)
+texture = ExtResource("1_gcfcv")
+
+[node name="Recipe" type="Button" parent="."]
+offset_left = -15.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 65.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("2_758gw")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="Recipe" to="." method="_on_recipe_selected"]

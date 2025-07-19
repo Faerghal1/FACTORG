@@ -27,6 +27,8 @@ func _process(_delta):
 			show()
 		if global.slot == 3:
 			hide()
+		if global.slot == 4:
+			hide()
 
 
 func _on_mouse_entered():
