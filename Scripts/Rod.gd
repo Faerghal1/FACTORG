@@ -24,10 +24,8 @@ func _on_area_entered(area):
 		move = 1
 		var dir = area.get_meta("Direction_belt")
 		rotation_degrees = dir*90
-	if area.has_meta("Direction_constructor") and area.get_meta("Direction_constructor")>=0:
-		queue_free()
 	if area.has_meta("Direction_storage") and area.get_meta("Direction_storage")>=0:
-		global.ingot += 1
+		global.rod += 1
 		queue_free()
 
 

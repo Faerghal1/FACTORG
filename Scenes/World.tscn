@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=21 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/belt.tscn" id="2_0b5rt"]
@@ -13,8 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://cpql1vm2gnpml" path="res://Scenes/Smelter.tscn" id="10_glyoi"]
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="10_ydavp"]
 [ext_resource type="Script" path="res://Scripts/Smelter_hotbar.gd" id="11_6dldg"]
+[ext_resource type="Texture2D" uid="uid://bjl26wes5neh3" path="res://Assets/Storage Temp.png" id="12_gpcpt"]
 [ext_resource type="Script" path="res://Scripts/Constructor_hotbar.gd" id="14_5awit"]
 [ext_resource type="PackedScene" uid="uid://40e7gnocdmnt" path="res://Scenes/Constructor.tscn" id="15_wbpsv"]
+[ext_resource type="Texture2D" uid="uid://dmxwj2je6uogr" path="res://Assets/rod_temp.png" id="16_7gl11"]
+[ext_resource type="Script" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
+[ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Ingot_Temp.png" id="17_pvg4h"]
+[ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/Storage.tscn" id="19_nil32"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_pqhfs")
@@ -22,24 +27,25 @@ belt_scene = ExtResource("2_0b5rt")
 extractor_scene = ExtResource("3_ofrym")
 smelter_scene = ExtResource("10_glyoi")
 constructor_scene = ExtResource("15_wbpsv")
+storage_scene = ExtResource("19_nil32")
 
 [node name="Map__Scene" parent="." instance=ExtResource("4_6tc2v")]
 modulate = Color(1, 1, 1, 0.858824)
 
 [node name="Camera2D" parent="." instance=ExtResource("5_fo33q")]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(1.75, 1.75)
 
 [node name="Hotbar" type="Control" parent="Camera2D"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -150.0
-offset_top = 132.0
-offset_right = 150.0
-offset_bottom = 212.0
+offset_left = -204.5
+offset_top = 99.0
+offset_right = 204.5
+offset_bottom = 179.0
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Hotbar"]
 layout_mode = 0
-offset_right = 328.0
+offset_right = 409.0
 offset_bottom = 80.0
 
 [node name="Extractor" type="Sprite2D" parent="Camera2D/Hotbar"]
@@ -60,6 +66,11 @@ texture = ExtResource("9_kuaow")
 position = Vector2(282, 40)
 texture = ExtResource("10_ydavp")
 
+[node name="Storage" type="Sprite2D" parent="Camera2D/Hotbar"]
+position = Vector2(365, 40)
+scale = Vector2(2, 2)
+texture = ExtResource("12_gpcpt")
+
 [node name="BeltButton" type="Button" parent="Camera2D/Hotbar"]
 layout_mode = 0
 offset_left = 6.0
@@ -67,6 +78,7 @@ offset_top = 5.0
 offset_right = 42.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
+alignment = 2
 script = ExtResource("6_ksayx")
 metadata/Belt = true
 
@@ -96,6 +108,107 @@ offset_right = 319.0
 offset_bottom = 76.0
 script = ExtResource("14_5awit")
 
+[node name="StorageButton" type="Button" parent="Camera2D/Hotbar"]
+layout_mode = 0
+offset_left = 329.0
+offset_top = 5.0
+offset_right = 401.0
+offset_bottom = 76.0
+script = ExtResource("17_dpebd")
+
+[node name="Label" type="Label" parent="Camera2D/Hotbar"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 49.0
+offset_right = 74.0
+offset_bottom = 72.0
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Label2" type="Label" parent="Camera2D/Hotbar"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 49.0
+offset_right = 153.0
+offset_bottom = 72.0
+text = "2"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Label3" type="Label" parent="Camera2D/Hotbar"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 49.0
+offset_right = 233.0
+offset_bottom = 72.0
+text = "3"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Label4" type="Label" parent="Camera2D/Hotbar"]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 49.0
+offset_right = 314.0
+offset_bottom = 72.0
+text = "4"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Label5" type="Label" parent="Camera2D/Hotbar"]
+layout_mode = 0
+offset_left = 357.0
+offset_top = 49.0
+offset_right = 397.0
+offset_bottom = 72.0
+text = "5"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Goal" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -309.0
+offset_top = -168.0
+offset_right = -220.0
+offset_bottom = -128.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Goal"]
+layout_mode = 0
+offset_right = 89.0
+offset_bottom = 77.0
+
+[node name="RodGoal" type="Label" parent="Camera2D/Goal"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 9.0
+offset_right = 42.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0/10"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/Goal"]
+position = Vector2(65, 20)
+texture = ExtResource("16_7gl11")
+
+[node name="IngotGoal" type="Label" parent="Camera2D/Goal"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 49.0
+offset_right = 42.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0/15"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/Goal"]
+position = Vector2(65, 60)
+texture = ExtResource("17_pvg4h")
+
 [node name="Extractor" parent="." instance=ExtResource("3_ofrym")]
 position = Vector2(44, 44)
 
@@ -108,7 +221,11 @@ position = Vector2(36, 36)
 [node name="Constructor" parent="." instance=ExtResource("15_wbpsv")]
 position = Vector2(36, 36)
 
+[node name="Storage" parent="." instance=ExtResource("19_nil32")]
+position = Vector2(44, 44)
+
 [connection signal="pressed" from="Camera2D/Hotbar/BeltButton" to="Camera2D/Hotbar/BeltButton" method="_on_belt_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/ExtractorButton" to="Camera2D/Hotbar/ExtractorButton" method="_on_extractor_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/SmelterButton" to="Camera2D/Hotbar/SmelterButton" method="_on_smelter_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/ConstructorButton" to="Camera2D/Hotbar/ConstructorButton" method="_on_constructor_selected"]
+[connection signal="pressed" from="Camera2D/Hotbar/StorageButton" to="Camera2D/Hotbar/StorageButton" method="_on_storage_selected"]

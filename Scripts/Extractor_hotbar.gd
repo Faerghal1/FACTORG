@@ -8,3 +8,4 @@ func _on_extractor_selected():
 	global.mouse_entered_belt = false
 	global.mouse_entered_smelter = false
 	global.mouse_entered_constructor = false
+	global.mouse_entered_storage = false

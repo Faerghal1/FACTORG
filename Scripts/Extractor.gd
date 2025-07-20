@@ -31,6 +31,8 @@ func _process(_delta):
 			hide()
 		if global.slot == 4:
 			hide()
+		if global.slot == 5:
+			hide()
 
 
 func _on_timer_timeout():
