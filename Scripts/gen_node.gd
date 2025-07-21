@@ -24,8 +24,8 @@ func generate():
 		for y in range(height):
 			var noise_val = noise.get_noise_2d(x,y)
 			if noise_val >= 0:
-				tile_map.set_cell(0, Vector2(x,y), source_id, land_atlas)
+				tile_map.set_cell(Vector2(x,y), source_id, land_atlas)
 				pass
 			elif noise_val < 0.0:
-				tile_map.set_cell(0, Vector2(x,y), source_id, water_atlas)
+				tile_map.set_cell(Vector2(x,y), source_id, water_atlas)
 				pass

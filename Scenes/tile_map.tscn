@@ -28,10 +28,9 @@ sources/1 = SubResource("TileSetAtlasSource_s7dow")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="GeneratedMap" type="TileMap" parent="."]
+[node name="GeneratedMap" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_ggshd")
 rendering_quadrant_size = 8
-format = 2
 script = ExtResource("2_7xrpl")
 
 [node name="Camera" parent="." instance=ExtResource("3_mn8yg")]
