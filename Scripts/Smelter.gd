@@ -2,18 +2,18 @@ extends Area2D
 
 @onready var global = get_node("/root/Global")
 
+@export var ingot_scene: PackedScene
 var clone = 0
 var direction = 0
 var delete = 0
 var pos = Vector2i(0,0)
+var bitmap: BitMap = BitMap.new()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if clone == 0 and global.belt == true:
+	if clone == 0 and global.smelter == true:
 		position = get_global_mouse_position().snapped(Vector2(16,16))
-		position.x -= 8
-		position.y -= 8
 	if Input.is_action_just_pressed("Rotate(R)") and not clone:
 		rotation_degrees += 90
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
@@ -24,13 +24,26 @@ func _process(_delta):
 		if global.slot == 2:
 			hide()
 		if global.slot == 1:
-			show()
-		if global.slot == 3:
 			hide()
+		if global.slot == 3:
+			show()
 		if global.slot == 4:
 			hide()
 		if global.slot == 5:
 			hide()
+
+
+func _on_area_entered(area):
+	if area.has_meta("Direction_resource") and $Ingot.visible == true:
+		var ingot = ingot_scene.instantiate()
+		ingot.position = position
+		ingot.modulate.a = 1
+		ingot.rotation = rotation
+		ingot.direction = rotation/90
+		ingot.set_meta("Direction_ingot", direction/90)
+		add_sibling(ingot)
+		ingot.clone = 1
+		ingot.show()
 
 
 func _on_mouse_entered():
@@ -41,11 +54,7 @@ func _on_mouse_exited():
 	delete = 0
 
 
-#func _on_area_entered(area):
-	#if clone == 1 and area.has_meta("Direction") and area.get_meta("Direction") >=0 and not \
-	#area.get_meta("Direction")%4 == get_meta("Direction")%4:
-		#set_meta("Direction", area.get_meta("Direction"))
-		#rotation_degrees = 90*area.get_meta("Direction")
-		#print("attampt")
-		#print(get_meta("Direction"), "o")
-		#print(get_meta("Direction"), "f")
+func _on_recipe_selected():
+	if clone == 1 and $Recipe.visible == true:
+		$Recipe.hide()
+		$Ingot.show()

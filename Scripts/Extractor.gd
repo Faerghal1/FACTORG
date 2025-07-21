@@ -2,15 +2,17 @@ extends Area2D
 
 @onready var global = get_node("/root/Global")
 
+@export var resource_scene: PackedScene
 var clone = 0
 var direction = 0
 var delete = 0
 var pos = Vector2i(0,0)
+var bitmap: BitMap = BitMap.new()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if clone == 0 and global.belt == true:
+	if clone == 0 and global.extractor == true:
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 		position.x -= 8
 		position.y -= 8
@@ -22,9 +24,9 @@ func _process(_delta):
 		if global.slot == 0:
 			hide()
 		if global.slot == 2:
-			hide()
-		if global.slot == 1:
 			show()
+		if global.slot == 1:
+			hide()
 		if global.slot == 3:
 			hide()
 		if global.slot == 4:
@@ -33,19 +35,22 @@ func _process(_delta):
 			hide()
 
 
+func _on_timer_timeout():
+	if clone == 1 and global.extractor_placed == true:
+		var resource = resource_scene.instantiate()
+		resource.position = position
+		resource.modulate.a = 1
+		resource.rotation = rotation
+		resource.direction = rotation/90
+		resource.set_meta("Direction_resource", direction/90)
+		add_sibling(resource)
+		resource.clone = 1
+		resource.show()
+
+
 func _on_mouse_entered():
 	delete = 1
 
 
 func _on_mouse_exited():
 	delete = 0
-
-
-#func _on_area_entered(area):
-	#if clone == 1 and area.has_meta("Direction") and area.get_meta("Direction") >=0 and not \
-	#area.get_meta("Direction")%4 == get_meta("Direction")%4:
-		#set_meta("Direction", area.get_meta("Direction"))
-		#rotation_degrees = 90*area.get_meta("Direction")
-		#print("attampt")
-		#print(get_meta("Direction"), "o")
-		#print(get_meta("Direction"), "f")

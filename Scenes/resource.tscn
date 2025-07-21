@@ -1,27 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu2bvfahpmb5"]
+[gd_scene load_steps=6 format=3 uid="uid://bu2bvfahpmb5"]
 
-[ext_resource type="Script" path="res://Scripts/Item.gd" id="1_chsbp"]
+[ext_resource type="Script" path="res://Scripts/Resource.gd" id="1_chsbp"]
+[ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Resource_Temp.png" id="2_qavul"]
+[ext_resource type="Script" path="res://Scripts/Item_sprites.gd" id="3_ompfr"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_t0bps"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1xui"]
+size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22j22"]
-size = Vector2(19.5, 20)
+size = Vector2(5.33333, 5.33333)
 
-[node name="Area2D" type="Area2D"]
-scale = Vector2(2, 2)
+[node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_chsbp")
 
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(6.5, 0.5)
-scale = Vector2(20.5195, 14.1963)
-mesh = SubResource("SphereMesh_t0bps")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.25, 0)
+shape = SubResource("RectangleShape2D_o1xui")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.4, 0.4)
+metadata/Direction_resource = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2.38419e-07)
+scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_22j22")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-scale = Vector2(19.2715, 19.625)
-mesh = SubResource("SphereMesh_t0bps")
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+z_index = 1
+scale = Vector2(1.255, 1.255)
+texture = ExtResource("2_qavul")
+script = ExtResource("3_ompfr")
 
-[connection signal="area_entered" from="." to="." method="_on_belt_entered"]
+[node name="Timer" type="Timer" parent="Area2D"]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
+[connection signal="ready" from="Area2D" to="." method="_on_ready"]

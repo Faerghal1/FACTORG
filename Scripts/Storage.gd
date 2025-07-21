@@ -5,12 +5,15 @@ extends Area2D
 var clone = 0
 var direction = 0
 var delete = 0
+var ingot_amount = 0
+var rod_amount = 0
 var pos = Vector2i(0,0)
+var bitmap: BitMap = BitMap.new()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if clone == 0 and global.belt == true:
+	if clone == 0 and global.storage == true:
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 		position.x -= 8
 		position.y -= 8
@@ -24,13 +27,26 @@ func _process(_delta):
 		if global.slot == 2:
 			hide()
 		if global.slot == 1:
-			show()
+			hide()
 		if global.slot == 3:
 			hide()
 		if global.slot == 4:
 			hide()
 		if global.slot == 5:
-			hide()
+			show()
+
+
+func _on_area_entered(area):
+	if area.has_meta("Direction_ingot"):
+		if $Ingot.visible == false and clone == 1:
+			$Ingot.show()
+		ingot_amount += 1
+		$ResourceAmount.text = (str(int(ingot_amount)))
+	if area.has_meta("Direction_rod"):
+		if $Rod.visible == false and clone == 1:
+			$Rod.show()
+		rod_amount += 1
+		$ResourceAmount.text = (str(int(rod_amount)))
 
 
 func _on_mouse_entered():
@@ -39,13 +55,3 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	delete = 0
-
-
-#func _on_area_entered(area):
-	#if clone == 1 and area.has_meta("Direction") and area.get_meta("Direction") >=0 and not \
-	#area.get_meta("Direction")%4 == get_meta("Direction")%4:
-		#set_meta("Direction", area.get_meta("Direction"))
-		#rotation_degrees = 90*area.get_meta("Direction")
-		#print("attampt")
-		#print(get_meta("Direction"), "o")
-		#print(get_meta("Direction"), "f")
