@@ -29,6 +29,6 @@ func generate_chunk(position):
 			var alt = altitude.get_noise_2d(tile_pos.x + x - width/2, tile_pos.y + y - height/2)*10
 			
 			if alt < 2: #generates water is altitude is too low
-				set_cell(0, Vector2i(tile_pos.x + x - width/2, tile_pos.y + y - height/2), 0, Vector2i(3,round((temp+10)/5)))
+				set_cell(0, Vector2i(tile_pos.x + x - width/2, tile_pos.y + y - height/2), 0, Vector2i(3,round((temp+5)/5)))
 			else:
-				set_cell(0, Vector2i(tile_pos.x + x - width/2, tile_pos.y + y - height/2), 0, Vector2i(round((moist+10)/5),round((temp+10)/5)))
+				set_cell(0, Vector2i(tile_pos.x + x - width/2, tile_pos.y + y - height/2), 0, Vector2i(round((moist+5)/5),round((temp+5)/5)))
