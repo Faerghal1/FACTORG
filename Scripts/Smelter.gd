@@ -41,7 +41,7 @@ func _on_area_entered(area):
 		ingot.rotation = rotation
 		ingot.direction = rotation/90
 		ingot.set_meta("Direction_ingot", direction/90)
-		add_sibling(ingot)
+		add_sibling.call_deferred(ingot)
 		ingot.clone = 1
 		ingot.show()
 
