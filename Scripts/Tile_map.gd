@@ -6,7 +6,7 @@ var altitude = FastNoiseLite.new()
 var width = 100
 var height = 100
 var biome = {}
-@onready var player = get_parent().get_child(1)
+@onready var player = get_parent().get_parent().get_child(1)
 
 
 var objects = {}
@@ -114,10 +114,8 @@ func _ready():
 	temperature.seed = randi()
 	altitude.seed = randi()
 	generate_chunk(player.position)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
+
+
 func generate_chunk(position):
 	var tile_pos = local_to_map(position) # gets the position in tilemap coords
 	for x in width:
