@@ -1,9 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_pqhfs"]
-[ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/belt.tscn" id="2_0b5rt"]
+[ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/Belt.tscn" id="2_0b5rt"]
 [ext_resource type="PackedScene" uid="uid://b05iho5c44hkr" path="res://Scenes/Extractor.tscn" id="3_ofrym"]
-[ext_resource type="PackedScene" uid="uid://ch5vnan7amu2m" path="res://Scenes/tile_map.tscn" id="4_6tc2v"]
+[ext_resource type="PackedScene" uid="uid://duxgwxtl60kum" path="res://Scenes/tile_map.tscn" id="4_6tc2v"]
 [ext_resource type="PackedScene" uid="uid://grkud06u2t6y" path="res://Scenes/Camera.tscn" id="5_fo33q"]
 [ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Belt_Temp.png" id="6_7m4c6"]
 [ext_resource type="Script" path="res://Scripts/Belt_hotbar.gd" id="6_ksayx"]
@@ -36,6 +36,7 @@ modulate = Color(1, 1, 1, 0.858824)
 zoom = Vector2(1.75, 1.75)
 
 [node name="Hotbar" type="Control" parent="Camera2D"]
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = -204.5
