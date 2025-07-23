@@ -126,5 +126,6 @@ sources/0 = SubResource("TileSetAtlasSource_fvw3e")
 [node name="Node2D" type="Node2D"]
 
 [node name="Generated_map" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_s8q0b")
 script = ExtResource("2_umwkc")
