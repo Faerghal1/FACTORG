@@ -23,6 +23,8 @@ func _ready():
 
 
 func _process(_delta):
+	if global.ingot >= 15 and global.rod >= 10:
+		get_tree().paused = true
 	$Camera2D/Goal/RodGoal.text = (str(int(global.rod)) + "/10")
 	$Camera2D/Goal/IngotGoal.text = (str(int(global.ingot)) + "/15")
 	if Input.is_action_just_pressed("Hotbar_0"):

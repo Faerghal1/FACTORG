@@ -36,7 +36,7 @@ func _process(_delta):
 
 
 func _on_timer_timeout():
-	if clone == 1 and global.extractor_placed == true:
+	if clone == 1 and global.extractor_placed == true and not $RayCast2D.get_collider():
 		var resource = resource_scene.instantiate()
 		resource.position = position
 		resource.modulate.a = 1

@@ -26,6 +26,10 @@ func _on_area_entered(area):
 		rotation_degrees = dir*90
 	if area.has_meta("Direction_smelter") and area.get_meta("Direction_smelter")>=0:
 		queue_free()
+	if area.has_meta("Direction_storage") and area.get_meta("Direction_storage")>=0:
+		global.ore += 1
+		queue_free()
+
 
 
 func _on_area_exited(area):

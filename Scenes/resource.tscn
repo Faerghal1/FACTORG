@@ -18,7 +18,7 @@ shape = SubResource("RectangleShape2D_o1xui")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
-metadata/Direction_resource = true
+metadata/Type = "Direction Resource"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -2.38419e-07)
