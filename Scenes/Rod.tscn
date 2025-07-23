@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ch4dodtt3vdb7"]
 
-[ext_resource type="Texture2D" uid="uid://dmxwj2je6uogr" path="res://Assets/rod_temp.png" id="1_ioqra"]
+[ext_resource type="Texture2D" uid="uid://dmxwj2je6uogr" path="res://Assets/Rod_temp.png" id="1_ioqra"]
 [ext_resource type="Script" path="res://Scripts/Rod.gd" id="1_k070t"]
 [ext_resource type="Script" path="res://Scripts/Item_sprites.gd" id="3_mfwth"]
 

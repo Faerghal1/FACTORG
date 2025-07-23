@@ -53,10 +53,6 @@ var tiles = {"grass": Vector2i(0,0), "grass_tree": Vector2i(0,2),
 "stone": Vector2i(10,0)}
 
 
-var object_tiles = {"tree": preload("res://Scenes/Tree.tscn"), "cactus": preload("res://Scenes/Cactus.tscn"), \
-"spruce_tree": preload("res://Scenes/Spruce_tree.tscn")}
-
-
 var biome_data = {
 	"plains": {"grass": 0.8, "grass_tree": 0.15, "grass_rock": 0.025, "grass_boulder": 0.0125,
 	"grass_iron": 0.00625, "grass_copper": 0.00625},
@@ -67,8 +63,8 @@ var biome_data = {
 	"spruce": {"spruce_grass": 0.8, "spruce_tree": 0.15, "spruce_rock": 0.025, 
 	"spruce_boulder": 0.0125, "spruce_iron": 0.00625, "spruce_copper": 0.00625},
 	
-	"swamp": {"swamp_grass": 0.806, "swamp_tree": 0.19, "swamp_rock": 0.001, "swamp_boulder": 0.001, 
-	"swamp_iron": 0.001, "swamp_copper": 0.001},
+	"swamp": {"swamp_grass": 0.806, "swamp_tree": 0.19, "swamp_rock": 0.001, 
+	"swamp_boulder": 0.001, "swamp_iron": 0.001, "swamp_copper": 0.001},
 	
 	"dark_oak": {"dark_oak_grass": 0.83, "dark_oak_tree": 0.15, "dark_oak_rock": 0.005, 
 	"dark_oak_boulder": 0.005, "dark_oak_iron": 0.005, "dark_oak_copper": 0.005},

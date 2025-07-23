@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bjl26wes5neh3" path="res://Assets/Storage Temp.png" id="12_gpcpt"]
 [ext_resource type="Script" path="res://Scripts/Constructor_hotbar.gd" id="14_5awit"]
 [ext_resource type="PackedScene" uid="uid://40e7gnocdmnt" path="res://Scenes/Constructor.tscn" id="15_wbpsv"]
-[ext_resource type="Texture2D" uid="uid://dmxwj2je6uogr" path="res://Assets/rod_temp.png" id="16_7gl11"]
+[ext_resource type="Texture2D" uid="uid://dmxwj2je6uogr" path="res://Assets/Rod_temp.png" id="16_7gl11"]
 [ext_resource type="Script" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Ingot_Temp.png" id="17_pvg4h"]
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/Storage.tscn" id="19_nil32"]

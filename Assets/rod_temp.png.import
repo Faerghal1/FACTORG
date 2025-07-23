@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmxwj2je6uogr"
-path="res://.godot/imported/rod_temp.png-5f204ad9f1df4db525307ffe0ff5cdba.ctex"
+path="res://.godot/imported/Rod_temp.png-bac980759545adac061797fd3af693e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/rod_temp.png"
-dest_files=["res://.godot/imported/rod_temp.png-5f204ad9f1df4db525307ffe0ff5cdba.ctex"]
+source_file="res://Assets/Rod_temp.png"
+dest_files=["res://.godot/imported/Rod_temp.png-bac980759545adac061797fd3af693e4.ctex"]
 
 [params]
 

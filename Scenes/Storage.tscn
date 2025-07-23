@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Storage.gd" id="1_m7wf3"]
 [ext_resource type="Texture2D" uid="uid://bjl26wes5neh3" path="res://Assets/Storage Temp.png" id="1_mvajw"]
-[ext_resource type="Texture2D" uid="uid://dmxwj2je6uogr" path="res://Assets/rod_temp.png" id="3_w8odt"]
+[ext_resource type="Texture2D" uid="uid://dmxwj2je6uogr" path="res://Assets/Rod_temp.png" id="3_w8odt"]
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Ingot_Temp.png" id="4_w5myp"]
 [ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Resource_Temp.png" id="5_2fq5u"]
 
