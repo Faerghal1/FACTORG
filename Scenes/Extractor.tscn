@@ -1,8 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://b05iho5c44hkr"]
+[gd_scene load_steps=10 format=3 uid="uid://b05iho5c44hkr"]
 
 [ext_resource type="Script" path="res://Scripts/Extractor.gd" id="1_6uykh"]
 [ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor.png" id="1_pfimx"]
-[ext_resource type="PackedScene" uid="uid://ctses7kqh63is" path="res://Scenes/resource.tscn" id="3_mavdy"]
+[ext_resource type="Script" path="res://Scripts/Resource.gd" id="2_p5gla"]
+[ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Iron_Ore.png" id="3_yohlt"]
+[ext_resource type="Script" path="res://Scripts/Item_sprites.gd" id="4_ncp8q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1xui"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22j22"]
+size = Vector2(5.33333, 5.33333)
+
+[sub_resource type="PackedScene" id="PackedScene_w4w2s"]
+_bundled = {
+"conn_count": 3,
+"conns": PackedInt32Array(1073741830, 1073741829, 24, 23, 2, 0, 0, 1073741832, 1073741831, 26, 25, 2, 0, 0, 1073741834, 1073741833, 28, 27, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("CharacterBody2D", "CharacterBody2D", "script", "CollisionShape2D", "CollisionShape2D", "shape", "Area2D", "Area2D", "scale", "metadata/Type", "CollisionShape2D", "CollisionShape2D", "position", "scale", "shape", "Sprite2D", "Sprite2D", "z_index", "scale", "texture", "script", "Timer", "Timer", "_on_area_entered", "area_entered", "_on_area_exited", "area_exited", "_on_ready", "ready"),
+"node_count": 6,
+"node_paths": [NodePath("."), NodePath("."), NodePath("./Area2D"), NodePath("./Area2D"), NodePath("./Area2D"), NodePath("."), NodePath("Area2D"), NodePath("."), NodePath("Area2D"), NodePath("."), NodePath("Area2D")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 1, 5, 1, 0, 1073741825, 0, 7, 6, -1, 2, 8, 2, 9, 3, 0, 1073741826, 0, 11, 10, -1, 3, 12, 4, 13, 5, 14, 6, 0, 1073741827, 0, 16, 15, -1, 4, 17, 7, 18, 8, 19, 9, 20, 10, 0, 1073741828, 0, 22, 21, -1, 0, 0),
+"variants": [ExtResource("2_p5gla"), SubResource("RectangleShape2D_o1xui"), Vector2(0.4, 0.4), "Direction Resource", Vector2(0, -2.38419e-07), Vector2(1.5, 1.5), SubResource("RectangleShape2D_22j22"), 1, Vector2(1.255, 1.255), ExtResource("3_yohlt"), ExtResource("4_ncp8q")],
+"version": 3
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7jx5"]
 size = Vector2(2.5, 2.5)
@@ -11,7 +32,7 @@ size = Vector2(2.5, 2.5)
 modulate = Color(1, 1, 1, 0.745098)
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_6uykh")
-resource_scene = ExtResource("3_mavdy")
+resource_scene = SubResource("PackedScene_w4w2s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.86264e-06, 2.04891e-06)
