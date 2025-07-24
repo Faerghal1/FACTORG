@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjl26wes5neh3"
-path="res://.godot/imported/Storage Temp.png-e84e159e42256b1ca96d0362d4d7d396.ctex"
+uid="uid://8s5kve5pa5dm"
+path="res://.godot/imported/Extractor.png-3cb6419e03ab2c084c8227d9f782814f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Storage Temp.png"
-dest_files=["res://.godot/imported/Storage Temp.png-e84e159e42256b1ca96d0362d4d7d396.ctex"]
+source_file="res://Assets/Extractor.png"
+dest_files=["res://.godot/imported/Extractor.png-3cb6419e03ab2c084c8227d9f782814f.ctex"]
 
 [params]
 

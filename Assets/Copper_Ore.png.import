@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmxwj2je6uogr"
-path="res://.godot/imported/Rod_temp.png-bac980759545adac061797fd3af693e4.ctex"
+uid="uid://bfyjb7ldhovv6"
+path="res://.godot/imported/Copper_Ore.png-0b778265b3fc19e5e1c38b952c054ce8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Rod_temp.png"
-dest_files=["res://.godot/imported/Rod_temp.png-bac980759545adac061797fd3af693e4.ctex"]
+source_file="res://Assets/Copper_Ore.png"
+dest_files=["res://.godot/imported/Copper_Ore.png-0b778265b3fc19e5e1c38b952c054ce8.ctex"]
 
 [params]
 

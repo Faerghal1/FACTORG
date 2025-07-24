@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct2optecgx78d"
-path="res://.godot/imported/Belt_Temp.png-49431e65ce39cbbe1f9fccaefcc79ac1.ctex"
+uid="uid://dmxwj2je6uogr"
+path="res://.godot/imported/Iron_Rod.png-dddc243e6f35de7c463aab1878d39322.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Belt_Temp.png"
-dest_files=["res://.godot/imported/Belt_Temp.png-49431e65ce39cbbe1f9fccaefcc79ac1.ctex"]
+source_file="res://Assets/Iron_Rod.png"
+dest_files=["res://.godot/imported/Iron_Rod.png-dddc243e6f35de7c463aab1878d39322.ctex"]
 
 [params]
 

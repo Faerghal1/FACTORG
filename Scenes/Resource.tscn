@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctses7kqh63is"]
+[gd_scene load_steps=6 format=3 uid="uid://brnm8dqnu5sfo"]
 
 [ext_resource type="Script" path="res://Scripts/Resource.gd" id="1_chsbp"]
-[ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Resource_Temp.png" id="2_qavul"]
+[ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Iron_Ore.png" id="2_hys0v"]
 [ext_resource type="Script" path="res://Scripts/Item_sprites.gd" id="3_ompfr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1xui"]
@@ -28,7 +28,7 @@ shape = SubResource("RectangleShape2D_22j22")
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 z_index = 1
 scale = Vector2(1.255, 1.255)
-texture = ExtResource("2_qavul")
+texture = ExtResource("2_hys0v")
 script = ExtResource("3_ompfr")
 
 [node name="Timer" type="Timer" parent="Area2D"]
