@@ -45,7 +45,8 @@ func _on_area_entered(area):
 			$Iron_Ingot.show()
 		if area.get_meta("Type") == "Direction Rod":
 			$Iron_Rod.show()
-
+		if area.get_meta("Type") == "Direction Copper":
+			$Copper_Ore.show()
 
 func _on_mouse_entered():
 	delete = 1
