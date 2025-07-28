@@ -1,10 +1,9 @@
 extends Node2D
 
-	
 # Called when the node enters the sce	ne tree for the first time.
 func _ready() :
-	$Node2D/GeneratedMap.height = 2
-	$Node2D/GeneratedMap.width = 10 #this does not change the tilemap size:(
+	$GeneratedMap.height = 2
+	$GeneratedMap.width = 10 #this does not change the tilemap size:(
 	$Camera2D.temppos_x = 0
 	$Camera2D.temppos_y = 24 * 8
 	#ResourceLoader.load_threaded_request("res://Scenes/World.tscn")
