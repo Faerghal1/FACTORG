@@ -3,10 +3,10 @@ extends TileMapLayer
 var moisture = FastNoiseLite.new()
 var temperature = FastNoiseLite.new()
 var altitude = FastNoiseLite.new()
-var width = 100
-var height = 100
+var width = 1000
+var height = 1000
 var biome = {}
-@onready var player = get_parent().get_child(1)
+@onready var player = get_parent().get_parent().get_child(1)
 
 
 var objects = {}
@@ -119,76 +119,146 @@ func _ready():
 	altitude.seed = randi()
 	generate_chunk(player.position)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 	
 func generate_chunk(position):
 	var tile_pos = local_to_map(position) # gets the position in tilemap coords
-	for x in width:
-		for y in height:
-			var pos = Vector2(x,y)
-			#print(pos)
-			var moist = moisture.get_noise_2d(x - width/2, y - height/2)
-			var temp = temperature.get_noise_2d(x - width/2, y - height/2)
-			var alt = altitude.get_noise_2d(x - width/2, y - height/2)
-			#Ocean
-			if alt < -0.4:
-				biome[pos] = "ocean"
-				set_cell(Vector2i(x - width/2, y - height/2), 0,
-				tiles[random_tile(biome_data, "ocean")])
-			#Beach
-			elif alt < -0.3:
-				biome[pos] = "beach"
-				set_cell(Vector2i(x - width/2, y - height/2), 0,
-				tiles[random_tile(biome_data, "beach")])
-			#Other Biomes
-			elif alt < 0.7:
-				#plains
-				if moist <= 0.5 and temp <= 0.1 and temp > -0.1:
-					biome[pos] = "plains"
-					set_cell(Vector2i(x - width/2, y - height/2), 0,
-					tiles[random_tile(biome_data, "plains")])
-				#jungle
-				elif  moist > 0.0 and moist <= 1.0 and temp > 0.5:
-					biome[pos] = "jungle"
-					set_cell(Vector2i(x - width/2, y - height/2), 0,
-					tiles[random_tile(biome_data, "jungle")])
-				#desert
-				elif temp > 0.2 and moist <= 0.0:
-					biome[pos] = "desert"
-					set_cell(Vector2i(x - width/2, y - height/2), 0,
-					tiles[random_tile(biome_data, "desert")])
-				#lakes
-				elif moist <= 1.0 and moist > 0.6 and temp <= -0.4 and temp > -0.7:
-					biome[pos] = "lake"
-					set_cell(Vector2i(x - width/2, y - height/2), 0,
-					tiles[random_tile(biome_data, "lake")])
-				#Swamp
-				elif temp > -0.3 and temp <= 0.4 and moist > 0.6:
-					biome[pos] = "swamp"
-					set_cell(Vector2i(x - width/2, y - height/2), 0,
-					tiles[random_tile(biome_data, "swamp")])
-				#Mud
-				elif moist <= 0.5 and moist > 0.0 and temp <= 0.4 and temp >0.2:
-					biome[pos] = "mud"
-					set_cell(Vector2i(x - width/2, y - height/2), 0,
-					tiles[random_tile(biome_data, "mud")])
-				#spruce
-				elif moist <= 0.5 and temp > -0.7 and temp<= -0.2:
-					biome[pos] = "spruce"
-					set_cell(Vector2i(x - width/2, y - height/2), 0,
-					tiles[random_tile(biome_data, "spruce")])
-				else :
+	if get_tree().get_current_scene().get_name() == "World":
+		for x in width:
+			for y in height:
+				var pos = Vector2(x,y)
+				#print(pos)
+				var moist = moisture.get_noise_2d(x, y)
+				var temp = temperature.get_noise_2d(x, y)
+				var alt = altitude.get_noise_2d(x, y)
+				#Ocean
+				if alt < -0.4:
+					biome[pos] = "ocean"
+					set_cell(Vector2i(x, y ), 0,
+					tiles[random_tile(biome_data, "ocean")])
+				#Beach
+				elif alt < -0.3:
+					biome[pos] = "beach"
+					set_cell(Vector2i(x, y ), 0,
+					tiles[random_tile(biome_data, "beach")])
+				#Other Biomes
+				elif alt < 0.7:
+					#plains
+					if moist <= 0.5 and temp <= 0.1 and temp > -0.1:
+						biome[pos] = "plains"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "plains")])
+					#jungle
+					elif  moist > 0.0 and moist <= 1.0 and temp > 0.5:
+						biome[pos] = "jungle"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "jungle")])
+					#desert
+					elif temp > 0.2 and moist <= 0.0:
+						biome[pos] = "desert"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "desert")])
+					#lakes
+					elif moist <= 1.0 and moist > 0.6 and temp <= -0.4 and temp > -0.7:
+						biome[pos] = "lake"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "lake")])
+					#Swamp
+					elif temp > -0.3 and temp <= 0.4 and moist > 0.6:
+						biome[pos] = "swamp"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "swamp")])
+					#Mud
+					elif moist <= 0.5 and moist > 0.0 and temp <= 0.4 and temp >0.2:
+						biome[pos] = "mud"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "mud")])
+					#spruce
+					elif moist <= 0.5 and temp > -0.7 and temp<= -0.2:
+						biome[pos] = "spruce"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "spruce")])
+					else :
+						biome[pos] = "snow"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "snow")])
+				#Mountains
+				elif  alt>= 0.7 and alt <= 0.9:
+					biome[pos] = "mountain"
+					set_cell(Vector2i(x, y ), 0,
+					tiles[random_tile(biome_data, "mountain")])
+				#Snow
+				else:
 					biome[pos] = "snow"
-					set_cell(Vector2i(x - width/2, y - height/2), 0,
+					set_cell(Vector2i(x, y ), 0,
 					tiles[random_tile(biome_data, "snow")])
-			#Mountains
-			elif  alt>= 0.7 and alt <= 0.9:
-				biome[pos] = "mountain"
-				set_cell(Vector2i(x - width/2, y - height/2), 0,
-				tiles[random_tile(biome_data, "mountain")])
-			#Snow
-			else:
-				biome[pos] = "snow"
-				set_cell(Vector2i(x - width/2, y - height/2), 0,
-				tiles[random_tile(biome_data, "snow")])
+	else:
+		for x in 500:
+			for y in 60:
+				var pos = Vector2(x,y)
+				#print(pos)
+				var moist = moisture.get_noise_2d(x, y)
+				var temp = temperature.get_noise_2d(x, y)
+				var alt = altitude.get_noise_2d(x, y)
+				#Ocean
+				if alt < -0.4:
+					biome[pos] = "ocean"
+					set_cell(Vector2i(x, y ), 0,
+					tiles[random_tile(biome_data, "ocean")])
+				#Beach
+				elif alt < -0.3:
+					biome[pos] = "beach"
+					set_cell(Vector2i(x, y ), 0,
+					tiles[random_tile(biome_data, "beach")])
+				#Other Biomes
+				elif alt < 0.7:
+					#plains
+					if moist <= 0.5 and temp <= 0.1 and temp > -0.1:
+						biome[pos] = "plains"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "plains")])
+					#jungle
+					elif  moist > 0.0 and moist <= 1.0 and temp > 0.5:
+						biome[pos] = "jungle"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "jungle")])
+					#desert
+					elif temp > 0.2 and moist <= 0.0:
+						biome[pos] = "desert"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "desert")])
+					#lakes
+					elif moist <= 1.0 and moist > 0.6 and temp <= -0.4 and temp > -0.7:
+						biome[pos] = "lake"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "lake")])
+					#Swamp
+					elif temp > -0.3 and temp <= 0.4 and moist > 0.6:
+						biome[pos] = "swamp"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "swamp")])
+					#Mud
+					elif moist <= 0.5 and moist > 0.0 and temp <= 0.4 and temp >0.2:
+						biome[pos] = "mud"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "mud")])
+					#spruce
+					elif moist <= 0.5 and temp > -0.7 and temp<= -0.2:
+						biome[pos] = "spruce"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "spruce")])
+					else :
+						biome[pos] = "snow"
+						set_cell(Vector2i(x, y ), 0,
+						tiles[random_tile(biome_data, "snow")])
+				#Mountains
+				elif  alt>= 0.7 and alt <= 0.9:
+					biome[pos] = "mountain"
+					set_cell(Vector2i(x, y ), 0,
+					tiles[random_tile(biome_data, "mountain")])
+				#Snow
+				else:
+					biome[pos] = "snow"
+					set_cell(Vector2i(x, y ), 0,
+					tiles[random_tile(biome_data, "snow")])

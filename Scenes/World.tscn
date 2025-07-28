@@ -33,6 +33,7 @@ storage_scene = ExtResource("19_nil32")
 modulate = Color(1, 1, 1, 0.858824)
 
 [node name="Camera2D" parent="." instance=ExtResource("5_fo33q")]
+position = Vector2(1000, 1000)
 zoom = Vector2(1.75, 1.75)
 
 [node name="Hotbar" type="Control" parent="Camera2D"]

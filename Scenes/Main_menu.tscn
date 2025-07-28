@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://b04i20vta7r31"]
+
+[ext_resource type="Script" path="res://Scripts/Main_menu.gd" id="1_cwcel"]
+[ext_resource type="PackedScene" uid="uid://grkud06u2t6y" path="res://Scenes/Camera.tscn" id="2_bnxuh"]
+[ext_resource type="PackedScene" uid="uid://duxgwxtl60kum" path="res://Scenes/tile_map.tscn" id="3_5g0ny"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_cwcel")
+
+[node name="Camera2D" parent="." instance=ExtResource("2_bnxuh")]
+position = Vector2(1000, 1000)
+zoom = Vector2(1.75, 1.75)
+
+[node name="Start_button" type="Button" parent="Camera2D"]
+z_index = 5
+offset_left = -46.0
+offset_top = -95.0
+offset_right = 40.0
+offset_bottom = -83.0
+text = "Start"
+
+[node name="Settings_button" type="Button" parent="Camera2D"]
+z_index = 5
+offset_left = -29.0
+offset_top = -32.0
+offset_right = 8.0
+offset_bottom = -20.0
+text = "Settings"
+
+[node name="Quit_button" type="Button" parent="Camera2D"]
+z_index = 5
+offset_left = 2.0
+offset_top = -7.0
+offset_right = 36.0
+offset_bottom = 8.0
+text = "Quit"
+
+[node name="Node2D" parent="." instance=ExtResource("3_5g0ny")]
+process_priority = 1
+
+[connection signal="pressed" from="Camera2D/Start_button" to="." method="_on_main_menu_button_pressed"]

@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0cna8woy1w84"]
+
+[ext_resource type="Script" path="res://Scenes/Loading_screen.gd" id="1_deu6n"]
+[ext_resource type="PackedScene" uid="uid://duxgwxtl60kum" path="res://Scenes/tile_map.tscn" id="2_4c5e2"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_deu6n")
+
+[node name="MainMenu" type="Label" parent="."]
+z_index = 5
+offset_left = 369.0
+offset_top = 255.0
+offset_right = 803.0
+offset_bottom = 434.0
+theme_override_font_sizes/font_size = 100
+text = "Loading"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+z_index = 4
+offset_left = 202.0
+offset_top = 400.0
+offset_right = 944.0
+offset_bottom = 572.0
+step = 0.1
+
+[node name="Node2D" parent="." instance=ExtResource("2_4c5e2")]
+process_priority = 1

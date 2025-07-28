@@ -42,7 +42,7 @@ func _on_timer_timeout():
 		resource.modulate.a = 1
 		resource.rotation = rotation
 		resource.direction = rotation/90
-		resource.set_meta("Direction_resource", direction/90)
+		#resource.set_meta("Direction_resource", direction/90)
 		add_sibling(resource)
 		resource.clone = 1
 		resource.show()

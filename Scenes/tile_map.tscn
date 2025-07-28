@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://duxgwxtl60kum"]
+[gd_scene load_steps=5 format=3 uid="uid://duxgwxtl60kum"]
 
 [ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/pixil-frame-0.png" id="1_cqov0"]
 [ext_resource type="Script" path="res://Scripts/Tile_map.gd" id="2_0imuf"]
-[ext_resource type="PackedScene" uid="uid://grkud06u2t6y" path="res://Scenes/Camera.tscn" id="3_mn8yg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kl5k5"]
 texture = ExtResource("1_cqov0")
@@ -205,6 +204,3 @@ scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_ggshd")
 rendering_quadrant_size = 8
 script = ExtResource("2_0imuf")
-
-[node name="Camera" parent="." instance=ExtResource("3_mn8yg")]
-zoom = Vector2(1.75, 1.75)
