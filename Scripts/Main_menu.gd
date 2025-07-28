@@ -1,11 +1,11 @@
 extends Node2D
 
+@onready var global = get_node("/root/Global")
+
 # Called when the node enters the sce	ne tree for the first time.
 func _ready() :
-	$GeneratedMap.height = 2
-	$GeneratedMap.width = 10 #this does not change the tilemap size:(
-	$Camera2D.temppos_x = 0
-	$Camera2D.temppos_y = 24 * 8
+	global.height = 200
+	global.width = 200 #this does not change the tilemap size:(
 	#ResourceLoader.load_threaded_request("res://Scenes/World.tscn")
 	#get_tree().change_scene_to_packed(load("res://Scenes/World.tscn"))
 

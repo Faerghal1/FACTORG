@@ -1,10 +1,14 @@
 extends Node2D
+@onready var global = get_node("/root/Global")
+
 
 var next_scene = "res://Scenes/World.tscn"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ResourceLoader.load_threaded_request(next_scene)
-
+	global.height = 500
+	global.width = 500 
+#if c
 
 # Called every frame. 'delta' is the elapsed time since the previo	us frame.
 func _process(delta: float) -> void:
