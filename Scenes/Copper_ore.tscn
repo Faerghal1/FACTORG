@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ccygnntv02ion"]
 
-[ext_resource type="Texture2D" uid="uid://bfyjb7ldhovv6" path="res://Assets/Copper_Ore.png" id="1_qerft"]
+[ext_resource type="Texture2D" uid="uid://bpmqrgaemn3l0" path="res://Assets/Copper_Ore.png" id="1_qerft"]
 [ext_resource type="Script" path="res://Scripts/Copper_ore.gd" id="1_x4hn0"]
 [ext_resource type="Script" path="res://Scripts/Item_sprites.gd" id="2_qkbiu"]
 

@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var global = get_node("/root/Global")
+var map: TileMapLayer
 
 @export var resource_scene: PackedScene
 @export var copper_scene: PackedScene
@@ -14,7 +15,17 @@ var is_iron = false
 
 
 func _ready():
-	is_iron = true
+	var map = get_tree().current_scene.get_node("Generated_map")
+	var cell = map.local_to_map(position/2)
+	print("Cell: " + str(cell))
+	var data = map.get_cell_tile_data(cell)
+	print("Data: " + str(data))
+	if data:
+		print("Custom: " + str(data.get_custom_data("Resource")))
+	if data.get_custom_data("Resource") == "Iron":
+		is_iron = true
+	if data.get_custom_data("Resource") == "Copper":
+		is_copper = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -2,8 +2,8 @@ extends Camera2D
 
 const POSITION_Y := 128.0
 const POSITION_X := 128.0
-var temppos_y := 1000.0 * 8
-var temppos_x := 1000.0 * 8
+var temppos_y := 500.0 * 8
+var temppos_x := 500.0 * 8
 var move_y = true
 var move_x = true
 

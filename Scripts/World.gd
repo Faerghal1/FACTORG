@@ -9,17 +9,17 @@ extends Node2D
 @export var storage_scene: PackedScene
 var direction = 0
 var bitmap: BitMap = BitMap.new()
-var height = 10000
-var width = 10000 # needs to be even number
+var bitmap_height = 10000
+var bitmap_width = 10000 # needs to be even number
 var placed = false
 var extractor_position = Vector2i(0,0)
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	bitmap.resize(Vector2i(width,height))
-	$Camera2D.position.x += width * 8
-	$Camera2D.position.y += height * 8
+	bitmap.resize(Vector2i(bitmap_width,bitmap_height))
+	$Camera2D.position.x += global.width * 8
+	$Camera2D.position.y += global.height * 8
 
 
 func _process(_delta):

@@ -3,11 +3,9 @@ extends TileMapLayer
 var moisture = FastNoiseLite.new()
 var temperature = FastNoiseLite.new()
 var altitude = FastNoiseLite.new()
-var width = 1000
-var height = 1000
 var biome = {}
-@onready var player = get_parent().get_parent().get_child(1)
-
+@onready var player = get_parent().get_child(1)
+@onready var global = get_node("/root/Global")
 
 var objects = {}
 
@@ -118,10 +116,9 @@ func _ready():
 
 func generate_chunk(position):
 	var tile_pos = local_to_map(position) # gets the position in tilemap coords
-	for x in width:
-		for y in height:
+	for x in global.width:
+		for y in global.height:
 			var pos = Vector2(x,y)
-			#print(pos)
 			var moist = moisture.get_noise_2d(x, y)
 			var temp = temperature.get_noise_2d(x, y)
 			var alt = altitude.get_noise_2d(x, y)
