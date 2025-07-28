@@ -41,7 +41,7 @@ func _on_area_entered(area):
 		rod.rotation = rotation
 		rod.direction = rotation/90
 		rod.set_meta("Direction_rod", direction/90)
-		add_sibling(rod)
+		add_sibling.call_deferred(rod)
 		rod.clone = 1
 		rod.show()
 

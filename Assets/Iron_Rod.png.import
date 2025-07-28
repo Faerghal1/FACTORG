@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8s5kve5pa5dm"
-path="res://.godot/imported/Extractor Temp.png-f43709be270e7cfccfaa79c51c0ad880.ctex"
+uid="uid://dmxwj2je6uogr"
+path="res://.godot/imported/Iron_Rod.png-dddc243e6f35de7c463aab1878d39322.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Extractor Temp.png"
-dest_files=["res://.godot/imported/Extractor Temp.png-f43709be270e7cfccfaa79c51c0ad880.ctex"]
+source_file="res://Assets/Iron_Rod.png"
+dest_files=["res://.godot/imported/Iron_Rod.png-dddc243e6f35de7c463aab1878d39322.ctex"]
 
 [params]
 

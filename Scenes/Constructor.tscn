@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Constructor.gd" id="1_lq4kr"]
 [ext_resource type="Texture2D" uid="uid://cshbe5cqr5jtv" path="res://Assets/Recipe_List.png" id="2_758gw"]
 [ext_resource type="PackedScene" uid="uid://ch4dodtt3vdb7" path="res://Scenes/Rod.tscn" id="2_tl7yo"]
-[ext_resource type="Texture2D" uid="uid://dmxwj2je6uogr" path="res://Assets/rod_temp.png" id="3_c7j0e"]
+[ext_resource type="Texture2D" uid="uid://dmxwj2je6uogr" path="res://Assets/Iron_Rod.png" id="3_c7j0e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifi30"]
 size = Vector2(80, 79)

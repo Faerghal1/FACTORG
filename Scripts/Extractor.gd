@@ -1,13 +1,31 @@
 extends Area2D
 
 @onready var global = get_node("/root/Global")
+var map: TileMapLayer
 
 @export var resource_scene: PackedScene
+@export var copper_scene: PackedScene
 var clone = 0
 var direction = 0
 var delete = 0
 var pos = Vector2i(0,0)
 var bitmap: BitMap = BitMap.new()
+var is_copper = false
+var is_iron = false
+
+
+func _ready():
+	var map = get_tree().current_scene.get_node("Generated_map")
+	var cell = map.local_to_map(position/2)
+	print("Cell: " + str(cell))
+	var data = map.get_cell_tile_data(cell)
+	print("Data: " + str(data))
+	if data:
+		print("Custom: " + str(data.get_custom_data("Resource")))
+	if data.get_custom_data("Resource") == "Iron":
+		is_iron = true
+	if data.get_custom_data("Resource") == "Copper":
+		is_copper = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,7 +54,8 @@ func _process(_delta):
 
 
 func _on_timer_timeout():
-	if clone == 1 and global.extractor_placed == true:
+	if clone == 1 and global.extractor_placed == true \
+	and not $RayCast2D.get_collider() and is_iron == true:
 		var resource = resource_scene.instantiate()
 		resource.position = position
 		resource.modulate.a = 1
@@ -46,6 +65,17 @@ func _on_timer_timeout():
 		add_sibling(resource)
 		resource.clone = 1
 		resource.show()
+	if clone == 1 and global.extractor_placed == true \
+	and not $RayCast2D.get_collider() and is_copper == true:
+		var copper = copper_scene.instantiate()
+		copper.position = position
+		copper.modulate.a = 1
+		copper.rotation = rotation
+		copper.direction = rotation/90
+		copper.set_meta("Direction_copper", direction/90)
+		add_sibling(copper)
+		copper.clone = 1
+		copper.show()
 
 
 func _on_mouse_entered():

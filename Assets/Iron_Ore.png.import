@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3bwtausy8bee"
-path="res://.godot/imported/pixil-frame-0.png-1e2e14a6fca0ab207413f8785ae4b7df.ctex"
+uid="uid://dsrubefivt1x1"
+path="res://.godot/imported/Iron_Ore.png-45fb6880f4ccf7d6dd3ef426a71c2c7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/pixil-frame-0.png"
-dest_files=["res://.godot/imported/pixil-frame-0.png-1e2e14a6fca0ab207413f8785ae4b7df.ctex"]
+source_file="res://Assets/Iron_Ore.png"
+dest_files=["res://.godot/imported/Iron_Ore.png-45fb6880f4ccf7d6dd3ef426a71c2c7b.ctex"]
 
 [params]
 

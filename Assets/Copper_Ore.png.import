@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct2optecgx78d"
-path="res://.godot/imported/Belt_Temp.png-49431e65ce39cbbe1f9fccaefcc79ac1.ctex"
+uid="uid://bpmqrgaemn3l0"
+path="res://.godot/imported/Copper_Ore.png-0b778265b3fc19e5e1c38b952c054ce8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Belt_Temp.png"
-dest_files=["res://.godot/imported/Belt_Temp.png-49431e65ce39cbbe1f9fccaefcc79ac1.ctex"]
+source_file="res://Assets/Copper_Ore.png"
+dest_files=["res://.godot/imported/Copper_Ore.png-0b778265b3fc19e5e1c38b952c054ce8.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmxwj2je6uogr"
-path="res://.godot/imported/rod_temp.png-5f204ad9f1df4db525307ffe0ff5cdba.ctex"
+uid="uid://3bwtausy8bee"
+path="res://.godot/imported/Tilemap_gen.png-acceda030199927ca7410bca3c4247a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/rod_temp.png"
-dest_files=["res://.godot/imported/rod_temp.png-5f204ad9f1df4db525307ffe0ff5cdba.ctex"]
+source_file="res://Assets/Tilemap_gen.png"
+dest_files=["res://.godot/imported/Tilemap_gen.png-acceda030199927ca7410bca3c4247a6.ctex"]
 
 [params]
 

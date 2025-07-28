@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brqo8thr6iyno"
-path="res://.godot/imported/tiles2.png-11f81612a98921fc047a74ce8a231987.ctex"
+uid="uid://cbsnqo5wxtwb6"
+path="res://.godot/imported/Iron_Ingot.png-1c8c03bb6d090bfac0fa2ff102750140.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tiles2.png"
-dest_files=["res://.godot/imported/tiles2.png-11f81612a98921fc047a74ce8a231987.ctex"]
+source_file="res://Assets/Iron_Ingot.png"
+dest_files=["res://.godot/imported/Iron_Ingot.png-1c8c03bb6d090bfac0fa2ff102750140.ctex"]
 
 [params]
 

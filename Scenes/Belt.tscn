@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://oiec24pi2b32"]
+[gd_scene load_steps=5 format=3 uid="uid://b6kctqg8lxjl2"]
 
-[ext_resource type="Script" path="res://Scripts/belt.gd" id="1_w6dqq"]
-[ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Belt_Temp.png" id="2_o2csj"]
+[ext_resource type="Script" path="res://Scripts/belt.gd" id="1_sxojs"]
+[ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Conveyor_Belt.png" id="2_j2ave"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpy2d"]
 size = Vector2(16, 16)
@@ -11,7 +11,7 @@ size = Vector2(16, 16)
 [node name="Area2D" type="Area2D"]
 modulate = Color(1, 1, 1, 0.588235)
 scale = Vector2(0.4, 0.4)
-script = ExtResource("1_w6dqq")
+script = ExtResource("1_sxojs")
 metadata/Direction = -6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -23,7 +23,7 @@ shape = SubResource("RectangleShape2D_tpy2d")
 position = Vector2(-0.00199417, -2.88501e-06)
 rotation = 1.5708
 scale = Vector2(1.255, 1.255)
-texture = ExtResource("2_o2csj")
+texture = ExtResource("2_j2ave")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
 modulate = Color(1, 1, 1, 0.0352941)

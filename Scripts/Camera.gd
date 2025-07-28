@@ -2,36 +2,33 @@ extends Camera2D
 
 const POSITION_Y := 128.0
 const POSITION_X := 128.0
-var temppos_y := 1000.0 * 8
-var temppos_x := 1000.0 * 8
+var temppos_y := 500.0 * 8
+var temppos_x := 500.0 * 8
 var move_y = true
 var move_x = true
 
 
 func _process(_delta):
-	if get_tree().get_current_scene().get_name() == "World":
-		if Input.is_action_pressed("Shift"):
-			$Timer.wait_time = 0.01
-		else:
-			$Timer.wait_time = 0.1
-		if Input.is_action_pressed("Up") and move_y:
-			$Timer.start()
-			temppos_y = position.y - POSITION_Y
-			move_y = false
-		if Input.is_action_pressed("Down") and move_y:
-			$Timer.start()
-			temppos_y = position.y + POSITION_Y
-			move_y = false
-		if Input.is_action_pressed("Right") and move_x:
-			$Timer.start()
-			temppos_x = position.x + POSITION_X
-			move_x = false
-		if Input.is_action_pressed("Left") and move_x:
-			$Timer.start()
-			temppos_x = position.x - POSITION_X
-			move_x = false
+	if Input.is_action_pressed("Shift"):
+		$Timer.wait_time = 0.01
 	else:
-		temppos_x = position.x + 8
+		$Timer.wait_time = 0.1
+	if Input.is_action_pressed("Up") and move_y:
+		$Timer.start()
+		temppos_y = position.y - POSITION_Y
+		move_y = false
+	if Input.is_action_pressed("Down") and move_y:
+		$Timer.start()
+		temppos_y = position.y + POSITION_Y
+		move_y = false
+	if Input.is_action_pressed("Right") and move_x:
+		$Timer.start()
+		temppos_x = position.x + POSITION_X
+		move_x = false
+	if Input.is_action_pressed("Left") and move_x:
+		$Timer.start()
+		temppos_x = position.x - POSITION_X
+		move_x = false
 	position.y = lerp(position.y,temppos_y, 0.1)
 	position.x = lerp(position.x,temppos_x, 0.1)
 

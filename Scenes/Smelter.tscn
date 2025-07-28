@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Smelter.gd" id="1_tm5hi"]
 [ext_resource type="PackedScene" uid="uid://2frehtr7kvp6" path="res://Scenes/Ingot.tscn" id="2_lfqhs"]
-[ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Ingot_Temp.png" id="3_b2xjd"]
+[ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="3_b2xjd"]
 [ext_resource type="Texture2D" uid="uid://satlknjxuauh" path="res://Assets/Smelter.png" id="3_uxgp2"]
 [ext_resource type="Texture2D" uid="uid://cshbe5cqr5jtv" path="res://Assets/Recipe_List.png" id="4_whqqv"]
 
