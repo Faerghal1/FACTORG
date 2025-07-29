@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=25 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/Belt.tscn" id="2_0b5rt"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://satlknjxuauh" path="res://Assets/Smelter.png" id="9_kuaow"]
 [ext_resource type="Texture2D" uid="uid://bjl26wes5neh3" path="res://Assets/Storage.png" id="10_576yb"]
 [ext_resource type="PackedScene" uid="uid://cpql1vm2gnpml" path="res://Scenes/Smelter.tscn" id="10_glyoi"]
+[ext_resource type="PackedScene" uid="uid://dhva5spj7okws" path="res://Scenes/Tooltip.tscn" id="10_sgtc3"]
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="10_ydavp"]
 [ext_resource type="Script" path="res://Scripts/Smelter_hotbar.gd" id="11_6dldg"]
 [ext_resource type="Script" path="res://Scripts/Constructor_hotbar.gd" id="14_5awit"]
@@ -251,6 +252,12 @@ script = ExtResource("8_54ruq")
 [node name="Camera2D" parent="." instance=ExtResource("5_fo33q")]
 zoom = Vector2(1.75, 1.75)
 
+[node name="Tooltip" parent="Camera2D" instance=ExtResource("10_sgtc3")]
+offset_left = 208.0
+offset_top = -184.0
+offset_right = 297.0
+offset_bottom = -144.0
+
 [node name="Hotbar" type="Control" parent="Camera2D"]
 z_index = 2
 layout_mode = 3
@@ -333,7 +340,7 @@ offset_right = 401.0
 offset_bottom = 76.0
 script = ExtResource("17_dpebd")
 
-[node name="Label" type="Label" parent="Camera2D/Hotbar"]
+[node name="Hotbar_1" type="Label" parent="Camera2D/Hotbar"]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 49.0
@@ -343,7 +350,7 @@ text = "1"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Label2" type="Label" parent="Camera2D/Hotbar"]
+[node name="Hotbar_2" type="Label" parent="Camera2D/Hotbar"]
 layout_mode = 0
 offset_left = 113.0
 offset_top = 49.0
@@ -353,7 +360,7 @@ text = "2"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Label3" type="Label" parent="Camera2D/Hotbar"]
+[node name="Hotbar_3" type="Label" parent="Camera2D/Hotbar"]
 layout_mode = 0
 offset_left = 193.0
 offset_top = 49.0
@@ -363,7 +370,7 @@ text = "3"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Label4" type="Label" parent="Camera2D/Hotbar"]
+[node name="Hotbar_4" type="Label" parent="Camera2D/Hotbar"]
 layout_mode = 0
 offset_left = 274.0
 offset_top = 49.0
@@ -373,7 +380,7 @@ text = "4"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Label5" type="Label" parent="Camera2D/Hotbar"]
+[node name="Hotbar_5" type="Label" parent="Camera2D/Hotbar"]
 layout_mode = 0
 offset_left = 357.0
 offset_top = 49.0
@@ -407,7 +414,7 @@ text = "0/10"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Camera2D/Goal"]
+[node name="Rod" type="Sprite2D" parent="Camera2D/Goal"]
 position = Vector2(65, 20)
 texture = ExtResource("16_i244g")
 
@@ -422,7 +429,7 @@ text = "0/15"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Sprite2D2" type="Sprite2D" parent="Camera2D/Goal"]
+[node name="Ingot" type="Sprite2D" parent="Camera2D/Goal"]
 position = Vector2(65, 60)
 texture = ExtResource("17_f7gu5")
 

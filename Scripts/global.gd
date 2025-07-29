@@ -1,7 +1,8 @@
 extends Node
 
-var width = 500
-var height = 500
+var width = 500 # effective change in loading screen.gd
+var height = 500 # effective change in loading screen.gd
+var bitmap: BitMap = BitMap.new()
 var mouse_entered_belt = false
 var mouse_entered_extractor = false
 var mouse_entered_smelter = false

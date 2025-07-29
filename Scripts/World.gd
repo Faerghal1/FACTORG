@@ -20,8 +20,6 @@ func _ready():
 	bitmap.resize(Vector2i(bitmap_width,bitmap_height))
 	$Camera2D.position.x += global.width * 8
 	$Camera2D.position.y += global.height * 8
-	global.height = 500
-	global.width = 500
 
 
 func _process(_delta):
@@ -129,7 +127,8 @@ func _process(_delta):
 			global.extractor_placed = true
 	if Input.is_action_pressed("Left_click") and global.smelter == true:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-		if not bitmap.get_bit(pos.x , pos.y ):
+		if not bitmap.get_bit(pos.x , pos.y ) and not bitmap.get_bit(pos.x+1, pos.y) \
+		and not bitmap.get_bit(pos.x, pos.y+1 ) and not bitmap.get_bit(pos.x+1, pos.y+1):
 			print(pos)
 			var smelter = smelter_scene.instantiate()
 			smelter.position = pos*16
@@ -140,6 +139,9 @@ func _process(_delta):
 			add_sibling(smelter)
 			smelter.clone = 1
 			bitmap.set_bit(pos.x, pos.y, true)
+			bitmap.set_bit(pos.x+1, pos.y, true)
+			bitmap.set_bit(pos.x, pos.y+1, true)
+			bitmap.set_bit(pos.x+1, pos.y+1, true)
 	if Input.is_action_pressed("Left_click") and global.constructor == true:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
