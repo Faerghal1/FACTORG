@@ -12,24 +12,14 @@ var bitmap: BitMap = BitMap.new()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if clone == 0 and global.smelter == true:
+	if clone == 0 and global.slot == 3:
 		position = get_global_mouse_position().snapped(Vector2(16,16))
-	if Input.is_action_just_pressed("Rotate(R)") and not clone:
-		rotation_degrees += 90
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		queue_free()
 	if clone == 0:
-		if global.slot == 0:
-			hide()
-		if global.slot == 2:
-			hide()
-		if global.slot == 1:
-			hide()
 		if global.slot == 3:
 			show()
-		if global.slot == 4:
-			hide()
-		if global.slot == 5:
+		else:
 			hide()
 
 

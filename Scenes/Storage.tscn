@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dmxwj2je6uogr" path="res://Assets/Iron_Rod.png" id="3_w8odt"]
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="4_w5myp"]
 [ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Iron_Ore.png" id="5_2fq5u"]
-[ext_resource type="Texture2D" uid="uid://bpmqrgaemn3l0" path="res://Assets/Copper_Ore.png" id="6_thn47"]
+[ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="6_q3m1a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpwve"]
 size = Vector2(40, 40)
@@ -44,7 +44,7 @@ texture = ExtResource("5_2fq5u")
 visible = false
 position = Vector2(-5.06639e-07, -5.06639e-07)
 scale = Vector2(0.9375, 0.9375)
-texture = ExtResource("6_thn47")
+texture = ExtResource("6_q3m1a")
 
 [node name="ResourceAmount" type="Label" parent="."]
 offset_left = 2.5
