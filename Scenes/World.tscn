@@ -1,7 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=25 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_pqhfs"]
-[ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/Belt.tscn" id="2_0b5rt"]
+[ext_resource type="PackedScene" uid="uid://b6kctqg8lxjl2" path="res://Scenes/Belt.tscn" id="2_0b5rt"]
 [ext_resource type="PackedScene" uid="uid://b05iho5c44hkr" path="res://Scenes/Extractor.tscn" id="3_ofrym"]
 [ext_resource type="PackedScene" uid="uid://grkud06u2t6y" path="res://Scenes/Camera.tscn" id="5_fo33q"]
 [ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Conveyor_Belt.png" id="6_7m4c6"]
@@ -20,7 +20,8 @@
 [ext_resource type="Script" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="17_pvg4h"]
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/Storage.tscn" id="19_nil32"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="20_1ap6o"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
+[ext_resource type="Texture2D" uid="uid://b66a6d7jsdljs" path="res://Assets/Temp_tooltip.png" id="22_2cin8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyi6n"]
 texture = ExtResource("7_807aw")
@@ -411,7 +412,7 @@ vertical_alignment = 2
 position = Vector2(65, 60)
 texture = ExtResource("17_pvg4h")
 
-[node name="Can\'t Place" type="Control" parent="Camera2D"]
+[node name="Can\'t Place Extractor" type="Control" parent="Camera2D"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -420,18 +421,57 @@ offset_top = 80.0
 offset_right = 93.5
 offset_bottom = 96.0
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D/Can\'t Place"]
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Can\'t Place Extractor"]
 layout_mode = 0
 offset_right = 187.0
 offset_bottom = 16.0
 
-[node name="Label" type="Label" parent="Camera2D/Can\'t Place"]
+[node name="Label" type="Label" parent="Camera2D/Can\'t Place Extractor"]
 layout_mode = 0
 offset_right = 187.0
 offset_bottom = 16.0
 theme_override_colors/font_color = Color(0.568627, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "Can only be placed on Resource nodes"
+
+[node name="Tooltip" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Tooltip"]
+layout_mode = 0
+offset_left = 224.0
+offset_top = -183.0
+offset_right = 309.0
+offset_bottom = -129.0
+
+[node name="TempTooltip" type="Sprite2D" parent="Camera2D/Tooltip"]
+position = Vector2(277, -133)
+texture = ExtResource("22_2cin8")
+
+[node name="Can\'t Place Building" type="Control" parent="Camera2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -93.5
+offset_top = 80.0
+offset_right = 93.5
+offset_bottom = 96.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Can\'t Place Building"]
+layout_mode = 0
+offset_right = 178.0
+offset_bottom = 16.0
+
+[node name="Label" type="Label" parent="Camera2D/Can\'t Place Building"]
+layout_mode = 0
+offset_right = 179.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0.568627, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Can't be placed on Water/Mountains"
 
 [node name="Extractor" parent="." instance=ExtResource("3_ofrym")]
 position = Vector2(44, 44)

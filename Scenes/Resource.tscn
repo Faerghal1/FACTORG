@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dal3rdkaxyfrd"]
+[gd_scene load_steps=6 format=3 uid="uid://o7oyyb65bq0x"]
 
 [ext_resource type="Script" path="res://Scripts/Resource.gd" id="1_chsbp"]
 [ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Iron_Ore.png" id="2_qavul"]
