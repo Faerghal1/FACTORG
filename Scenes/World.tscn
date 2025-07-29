@@ -3,128 +3,164 @@
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/Belt.tscn" id="2_0b5rt"]
 [ext_resource type="PackedScene" uid="uid://b05iho5c44hkr" path="res://Scenes/Extractor.tscn" id="3_ofrym"]
-[ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/Tilemap_gen.png" id="3_q2hom"]
 [ext_resource type="PackedScene" uid="uid://grkud06u2t6y" path="res://Scenes/Camera.tscn" id="5_fo33q"]
-[ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor.png" id="6_3ohb2"]
+[ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Conveyor_Belt.png" id="6_7m4c6"]
 [ext_resource type="Script" path="res://Scripts/Belt_hotbar.gd" id="6_ksayx"]
-[ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Conveyor_Belt.png" id="7_1dsnv"]
-[ext_resource type="Script" path="res://Scripts/Tile_map.gd" id="8_54ruq"]
+[ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/Tilemap_gen.png" id="7_807aw"]
+[ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor.png" id="7_eqtyl"]
+[ext_resource type="Script" path="res://Scripts/Tile_map.gd" id="8_jb2q2"]
 [ext_resource type="Script" path="res://Scripts/Extractor_hotbar.gd" id="8_lpojc"]
 [ext_resource type="Texture2D" uid="uid://satlknjxuauh" path="res://Assets/Smelter.png" id="9_kuaow"]
-[ext_resource type="Texture2D" uid="uid://bjl26wes5neh3" path="res://Assets/Storage.png" id="10_576yb"]
 [ext_resource type="PackedScene" uid="uid://cpql1vm2gnpml" path="res://Scenes/Smelter.tscn" id="10_glyoi"]
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="10_ydavp"]
 [ext_resource type="Script" path="res://Scripts/Smelter_hotbar.gd" id="11_6dldg"]
+[ext_resource type="Texture2D" uid="uid://bjl26wes5neh3" path="res://Assets/Storage.png" id="12_gpcpt"]
 [ext_resource type="Script" path="res://Scripts/Constructor_hotbar.gd" id="14_5awit"]
 [ext_resource type="PackedScene" uid="uid://40e7gnocdmnt" path="res://Scenes/Constructor.tscn" id="15_wbpsv"]
-[ext_resource type="Texture2D" uid="uid://dmxwj2je6uogr" path="res://Assets/Iron_Rod.png" id="16_i244g"]
 [ext_resource type="Script" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
-[ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="17_f7gu5"]
+[ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="17_pvg4h"]
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/Storage.tscn" id="19_nil32"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="20_1ap6o"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g6nj3"]
-texture = ExtResource("3_q2hom")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyi6n"]
+texture = ExtResource("7_807aw")
 texture_region_size = Vector2i(10, 10)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.3125, -2.4375, 2.125, -2.5, 2.1875, 2, -2.3125, 2)
+6:0/0/custom_data_1 = "Unplaceable"
 7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.3125, -2.4375, 2.125, -2.5, 2.1875, 2, -2.3125, 2)
+8:0/0/custom_data_1 = "Unplaceable"
 9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 10:0/0 = 0
-11:0/0 = 0
-12:0/0 = 0
-13:0/0 = 0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.3125, -2.4375, 2.125, -2.5, 2.1875, 2, -2.3125, 2)
+10:0/0/custom_data_1 = "Unplaceable"
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 6:1/0 = 0
 7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 8:1/0 = 0
 9:1/0 = 0
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 10:1/0 = 0
-11:1/0 = 0
-12:1/0 = 0
-13:1/0 = 0
 0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 6:2/0 = 0
 7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 8:2/0 = 0
 9:2/0 = 0
+9:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 10:2/0 = 0
-11:2/0 = 0
-12:2/0 = 0
-13:2/0 = 0
 0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 6:3/0 = 0
 7:3/0 = 0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 8:3/0 = 0
 9:3/0 = 0
+9:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 10:3/0 = 0
-11:3/0 = 0
-12:3/0 = 0
-13:3/0 = 0
 0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 0:4/0/custom_data_0 = "Iron"
 1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 1:4/0/custom_data_0 = "Iron"
 2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 2:4/0/custom_data_0 = "Iron"
 3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 3:4/0/custom_data_0 = "Iron"
 4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 4:4/0/custom_data_0 = "Iron"
 5:4/0 = 0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 5:4/0/custom_data_0 = "Iron"
 6:4/0 = 0
 7:4/0 = 0
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 7:4/0/custom_data_0 = "Iron"
 8:4/0 = 0
 9:4/0 = 0
+9:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 9:4/0/custom_data_0 = "Iron"
 10:4/0 = 0
-11:4/0 = 0
-12:4/0 = 0
-13:4/0 = 0
 0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 0:5/0/custom_data_0 = "Copper"
 1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 1:5/0/custom_data_0 = "Copper"
 2:5/0 = 0
+2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 2:5/0/custom_data_0 = "Copper"
 3:5/0 = 0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 3:5/0/custom_data_0 = "Copper"
 4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 4:5/0/custom_data_0 = "Copper"
 5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 5:5/0/custom_data_0 = "Copper"
 6:5/0 = 0
 7:5/0 = 0
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 7:5/0/custom_data_0 = "Copper"
 8:5/0 = 0
 9:5/0 = 0
+9:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
 9:5/0/custom_data_0 = "Copper"
 10:5/0 = 0
-11:5/0 = 0
-12:5/0 = 0
-13:5/0 = 0
 0:6/0 = 0
 1:6/0 = 0
 2:6/0 = 0
@@ -136,9 +172,6 @@ texture_region_size = Vector2i(10, 10)
 8:6/0 = 0
 9:6/0 = 0
 10:6/0 = 0
-11:6/0 = 0
-12:6/0 = 0
-13:6/0 = 0
 0:7/0 = 0
 1:7/0 = 0
 2:7/0 = 0
@@ -150,9 +183,6 @@ texture_region_size = Vector2i(10, 10)
 8:7/0 = 0
 9:7/0 = 0
 10:7/0 = 0
-11:7/0 = 0
-12:7/0 = 0
-13:7/0 = 0
 0:8/0 = 0
 1:8/0 = 0
 2:8/0 = 0
@@ -164,9 +194,6 @@ texture_region_size = Vector2i(10, 10)
 8:8/0 = 0
 9:8/0 = 0
 10:8/0 = 0
-11:8/0 = 0
-12:8/0 = 0
-13:8/0 = 0
 0:9/0 = 0
 1:9/0 = 0
 2:9/0 = 0
@@ -178,61 +205,19 @@ texture_region_size = Vector2i(10, 10)
 8:9/0 = 0
 9:9/0 = 0
 10:9/0 = 0
-11:9/0 = 0
-12:9/0 = 0
-13:9/0 = 0
-0:10/0 = 0
 1:10/0 = 0
-2:10/0 = 0
-3:10/0 = 0
-4:10/0 = 0
-5:10/0 = 0
-6:10/0 = 0
-7:10/0 = 0
-8:10/0 = 0
+1:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 9:10/0 = 0
-10:10/0 = 0
-11:10/0 = 0
-12:10/0 = 0
-13:10/0 = 0
-0:11/0 = 0
-1:11/0 = 0
-2:11/0 = 0
-3:11/0 = 0
-4:11/0 = 0
-5:11/0 = 0
-6:11/0 = 0
-7:11/0 = 0
-8:11/0 = 0
-9:11/0 = 0
-10:11/0 = 0
-11:11/0 = 0
-12:11/0 = 0
-13:11/0 = 0
-0:12/0 = 0
-1:12/0 = 0
-2:12/0 = 0
-3:12/0 = 0
-4:12/0 = 0
-5:12/0 = 0
-6:12/0 = 0
-7:12/0 = 0
-8:12/0 = 0
-9:12/0 = 0
-10:12/0 = 0
-11:12/0 = 0
-12:12/0 = 0
-13:12/0 = 0
-1:13/0 = 0
-2:13/0 = 0
-11:13/0 = 0
-12:13/0 = 0
+9:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 
-[sub_resource type="TileSet" id="TileSet_8lxmd"]
+[sub_resource type="TileSet" id="TileSet_7dm4g"]
 tile_size = Vector2i(8, 8)
+physics_layer_0/collision_layer = 1
 custom_data_layer_0/name = "Resource"
 custom_data_layer_0/type = 4
-sources/0 = SubResource("TileSetAtlasSource_g6nj3")
+custom_data_layer_1/name = "World"
+custom_data_layer_1/type = 4
+sources/0 = SubResource("TileSetAtlasSource_qyi6n")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_pqhfs")
@@ -244,9 +229,8 @@ storage_scene = ExtResource("19_nil32")
 
 [node name="Generated_map" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
-tile_set = SubResource("TileSet_8lxmd")
-rendering_quadrant_size = 8
-script = ExtResource("8_54ruq")
+tile_set = SubResource("TileSet_7dm4g")
+script = ExtResource("8_jb2q2")
 
 [node name="Camera2D" parent="." instance=ExtResource("5_fo33q")]
 zoom = Vector2(1.75, 1.75)
@@ -268,12 +252,12 @@ offset_bottom = 80.0
 [node name="Extractor" type="Sprite2D" parent="Camera2D/Hotbar"]
 position = Vector2(121, 40)
 scale = Vector2(2, 2)
-texture = ExtResource("6_3ohb2")
+texture = ExtResource("7_eqtyl")
 
 [node name="Belt" type="Sprite2D" parent="Camera2D/Hotbar"]
 position = Vector2(42, 40)
 scale = Vector2(2, 2)
-texture = ExtResource("7_1dsnv")
+texture = ExtResource("6_7m4c6")
 
 [node name="Smelter" type="Sprite2D" parent="Camera2D/Hotbar"]
 position = Vector2(201, 40)
@@ -286,7 +270,7 @@ texture = ExtResource("10_ydavp")
 [node name="Storage" type="Sprite2D" parent="Camera2D/Hotbar"]
 position = Vector2(365, 40)
 scale = Vector2(2, 2)
-texture = ExtResource("10_576yb")
+texture = ExtResource("12_gpcpt")
 
 [node name="BeltButton" type="Button" parent="Camera2D/Hotbar"]
 layout_mode = 0
@@ -384,6 +368,7 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="Goal" type="Control" parent="Camera2D"]
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = -309.0
@@ -409,7 +394,7 @@ vertical_alignment = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/Goal"]
 position = Vector2(65, 20)
-texture = ExtResource("16_i244g")
+texture = ExtResource("20_1ap6o")
 
 [node name="IngotGoal" type="Label" parent="Camera2D/Goal"]
 layout_mode = 0
@@ -424,7 +409,29 @@ vertical_alignment = 2
 
 [node name="Sprite2D2" type="Sprite2D" parent="Camera2D/Goal"]
 position = Vector2(65, 60)
-texture = ExtResource("17_f7gu5")
+texture = ExtResource("17_pvg4h")
+
+[node name="Can\'t Place" type="Control" parent="Camera2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -93.5
+offset_top = 80.0
+offset_right = 93.5
+offset_bottom = 96.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Can\'t Place"]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 16.0
+
+[node name="Label" type="Label" parent="Camera2D/Can\'t Place"]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0.568627, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Can only be placed on Resource nodes"
 
 [node name="Extractor" parent="." instance=ExtResource("3_ofrym")]
 position = Vector2(44, 44)
@@ -441,8 +448,11 @@ position = Vector2(36, 36)
 [node name="Storage" parent="." instance=ExtResource("19_nil32")]
 position = Vector2(44, 44)
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="pressed" from="Camera2D/Hotbar/BeltButton" to="Camera2D/Hotbar/BeltButton" method="_on_belt_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/ExtractorButton" to="Camera2D/Hotbar/ExtractorButton" method="_on_extractor_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/SmelterButton" to="Camera2D/Hotbar/SmelterButton" method="_on_smelter_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/ConstructorButton" to="Camera2D/Hotbar/ConstructorButton" method="_on_constructor_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/StorageButton" to="Camera2D/Hotbar/StorageButton" method="_on_storage_selected"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

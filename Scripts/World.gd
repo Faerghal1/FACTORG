@@ -8,7 +8,6 @@ extends Node2D
 @export var constructor_scene: PackedScene
 @export var storage_scene: PackedScene
 var direction = 0
-var bitmap: BitMap = BitMap.new()
 var bitmap_height = 10000
 var bitmap_width = 10000 # needs to be even number
 var placed = false
@@ -17,11 +16,9 @@ var extractor_position = Vector2i(0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	bitmap.resize(Vector2i(bitmap_width,bitmap_height))
+	global.bitmap.resize(Vector2i(bitmap_width,bitmap_height))
 	$Camera2D.position.x += global.width * 8
 	$Camera2D.position.y += global.height * 8
-	global.height = 500
-	global.width = 500
 
 
 func _process(_delta):
@@ -57,7 +54,7 @@ func _process(_delta):
 	if Input.is_action_pressed("Left_click") and global.slot == 1 \
 	and not global.buildings_cant_place:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-		if not bitmap.get_bit(pos.x , pos.y ):
+		if not global.bitmap.get_bit(pos.x , pos.y ):
 			print(pos)
 			var belt = belt_scene.instantiate()
 			belt.position = pos*16
@@ -69,7 +66,7 @@ func _process(_delta):
 			belt.set_meta("Belt", direction/90)
 			add_sibling(belt)
 			belt.clone = 1
-			bitmap.set_bit(pos.x, pos.y, true)
+			global.bitmap.set_bit(pos.x, pos.y, true)
 	if Input.is_action_pressed("Left_click") and global.slot == 2 \
 	and global.extractor_cant_place:
 		$"Camera2D/Can't Place".show()
@@ -77,7 +74,7 @@ func _process(_delta):
 	if Input.is_action_pressed("Left_click") and global.slot == 2 \
 	and not global.extractor_cant_place:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-		if not bitmap.get_bit(pos.x , pos.y ):
+		if not global.bitmap.get_bit(pos.x , pos.y ):
 			print(pos)
 			var extractor = extractor_scene.instantiate()
 			extractor.position = pos*16
@@ -89,12 +86,15 @@ func _process(_delta):
 			extractor.set_meta("Extractor", direction/90)
 			add_sibling(extractor)
 			extractor.clone = 1
-			bitmap.set_bit(pos.x, pos.y, true)
+			global.bitmap.set_bit(pos.x, pos.y, true)
 			global.extractor_placed = true
+	
+	
 	if Input.is_action_pressed("Left_click") and global.slot == 3 \
 	and not global.buildings_cant_place:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-		if not bitmap.get_bit(pos.x , pos.y ):
+		if not global.bitmap.get_bit(pos.x , pos.y ) and not global.bitmap.get_bit(pos.x+1, pos.y) \
+		and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
 			print(pos)
 			var smelter = smelter_scene.instantiate()
 			smelter.position = pos*16
@@ -102,11 +102,15 @@ func _process(_delta):
 			smelter.set_meta("Smelter", direction/90)
 			add_sibling(smelter)
 			smelter.clone = 1
-			bitmap.set_bit(pos.x, pos.y, true)
+			global.bitmap.set_bit(pos.x, pos.y, true)
+			global.bitmap.set_bit(pos.x+1, pos.y, true)
+			global.bitmap.set_bit(pos.x, pos.y+1, true)
+			global.bitmap.set_bit(pos.x+1, pos.y+1, true)
 	if Input.is_action_pressed("Left_click") and global.slot == 4 \
 	and not global.buildings_cant_place:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-		if not bitmap.get_bit(pos.x , pos.y ):
+		if not global.bitmap.get_bit(pos.x , pos.y ) and not global.bitmap.get_bit(pos.x+1, pos.y) \
+		and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
 			print(pos)
 			var constructor = constructor_scene.instantiate()
 			constructor.position = pos*16
@@ -114,11 +118,14 @@ func _process(_delta):
 			constructor.set_meta("Constructor", direction/90)
 			add_sibling(constructor)
 			constructor.clone = 1
-			bitmap.set_bit(pos.x, pos.y, true)
+			global.bitmap.set_bit(pos.x, pos.y, true)
+			global.bitmap.set_bit(pos.x+1, pos.y, true)
+			global.bitmap.set_bit(pos.x, pos.y+1, true)
+			global.bitmap.set_bit(pos.x+1, pos.y+1, true)
 	if Input.is_action_pressed("Left_click") and global.slot == 5 \
 	and not global.buildings_cant_place:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-		if not bitmap.get_bit(pos.x , pos.y ):
+		if not global.bitmap.get_bit(pos.x , pos.y ):
 			print(pos)
 			var storage = storage_scene.instantiate()
 			storage.position = pos*16
@@ -128,11 +135,11 @@ func _process(_delta):
 			storage.set_meta("Storage", direction/90)
 			add_sibling(storage)
 			storage.clone = 1
-			bitmap.set_bit(pos.x, pos.y, true)
+			global.bitmap.set_bit(pos.x, pos.y, true)
 	if Input.is_action_pressed("Right_click"):
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-		if bitmap.get_bit(pos.x, pos.y):
-			bitmap.set_bit(pos.x, pos.y, false)
+		if global.bitmap.get_bit(pos.x, pos.y):
+			global.bitmap.set_bit(pos.x, pos.y, false)
 	if Input.is_action_just_pressed("Rotate(R)"):
 		direction += 90
 

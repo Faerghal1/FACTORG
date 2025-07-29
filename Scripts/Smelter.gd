@@ -7,7 +7,6 @@ var clone = 0
 var direction = 0
 var delete = 0
 var pos = Vector2i(0,0)
-var bitmap: BitMap = BitMap.new()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,6 +14,11 @@ func _process(_delta):
 	if clone == 0 and global.slot == 3:
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
+		var pos = Vector2i(position.snapped(Vector2(16,16))/16)
+		global.bitmap.set_bit(pos.x, pos.y, false)
+		global.bitmap.set_bit(pos.x+1, pos.y, false)
+		global.bitmap.set_bit(pos.x, pos.y+1, false)
+		global.bitmap.set_bit(pos.x+1, pos.y+1, false)
 		queue_free()
 	if clone == 0:
 		if global.slot == 3:
