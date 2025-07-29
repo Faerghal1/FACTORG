@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://oiec24pi2b32"]
+[gd_scene load_steps=5 format=3 uid="uid://b6kctqg8lxjl2"]
 
 [ext_resource type="Script" path="res://Scripts/belt.gd" id="1_sxojs"]
 [ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Conveyor_Belt.png" id="2_j2ave"]
