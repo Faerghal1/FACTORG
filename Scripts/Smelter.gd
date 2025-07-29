@@ -15,10 +15,10 @@ func _process(_delta):
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		var pos = Vector2i(position.snapped(Vector2(16,16))/16)
-		global.bitmap.set_bit(pos.x, pos.y, true)
-		global.bitmap.set_bit(pos.x+1, pos.y, true)
-		global.bitmap.set_bit(pos.x, pos.y+1, true)
-		global.bitmap.set_bit(pos.x+1, pos.y+1, true)
+		global.bitmap.set_bit(pos.x, pos.y, false)
+		global.bitmap.set_bit(pos.x+1, pos.y, false)
+		global.bitmap.set_bit(pos.x, pos.y+1, false)
+		global.bitmap.set_bit(pos.x+1, pos.y+1, false)
 		queue_free()
 	if clone == 0:
 		if global.slot == 3:
