@@ -1,0 +1,19 @@
+extends Camera2D
+
+const POSITION_Y := 128.0
+const POSITION_X := 128.0
+var temppos_y := 100.0 * 8
+var temppos_x := 300.0 * 8
+var move_y = true
+var move_x = true
+
+
+func _process(_delta):
+	temppos_x = position.x + 8
+	position.y = lerp(position.y,temppos_y, 0.1)
+	position.x = lerp(position.x,temppos_x, 0.1)
+
+
+func _on_timer_timeout():
+	move_y = true
+	move_x = true

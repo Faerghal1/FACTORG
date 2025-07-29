@@ -20,6 +20,8 @@ func _ready():
 	bitmap.resize(Vector2i(bitmap_width,bitmap_height))
 	$Camera2D.position.x += global.width * 8
 	$Camera2D.position.y += global.height * 8
+	global.height = 500
+	global.width = 500
 
 
 func _process(_delta):
