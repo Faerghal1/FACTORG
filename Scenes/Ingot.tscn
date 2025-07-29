@@ -21,6 +21,7 @@ shape = SubResource("RectangleShape2D_k8cko")
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
 metadata/Type = "Direction Ingot"
+metadata/Ingot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 1.19209e-07)

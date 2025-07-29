@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Constructor.gd" id="1_lq4kr"]
 [ext_resource type="Texture2D" uid="uid://cshbe5cqr5jtv" path="res://Assets/Recipe_List.png" id="2_758gw"]
 [ext_resource type="PackedScene" uid="uid://ch4dodtt3vdb7" path="res://Scenes/Rod.tscn" id="2_tl7yo"]
-[ext_resource type="Texture2D" uid="uid://dmxwj2je6uogr" path="res://Assets/Iron_Rod.png" id="3_c7j0e"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="4_ywd4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifi30"]
 size = Vector2(80, 79)
@@ -25,8 +25,9 @@ texture = ExtResource("1_gcfcv")
 
 [node name="Rod" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, 20)
-texture = ExtResource("3_c7j0e")
+position = Vector2(4.76837e-07, 20)
+scale = Vector2(0.9375, 0.9375)
+texture = ExtResource("4_ywd4q")
 
 [node name="Recipe" type="Button" parent="."]
 offset_left = -15.0
@@ -38,7 +39,12 @@ icon = ExtResource("2_758gw")
 icon_alignment = 1
 expand_icon = true
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-40, 20)
+target_position = Vector2(-20, 0)
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="Recipe" to="." method="_on_recipe_selected"]

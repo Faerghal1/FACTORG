@@ -38,7 +38,12 @@ icon = ExtResource("4_whqqv")
 icon_alignment = 1
 expand_icon = true
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-40, 20)
+target_position = Vector2(-20, 3.8147e-06)
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="Recipe" to="." method="_on_recipe_selected"]

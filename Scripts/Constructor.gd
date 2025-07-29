@@ -12,39 +12,27 @@ var bitmap: BitMap = BitMap.new()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if clone == 0 and global.constructor == true:
+	if clone == 0 and global.slot == 4:
 		position = get_global_mouse_position().snapped(Vector2(16,16))
-	if Input.is_action_just_pressed("Rotate(R)") and not clone:
-		rotation_degrees += 90
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		queue_free()
 	if clone == 0:
-		if global.slot == 0:
-			hide()
-		if global.slot == 2:
-			hide()
-		if global.slot == 1:
-			hide()
-		if global.slot == 3:
-			hide()
 		if global.slot == 4:
 			show()
-		if global.slot == 5:
+		else:
 			hide()
 
-
 func _on_area_entered(area):
-	if area.has_meta("Direction_ingot") and $Rod.visible == true:
+	if area.has_meta("Ingot") and $Rod.visible == true \
+	and not $RayCast2D.get_collider() == CharacterBody2D:
 		var rod = rod_scene.instantiate()
 		rod.position = position
 		rod.modulate.a = 1
 		rod.rotation = rotation
 		rod.direction = rotation/90
-		rod.set_meta("Direction_rod", direction/90)
+		rod.set_meta("Rod", direction/90)
 		add_sibling.call_deferred(rod)
 		rod.clone = 1
-		rod.show()
-
 
 func _on_mouse_entered():
 	delete = 1
@@ -58,3 +46,14 @@ func _on_recipe_selected():
 	if clone == 1 and $Recipe.visible == true:
 		$Recipe.hide()
 		$Rod.show()
+
+
+func _on_body_entered(body):
+	if clone == 0:
+		var map = get_tree().current_scene.get_node("Generated_map")
+		var cell = map.local_to_map(position/2)
+		var data = map.get_cell_tile_data(cell)
+		if not data.get_custom_data("World") == "Unplaceable":
+			global.buildings_cant_place = false
+		else:
+			global.buildings_cant_place = true

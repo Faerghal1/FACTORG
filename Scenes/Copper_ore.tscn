@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://unxnycyehs44"]
 
-[ext_resource type="Texture2D" uid="uid://bpmqrgaemn3l0" path="res://Assets/Copper_Ore.png" id="1_qerft"]
 [ext_resource type="Script" path="res://Scripts/Copper_ore.gd" id="1_x4hn0"]
+[ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="2_7jkfa"]
 [ext_resource type="Script" path="res://Scripts/Item_sprites.gd" id="2_qkbiu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7m42"]
@@ -21,6 +21,7 @@ shape = SubResource("RectangleShape2D_a7m42")
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
 metadata/Type = "Direction Copper"
+metadata/Copper = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(7.45058e-08, 0)
@@ -30,7 +31,7 @@ shape = SubResource("RectangleShape2D_4p6o3")
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 z_index = 1
 scale = Vector2(1.255, 1.255)
-texture = ExtResource("1_qerft")
+texture = ExtResource("2_7jkfa")
 script = ExtResource("2_qkbiu")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]

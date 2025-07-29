@@ -17,11 +17,7 @@ var is_iron = false
 func _ready():
 	var map = get_tree().current_scene.get_node("Generated_map")
 	var cell = map.local_to_map(position/2)
-	print("Cell: " + str(cell))
 	var data = map.get_cell_tile_data(cell)
-	print("Data: " + str(data))
-	if data:
-		print("Custom: " + str(data.get_custom_data("Resource")))
 	if data.get_custom_data("Resource") == "Iron":
 		is_iron = true
 	if data.get_custom_data("Resource") == "Copper":
@@ -30,7 +26,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if clone == 0 and global.extractor == true:
+	if clone == 0 and global.slot == 2:
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 		position.x -= 8
 		position.y -= 8
@@ -39,44 +35,33 @@ func _process(_delta):
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		queue_free()
 	if clone == 0:
-		if global.slot == 0:
-			hide()
 		if global.slot == 2:
 			show()
-		if global.slot == 1:
-			hide()
-		if global.slot == 3:
-			hide()
-		if global.slot == 4:
-			hide()
-		if global.slot == 5:
+		else:
 			hide()
 
 
 func _on_timer_timeout():
 	if clone == 1 and global.extractor_placed == true \
-	and not $RayCast2D.get_collider() and is_iron == true:
+	and not $RayCast2D.get_collider() == CharacterBody2D and is_iron == true:
 		var resource = resource_scene.instantiate()
 		resource.position = position
 		resource.modulate.a = 1
 		resource.rotation = rotation
 		resource.direction = rotation/90
-		#resource.set_meta("Direction_resource", direction/90)
+		resource.set_meta("Resource", direction/90)
 		add_sibling(resource)
 		resource.clone = 1
-		resource.show()
 	if clone == 1 and global.extractor_placed == true \
-	and not $RayCast2D.get_collider() and is_copper == true:
+	and not $RayCast2D.get_collider() == CharacterBody2D and is_copper == true:
 		var copper = copper_scene.instantiate()
 		copper.position = position
 		copper.modulate.a = 1
 		copper.rotation = rotation
 		copper.direction = rotation/90
-		copper.set_meta("Direction_copper", direction/90)
+		copper.set_meta("Copper", direction/90)
 		add_sibling(copper)
 		copper.clone = 1
-		copper.show()
-
 
 func _on_mouse_entered():
 	delete = 1
@@ -84,3 +69,14 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	delete = 0
+
+
+func _on_body_entered(body):
+	if clone == 0:
+		var map = get_tree().current_scene.get_node("Generated_map")
+		var cell = map.local_to_map(position/2)
+		var data = map.get_cell_tile_data(cell)
+		if data.get_custom_data("Resource") == "Iron" or data.get_custom_data("Resource") == "Copper":
+			global.extractor_cant_place = false
+		else:
+			global.extractor_cant_place = true

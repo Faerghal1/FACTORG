@@ -10,7 +10,7 @@ var pos = Vector2i(0,0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if clone == 0 and global.belt == true:
+	if clone == 0 and	global.slot == 1:
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 		position.x -= 8
 		position.y -= 8
@@ -19,17 +19,9 @@ func _process(_delta):
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		queue_free()
 	if clone == 0:
-		if global.slot == 0:
-			hide()
-		if global.slot == 2:
-			hide()
 		if global.slot == 1:
 			show()
-		if global.slot == 3:
-			hide()
-		if global.slot == 4:
-			hide()
-		if global.slot == 5:
+		else:
 			hide()
 
 
@@ -40,6 +32,16 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	delete = 0
 
+
+func _on_body_entered(body):
+	if clone == 0:
+		var map = get_tree().current_scene.get_node("Generated_map")
+		var cell = map.local_to_map(position/2)
+		var data = map.get_cell_tile_data(cell)
+		if not data.get_custom_data("World") == "Unplaceable":
+			global.buildings_cant_place = false
+		else:
+			global.buildings_cant_place = true
 
 #func _on_area_entered(area):
 	#if clone == 1 and area.has_meta("Direction") and area.get_meta("Direction") >=0 and not \

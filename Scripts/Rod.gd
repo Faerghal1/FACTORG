@@ -20,17 +20,17 @@ func _process(_delta):
 
 
 func _on_area_entered(area):
-	if area.has_meta("Direction_belt") and area.get_meta("Direction_belt")>=0:
+	if area.has_meta("Belt") and area.get_meta("Belt")>=0:
 		move = 1
-		var dir = area.get_meta("Direction_belt")
+		var dir = area.get_meta("Belt")
 		rotation_degrees = dir*90
-	if area.has_meta("Direction_storage") and area.get_meta("Direction_storage")>=0:
+	if area.has_meta("Storage") and area.get_meta("Storage")>=0:
 		global.rod += 1
 		queue_free()
 
 
 func _on_area_exited(area):
-	if area.has_meta("Direction_belt"):
+	if area.has_meta("Belt"):
 		move = 0
 
 
