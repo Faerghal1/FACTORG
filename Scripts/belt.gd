@@ -33,6 +33,16 @@ func _on_mouse_exited():
 	delete = 0
 
 
+func _on_body_entered(body):
+	if clone == 0:
+		var map = get_tree().current_scene.get_node("Generated_map")
+		var cell = map.local_to_map(position/2)
+		var data = map.get_cell_tile_data(cell)
+		if not data.get_custom_data("World") == "Unplaceable":
+			global.buildings_cant_place = false
+		else:
+			global.buildings_cant_place = true
+
 #func _on_area_entered(area):
 	#if clone == 1 and area.has_meta("Direction") and area.get_meta("Direction") >=0 and not \
 	#area.get_meta("Direction")%4 == get_meta("Direction")%4:

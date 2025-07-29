@@ -8,7 +8,7 @@ var delete = 0
 var pos = Vector2i(0,0)
 var bitmap: BitMap = BitMap.new()
 var item_type = ""
-var amount = 0
+var amount = 1
 var has_item = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,8 +27,8 @@ func _process(_delta):
 
 
 func _on_area_entered(area):
-	$ResourceAmount.text = (str(int(amount)))
 	if area.has_meta("Type") and clone == 1:
+		$ResourceAmount.text = (str(int(amount)))
 		if not has_item:
 			has_item = true
 			item_type = area.get_meta("Type")
@@ -58,3 +58,14 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	delete = 0
+
+
+func _on_body_entered(body):
+	if clone == 0:
+		var map = get_tree().current_scene.get_node("Generated_map")
+		var cell = map.local_to_map(position/2)
+		var data = map.get_cell_tile_data(cell)
+		if not data.get_custom_data("World") == "Unplaceable":
+			global.buildings_cant_place = false
+		else:
+			global.buildings_cant_place = true

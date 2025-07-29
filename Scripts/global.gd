@@ -8,3 +8,5 @@ var iron_ore = 0
 var copper_ore = 0
 var extractor_placed = false
 var slot = 0
+var extractor_cant_place = true
+var buildings_cant_place = true

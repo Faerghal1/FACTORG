@@ -52,7 +52,8 @@ func _process(_delta):
 			global.slot = 0
 		else:
 			global.slot = 5
-	if Input.is_action_pressed("Left_click") and global.slot == 1:
+	if Input.is_action_pressed("Left_click") and global.slot == 1 \
+	and not global.buildings_cant_place:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
 			print(pos)
@@ -63,11 +64,16 @@ func _process(_delta):
 			belt.modulate.a = 1
 			belt.rotation_degrees = direction
 			belt.direction = rotation/90
-			belt.set_meta("Direction_belt", direction/90)
+			belt.set_meta("Belt", direction/90)
 			add_sibling(belt)
 			belt.clone = 1
 			bitmap.set_bit(pos.x, pos.y, true)
-	if Input.is_action_pressed("Left_click") and global.slot == 2:
+	if Input.is_action_pressed("Left_click") and global.slot == 2 \
+	and global.extractor_cant_place:
+		$"Camera2D/Can't Place".show()
+		$Timer.start()
+	if Input.is_action_pressed("Left_click") and global.slot == 2 \
+	and not global.extractor_cant_place:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
 			print(pos)
@@ -78,34 +84,37 @@ func _process(_delta):
 			extractor.modulate.a = 255
 			extractor.rotation_degrees = direction
 			extractor.direction = rotation/90
-			extractor.set_meta("Direction_extractor", direction/90)
+			extractor.set_meta("Extractor", direction/90)
 			add_sibling(extractor)
 			extractor.clone = 1
 			bitmap.set_bit(pos.x, pos.y, true)
 			global.extractor_placed = true
-	if Input.is_action_pressed("Left_click") and global.slot == 3:
+	if Input.is_action_pressed("Left_click") and global.slot == 3 \
+	and not global.buildings_cant_place:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
 			print(pos)
 			var smelter = smelter_scene.instantiate()
 			smelter.position = pos*16
 			smelter.modulate.a = 1
-			smelter.set_meta("Direction_smelter", direction/90)
+			smelter.set_meta("Smelter", direction/90)
 			add_sibling(smelter)
 			smelter.clone = 1
 			bitmap.set_bit(pos.x, pos.y, true)
-	if Input.is_action_pressed("Left_click") and global.slot == 4:
+	if Input.is_action_pressed("Left_click") and global.slot == 4 \
+	and not global.buildings_cant_place:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
 			print(pos)
 			var constructor = constructor_scene.instantiate()
 			constructor.position = pos*16
 			constructor.modulate.a = 1
-			constructor.set_meta("Direction_constructor", direction/90)
+			constructor.set_meta("Constructor", direction/90)
 			add_sibling(constructor)
 			constructor.clone = 1
 			bitmap.set_bit(pos.x, pos.y, true)
-	if Input.is_action_pressed("Left_click") and global.slot == 5:
+	if Input.is_action_pressed("Left_click") and global.slot == 5 \
+	and not global.buildings_cant_place:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not bitmap.get_bit(pos.x , pos.y ):
 			print(pos)
@@ -114,7 +123,7 @@ func _process(_delta):
 			storage.position.x -= 8
 			storage.position.y -= 8
 			storage.modulate.a = 1
-			storage.set_meta("Direction_storage", direction/90)
+			storage.set_meta("Storage", direction/90)
 			add_sibling(storage)
 			storage.clone = 1
 			bitmap.set_bit(pos.x, pos.y, true)
@@ -124,3 +133,7 @@ func _process(_delta):
 			bitmap.set_bit(pos.x, pos.y, false)
 	if Input.is_action_just_pressed("Rotate(R)"):
 		direction += 90
+
+
+func _on_timer_timeout():
+	$"Camera2D/Can't Place".hide()
