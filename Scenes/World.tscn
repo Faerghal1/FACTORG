@@ -21,7 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="17_pvg4h"]
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/Storage.tscn" id="19_nil32"]
 [ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://b66a6d7jsdljs" path="res://Assets/Temp_tooltip.png" id="22_2cin8"]
+=======
+>>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyi6n"]
 texture = ExtResource("7_807aw")
@@ -434,6 +437,7 @@ theme_override_colors/font_color = Color(0.568627, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "Can only be placed on Resource nodes"
 
+<<<<<<< Updated upstream
 [node name="Tooltip" type="Control" parent="Camera2D"]
 layout_mode = 3
 anchors_preset = 0
@@ -451,27 +455,49 @@ offset_bottom = -129.0
 position = Vector2(277, -133)
 texture = ExtResource("22_2cin8")
 
+=======
+>>>>>>> Stashed changes
 [node name="Can\'t Place Building" type="Control" parent="Camera2D"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
+<<<<<<< Updated upstream
 offset_left = -93.5
 offset_top = 80.0
 offset_right = 93.5
+=======
+offset_left = -86.0
+offset_top = 80.0
+offset_right = 86.0
+>>>>>>> Stashed changes
 offset_bottom = 96.0
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Can\'t Place Building"]
 layout_mode = 0
+<<<<<<< Updated upstream
 offset_right = 178.0
+=======
+offset_left = -4.0
+offset_right = 172.0
+>>>>>>> Stashed changes
 offset_bottom = 16.0
 
 [node name="Label" type="Label" parent="Camera2D/Can\'t Place Building"]
 layout_mode = 0
+<<<<<<< Updated upstream
 offset_right = 179.0
 offset_bottom = 16.0
 theme_override_colors/font_color = Color(0.568627, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "Can't be placed on Water/Mountains"
+=======
+offset_left = -2.0
+offset_right = 174.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0.568627, 0, 0, 1)
+theme_override_font_sizes/font_size = 10
+text = "Can't be placed on Water/Mountain"
+>>>>>>> Stashed changes
 
 [node name="Extractor" parent="." instance=ExtResource("3_ofrym")]
 position = Vector2(44, 44)

@@ -52,9 +52,19 @@ func _process(_delta):
 		else:
 			global.slot = 5
 	if Input.is_action_pressed("Left_click") and global.buildings_cant_place \
+<<<<<<< Updated upstream
 	and (global.slot == 1 or global.slot ==3 or global.slot == 4 or global.slot ==5):
 		$"Camera2D/Can't Place Building".show()
 		$Timer.start()
+=======
+	and global.slot != 2 and global.slot != 0:
+		$"Camera2D/Can't Place Building".show()
+		$Timer.start()
+	if Input.is_action_pressed("Left_click") and global.slot == 2 \
+	and global.extractor_cant_place:
+		$"Camera2D/Can't Place Extractor".show()
+		$Timer.start()
+>>>>>>> Stashed changes
 	if Input.is_action_pressed("Left_click") and global.slot == 1 \
 	and not global.buildings_cant_place:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
@@ -72,10 +82,13 @@ func _process(_delta):
 			belt.clone = 1
 			global.bitmap.set_bit(pos.x, pos.y, true)
 	if Input.is_action_pressed("Left_click") and global.slot == 2 \
+<<<<<<< Updated upstream
 	and global.extractor_cant_place:
 		$"Camera2D/Can't Place Extractor".show()
 		$Timer.start()
 	if Input.is_action_pressed("Left_click") and global.slot == 2 \
+=======
+>>>>>>> Stashed changes
 	and not global.extractor_cant_place:
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if not global.bitmap.get_bit(pos.x , pos.y ):
