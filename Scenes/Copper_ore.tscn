@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccygnntv02ion"]
+[gd_scene load_steps=6 format=3 uid="uid://unxnycyehs44"]
 
 [ext_resource type="Script" path="res://Scripts/Copper_ore.gd" id="1_x4hn0"]
 [ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="2_7jkfa"]
