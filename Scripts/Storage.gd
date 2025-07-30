@@ -19,6 +19,8 @@ func _process(_delta):
 		position.y -= 8
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		queue_free()
+	if Input.is_action_just_pressed("Rotate(R)") and not clone:
+		rotation_degrees += 90
 	if clone == 0:
 		if global.slot == 5:
 			show()

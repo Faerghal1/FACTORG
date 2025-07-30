@@ -61,7 +61,7 @@ func _process(_delta):
 			global.slot = 0
 		else:
 			global.slot = 5
-			$Camera2D/Controls/AnimatedSprite2D.frame = 1
+			$Camera2D/Controls/AnimatedSprite2D.frame = 2
 	if Input.is_action_pressed("Left_click") and global.buildings_cant_place \
 	and global.slot != 2 and global.slot != 0:
 		$"Camera2D/Can't Place Building".show()
@@ -145,6 +145,8 @@ func _process(_delta):
 			storage.position.x -= 8
 			storage.position.y -= 8
 			storage.modulate.a = 1
+			storage.rotation_degrees = direction
+			storage.direction = rotation/90
 			storage.set_meta("Storage", direction/90)
 			add_sibling(storage)
 			storage.clone = 1
