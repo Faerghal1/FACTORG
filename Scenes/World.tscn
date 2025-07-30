@@ -22,7 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/Storage.tscn" id="19_nil32"]
 [ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://b66a6d7jsdljs" path="res://Assets/Temp_tooltip.png" id="22_2cin8"]
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -438,6 +441,7 @@ theme_override_font_sizes/font_size = 10
 text = "Can only be placed on Resource nodes"
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 [node name="Tooltip" type="Control" parent="Camera2D"]
 layout_mode = 3
 anchors_preset = 0
@@ -457,14 +461,22 @@ texture = ExtResource("22_2cin8")
 
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 [node name="Can\'t Place Building" type="Control" parent="Camera2D"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 offset_left = -93.5
 offset_top = 80.0
 offset_right = 93.5
+=======
+offset_left = -86.0
+offset_top = 80.0
+offset_right = 86.0
+>>>>>>> Stashed changes
 =======
 offset_left = -86.0
 offset_top = 80.0
@@ -475,7 +487,12 @@ offset_bottom = 96.0
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Can\'t Place Building"]
 layout_mode = 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 offset_right = 178.0
+=======
+offset_left = -4.0
+offset_right = 172.0
+>>>>>>> Stashed changes
 =======
 offset_left = -4.0
 offset_right = 172.0
@@ -485,18 +502,24 @@ offset_bottom = 16.0
 [node name="Label" type="Label" parent="Camera2D/Can\'t Place Building"]
 layout_mode = 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 offset_right = 179.0
 offset_bottom = 16.0
 theme_override_colors/font_color = Color(0.568627, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "Can't be placed on Water/Mountains"
 =======
+=======
+>>>>>>> Stashed changes
 offset_left = -2.0
 offset_right = 174.0
 offset_bottom = 16.0
 theme_override_colors/font_color = Color(0.568627, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "Can't be placed on Water/Mountain"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 [node name="Extractor" parent="." instance=ExtResource("3_ofrym")]
