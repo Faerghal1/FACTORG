@@ -33,7 +33,7 @@ func _on_mouse_exited():
 	delete = 0
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	if clone == 0:
 		var map = get_tree().current_scene.get_node("Generated_map")
 		var cell = map.local_to_map(position/2)
