@@ -21,9 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="17_pvg4h"]
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/Storage.tscn" id="19_nil32"]
 [ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
-[ext_resource type="Texture2D" uid="uid://tkps2uo7rov" path="res://Assets/Controls-1.png" id="22_dpsl7"]
-[ext_resource type="Texture2D" uid="uid://b4w6f0rhx4nhr" path="res://Assets/Controls-2.png" id="23_enwp0"]
-[ext_resource type="Texture2D" uid="uid://dbc4r1x81djal" path="res://Assets/Controls-3.png" id="24_n352l"]
+[ext_resource type="Texture2D" uid="uid://c05jg536kyj6a" path="res://Assets/Controls-1.png" id="22_dpsl7"]
+[ext_resource type="Texture2D" uid="uid://jkpminw2xuwx" path="res://Assets/Controls-2.png" id="23_enwp0"]
+[ext_resource type="Texture2D" uid="uid://cbocxqmgto26r" path="res://Assets/Controls-3.png" id="24_n352l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyi6n"]
 texture = ExtResource("7_807aw")
@@ -489,7 +489,6 @@ offset_bottom = -144.0
 position = Vector2(62, 59)
 sprite_frames = SubResource("SpriteFrames_ylh7l")
 animation = &"Controls"
-frame = 2
 
 [node name="Extractor" parent="." instance=ExtResource("3_ofrym")]
 position = Vector2(44, 44)
