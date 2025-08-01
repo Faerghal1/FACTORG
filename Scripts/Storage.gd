@@ -17,6 +17,8 @@ func _process(_delta):
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 		position.x -= 8
 		position.y -= 8
+	if Input.is_action_just_pressed("Rotate(R)") and not clone:
+		rotation_degrees += 180
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		queue_free()
 	if clone == 0:

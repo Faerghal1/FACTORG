@@ -26,118 +26,131 @@ func _process(_delta):
 		get_tree().paused = true
 	$Camera2D/Goal/RodGoal.text = (str(int(global.rod)) + "/10")
 	$Camera2D/Goal/IngotGoal.text = (str(int(global.ingot)) + "/15")
-	if Input.is_action_just_pressed("Hotbar_1"):
+	if Input.is_action_just_pressed("Hotbar_1"): # belt
 		if global.slot == 1:
+			$Camera2D/Tooltip/TempTooltip.frame = 2
 			global.slot = 0
 		else:
 			global.slot = 1
-	if Input.is_action_just_pressed("Hotbar_2"):
+			$Camera2D/Tooltip/TempTooltip.frame = 0
+	if Input.is_action_just_pressed("Hotbar_2"): # extractor
 		if global.slot == 2:
+			$Camera2D/Tooltip/TempTooltip.frame = 2
 			global.slot = 0
 		else:
 			global.slot = 2
-	if Input.is_action_just_pressed("Hotbar_3"):
+			$Camera2D/Tooltip/TempTooltip.frame = 0
+	if Input.is_action_just_pressed("Hotbar_3"): # smelter
 		if global.slot == 3:
+			$Camera2D/Tooltip/TempTooltip.frame = 2
 			global.slot = 0
 		else:
 			global.slot = 3
-	if Input.is_action_just_pressed("Hotbar_4"):
+			$Camera2D/Tooltip/TempTooltip.frame = 1
+	if Input.is_action_just_pressed("Hotbar_4"): # construc
 		if global.slot == 4:
+			$Camera2D/Tooltip/TempTooltip.frame = 2
 			global.slot = 0
 		else:
 			global.slot = 4
-	if Input.is_action_just_pressed("Hotbar_5"):
+			$Camera2D/Tooltip/TempTooltip.frame = 1
+	if Input.is_action_just_pressed("Hotbar_5"): # storage
 		if global.slot == 5:
+			$Camera2D/Tooltip/TempTooltip.frame = 2
 			global.slot = 0
 		else:
 			global.slot = 5
-	if Input.is_action_pressed("Left_click") and global.buildings_cant_place \
-	and (global.slot == 1 or global.slot ==3 or global.slot == 4 or global.slot ==5):
-		$"Camera2D/Can't Place Building".show()
-		$Timer.start()
-	if Input.is_action_pressed("Left_click") and global.slot == 1 \
-	and not global.buildings_cant_place:
-		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-		if not global.bitmap.get_bit(pos.x , pos.y ):
-			print(pos)
-			var belt = belt_scene.instantiate()
-			belt.position = pos*16
-			belt.position.x -= 8
-			belt.position.y -= 8
-			belt.modulate.a = 1
-			belt.rotation_degrees = direction
-			belt.direction = rotation/90
-			belt.set_meta("Belt", direction/90)
-			add_sibling(belt)
-			belt.clone = 1
-			global.bitmap.set_bit(pos.x, pos.y, true)
-	if Input.is_action_pressed("Left_click") and global.slot == 2 \
-	and global.extractor_cant_place:
-		$"Camera2D/Can't Place Extractor".show()
-		$Timer.start()
-	if Input.is_action_pressed("Left_click") and global.slot == 2 \
-	and not global.extractor_cant_place:
-		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-		if not global.bitmap.get_bit(pos.x , pos.y ):
-			print(pos)
-			var extractor = extractor_scene.instantiate()
-			extractor.position = pos*16
-			extractor.position.x -= 8
-			extractor.position.y -= 8
-			extractor.modulate.a = 255
-			extractor.rotation_degrees = direction
-			extractor.direction = rotation/90
-			extractor.set_meta("Extractor", direction/90)
-			add_sibling(extractor)
-			extractor.clone = 1
-			global.bitmap.set_bit(pos.x, pos.y, true)
-			global.extractor_placed = true
-	if Input.is_action_pressed("Left_click") and global.slot == 3 \
-	and not global.buildings_cant_place:
-		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-		if not global.bitmap.get_bit(pos.x , pos.y ) and not global.bitmap.get_bit(pos.x+1, pos.y) \
-		and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
-			print(pos)
-			var smelter = smelter_scene.instantiate()
-			smelter.position = pos*16
-			smelter.modulate.a = 1
-			smelter.set_meta("Smelter", direction/90)
-			add_sibling(smelter)
-			smelter.clone = 1
-			global.bitmap.set_bit(pos.x, pos.y, true)
-			global.bitmap.set_bit(pos.x+1, pos.y, true)
-			global.bitmap.set_bit(pos.x, pos.y+1, true)
-			global.bitmap.set_bit(pos.x+1, pos.y+1, true)
-	if Input.is_action_pressed("Left_click") and global.slot == 4 \
-	and not global.buildings_cant_place:
-		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-		if not global.bitmap.get_bit(pos.x , pos.y ) and not global.bitmap.get_bit(pos.x+1, pos.y) \
-		and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
-			print(pos)
-			var constructor = constructor_scene.instantiate()
-			constructor.position = pos*16
-			constructor.modulate.a = 1
-			constructor.set_meta("Constructor", direction/90)
-			add_sibling(constructor)
-			constructor.clone = 1
-			global.bitmap.set_bit(pos.x, pos.y, true)
-			global.bitmap.set_bit(pos.x+1, pos.y, true)
-			global.bitmap.set_bit(pos.x, pos.y+1, true)
-			global.bitmap.set_bit(pos.x+1, pos.y+1, true)
-	if Input.is_action_pressed("Left_click") and global.slot == 5 \
-	and not global.buildings_cant_place:
-		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-		if not global.bitmap.get_bit(pos.x , pos.y ):
-			print(pos)
-			var storage = storage_scene.instantiate()
-			storage.position = pos*16
-			storage.position.x -= 8
-			storage.position.y -= 8
-			storage.modulate.a = 1
-			storage.set_meta("Storage", direction/90)
-			add_sibling(storage)
-			storage.clone = 1
-			global.bitmap.set_bit(pos.x, pos.y, true)
+			$Camera2D/Tooltip/TempTooltip.frame = 1
+	if not global.mouse_on_hotbar:
+		if Input.is_action_pressed("Left_click") and global.buildings_cant_place \
+		and (global.slot == 1 or global.slot ==3 or global.slot == 4 or global.slot ==5):
+			$"Camera2D/Can't Place Building".show()
+			$Timer.start()
+		if Input.is_action_pressed("Left_click") and global.slot == 1 \
+		and not global.buildings_cant_place:
+			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
+			if not global.bitmap.get_bit(pos.x , pos.y ):
+				print(pos)
+				var belt = belt_scene.instantiate()
+				belt.position = pos*16
+				belt.position.x -= 8
+				belt.position.y -= 8
+				belt.modulate.a = 1
+				belt.rotation_degrees = direction
+				belt.direction = rotation/90
+				belt.set_meta("Belt", direction/90)
+				add_sibling(belt)
+				belt.clone = 1
+				global.bitmap.set_bit(pos.x, pos.y, true)
+		if Input.is_action_pressed("Left_click") and global.slot == 2 \
+		and global.extractor_cant_place:
+			$"Camera2D/Can't Place Extractor".show()
+			$Timer.start()
+		if Input.is_action_pressed("Left_click") and global.slot == 2 \
+		and not global.extractor_cant_place:
+			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
+			if not global.bitmap.get_bit(pos.x , pos.y ):
+				print(pos)
+				var extractor = extractor_scene.instantiate()
+				extractor.position = pos*16
+				extractor.position.x -= 8
+				extractor.position.y -= 8
+				extractor.modulate.a = 255
+				extractor.rotation_degrees = direction
+				extractor.direction = rotation/90
+				extractor.set_meta("Extractor", direction/90)
+				add_sibling(extractor)
+				extractor.clone = 1
+				global.bitmap.set_bit(pos.x, pos.y, true)
+				global.extractor_placed = true
+		if Input.is_action_pressed("Left_click") and global.slot == 3 \
+		and not global.buildings_cant_place:
+			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
+			if not global.bitmap.get_bit(pos.x , pos.y ) and not global.bitmap.get_bit(pos.x+1, pos.y) \
+			and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
+				print(pos)
+				var smelter = smelter_scene.instantiate()
+				smelter.position = pos*16
+				smelter.modulate.a = 1
+				smelter.set_meta("Smelter", direction/90)
+				add_sibling(smelter)
+				smelter.clone = 1
+				global.bitmap.set_bit(pos.x, pos.y, true)
+				global.bitmap.set_bit(pos.x+1, pos.y, true)
+				global.bitmap.set_bit(pos.x, pos.y+1, true)
+				global.bitmap.set_bit(pos.x+1, pos.y+1, true)
+		if Input.is_action_pressed("Left_click") and global.slot == 4 \
+		and not global.buildings_cant_place:
+			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
+			if not global.bitmap.get_bit(pos.x , pos.y ) and not global.bitmap.get_bit(pos.x+1, pos.y) \
+			and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
+				print(pos)
+				var constructor = constructor_scene.instantiate()
+				constructor.position = pos*16
+				constructor.modulate.a = 1
+				constructor.set_meta("Constructor", direction/90)
+				add_sibling(constructor)
+				constructor.clone = 1
+				global.bitmap.set_bit(pos.x, pos.y, true)
+				global.bitmap.set_bit(pos.x+1, pos.y, true)
+				global.bitmap.set_bit(pos.x, pos.y+1, true)
+				global.bitmap.set_bit(pos.x+1, pos.y+1, true)
+		if Input.is_action_pressed("Left_click") and global.slot == 5 \
+		and not global.buildings_cant_place:
+			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
+			if not global.bitmap.get_bit(pos.x , pos.y ):
+				print(pos)
+				var storage = storage_scene.instantiate()
+				storage.position = pos*16
+				storage.position.x -= 8
+				storage.position.y -= 8
+				storage.modulate.a = 1
+				storage.rotation_degrees = direction*2
+				storage.direction = rotation/90
+				storage.set_meta("Storage", direction/90)
+				add_sibling(storage)
+				storage.clone = 1
+				global.bitmap.set_bit(pos.x, pos.y, true)
 	if Input.is_action_pressed("Right_click"):
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if global.bitmap.get_bit(pos.x, pos.y):
@@ -149,3 +162,17 @@ func _process(_delta):
 func _on_timer_timeout():
 	$"Camera2D/Can't Place Extractor".hide()
 	$"Camera2D/Can't Place Building".hide()
+
+
+#func _on_hotbar_mouse_entered() -> void:
+
+
+
+
+func _on_mouse_area_mouse_entered() -> void:
+	global.mouse_on_hotbar = true
+	print(global.mouse_on_hotbar)
+
+func _on_mouse_area_mouse_exited() -> void:
+	global.mouse_on_hotbar = false
+	print(global.mouse_on_hotbar)
