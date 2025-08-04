@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Iron_Ore.png" id="5_2fq5u"]
 [ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="6_q3m1a"]
 [ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="7_ldl4g"]
-[ext_resource type="Texture2D" uid="uid://blws2uva7dafk" path="res://Assets/Copper Wire.png" id="8_ivhcs"]
+[ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="8_ivhcs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpwve"]
 size = Vector2(40, 40)

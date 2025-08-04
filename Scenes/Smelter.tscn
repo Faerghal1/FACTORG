@@ -46,8 +46,11 @@ collision_mask = 2
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -10.0
+offset_top = 10.0
+offset_right = 30.0
+offset_bottom = 50.0
+scale = Vector2(1.25, 1.25)
 
 [node name="ColorRect" type="ColorRect" parent="Recipe_list"]
 offset_left = 45.0

@@ -30,38 +30,58 @@ func _process(_delta):
 	if Input.is_action_just_pressed("Hotbar_1"): # Belt
 		if global.slot == 1:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
+			$Camera2D/Belt_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 1
 			$Camera2D/Controls/AnimatedSprite2D.frame = 2
+			$Camera2D/Belt_select.show()
 	if Input.is_action_just_pressed("Hotbar_2"): # Extractor
 		if global.slot == 2:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
+			$Camera2D/Extractor_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 2
 			$Camera2D/Controls/AnimatedSprite2D.frame = 2
+			$Camera2D/Extractor_select.show()
 	if Input.is_action_just_pressed("Hotbar_3"): # Smelter
 		if global.slot == 3:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
+			$Camera2D/Smelter_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 3
 			$Camera2D/Controls/AnimatedSprite2D.frame = 1
+			$Camera2D/Smelter_select.show()
 	if Input.is_action_just_pressed("Hotbar_4"): # Constructor
 		if global.slot == 4:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
+			$Camera2D/Constructor_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 4
 			$Camera2D/Controls/AnimatedSprite2D.frame = 1
+			$Camera2D/Constructor_select.show()
 	if Input.is_action_just_pressed("Hotbar_5"): # Storage
 		if global.slot == 5:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
+			$Camera2D/Storage_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 5
 			$Camera2D/Controls/AnimatedSprite2D.frame = 2
+			$Camera2D/Storage_select.show()
+	if not global.slot == 1:
+		$Camera2D/Belt_select.hide()
+	if not global.slot == 2:
+		$Camera2D/Extractor_select.hide()
+	if not global.slot == 3:
+		$Camera2D/Smelter_select.hide()
+	if not global.slot == 4:
+		$Camera2D/Constructor_select.hide()
+	if not global.slot == 5:
+		$Camera2D/Storage_select.hide()
 	if global.mouse_on_hotbar == false:
 		if Input.is_action_pressed("Left_click") and global.buildings_cant_place \
 		and global.slot != 2 and global.slot != 0:

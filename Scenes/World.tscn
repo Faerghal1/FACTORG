@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://dl0kn83ihr5gl" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/Storage.tscn" id="19_nil32"]
 [ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
-[ext_resource type="Texture2D" uid="uid://blws2uva7dafk" path="res://Assets/Copper Wire.png" id="21_d3ars"]
+[ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="21_d3ars"]
 [ext_resource type="Texture2D" uid="uid://c05jg536kyj6a" path="res://Assets/Controls-1.png" id="22_dpsl7"]
 [ext_resource type="Texture2D" uid="uid://jkpminw2xuwx" path="res://Assets/Controls-2.png" id="23_enwp0"]
 [ext_resource type="Texture2D" uid="uid://cbocxqmgto26r" path="res://Assets/Controls-3.png" id="24_n352l"]
@@ -415,10 +415,10 @@ vertical_alignment = 2
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
-offset_left = 236.0
-offset_top = -181.0
-offset_right = 325.0
-offset_bottom = -104.0
+offset_left = -327.0
+offset_top = -57.0
+offset_right = -238.0
+offset_bottom = 20.0
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Goal"]
 layout_mode = 0
@@ -513,6 +513,176 @@ offset_bottom = -144.0
 position = Vector2(62, 59)
 sprite_frames = SubResource("SpriteFrames_ylh7l")
 animation = &"Controls"
+
+[node name="Belt_select" type="Control" parent="Camera2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 288.0
+offset_top = -184.0
+offset_right = 328.0
+offset_bottom = -144.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Belt_select"]
+layout_mode = 0
+offset_left = -238.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 101.0
+
+[node name="Label" type="Label" parent="Camera2D/Belt_select"]
+layout_mode = 0
+offset_left = -230.0
+offset_top = 8.0
+offset_right = 32.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Conveyor belt:
+Transports items from one location to another
+Hotbar: 1"
+autowrap_mode = 3
+
+[node name="Extractor_select" type="Control" parent="Camera2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 288.0
+offset_top = -184.0
+offset_right = 328.0
+offset_bottom = -144.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Extractor_select"]
+layout_mode = 0
+offset_left = -238.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 101.0
+
+[node name="Label" type="Label" parent="Camera2D/Extractor_select"]
+layout_mode = 0
+offset_left = -231.0
+offset_top = 7.0
+offset_right = 31.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Extractor:
+Excavates raw ore out of resource nodes scattered through out the world
+Hotbar: 2"
+autowrap_mode = 3
+
+[node name="Smelter_select" type="Control" parent="Camera2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 288.0
+offset_top = -184.0
+offset_right = 328.0
+offset_bottom = -144.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Smelter_select"]
+layout_mode = 0
+offset_left = -238.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 101.0
+
+[node name="Label" type="Label" parent="Camera2D/Smelter_select"]
+layout_mode = 0
+offset_left = -230.0
+offset_top = 7.0
+offset_right = 32.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Smelter:
+Can smelt down raw ores into refined ingots at a 1:1 ratio
+Hotbar: 3"
+autowrap_mode = 3
+
+[node name="Constructor_select" type="Control" parent="Camera2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 288.0
+offset_top = -184.0
+offset_right = 328.0
+offset_bottom = -144.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Constructor_select"]
+layout_mode = 0
+offset_left = -238.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 101.0
+
+[node name="Label" type="Label" parent="Camera2D/Constructor_select"]
+layout_mode = 0
+offset_left = -230.0
+offset_top = 7.0
+offset_right = 32.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Constructor:
+Can turn refined ingots into basic materials needed for progression
+Hotbar: 4"
+autowrap_mode = 3
+
+[node name="Storage_select" type="Control" parent="Camera2D/Constructor_select"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Constructor_select/Storage_select"]
+layout_mode = 0
+offset_left = -238.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 101.0
+
+[node name="Label" type="Label" parent="Camera2D/Constructor_select/Storage_select"]
+layout_mode = 0
+offset_left = -230.0
+offset_top = 7.0
+offset_right = 32.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Storage:
+Corresponding Items when placed in the storage will count toward the goal Hotbar: 5 "
+autowrap_mode = 3
+
+[node name="Storage_select" type="Control" parent="Camera2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 288.0
+offset_top = -184.0
+offset_right = 328.0
+offset_bottom = -144.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Storage_select"]
+layout_mode = 0
+offset_left = -238.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 101.0
+
+[node name="Label" type="Label" parent="Camera2D/Storage_select"]
+layout_mode = 0
+offset_left = -230.0
+offset_top = 7.0
+offset_right = 32.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Storage:
+Corresponding Items when placed in the storage will count toward the goal Hotbar: 5 "
+autowrap_mode = 3
 
 [node name="Extractor" parent="." instance=ExtResource("3_ofrym")]
 position = Vector2(44, 44)

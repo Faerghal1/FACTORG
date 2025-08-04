@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ch4dodtt3vdb7" path="res://Scenes/Rod.tscn" id="2_tl7yo"]
 [ext_resource type="PackedScene" uid="uid://ruyfkei3vd2f" path="res://Scenes/Copper_wire.tscn" id="3_nk0dk"]
 [ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="4_ywd4q"]
-[ext_resource type="Texture2D" uid="uid://blws2uva7dafk" path="res://Assets/Copper Wire.png" id="5_qaxfn"]
+[ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="5_qaxfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifi30"]
 size = Vector2(80, 79)
@@ -46,8 +46,11 @@ collision_mask = 2
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -10.0
+offset_top = 10.0
+offset_right = 30.0
+offset_bottom = 50.0
+scale = Vector2(1.25, 1.25)
 
 [node name="ColorRect" type="ColorRect" parent="Recipe_list"]
 offset_left = 45.0
