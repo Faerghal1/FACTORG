@@ -169,10 +169,11 @@ func _on_timer_timeout():
 
 
 
-func _on_mouse_area_mouse_entered() -> void:
+
+func _on_hotbar_mouse_entered() -> void:
 	global.mouse_on_hotbar = true
 	print(global.mouse_on_hotbar)
 
-func _on_mouse_area_mouse_exited() -> void:
+func _on_hotbar_mouse_exited() -> void:
 	global.mouse_on_hotbar = false
 	print(global.mouse_on_hotbar)

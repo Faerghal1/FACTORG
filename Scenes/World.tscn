@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=29 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/Belt.tscn" id="2_0b5rt"]
@@ -223,9 +223,6 @@ custom_data_layer_1/name = "World"
 custom_data_layer_1/type = 4
 sources/0 = SubResource("TileSetAtlasSource_qyi6n")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hco45"]
-size = Vector2(408.5, 80)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_4immh"]
 animations = [{
 "frames": [{
@@ -270,11 +267,21 @@ offset_left = -204.5
 offset_top = 99.0
 offset_right = 204.5
 offset_bottom = 179.0
+mouse_filter = 1
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Hotbar"]
 layout_mode = 0
 offset_right = 409.0
 offset_bottom = 80.0
+
+[node name="Detection_Button" type="Button" parent="Camera2D/Hotbar"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -0.5
+offset_top = 1.0
+offset_right = 406.5
+offset_bottom = 81.0
+mouse_filter = 1
 
 [node name="Extractor" type="Sprite2D" parent="Camera2D/Hotbar"]
 position = Vector2(121, 40)
@@ -306,6 +313,7 @@ offset_top = 5.0
 offset_right = 42.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
+mouse_filter = 1
 alignment = 2
 script = ExtResource("6_ksayx")
 metadata/Belt = true
@@ -317,6 +325,7 @@ offset_top = 5.0
 offset_right = 121.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
+mouse_filter = 1
 script = ExtResource("8_lpojc")
 metadata/Extractor = true
 
@@ -326,6 +335,7 @@ offset_left = 166.0
 offset_top = 5.0
 offset_right = 236.0
 offset_bottom = 75.0
+mouse_filter = 1
 script = ExtResource("11_6dldg")
 
 [node name="ConstructorButton" type="Button" parent="Camera2D/Hotbar"]
@@ -334,6 +344,7 @@ offset_left = 247.0
 offset_top = 5.0
 offset_right = 319.0
 offset_bottom = 76.0
+mouse_filter = 1
 script = ExtResource("14_5awit")
 
 [node name="StorageButton" type="Button" parent="Camera2D/Hotbar"]
@@ -342,6 +353,7 @@ offset_left = 329.0
 offset_top = 5.0
 offset_right = 401.0
 offset_bottom = 76.0
+mouse_filter = 1
 script = ExtResource("17_dpebd")
 
 [node name="Label" type="Label" parent="Camera2D/Hotbar"]
@@ -350,6 +362,7 @@ offset_left = 34.0
 offset_top = 49.0
 offset_right = 74.0
 offset_bottom = 72.0
+mouse_filter = 1
 text = "1"
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -360,6 +373,7 @@ offset_left = 113.0
 offset_top = 49.0
 offset_right = 153.0
 offset_bottom = 72.0
+mouse_filter = 1
 text = "2"
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -370,6 +384,7 @@ offset_left = 193.0
 offset_top = 49.0
 offset_right = 233.0
 offset_bottom = 72.0
+mouse_filter = 1
 text = "3"
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -380,6 +395,7 @@ offset_left = 274.0
 offset_top = 49.0
 offset_right = 314.0
 offset_bottom = 72.0
+mouse_filter = 1
 text = "4"
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -390,16 +406,10 @@ offset_left = 357.0
 offset_top = 49.0
 offset_right = 397.0
 offset_bottom = 72.0
+mouse_filter = 1
 text = "5"
 horizontal_alignment = 2
 vertical_alignment = 2
-
-[node name="MouseArea" type="Area2D" parent="Camera2D/Hotbar"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Hotbar/MouseArea"]
-position = Vector2(204.25, 40)
-shape = SubResource("RectangleShape2D_hco45")
 
 [node name="Goal" type="Control" parent="Camera2D"]
 z_index = 2
@@ -525,11 +535,11 @@ position = Vector2(44, 44)
 
 [node name="Timer" type="Timer" parent="."]
 
+[connection signal="mouse_entered" from="Camera2D/Hotbar" to="." method="_on_hotbar_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/Hotbar" to="." method="_on_hotbar_mouse_exited"]
 [connection signal="pressed" from="Camera2D/Hotbar/BeltButton" to="Camera2D/Hotbar/BeltButton" method="_on_belt_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/ExtractorButton" to="Camera2D/Hotbar/ExtractorButton" method="_on_extractor_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/SmelterButton" to="Camera2D/Hotbar/SmelterButton" method="_on_smelter_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/ConstructorButton" to="Camera2D/Hotbar/ConstructorButton" method="_on_constructor_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/StorageButton" to="Camera2D/Hotbar/StorageButton" method="_on_storage_selected"]
-[connection signal="mouse_entered" from="Camera2D/Hotbar/MouseArea" to="." method="_on_mouse_area_mouse_entered"]
-[connection signal="mouse_exited" from="Camera2D/Hotbar/MouseArea" to="." method="_on_mouse_area_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
