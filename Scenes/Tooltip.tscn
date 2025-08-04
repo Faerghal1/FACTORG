@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://dhva5spj7okws"]
 
-[ext_resource type="Texture2D" uid="uid://b66a6d7jsdljs" path="res://Assets/pixil-frame-0(1).png" id="1_ei6ab"]
+[sub_resource type="Resource" id="Resource_x6lq5"]
+metadata/__load_path__ = "res://Assets/pixil-frame-0(1).png"
 
 [node name="Tooltip" type="Control"]
 layout_mode = 3
@@ -28,7 +29,7 @@ vertical_alignment = 2
 
 [node name="UI" type="Sprite2D" parent="."]
 position = Vector2(47, 47)
-texture = ExtResource("1_ei6ab")
+texture = SubResource("Resource_x6lq5")
 
 [node name="Place" type="Label" parent="."]
 offset_left = 13.0

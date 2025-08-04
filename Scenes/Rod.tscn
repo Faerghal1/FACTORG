@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://ch4dodtt3vdb7"]
 
-[ext_resource type="Script" path="res://Scripts/Rod.gd" id="1_k070t"]
+[ext_resource type="Script" uid="uid://cag4sf1i5y20t" path="res://Scripts/Rod.gd" id="1_k070t"]
 [ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="2_b4ct5"]
-[ext_resource type="Script" path="res://Scripts/Item_sprites.gd" id="3_mfwth"]
+[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_mfwth"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85k5t"]
 size = Vector2(32, 25)
@@ -11,8 +11,6 @@ size = Vector2(32, 25)
 size = Vector2(11, 12)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 2
 script = ExtResource("1_k070t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

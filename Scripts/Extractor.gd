@@ -43,7 +43,8 @@ func _process(_delta):
 
 func _on_timer_timeout():
 	if clone == 1 and global.extractor_placed == true \
-	and not $RayCast2D.get_collider() == CharacterBody2D and is_iron == true:
+	and $RayCast2D.get_collider() != CharacterBody2D and is_iron == true:
+		print($RayCast2D.get_collider())
 		var resource = resource_scene.instantiate()
 		resource.position = position
 		resource.modulate.a = 1
@@ -53,7 +54,7 @@ func _on_timer_timeout():
 		add_sibling(resource)
 		resource.clone = 1
 	if clone == 1 and global.extractor_placed == true \
-	and not $RayCast2D.get_collider() == CharacterBody2D and is_copper == true:
+	and $RayCast2D.get_collider() != CharacterBody2D and is_copper == true:
 		var copper = copper_scene.instantiate()
 		copper.position = position
 		copper.modulate.a = 1

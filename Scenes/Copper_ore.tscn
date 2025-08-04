@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://unxnycyehs44"]
 
-[ext_resource type="Script" path="res://Scripts/Copper_ore.gd" id="1_x4hn0"]
+[ext_resource type="Script" uid="uid://mvqiw7060x8g" path="res://Scripts/Copper_ore.gd" id="1_x4hn0"]
 [ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="2_7jkfa"]
-[ext_resource type="Script" path="res://Scripts/Item_sprites.gd" id="2_qkbiu"]
+[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="2_qkbiu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a7m42"]
 size = Vector2(25, 25)
@@ -11,8 +11,6 @@ size = Vector2(25, 25)
 size = Vector2(6.66667, 6.66667)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 2
 script = ExtResource("1_x4hn0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
