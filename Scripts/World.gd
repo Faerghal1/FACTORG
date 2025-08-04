@@ -164,12 +164,6 @@ func _on_timer_timeout():
 	$"Camera2D/Can't Place Building".hide()
 
 
-#func _on_hotbar_mouse_entered() -> void:
-
-
-
-
-
 func _on_hotbar_mouse_entered() -> void:
 	global.mouse_on_hotbar = true
 	print(global.mouse_on_hotbar)

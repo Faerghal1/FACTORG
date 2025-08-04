@@ -273,6 +273,7 @@ mouse_filter = 1
 layout_mode = 0
 offset_right = 409.0
 offset_bottom = 80.0
+mouse_filter = 1
 
 [node name="Detection_Button" type="Button" parent="Camera2D/Hotbar"]
 modulate = Color(1, 1, 1, 0)
