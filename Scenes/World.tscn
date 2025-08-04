@@ -1,30 +1,29 @@
-[gd_scene load_steps=29 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=28 format=3 uid="uid://csh41ocwjuk7"]
 
-[ext_resource type="Script" uid="uid://o76rvf1n7t07" path="res://Scripts/World.gd" id="1_pqhfs"]
+[ext_resource type="Script" uid="uid://fgq76fstefsg" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/Belt.tscn" id="2_0b5rt"]
 [ext_resource type="PackedScene" uid="uid://b05iho5c44hkr" path="res://Scenes/Extractor.tscn" id="3_ofrym"]
 [ext_resource type="PackedScene" uid="uid://grkud06u2t6y" path="res://Scenes/Camera.tscn" id="5_fo33q"]
 [ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Conveyor_Belt.png" id="6_7m4c6"]
-[ext_resource type="Script" uid="uid://d2jyg2pjau1w4" path="res://Scripts/Belt_hotbar.gd" id="6_ksayx"]
+[ext_resource type="Script" uid="uid://da3piixp3i66s" path="res://Scripts/Belt_hotbar.gd" id="6_ksayx"]
 [ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/Tilemap_gen.png" id="7_807aw"]
 [ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor.png" id="7_eqtyl"]
-[ext_resource type="Script" uid="uid://bhe7eg0evwwl8" path="res://Scripts/Tile_map.gd" id="8_jb2q2"]
-[ext_resource type="Script" uid="uid://bxve1r65a8d0" path="res://Scripts/Extractor_hotbar.gd" id="8_lpojc"]
+[ext_resource type="Script" uid="uid://cywns0wfw84ca" path="res://Scripts/Tile_map.gd" id="8_jb2q2"]
+[ext_resource type="Script" uid="uid://s74xcsq238vq" path="res://Scripts/Extractor_hotbar.gd" id="8_lpojc"]
 [ext_resource type="Texture2D" uid="uid://satlknjxuauh" path="res://Assets/Smelter.png" id="9_kuaow"]
 [ext_resource type="PackedScene" uid="uid://cpql1vm2gnpml" path="res://Scenes/Smelter.tscn" id="10_glyoi"]
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="10_ydavp"]
-[ext_resource type="Script" uid="uid://broxhq5a77hwa" path="res://Scripts/Smelter_hotbar.gd" id="11_6dldg"]
+[ext_resource type="Script" uid="uid://bium40xiudj1c" path="res://Scripts/Smelter_hotbar.gd" id="11_6dldg"]
 [ext_resource type="Texture2D" uid="uid://bjl26wes5neh3" path="res://Assets/Storage.png" id="12_gpcpt"]
-[ext_resource type="Script" uid="uid://dhyhgp0v1407g" path="res://Scripts/Constructor_hotbar.gd" id="14_5awit"]
+[ext_resource type="Script" uid="uid://ct7od2d6humj2" path="res://Scripts/Constructor_hotbar.gd" id="14_5awit"]
 [ext_resource type="PackedScene" uid="uid://40e7gnocdmnt" path="res://Scenes/Constructor.tscn" id="15_wbpsv"]
-[ext_resource type="Script" uid="uid://u5muqorxpxsy" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
+[ext_resource type="Script" uid="uid://dl0kn83ihr5gl" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="17_pvg4h"]
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/Storage.tscn" id="19_nil32"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="20_1ap6o"]
-[ext_resource type="Texture2D" uid="uid://brjfxlsuh3gh3" path="res://Assets/pixil-frame-0.png" id="22_gudlw"]
-[ext_resource type="Texture2D" uid="uid://bct7ywbje818r" path="res://Assets/pixil-frame-1.png" id="23_6ig6v"]
-[ext_resource type="Texture2D" uid="uid://dpi3hkgy1p32f" path="res://Assets/pixil-frame-2.png" id="24_paml6"]
-[ext_resource type="Texture2D" uid="uid://dht5k313sr30v" path="res://Assets/pixil-frame-3.png" id="25_nkpgn"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
+[ext_resource type="Texture2D" uid="uid://c05jg536kyj6a" path="res://Assets/Controls-1.png" id="22_dpsl7"]
+[ext_resource type="Texture2D" uid="uid://jkpminw2xuwx" path="res://Assets/Controls-2.png" id="23_enwp0"]
+[ext_resource type="Texture2D" uid="uid://cbocxqmgto26r" path="res://Assets/Controls-3.png" id="24_n352l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyi6n"]
 texture = ExtResource("7_807aw")
@@ -223,23 +222,20 @@ custom_data_layer_1/name = "World"
 custom_data_layer_1/type = 4
 sources/0 = SubResource("TileSetAtlasSource_qyi6n")
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4immh"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ylh7l"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("22_gudlw")
+"texture": ExtResource("22_dpsl7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_6ig6v")
+"texture": ExtResource("23_enwp0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_paml6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_nkpgn")
+"texture": ExtResource("24_n352l")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"Controls",
 "speed": 5.0
 }]
 
@@ -275,13 +271,12 @@ offset_right = 409.0
 offset_bottom = 80.0
 mouse_filter = 1
 
-[node name="Detection_Button" type="Button" parent="Camera2D/Hotbar"]
+[node name="Button" type="Button" parent="Camera2D/Hotbar"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = -0.5
-offset_top = 1.0
-offset_right = 406.5
-offset_bottom = 81.0
+offset_left = 1.0
+offset_right = 409.0
+offset_bottom = 80.0
 mouse_filter = 1
 
 [node name="Extractor" type="Sprite2D" parent="Camera2D/Hotbar"]
@@ -416,11 +411,10 @@ vertical_alignment = 2
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
-offset_left = 191.0
-offset_top = -75.0
-offset_right = 280.0
-offset_bottom = -35.0
-mouse_filter = 2
+offset_left = 236.0
+offset_top = -181.0
+offset_right = 325.0
+offset_bottom = -104.0
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Goal"]
 layout_mode = 0
@@ -465,7 +459,6 @@ offset_left = -93.5
 offset_top = 80.0
 offset_right = 93.5
 offset_bottom = 96.0
-mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Can\'t Place Extractor"]
 layout_mode = 0
@@ -484,40 +477,38 @@ text = "Can only be placed on Resource nodes"
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = -93.5
+offset_left = -86.0
 offset_top = 80.0
-offset_right = 93.5
+offset_right = 86.0
 offset_bottom = 96.0
-mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Can\'t Place Building"]
 layout_mode = 0
-offset_right = 187.0
+offset_left = -4.0
+offset_right = 172.0
 offset_bottom = 16.0
 
 [node name="Label" type="Label" parent="Camera2D/Can\'t Place Building"]
 layout_mode = 0
-offset_right = 187.0
+offset_left = -2.0
+offset_right = 174.0
 offset_bottom = 16.0
 theme_override_colors/font_color = Color(0.568627, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
 text = "Can't be placed on Water/Mountain"
 
-[node name="Tooltip" type="Control" parent="Camera2D"]
+[node name="Controls" type="Control" parent="Camera2D"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -320.0
-offset_top = -176.0
-offset_right = -280.0
-offset_bottom = -136.0
-mouse_filter = 2
+offset_left = -325.0
+offset_top = -184.0
+offset_right = -285.0
+offset_bottom = -144.0
 
-[node name="TempTooltip" type="AnimatedSprite2D" parent="Camera2D/Tooltip"]
-position = Vector2(73, 46)
-scale = Vector2(0.97, 0.93)
-sprite_frames = SubResource("SpriteFrames_4immh")
-animation = &"new_animation"
-frame = 2
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/Controls"]
+position = Vector2(62, 59)
+sprite_frames = SubResource("SpriteFrames_ylh7l")
+animation = &"Controls"
 
 [node name="Extractor" parent="." instance=ExtResource("3_ofrym")]
 position = Vector2(44, 44)
@@ -535,8 +526,6 @@ position = Vector2(36, 36)
 position = Vector2(44, 44)
 
 [node name="Timer" type="Timer" parent="."]
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 
 [connection signal="mouse_entered" from="Camera2D/Hotbar" to="." method="_on_hotbar_mouse_entered"]
 [connection signal="mouse_exited" from="Camera2D/Hotbar" to="." method="_on_hotbar_mouse_exited"]

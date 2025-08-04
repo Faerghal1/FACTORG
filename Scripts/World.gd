@@ -19,6 +19,7 @@ func _ready():
 	global.bitmap.resize(Vector2i(bitmap_width,bitmap_height))
 	$Camera2D.position.x += global.width * 8
 	$Camera2D.position.y += global.height * 8
+	$Camera2D/Controls/AnimatedSprite2D.frame = 0
 
 
 func _process(_delta):
@@ -26,45 +27,49 @@ func _process(_delta):
 		get_tree().paused = true
 	$Camera2D/Goal/RodGoal.text = (str(int(global.rod)) + "/10")
 	$Camera2D/Goal/IngotGoal.text = (str(int(global.ingot)) + "/15")
-	if Input.is_action_just_pressed("Hotbar_1"): # belt
+	if Input.is_action_just_pressed("Hotbar_1"): # Belt
 		if global.slot == 1:
-			$Camera2D/Tooltip/TempTooltip.frame = 2
+			$Camera2D/Controls/AnimatedSprite2D.frame = 0
 			global.slot = 0
 		else:
 			global.slot = 1
-			$Camera2D/Tooltip/TempTooltip.frame = 0
-	if Input.is_action_just_pressed("Hotbar_2"): # extractor
+			$Camera2D/Controls/AnimatedSprite2D.frame = 2
+	if Input.is_action_just_pressed("Hotbar_2"): # Extractor
 		if global.slot == 2:
-			$Camera2D/Tooltip/TempTooltip.frame = 2
+			$Camera2D/Controls/AnimatedSprite2D.frame = 0
 			global.slot = 0
 		else:
 			global.slot = 2
-			$Camera2D/Tooltip/TempTooltip.frame = 0
-	if Input.is_action_just_pressed("Hotbar_3"): # smelter
+			$Camera2D/Controls/AnimatedSprite2D.frame = 2
+	if Input.is_action_just_pressed("Hotbar_3"): # Smelter
 		if global.slot == 3:
-			$Camera2D/Tooltip/TempTooltip.frame = 2
+			$Camera2D/Controls/AnimatedSprite2D.frame = 0
 			global.slot = 0
 		else:
 			global.slot = 3
-			$Camera2D/Tooltip/TempTooltip.frame = 1
-	if Input.is_action_just_pressed("Hotbar_4"): # construc
+			$Camera2D/Controls/AnimatedSprite2D.frame = 1
+	if Input.is_action_just_pressed("Hotbar_4"): # Constructor
 		if global.slot == 4:
-			$Camera2D/Tooltip/TempTooltip.frame = 2
+			$Camera2D/Controls/AnimatedSprite2D.frame = 0
 			global.slot = 0
 		else:
 			global.slot = 4
-			$Camera2D/Tooltip/TempTooltip.frame = 1
-	if Input.is_action_just_pressed("Hotbar_5"): # storage
+			$Camera2D/Controls/AnimatedSprite2D.frame = 1
+	if Input.is_action_just_pressed("Hotbar_5"): # Storage
 		if global.slot == 5:
-			$Camera2D/Tooltip/TempTooltip.frame = 2
+			$Camera2D/Controls/AnimatedSprite2D.frame = 0
 			global.slot = 0
 		else:
 			global.slot = 5
-			$Camera2D/Tooltip/TempTooltip.frame = 1
-	if not global.mouse_on_hotbar:
+			$Camera2D/Controls/AnimatedSprite2D.frame = 2
+	if global.mouse_on_hotbar == false:
 		if Input.is_action_pressed("Left_click") and global.buildings_cant_place \
-		and (global.slot == 1 or global.slot ==3 or global.slot == 4 or global.slot ==5):
+		and global.slot != 2 and global.slot != 0:
 			$"Camera2D/Can't Place Building".show()
+			$Timer.start()
+		if Input.is_action_pressed("Left_click") and global.slot == 2 \
+		and global.extractor_cant_place:
+			$"Camera2D/Can't Place Extractor".show()
 			$Timer.start()
 		if Input.is_action_pressed("Left_click") and global.slot == 1 \
 		and not global.buildings_cant_place:
@@ -82,10 +87,6 @@ func _process(_delta):
 				add_sibling(belt)
 				belt.clone = 1
 				global.bitmap.set_bit(pos.x, pos.y, true)
-		if Input.is_action_pressed("Left_click") and global.slot == 2 \
-		and global.extractor_cant_place:
-			$"Camera2D/Can't Place Extractor".show()
-			$Timer.start()
 		if Input.is_action_pressed("Left_click") and global.slot == 2 \
 		and not global.extractor_cant_place:
 			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
@@ -145,7 +146,7 @@ func _process(_delta):
 				storage.position.x -= 8
 				storage.position.y -= 8
 				storage.modulate.a = 1
-				storage.rotation_degrees = direction*2
+				storage.rotation_degrees = direction
 				storage.direction = rotation/90
 				storage.set_meta("Storage", direction/90)
 				add_sibling(storage)
@@ -164,10 +165,9 @@ func _on_timer_timeout():
 	$"Camera2D/Can't Place Building".hide()
 
 
-func _on_hotbar_mouse_entered() -> void:
+func _on_hotbar_mouse_entered():
 	global.mouse_on_hotbar = true
-	print(global.mouse_on_hotbar)
 
-func _on_hotbar_mouse_exited() -> void:
+
+func _on_hotbar_mouse_exited():
 	global.mouse_on_hotbar = false
-	print(global.mouse_on_hotbar)

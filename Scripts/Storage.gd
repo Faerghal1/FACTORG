@@ -21,6 +21,8 @@ func _process(_delta):
 		rotation_degrees += 180
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		queue_free()
+	if Input.is_action_just_pressed("Rotate(R)") and not clone:
+		rotation_degrees += 90
 	if clone == 0:
 		if global.slot == 5:
 			show()
@@ -62,7 +64,7 @@ func _on_mouse_exited():
 	delete = 0
 
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	if clone == 0:
 		var map = get_tree().current_scene.get_node("Generated_map")
 		var cell = map.local_to_map(position/2)

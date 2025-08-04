@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://40e7gnocdmnt"]
 
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="1_gcfcv"]
-[ext_resource type="Script" uid="uid://s886mbm6h7ls" path="res://Scripts/Constructor.gd" id="1_lq4kr"]
+[ext_resource type="Script" uid="uid://deus7g6hi4ux2" path="res://Scripts/Constructor.gd" id="1_lq4kr"]
 [ext_resource type="Texture2D" uid="uid://cshbe5cqr5jtv" path="res://Assets/Recipe_List.png" id="2_758gw"]
 [ext_resource type="PackedScene" uid="uid://ch4dodtt3vdb7" path="res://Scenes/Rod.tscn" id="2_tl7yo"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="4_ywd4q"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="4_ywd4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifi30"]
 size = Vector2(80, 79)
