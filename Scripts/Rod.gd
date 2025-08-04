@@ -15,7 +15,7 @@ func _process(_delta):
 		position.y -= 8
 	if move == 1:
 		if not test_move(transform, Vector2(16, 0).rotated(rotation)):
-			move_local_x(16)
+			$Timer.start()
 			move = 0
 
 
@@ -37,3 +37,8 @@ func _on_area_exited(area):
 func _on_ready():
 	move_local_y(8)
 	move_local_x(-24)
+
+
+func _on_timer_timeout():
+	move_local_x(16)
+	move = 0

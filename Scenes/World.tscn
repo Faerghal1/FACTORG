@@ -18,9 +18,9 @@
 [ext_resource type="Script" uid="uid://ct7od2d6humj2" path="res://Scripts/Constructor_hotbar.gd" id="14_5awit"]
 [ext_resource type="PackedScene" uid="uid://40e7gnocdmnt" path="res://Scenes/Constructor.tscn" id="15_wbpsv"]
 [ext_resource type="Script" uid="uid://dl0kn83ihr5gl" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
-[ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="17_pvg4h"]
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/Storage.tscn" id="19_nil32"]
 [ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
+[ext_resource type="Texture2D" uid="uid://blws2uva7dafk" path="res://Assets/Copper Wire.png" id="21_d3ars"]
 [ext_resource type="Texture2D" uid="uid://c05jg536kyj6a" path="res://Assets/Controls-1.png" id="22_dpsl7"]
 [ext_resource type="Texture2D" uid="uid://jkpminw2xuwx" path="res://Assets/Controls-2.png" id="23_enwp0"]
 [ext_resource type="Texture2D" uid="uid://cbocxqmgto26r" path="res://Assets/Controls-3.png" id="24_n352l"]
@@ -42,7 +42,6 @@ texture_region_size = Vector2i(10, 10)
 5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 6:0/0 = 0
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.3125, -2.4375, 2.125, -2.5, 2.1875, 2, -2.3125, 2)
-6:0/0/custom_data_1 = "Unplaceable"
 7:0/0 = 0
 7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
 8:0/0 = 0
@@ -441,7 +440,7 @@ vertical_alignment = 2
 position = Vector2(65, 20)
 texture = ExtResource("20_1ap6o")
 
-[node name="IngotGoal" type="Label" parent="Camera2D/Goal"]
+[node name="WireGoal" type="Label" parent="Camera2D/Goal"]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 49.0
@@ -454,7 +453,7 @@ vertical_alignment = 2
 
 [node name="Sprite2D2" type="Sprite2D" parent="Camera2D/Goal"]
 position = Vector2(65, 60)
-texture = ExtResource("17_pvg4h")
+texture = ExtResource("21_d3ars")
 
 [node name="Can\'t Place Extractor" type="Control" parent="Camera2D"]
 visible = false

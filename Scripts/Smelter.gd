@@ -30,7 +30,7 @@ func _process(_delta):
 
 func _on_area_entered(area):
 	if clone == 1:
-		if area.has_meta("Resource") and $Ingot.visible == true \
+		if area.has_meta("Resource") and $Iron_ingot.visible == true \
 		and not $RayCast2D.get_collider():
 			print($RayCast2D.get_collider())
 			print("Iron Ingot")

@@ -56,6 +56,10 @@ func _on_area_entered(area):
 				$Copper_ingot.show()
 				print("Copper_Ingot")
 				amount += 1
+			if area.get_meta("Type") == "Direction Wire":
+				$Copper_wire.show()
+				print("Copper_Wire")
+				amount += 1
 
 
 func _on_mouse_entered():

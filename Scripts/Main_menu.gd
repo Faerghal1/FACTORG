@@ -12,3 +12,7 @@ func _on_main_menu_button_pressed() -> void:
 	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))
 # as scene is large loading time is big
 # project freezes for 10secs
+
+
+func _on_quit_button_pressed():
+	get_tree().quit()

@@ -239,3 +239,4 @@ text = "Quit"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Camera2D/Start_button" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Camera2D/Quit_button" to="." method="_on_quit_button_pressed"]
