@@ -310,6 +310,7 @@ offset_right = 42.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
 mouse_filter = 1
+flat = true
 alignment = 2
 script = ExtResource("6_ksayx")
 metadata/Belt = true
@@ -322,6 +323,7 @@ offset_right = 121.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
 mouse_filter = 1
+flat = true
 script = ExtResource("8_lpojc")
 metadata/Extractor = true
 
@@ -332,6 +334,7 @@ offset_top = 5.0
 offset_right = 236.0
 offset_bottom = 75.0
 mouse_filter = 1
+flat = true
 script = ExtResource("11_6dldg")
 
 [node name="ConstructorButton" type="Button" parent="Camera2D/Hotbar"]
@@ -341,6 +344,7 @@ offset_top = 5.0
 offset_right = 319.0
 offset_bottom = 76.0
 mouse_filter = 1
+flat = true
 script = ExtResource("14_5awit")
 
 [node name="StorageButton" type="Button" parent="Camera2D/Hotbar"]
@@ -350,6 +354,7 @@ offset_top = 5.0
 offset_right = 401.0
 offset_bottom = 76.0
 mouse_filter = 1
+flat = true
 script = ExtResource("17_dpebd")
 
 [node name="Label" type="Label" parent="Camera2D/Hotbar"]

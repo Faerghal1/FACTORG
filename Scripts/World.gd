@@ -147,8 +147,8 @@ func _process(_delta):
 				storage.position.y -= 8
 				storage.modulate.a = 1
 				storage.rotation_degrees = direction
-				storage.direction = rotation/90
-				storage.set_meta("Storage", direction/90)
+				storage.direction = rotation/180
+				storage.set_meta("Storage", direction/180)
 				add_sibling(storage)
 				storage.clone = 1
 				global.bitmap.set_bit(pos.x, pos.y, true)

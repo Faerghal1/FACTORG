@@ -28,16 +28,17 @@ func _process(_delta):
 			hide()
 
 func _on_area_entered(area):
-	if area.has_meta("Ingot") and $Rod.visible == true \
-	and not $RayCast2D.get_collider() == CharacterBody2D:
-		var rod = rod_scene.instantiate()
-		rod.position = position
-		rod.modulate.a = 1
-		rod.rotation = rotation
-		rod.direction = rotation/90
-		rod.set_meta("Rod", direction/90)
-		add_sibling.call_deferred(rod)
-		rod.clone = 1
+	if clone == 1:
+		if area.has_meta("Ingot") and $Rod.visible == true \
+		and not $RayCast2D.get_collider():
+			var rod = rod_scene.instantiate()
+			rod.position = position
+			rod.modulate.a = 1
+			rod.rotation = rotation
+			rod.direction = rotation/90
+			rod.set_meta("Rod", direction/90)
+			add_sibling.call_deferred(rod)
+			rod.clone = 1
 
 func _on_mouse_entered():
 	delete = 1

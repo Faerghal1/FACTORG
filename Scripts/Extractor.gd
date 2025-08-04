@@ -42,27 +42,27 @@ func _process(_delta):
 
 
 func _on_timer_timeout():
-	if clone == 1 and global.extractor_placed == true \
-	and not $RayCast2D.get_collider() and is_iron == true:
-		print($RayCast2D.get_collider())
-		var resource = resource_scene.instantiate()
-		resource.position = position
-		resource.modulate.a = 1
-		resource.rotation = rotation
-		resource.direction = rotation/90
-		resource.set_meta("Resource", direction/90)
-		add_sibling(resource)
-		resource.clone = 1
-	if clone == 1 and global.extractor_placed == true \
-	and not $RayCast2D.get_collider() and is_copper == true:
-		var copper = copper_scene.instantiate()
-		copper.position = position
-		copper.modulate.a = 1
-		copper.rotation = rotation
-		copper.direction = rotation/90
-		copper.set_meta("Copper", direction/90)
-		add_sibling(copper)
-		copper.clone = 1
+	if clone == 1:
+		if global.extractor_placed == true \
+		and not $RayCast2D.get_collider() and is_iron == true:
+			var resource = resource_scene.instantiate()
+			resource.position = position
+			resource.modulate.a = 1
+			resource.rotation = rotation
+			resource.direction = rotation/90
+			resource.set_meta("Resource", direction/90)
+			add_sibling(resource)
+			resource.clone = 1
+		if global.extractor_placed == true \
+		and not $RayCast2D.get_collider() and is_copper == true:
+			var copper = copper_scene.instantiate()
+			copper.position = position
+			copper.modulate.a = 1
+			copper.rotation = rotation
+			copper.direction = rotation/90
+			copper.set_meta("Copper", direction/90)
+			add_sibling(copper)
+			copper.clone = 1
 
 func _on_mouse_entered():
 	delete = 1

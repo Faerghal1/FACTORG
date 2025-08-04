@@ -3,6 +3,7 @@ extends Area2D
 @onready var global = get_node("/root/Global")
 
 @export var ingot_scene: PackedScene
+@export var copper_ingot_scene: PackedScene
 var clone = 0
 var direction = 0
 var delete = 0
@@ -28,16 +29,29 @@ func _process(_delta):
 
 
 func _on_area_entered(area):
-	if area.has_meta("Resource") and $Ingot.visible == true \
-	and not $RayCast2D.get_collider() == CharacterBody2D:
-		var ingot = ingot_scene.instantiate()
-		ingot.position = position
-		ingot.modulate.a = 1
-		ingot.rotation = rotation
-		ingot.direction = rotation/90
-		ingot.set_meta("Ingot", direction/90)
-		add_sibling.call_deferred(ingot)
-		ingot.clone = 1
+	if clone == 1:
+		if area.has_meta("Resource") and $Ingot.visible == true \
+		and not $RayCast2D.get_collider():
+			print($RayCast2D.get_collider())
+			print("Iron Ingot")
+			var ingot = ingot_scene.instantiate()
+			ingot.position = position
+			ingot.modulate.a = 1
+			ingot.rotation = rotation
+			ingot.direction = rotation/90
+			ingot.set_meta("Ingot", direction/90)
+			add_sibling.call_deferred(ingot)
+			ingot.clone = 1
+		if area.has_meta("Copper") and $Copper_ingot.visible == true \
+		and not $RayCast2D.get_collider():
+			var copper_ingot = copper_ingot_scene.instantiate()
+			copper_ingot.position = position
+			copper_ingot.modulate.a = 1
+			copper_ingot.rotation = rotation
+			copper_ingot.direction = rotation/90
+			copper_ingot.set_meta("Copper_ingot", direction/90)
+			add_sibling.call_deferred(copper_ingot)
+			copper_ingot.clone = 1
 
 
 func _on_mouse_entered():
@@ -51,7 +65,7 @@ func _on_mouse_exited():
 func _on_recipe_selected():
 	if clone == 1 and $Recipe.visible == true:
 		$Recipe.hide()
-		$Ingot.show()
+		$Recipe_list.show()
 
 
 func _on_body_entered(_body):
@@ -63,3 +77,13 @@ func _on_body_entered(_body):
 			global.buildings_cant_place = false
 		else:
 			global.buildings_cant_place = true
+
+
+func _on_iron_ingot_pressed():
+	$Iron_ingot.show()
+	$Recipe_list.hide()
+
+
+func _on_copper_ingot_pressed():
+	$Copper_ingot.show()
+	$Recipe_list.hide()

@@ -46,6 +46,10 @@ position = Vector2(-5.06639e-07, -5.06639e-07)
 scale = Vector2(0.9375, 0.9375)
 texture = ExtResource("6_q3m1a")
 
+[node name="Copper_ingot" type="Sprite2D" parent="."]
+position = Vector2(-5.06639e-07, -5.06639e-07)
+scale = Vector2(0.9375, 0.9375)
+
 [node name="ResourceAmount" type="Label" parent="."]
 offset_left = 2.5
 offset_top = 2.5
