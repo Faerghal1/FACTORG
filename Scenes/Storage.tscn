@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dqv62kkyefluf"]
 
-[ext_resource type="Script" path="res://Scripts/Storage.gd" id="1_m7wf3"]
+[ext_resource type="Script" uid="uid://deku64txon6ar" path="res://Scripts/Storage.gd" id="1_m7wf3"]
 [ext_resource type="Texture2D" uid="uid://bjl26wes5neh3" path="res://Assets/Storage.png" id="1_mvajw"]
 [ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="3_lfbm8"]
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="4_w5myp"]

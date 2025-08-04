@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dhva5spj7okws"]
 
-[ext_resource type="Texture2D" uid="uid://b66a6d7jsdljs" path="res://Assets/pixil-frame-0(1).png" id="1_ei6ab"]
+[ext_resource type="Texture2D" uid="uid://b66a6d7jsdljs" path="res://Assets/Temp_tooltip.png" id="1_ei6ab"]
 
 [node name="Tooltip" type="Control"]
 layout_mode = 3

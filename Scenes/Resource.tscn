@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://o7oyyb65bq0x"]
 
-[ext_resource type="Script" path="res://Scripts/Resource.gd" id="1_chsbp"]
+[ext_resource type="Script" uid="uid://bai8w0kxfy58x" path="res://Scripts/Resource.gd" id="1_chsbp"]
 [ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Iron_Ore.png" id="2_qavul"]
-[ext_resource type="Script" path="res://Scripts/Item_sprites.gd" id="3_ompfr"]
+[ext_resource type="Script" uid="uid://1dhwm4g2k74b" path="res://Scripts/Item_sprites.gd" id="3_ompfr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1xui"]
 size = Vector2(10, 10)

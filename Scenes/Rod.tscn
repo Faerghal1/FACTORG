@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://ch4dodtt3vdb7"]
 
-[ext_resource type="Script" path="res://Scripts/Rod.gd" id="1_k070t"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="2_b4ct5"]
-[ext_resource type="Script" path="res://Scripts/Item_sprites.gd" id="3_mfwth"]
+[ext_resource type="Script" uid="uid://khtkb0jmcuc2" path="res://Scripts/Rod.gd" id="1_k070t"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="2_b4ct5"]
+[ext_resource type="Script" uid="uid://1dhwm4g2k74b" path="res://Scripts/Item_sprites.gd" id="3_mfwth"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85k5t"]
 size = Vector2(32, 25)
