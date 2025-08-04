@@ -457,6 +457,7 @@ texture = ExtResource("21_d3ars")
 
 [node name="Can\'t Place Extractor" type="Control" parent="Camera2D"]
 visible = false
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = -93.5
@@ -479,6 +480,7 @@ text = "Can only be placed on Resource nodes"
 
 [node name="Can\'t Place Building" type="Control" parent="Camera2D"]
 visible = false
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = -86.0
@@ -502,6 +504,7 @@ theme_override_font_sizes/font_size = 10
 text = "Can't be placed on Water/Mountain"
 
 [node name="Controls" type="Control" parent="Camera2D"]
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = -325.0
@@ -516,6 +519,7 @@ animation = &"Controls"
 
 [node name="Belt_select" type="Control" parent="Camera2D"]
 visible = false
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = 288.0
@@ -545,6 +549,7 @@ autowrap_mode = 3
 
 [node name="Extractor_select" type="Control" parent="Camera2D"]
 visible = false
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = 288.0
@@ -574,6 +579,7 @@ autowrap_mode = 3
 
 [node name="Smelter_select" type="Control" parent="Camera2D"]
 visible = false
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = 288.0
@@ -603,6 +609,7 @@ autowrap_mode = 3
 
 [node name="Constructor_select" type="Control" parent="Camera2D"]
 visible = false
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = 288.0
@@ -658,6 +665,7 @@ autowrap_mode = 3
 
 [node name="Storage_select" type="Control" parent="Camera2D"]
 visible = false
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = 288.0

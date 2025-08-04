@@ -83,12 +83,12 @@ func _process(_delta):
 	if not global.slot == 5:
 		$Camera2D/Storage_select.hide()
 	if global.mouse_on_hotbar == false:
-		if Input.is_action_pressed("Left_click") and global.buildings_cant_place \
-		and global.slot != 2 and global.slot != 0:
+		if Input.is_action_pressed("Left_click") and global.slot != 2 \
+		and global.slot != 0 and global.buildings_cant_place == true:
 			$"Camera2D/Can't Place Building".show()
 			$Timer.start()
 		if Input.is_action_pressed("Left_click") and global.slot == 2 \
-		and global.extractor_cant_place:
+		and global.extractor_cant_place == true:
 			$"Camera2D/Can't Place Extractor".show()
 			$Timer.start()
 		if Input.is_action_pressed("Left_click") and global.slot == 1 \
