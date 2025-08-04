@@ -42,27 +42,27 @@ func _process(_delta):
 
 
 func _on_timer_timeout():
-	if clone == 1 and global.extractor_placed == true \
-	and $RayCast2D.get_collider() != CharacterBody2D and is_iron == true:
-		print($RayCast2D.get_collider())
-		var resource = resource_scene.instantiate()
-		resource.position = position
-		resource.modulate.a = 1
-		resource.rotation = rotation
-		resource.direction = rotation/90
-		resource.set_meta("Resource", direction/90)
-		add_sibling(resource)
-		resource.clone = 1
-	if clone == 1 and global.extractor_placed == true \
-	and $RayCast2D.get_collider() != CharacterBody2D and is_copper == true:
-		var copper = copper_scene.instantiate()
-		copper.position = position
-		copper.modulate.a = 1
-		copper.rotation = rotation
-		copper.direction = rotation/90
-		copper.set_meta("Copper", direction/90)
-		add_sibling(copper)
-		copper.clone = 1
+	if clone == 1:
+		if global.extractor_placed == true \
+		and not $RayCast2D.get_collider() and is_iron == true:
+			var resource = resource_scene.instantiate()
+			resource.position = position
+			resource.modulate.a = 1
+			resource.rotation = rotation
+			resource.direction = rotation/90
+			resource.set_meta("Resource", direction/90)
+			add_sibling(resource)
+			resource.clone = 1
+		if global.extractor_placed == true \
+		and not $RayCast2D.get_collider() and is_copper == true:
+			var copper = copper_scene.instantiate()
+			copper.position = position
+			copper.modulate.a = 1
+			copper.rotation = rotation
+			copper.direction = rotation/90
+			copper.set_meta("Copper", direction/90)
+			add_sibling(copper)
+			copper.clone = 1
 
 func _on_mouse_entered():
 	delete = 1
@@ -77,6 +77,7 @@ func _on_body_entered(_body):
 		var map = get_tree().current_scene.get_node("Generated_map")
 		var cell = map.local_to_map(position/2)
 		var data = map.get_cell_tile_data(cell)
+		print(data.get_custom_data("Resource"))
 		if data.get_custom_data("Resource") == "Iron" or data.get_custom_data("Resource") == "Copper":
 			global.extractor_cant_place = false
 		else:

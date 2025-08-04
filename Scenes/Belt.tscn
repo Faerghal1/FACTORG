@@ -1,12 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://oiec24pi2b32"]
+[gd_scene load_steps=4 format=3 uid="uid://oiec24pi2b32"]
 
 [ext_resource type="Script" uid="uid://bm8o3twq7rtps" path="res://Scripts/belt.gd" id="1_sxojs"]
 [ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Conveyor_Belt.png" id="2_j2ave"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tpy2d"]
 size = Vector2(16, 16)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ropeh"]
 
 [node name="Area2D" type="Area2D"]
 modulate = Color(1, 1, 1, 0.588235)
@@ -25,13 +23,7 @@ rotation = 1.5708
 scale = Vector2(1.255, 1.255)
 texture = ExtResource("2_j2ave")
 
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-modulate = Color(1, 1, 1, 0.0352941)
-self_modulate = Color(1, 1, 1, 0.0509804)
-rotation = -1.57079
-scale = Vector2(40, 40)
-mesh = SubResource("BoxMesh_ropeh")
-
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

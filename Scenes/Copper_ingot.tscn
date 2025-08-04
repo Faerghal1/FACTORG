@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://2frehtr7kvp6"]
+[gd_scene load_steps=6 format=3 uid="uid://dpnajo1dbl2um"]
 
-[ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="1_aake4"]
-[ext_resource type="Script" uid="uid://ql4nlye8y264" path="res://Scripts/Ingot.gd" id="1_d5gub"]
-[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_ygfop"]
+[ext_resource type="Script" uid="uid://bqv7jms5n2t7" path="res://Scripts/Copper_ingot.gd" id="1_qfg1t"]
+[ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="2_mld4h"]
+[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_0yoda"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8cko"]
 size = Vector2(20, 15)
@@ -13,7 +13,7 @@ size = Vector2(2, 3)
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_d5gub")
+script = ExtResource("1_qfg1t")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.19209e-07)
@@ -22,8 +22,8 @@ shape = SubResource("RectangleShape2D_k8cko")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
-metadata/Type = "Direction Ingot"
-metadata/Ingot = true
+metadata/Type = "Direction Copper Ingot"
+metadata/Copper_ingot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 1.19209e-07)
@@ -33,8 +33,8 @@ shape = SubResource("RectangleShape2D_rlib0")
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 z_index = 1
 scale = Vector2(1.255, 1.255)
-texture = ExtResource("1_aake4")
-script = ExtResource("3_ygfop")
+texture = ExtResource("2_mld4h")
+script = ExtResource("3_0yoda")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

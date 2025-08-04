@@ -18,11 +18,9 @@ func _process(_delta):
 		position.x -= 8
 		position.y -= 8
 	if Input.is_action_just_pressed("Rotate(R)") and not clone:
-		rotation_degrees += 180
+		rotation_degrees += 90
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		queue_free()
-	if Input.is_action_just_pressed("Rotate(R)") and not clone:
-		rotation_degrees += 90
 	if clone == 0:
 		if global.slot == 5:
 			show()
@@ -54,6 +52,14 @@ func _on_area_entered(area):
 				$Copper_Ore.show()
 				print("Copper")
 				amount += 1
+			if area.get_meta("Type") == "Direction Copper Ingot":
+				$Copper_ingot.show()
+				print("Copper_Ingot")
+				amount += 1
+			if area.get_meta("Type") == "Direction Wire":
+				$Copper_wire.show()
+				print("Copper_Wire")
+				amount += 1
 
 
 func _on_mouse_entered():
@@ -69,6 +75,7 @@ func _on_body_entered(_body):
 		var map = get_tree().current_scene.get_node("Generated_map")
 		var cell = map.local_to_map(position/2)
 		var data = map.get_cell_tile_data(cell)
+		print(data.get_custom_data("World"))
 		if not data.get_custom_data("World") == "Unplaceable":
 			global.buildings_cant_place = false
 		else:

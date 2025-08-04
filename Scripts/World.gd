@@ -23,52 +23,72 @@ func _ready():
 
 
 func _process(_delta):
-	if global.ingot >= 15 and global.rod >= 10:
+	if global.copper_wire >= 15 and global.rod >= 10:
 		get_tree().paused = true
 	$Camera2D/Goal/RodGoal.text = (str(int(global.rod)) + "/10")
-	$Camera2D/Goal/IngotGoal.text = (str(int(global.ingot)) + "/15")
+	$Camera2D/Goal/WireGoal.text = (str(int(global.copper_wire)) + "/15")
 	if Input.is_action_just_pressed("Hotbar_1"): # Belt
 		if global.slot == 1:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
+			$Camera2D/Belt_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 1
 			$Camera2D/Controls/AnimatedSprite2D.frame = 2
+			$Camera2D/Belt_select.show()
 	if Input.is_action_just_pressed("Hotbar_2"): # Extractor
 		if global.slot == 2:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
+			$Camera2D/Extractor_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 2
 			$Camera2D/Controls/AnimatedSprite2D.frame = 2
+			$Camera2D/Extractor_select.show()
 	if Input.is_action_just_pressed("Hotbar_3"): # Smelter
 		if global.slot == 3:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
+			$Camera2D/Smelter_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 3
 			$Camera2D/Controls/AnimatedSprite2D.frame = 1
+			$Camera2D/Smelter_select.show()
 	if Input.is_action_just_pressed("Hotbar_4"): # Constructor
 		if global.slot == 4:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
+			$Camera2D/Constructor_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 4
 			$Camera2D/Controls/AnimatedSprite2D.frame = 1
+			$Camera2D/Constructor_select.show()
 	if Input.is_action_just_pressed("Hotbar_5"): # Storage
 		if global.slot == 5:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
+			$Camera2D/Storage_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 5
 			$Camera2D/Controls/AnimatedSprite2D.frame = 2
+			$Camera2D/Storage_select.show()
+	if not global.slot == 1:
+		$Camera2D/Belt_select.hide()
+	if not global.slot == 2:
+		$Camera2D/Extractor_select.hide()
+	if not global.slot == 3:
+		$Camera2D/Smelter_select.hide()
+	if not global.slot == 4:
+		$Camera2D/Constructor_select.hide()
+	if not global.slot == 5:
+		$Camera2D/Storage_select.hide()
 	if global.mouse_on_hotbar == false:
-		if Input.is_action_pressed("Left_click") and global.buildings_cant_place \
-		and global.slot != 2 and global.slot != 0:
+		if Input.is_action_pressed("Left_click") and global.slot != 2 \
+		and global.slot != 0 and global.buildings_cant_place == true:
 			$"Camera2D/Can't Place Building".show()
 			$Timer.start()
 		if Input.is_action_pressed("Left_click") and global.slot == 2 \
-		and global.extractor_cant_place:
+		and global.extractor_cant_place == true:
 			$"Camera2D/Can't Place Extractor".show()
 			$Timer.start()
 		if Input.is_action_pressed("Left_click") and global.slot == 1 \
@@ -147,8 +167,8 @@ func _process(_delta):
 				storage.position.y -= 8
 				storage.modulate.a = 1
 				storage.rotation_degrees = direction
-				storage.direction = rotation/90
-				storage.set_meta("Storage", direction/90)
+				storage.direction = rotation/180
+				storage.set_meta("Storage", direction/180)
 				add_sibling(storage)
 				storage.clone = 1
 				global.bitmap.set_bit(pos.x, pos.y, true)

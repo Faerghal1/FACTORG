@@ -25,7 +25,7 @@ func _on_area_entered(area):
 		var dir = area.get_meta("Belt")
 		rotation_degrees = dir*90
 	if area.has_meta("Storage") and area.get_meta("Storage")>=0:
-		global.rod += 1
+		global.copper_wire += 1
 		queue_free()
 
 
