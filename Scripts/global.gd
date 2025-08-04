@@ -11,3 +11,4 @@ var extractor_placed = false
 var slot = 0
 var extractor_cant_place = true
 var buildings_cant_place = true
+var mouse_on_hotbar = false

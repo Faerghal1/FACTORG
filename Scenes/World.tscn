@@ -263,12 +263,21 @@ offset_left = -204.5
 offset_top = 99.0
 offset_right = 204.5
 offset_bottom = 179.0
+mouse_filter = 1
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Hotbar"]
 layout_mode = 0
 offset_right = 409.0
 offset_bottom = 80.0
-mouse_filter = 2
+mouse_filter = 1
+
+[node name="Button" type="Button" parent="Camera2D/Hotbar"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1.0
+offset_right = 409.0
+offset_bottom = 80.0
+mouse_filter = 1
 
 [node name="Extractor" type="Sprite2D" parent="Camera2D/Hotbar"]
 position = Vector2(121, 40)
@@ -300,6 +309,7 @@ offset_top = 5.0
 offset_right = 42.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
+mouse_filter = 1
 alignment = 2
 script = ExtResource("6_ksayx")
 metadata/Belt = true
@@ -311,6 +321,7 @@ offset_top = 5.0
 offset_right = 121.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
+mouse_filter = 1
 script = ExtResource("8_lpojc")
 metadata/Extractor = true
 
@@ -320,6 +331,7 @@ offset_left = 166.0
 offset_top = 5.0
 offset_right = 236.0
 offset_bottom = 75.0
+mouse_filter = 1
 script = ExtResource("11_6dldg")
 
 [node name="ConstructorButton" type="Button" parent="Camera2D/Hotbar"]
@@ -328,6 +340,7 @@ offset_left = 247.0
 offset_top = 5.0
 offset_right = 319.0
 offset_bottom = 76.0
+mouse_filter = 1
 script = ExtResource("14_5awit")
 
 [node name="StorageButton" type="Button" parent="Camera2D/Hotbar"]
@@ -336,6 +349,7 @@ offset_left = 329.0
 offset_top = 5.0
 offset_right = 401.0
 offset_bottom = 76.0
+mouse_filter = 1
 script = ExtResource("17_dpebd")
 
 [node name="Label" type="Label" parent="Camera2D/Hotbar"]
@@ -344,6 +358,7 @@ offset_left = 34.0
 offset_top = 49.0
 offset_right = 74.0
 offset_bottom = 72.0
+mouse_filter = 1
 text = "1"
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -354,6 +369,7 @@ offset_left = 113.0
 offset_top = 49.0
 offset_right = 153.0
 offset_bottom = 72.0
+mouse_filter = 1
 text = "2"
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -364,6 +380,7 @@ offset_left = 193.0
 offset_top = 49.0
 offset_right = 233.0
 offset_bottom = 72.0
+mouse_filter = 1
 text = "3"
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -374,6 +391,7 @@ offset_left = 274.0
 offset_top = 49.0
 offset_right = 314.0
 offset_bottom = 72.0
+mouse_filter = 1
 text = "4"
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -384,6 +402,7 @@ offset_left = 357.0
 offset_top = 49.0
 offset_right = 397.0
 offset_bottom = 72.0
+mouse_filter = 1
 text = "5"
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -508,6 +527,8 @@ position = Vector2(44, 44)
 
 [node name="Timer" type="Timer" parent="."]
 
+[connection signal="mouse_entered" from="Camera2D/Hotbar" to="." method="_on_hotbar_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/Hotbar" to="." method="_on_hotbar_mouse_exited"]
 [connection signal="pressed" from="Camera2D/Hotbar/BeltButton" to="Camera2D/Hotbar/BeltButton" method="_on_belt_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/ExtractorButton" to="Camera2D/Hotbar/ExtractorButton" method="_on_extractor_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/SmelterButton" to="Camera2D/Hotbar/SmelterButton" method="_on_smelter_selected"]
