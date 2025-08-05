@@ -483,19 +483,18 @@ theme_override_font_sizes/font_size = 10
 text = "Can only be placed on Resource nodes"
 
 [node name="Can\'t Place Building" type="Control" parent="Camera2D"]
-visible = false
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
-offset_left = -86.0
+offset_left = -118.0
 offset_top = 80.0
-offset_right = 86.0
+offset_right = 54.0
 offset_bottom = 96.0
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Can\'t Place Building"]
 layout_mode = 0
 offset_left = -4.0
-offset_right = 172.0
+offset_right = 240.0
 offset_bottom = 16.0
 
 [node name="Label" type="Label" parent="Camera2D/Can\'t Place Building"]
@@ -505,7 +504,7 @@ offset_right = 174.0
 offset_bottom = 16.0
 theme_override_colors/font_color = Color(0.568627, 0, 0, 1)
 theme_override_font_sizes/font_size = 10
-text = "Can't be placed on Water/Mountain"
+text = "Can't be placed on Water/Mountain, please move."
 
 [node name="Controls" type="Control" parent="Camera2D"]
 z_index = 2
@@ -660,33 +659,8 @@ position = Vector2(-13.392, 52)
 scale = Vector2(0.264676, 0.260355)
 texture = ExtResource("28_0bcf6")
 
-[node name="Storage_select" type="Control" parent="Camera2D/Constructor_select"]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="Camera2D/Constructor_select/Storage_select"]
-layout_mode = 0
-offset_left = -238.0
-offset_top = 4.0
-offset_right = 36.0
-offset_bottom = 101.0
-
-[node name="Label" type="Label" parent="Camera2D/Constructor_select/Storage_select"]
-layout_mode = 0
-offset_left = -230.0
-offset_top = 7.0
-offset_right = 32.0
-offset_bottom = 96.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
-text = "Storage:
-Corresponding Items when placed in the storage will count toward the goal Hotbar: 5 "
-autowrap_mode = 3
-
 [node name="Storage_select" type="Control" parent="Camera2D"]
+visible = false
 z_index = 2
 layout_mode = 3
 anchors_preset = 0

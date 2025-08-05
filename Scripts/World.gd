@@ -16,6 +16,7 @@ var extractor_position = Vector2i(0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	global.bitmap.resize(Vector2i(bitmap_width,bitmap_height))
 	$Camera2D.position.x += global.width * 8
 	$Camera2D.position.y += global.height * 8
