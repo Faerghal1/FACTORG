@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=29 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" uid="uid://fgq76fstefsg" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/Belt.tscn" id="2_0b5rt"]
@@ -21,9 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/Storage.tscn" id="19_nil32"]
 [ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
 [ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="21_d3ars"]
-[ext_resource type="Texture2D" uid="uid://c05jg536kyj6a" path="res://Assets/Controls-1.png" id="22_dpsl7"]
-[ext_resource type="Texture2D" uid="uid://jkpminw2xuwx" path="res://Assets/Controls-2.png" id="23_enwp0"]
-[ext_resource type="Texture2D" uid="uid://cbocxqmgto26r" path="res://Assets/Controls-3.png" id="24_n352l"]
 [ext_resource type="Texture2D" uid="uid://dw73hko5drmfx" path="res://Assets/Belt_Tooltip.png" id="25_l11rc"]
 [ext_resource type="Texture2D" uid="uid://drtna0n4jt5sw" path="res://Assets/Extractor_tooltip.png" id="26_w86vl"]
 [ext_resource type="Texture2D" uid="uid://bm0cfq134j8t6" path="res://Assets/Smelter_Tooltip.png" id="27_g01fq"]
@@ -227,16 +224,7 @@ sources/0 = SubResource("TileSetAtlasSource_qyi6n")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ylh7l"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("22_dpsl7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_enwp0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_n352l")
-}],
+"frames": [],
 "loop": true,
 "name": &"Controls",
 "speed": 5.0
@@ -420,9 +408,9 @@ z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = -327.0
-offset_top = -57.0
+offset_top = -23.0
 offset_right = -238.0
-offset_bottom = 20.0
+offset_bottom = 54.0
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Goal"]
 layout_mode = 0
@@ -517,7 +505,7 @@ offset_right = -285.0
 offset_bottom = -144.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/Controls"]
-position = Vector2(62, 59)
+position = Vector2(62, 79)
 sprite_frames = SubResource("SpriteFrames_ylh7l")
 animation = &"Controls"
 
