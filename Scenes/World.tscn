@@ -637,32 +637,6 @@ Can turn refined ingots into basic materials needed for progression
 Hotbar: 4"
 autowrap_mode = 3
 
-[node name="Storage_select" type="Control" parent="Camera2D/Constructor_select"]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ColorRect" type="ColorRect" parent="Camera2D/Constructor_select/Storage_select"]
-layout_mode = 0
-offset_left = -238.0
-offset_top = 4.0
-offset_right = 36.0
-offset_bottom = 101.0
-
-[node name="Label" type="Label" parent="Camera2D/Constructor_select/Storage_select"]
-layout_mode = 0
-offset_left = -230.0
-offset_top = 7.0
-offset_right = 32.0
-offset_bottom = 96.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
-text = "Storage:
-Corresponding Items when placed in the storage will count toward the goal Hotbar: 5 "
-autowrap_mode = 3
-
 [node name="Storage_select" type="Control" parent="Camera2D"]
 visible = false
 z_index = 2

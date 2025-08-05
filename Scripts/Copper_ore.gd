@@ -15,12 +15,14 @@ func _process(_delta):
 		position.y -= 8
 	if move == 1:
 		if not test_move(transform, Vector2(16, 0).rotated(rotation)):
+			print("can move")
 			$Timer.start()
 			move = 0
 
 
 func _on_area_entered(area):
 	if area.has_meta("Belt") and area.get_meta("Belt")>=0:
+		print("on belt")
 		move = 1
 		var dir = area.get_meta("Belt")
 		rotation_degrees = dir*90

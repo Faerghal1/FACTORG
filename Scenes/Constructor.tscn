@@ -53,6 +53,7 @@ offset_bottom = 50.0
 scale = Vector2(1.25, 1.25)
 
 [node name="ColorRect" type="ColorRect" parent="Recipe_list"]
+layout_mode = 0
 offset_left = 45.0
 offset_top = -41.0
 offset_right = 97.0
@@ -61,6 +62,7 @@ scale = Vector2(2, 2)
 color = Color(0.0807833, 0.0807833, 0.0807833, 1)
 
 [node name="Iron_rod" type="Button" parent="Recipe_list"]
+layout_mode = 0
 offset_left = 48.0
 offset_top = -38.0
 offset_right = 132.0
@@ -74,6 +76,7 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Copper_wire" type="Button" parent="Recipe_list"]
+layout_mode = 0
 offset_left = 92.0
 offset_top = -38.0
 offset_right = 201.0
