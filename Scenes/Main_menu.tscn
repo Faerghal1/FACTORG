@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bf48i6vi82vci" path="res://Scripts/Main_menu.gd" id="1_cwcel"]
 [ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/Tilemap_gen.png" id="3_qr2n2"]
-[ext_resource type="Script" uid="uid://cywns0wfw84ca" path="res://Scripts/Tile_map.gd" id="4_j7h1k"]
-[ext_resource type="Script" uid="uid://dnfmspblpsk2u" path="res://Scripts/Camera_main_menu.gd" id="4_nvm8u"]
+[ext_resource type="Script" uid="uid://bhe7eg0evwwl8" path="res://Scripts/Tile_map.gd" id="4_j7h1k"]
+[ext_resource type="Script" uid="uid://bn2mi5df5byvg" path="res://Scripts/Camera_main_menu.gd" id="4_nvm8u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klm5o"]
 texture = ExtResource("3_qr2n2")
@@ -213,28 +213,38 @@ position = Vector2(381, 800)
 zoom = Vector2(2, 2)
 script = ExtResource("4_nvm8u")
 
+[node name="Label" type="Label" parent="Camera2D"]
+offset_left = -79.0
+offset_top = -103.0
+offset_right = 55.0
+offset_bottom = -80.0
+text = "FACTORG (Demo)"
+
 [node name="Start_button" type="Button" parent="Camera2D"]
 z_index = 5
-offset_left = -46.0
-offset_top = -95.0
-offset_right = 40.0
-offset_bottom = -83.0
+offset_left = -61.0
+offset_top = -20.0
+offset_right = 25.0
+offset_bottom = 11.0
 text = "Start"
+metadata/_edit_use_anchors_ = true
 
 [node name="Settings_button" type="Button" parent="Camera2D"]
+visible = false
 z_index = 5
-offset_left = -37.0
-offset_top = -46.0
-offset_right = 33.0
-offset_bottom = -15.0
+offset_left = -52.0
+offset_top = 29.0
+offset_right = 18.0
+offset_bottom = 60.0
 text = "Settings"
+metadata/_edit_use_anchors_ = true
 
 [node name="Quit_button" type="Button" parent="Camera2D"]
 z_index = 5
-offset_left = -21.0
-offset_top = 3.0
-offset_right = 21.0
-offset_bottom = 34.0
+offset_left = -36.0
+offset_top = 78.0
+offset_right = 6.0
+offset_bottom = 109.0
 text = "Quit"
 metadata/_edit_use_anchors_ = true
 

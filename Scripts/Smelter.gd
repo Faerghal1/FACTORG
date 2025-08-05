@@ -9,6 +9,15 @@ var direction = 0
 var delete = 0
 var pos = Vector2i(0,0)
 
+func _ready() -> void:
+	var map = get_tree().current_scene.get_node("Generated_map")
+	var cell = map.local_to_map(position/2)
+	var data = map.get_cell_tile_data(cell)
+	if not data.get_custom_data("World") == "Unplaceable":
+		show()
+	else:
+		queue_free()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
