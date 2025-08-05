@@ -16,7 +16,6 @@ var extractor_position = Vector2i(0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	global.bitmap.resize(Vector2i(bitmap_width,bitmap_height))
 	$Camera2D.position.x += global.width * 8
 	$Camera2D.position.y += global.height * 8
@@ -24,6 +23,10 @@ func _ready():
 
 
 func _process(_delta):
+	if Input.is_action_just_pressed("Pause"):
+		print("Paused")
+		$Camera2D/Pause_temp.show()
+		get_tree().paused = true
 	if global.copper_wire >= 15 and global.rod >= 10:
 		get_tree().paused = true
 	$Camera2D/Goal/RodGoal.text = (str(int(global.rod)) + "/10")
@@ -192,3 +195,12 @@ func _on_hotbar_mouse_entered():
 
 func _on_hotbar_mouse_exited():
 	global.mouse_on_hotbar = false
+
+
+func _on_main_menu_pressed():
+	get_tree().quit()
+
+
+func _on_resume_pressed():
+	$Camera2D/Pause_temp.hide()
+	get_tree().paused = false

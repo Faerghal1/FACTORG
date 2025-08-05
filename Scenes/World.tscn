@@ -690,6 +690,44 @@ text = "Storage:
 Corresponding Items when placed in the storage will count toward the goal Hotbar: 5 "
 autowrap_mode = 3
 
+[node name="Pause_temp" type="Control" parent="Camera2D"]
+process_mode = 3
+visible = false
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Resume" type="Button" parent="Camera2D/Pause_temp"]
+z_index = 4
+layout_mode = 0
+offset_left = -52.0
+offset_top = -107.0
+offset_right = 18.0
+offset_bottom = -76.0
+scale = Vector2(1.5, 1.5)
+text = "Resume"
+
+[node name="Main Menu" type="Button" parent="Camera2D/Pause_temp"]
+z_index = 4
+layout_mode = 0
+offset_left = -72.0
+offset_top = -8.0
+offset_right = 24.0
+offset_bottom = 23.0
+scale = Vector2(1.5, 1.5)
+text = "Main Menu"
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Pause_temp"]
+layout_mode = 0
+offset_left = -329.0
+offset_top = -185.0
+offset_right = 329.0
+offset_bottom = 185.0
+mouse_filter = 2
+color = Color(0.408329, 0.408329, 0.408329, 0.647059)
+
 [node name="Extractor" parent="." instance=ExtResource("3_ofrym")]
 position = Vector2(44, 44)
 
@@ -714,4 +752,6 @@ position = Vector2(44, 44)
 [connection signal="pressed" from="Camera2D/Hotbar/SmelterButton" to="Camera2D/Hotbar/SmelterButton" method="_on_smelter_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/ConstructorButton" to="Camera2D/Hotbar/ConstructorButton" method="_on_constructor_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/StorageButton" to="Camera2D/Hotbar/StorageButton" method="_on_storage_selected"]
+[connection signal="pressed" from="Camera2D/Pause_temp/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Camera2D/Pause_temp/Main Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
