@@ -1,34 +1,32 @@
 [gd_scene load_steps=6 format=3 uid="uid://unxnycyehs44"]
 
-[ext_resource type="Script" uid="uid://mvqiw7060x8g" path="res://Scripts/Copper_ore.gd" id="1_x4hn0"]
+[ext_resource type="Script" uid="uid://ca06kmkaamar" path="res://Scripts/Resource.gd" id="1_ca78w"]
 [ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="2_7jkfa"]
 [ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="2_qkbiu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7m42"]
-size = Vector2(25, 25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1xui"]
+size = Vector2(10, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4p6o3"]
-size = Vector2(3.33333, 3.33333)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22j22"]
+size = Vector2(5.33333, 5.33333)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_x4hn0")
+script = ExtResource("1_ca78w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.19209e-07, -1.86265e-07)
-scale = Vector2(0.4, 0.4)
-shape = SubResource("RectangleShape2D_a7m42")
+shape = SubResource("RectangleShape2D_o1xui")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
 metadata/Type = "Direction Copper"
 metadata/Copper = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1.49012e-07, 1.49012e-07)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2.38419e-07)
 scale = Vector2(1.5, 1.5)
-shape = SubResource("RectangleShape2D_4p6o3")
+shape = SubResource("RectangleShape2D_22j22")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 z_index = 1
@@ -41,5 +39,6 @@ one_shot = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="ready" from="Area2D" to="." method="_on_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
