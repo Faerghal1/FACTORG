@@ -23,8 +23,12 @@ func _ready():
 
 
 func _process(_delta):
+	if Input.is_action_just_pressed("Index"):
+		if $Camera2D/Index.visible == false:
+			$Camera2D/Index.show()
+		elif $Camera2D/Index.visible == true:
+			$Camera2D/Index.hide()
 	if Input.is_action_just_pressed("Pause"):
-		print("Paused")
 		$Camera2D/Pause_temp.show()
 		get_tree().paused = true
 	if global.copper_wire >= 15 and global.rod >= 10:
