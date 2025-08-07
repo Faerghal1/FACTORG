@@ -16,6 +16,18 @@ func _process(_delta):
 		$IronRod.show()
 	if Recipe == 6:
 		$CopperWire.show()
+	if not Recipe == 1:
+		$IronOre.hide()
+	if not Recipe == 2:
+		$CopperOre.hide()
+	if not Recipe == 3:
+		$IronIngot.hide()
+	if not Recipe == 4:
+		$CopperIngot.hide()
+	if not Recipe == 5:
+		$IronRod.hide()
+	if not Recipe == 6:
+		$CopperWire.hide()
 
 
 func _on_iron_ore_mouse_entered():
