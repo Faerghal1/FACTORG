@@ -10,7 +10,7 @@ var pos = Vector2i(0,0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if clone == 0 and	global.slot == 1:
+	if clone == 0 and global.slot == 1:
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 		position.x -= 8
 		position.y -= 8
@@ -33,7 +33,7 @@ func _on_mouse_exited():
 	delete = 0
 
 
-func _on_body_entered(_body):
+func _on_body_entered(body):
 	if clone == 0:
 		var map = get_tree().current_scene.get_node("Generated_map")
 		var cell = map.local_to_map(position/2)

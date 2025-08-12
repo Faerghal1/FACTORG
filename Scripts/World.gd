@@ -80,27 +80,31 @@ func _process(_delta):
 			global.slot = 5
 			$Camera2D/Controls/AnimatedSprite2D.frame = 2
 			$Camera2D/Storage_select.show()
-	if not global.slot == 1:
+	if not global.slot == 1: # Belt_tooltip
 		$Camera2D/Belt_select.hide()
-	if not global.slot == 2:
+	if not global.slot == 2: # Extractor_tooltip
 		$Camera2D/Extractor_select.hide()
-	if not global.slot == 3:
+	if not global.slot == 3: # Smelter_tooltip
 		$Camera2D/Smelter_select.hide()
-	if not global.slot == 4:
+	if not global.slot == 4: # Constructor_tooltip
 		$Camera2D/Constructor_select.hide()
-	if not global.slot == 5:
+	if not global.slot == 5: # Storage_tooltip
 		$Camera2D/Storage_select.hide()
 	if global.mouse_on_hotbar == false:
 		if Input.is_action_pressed("Left_click") and global.slot != 2 \
-		and global.slot != 0 and global.buildings_cant_place == true:
+		and global.slot != 0 and global.buildings_cant_place == true: # Buildings_cant_place
+			$"Camera2D/Can't Place Building".show()
+			$Timer.start()
+		if Input.is_action_pressed("Left_click") and global.slot != 2 \
+		and global.smelter_cant_place == true or global.constructor_cant_place == true:
 			$"Camera2D/Can't Place Building".show()
 			$Timer.start()
 		if Input.is_action_pressed("Left_click") and global.slot == 2 \
-		and global.extractor_cant_place == true:
+		and global.extractor_cant_place == true: # Extractor_cant_place
 			$"Camera2D/Can't Place Extractor".show()
 			$Timer.start()
 		if Input.is_action_pressed("Left_click") and global.slot == 1 \
-		and not global.buildings_cant_place:
+		and not global.buildings_cant_place: # Belt_placement
 			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 			if not global.bitmap.get_bit(pos.x , pos.y ):
 				print(pos)
@@ -116,7 +120,7 @@ func _process(_delta):
 				belt.clone = 1
 				global.bitmap.set_bit(pos.x, pos.y, true)
 		if Input.is_action_pressed("Left_click") and global.slot == 2 \
-		and not global.extractor_cant_place:
+		and not global.extractor_cant_place: # Extractor_placement
 			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 			if not global.bitmap.get_bit(pos.x , pos.y ):
 				print(pos)
@@ -133,7 +137,7 @@ func _process(_delta):
 				global.bitmap.set_bit(pos.x, pos.y, true)
 				global.extractor_placed = true
 		if Input.is_action_pressed("Left_click") and global.slot == 3 \
-		and not global.buildings_cant_place:
+		and not global.smelter_cant_place: # Smelter_placement
 			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 			if not global.bitmap.get_bit(pos.x , pos.y ) and not global.bitmap.get_bit(pos.x+1, pos.y) \
 			and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
@@ -149,7 +153,7 @@ func _process(_delta):
 				global.bitmap.set_bit(pos.x, pos.y+1, true)
 				global.bitmap.set_bit(pos.x+1, pos.y+1, true)
 		if Input.is_action_pressed("Left_click") and global.slot == 4 \
-		and not global.buildings_cant_place:
+		and not global.constructor_cant_place: # Constructor_placement
 			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 			if not global.bitmap.get_bit(pos.x , pos.y ) and not global.bitmap.get_bit(pos.x+1, pos.y) \
 			and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
@@ -165,7 +169,7 @@ func _process(_delta):
 				global.bitmap.set_bit(pos.x, pos.y+1, true)
 				global.bitmap.set_bit(pos.x+1, pos.y+1, true)
 		if Input.is_action_pressed("Left_click") and global.slot == 5 \
-		and not global.buildings_cant_place:
+		and not global.buildings_cant_place: # Storage_placement
 			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 			if not global.bitmap.get_bit(pos.x , pos.y ):
 				print(pos)

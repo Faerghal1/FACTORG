@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://bfwa2odjnu25x"]
+[gd_scene load_steps=30 format=3 uid="uid://bfwa2odjnu25x"]
 
 [ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Iron_Ore.png" id="1_ketcf"]
 [ext_resource type="Script" uid="uid://d1ikaamtl7wdl" path="res://Scripts/Index.gd" id="1_nii28"]
+[ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="2_lhddn"]
 [ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="2_nii28"]
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="3_r3dr4"]
 [ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="4_x6x8t"]
@@ -98,6 +99,110 @@ VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_y4dfr")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_i3akh")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_pcnie")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_laq7h"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8kmj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lu501"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uaysb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkry7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_y4dfr"]
+default_font = ExtResource("2_lhddn")
+default_font_size = 16
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/styles/disabled = SubResource("StyleBoxFlat_laq7h")
+Button/styles/focus = SubResource("StyleBoxFlat_q8kmj")
+Button/styles/hover = SubResource("StyleBoxFlat_lu501")
+Button/styles/normal = SubResource("StyleBoxFlat_uaysb")
+Button/styles/pressed = SubResource("StyleBoxFlat_pkry7")
+
+[sub_resource type="Theme" id="Theme_lhddn"]
+default_font = ExtResource("2_lhddn")
+default_font_size = 18
+
+[sub_resource type="Theme" id="Theme_i3akh"]
+default_font = ExtResource("2_lhddn")
+default_font_size = 18
+
 [node name="Index" type="Control"]
 z_index = 3
 layout_mode = 3
@@ -127,32 +232,38 @@ theme_override_constants/separation = 8
 
 [node name="IronOre" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_y4dfr")
 action_mode = 0
 text = "Iron Ore"
 icon = ExtResource("1_ketcf")
 
 [node name="CopperOre" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_y4dfr")
 text = "Copper Ore"
 icon = ExtResource("2_nii28")
 
 [node name="IronIngot" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_y4dfr")
 text = "Iron Ingot"
 icon = ExtResource("3_r3dr4")
 
 [node name="CopperIngot" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_y4dfr")
 text = "Copper Ingot"
 icon = ExtResource("4_x6x8t")
 
 [node name="IronRod" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_y4dfr")
 text = "Iron Rod"
 icon = ExtResource("5_ethub")
 
 [node name="CopperWire" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_y4dfr")
 text = "Copper Wire"
 icon = ExtResource("6_71v2r")
 
@@ -164,6 +275,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_lhddn")
 
 [node name="Name" type="ColorRect" parent="IronOre"]
 layout_mode = 0
@@ -278,6 +390,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_i3akh")
 
 [node name="Name" type="ColorRect" parent="CopperOre"]
 layout_mode = 0
@@ -392,6 +505,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_i3akh")
 
 [node name="Name" type="ColorRect" parent="IronIngot"]
 layout_mode = 0
@@ -506,6 +620,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_i3akh")
 
 [node name="Name" type="ColorRect" parent="CopperIngot"]
 layout_mode = 0
@@ -620,6 +735,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_i3akh")
 
 [node name="Name" type="ColorRect" parent="IronRod"]
 layout_mode = 0
@@ -734,6 +850,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_i3akh")
 
 [node name="Name" type="ColorRect" parent="CopperWire"]
 layout_mode = 0

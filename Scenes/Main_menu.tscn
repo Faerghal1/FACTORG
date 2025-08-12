@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b04i20vta7r31"]
+[gd_scene load_steps=11 format=3 uid="uid://b04i20vta7r31"]
 
 [ext_resource type="Script" uid="uid://bf48i6vi82vci" path="res://Scripts/Main_menu.gd" id="1_cwcel"]
 [ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/Tilemap_gen.png" id="3_qr2n2"]
 [ext_resource type="Script" uid="uid://cywns0wfw84ca" path="res://Scripts/Tile_map.gd" id="4_j7h1k"]
 [ext_resource type="Script" uid="uid://dnfmspblpsk2u" path="res://Scripts/Camera_main_menu.gd" id="4_nvm8u"]
+[ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="5_ihofj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klm5o"]
 texture = ExtResource("3_qr2n2")
@@ -199,6 +200,18 @@ texture_region_size = Vector2i(10, 10)
 tile_size = Vector2i(8, 8)
 sources/0 = SubResource("TileSetAtlasSource_klm5o")
 
+[sub_resource type="Theme" id="Theme_xwboo"]
+default_font = ExtResource("5_ihofj")
+default_font_size = 24
+
+[sub_resource type="Theme" id="Theme_074w1"]
+default_font = ExtResource("5_ihofj")
+default_font_size = 20
+
+[sub_resource type="Theme" id="Theme_inwpd"]
+default_font = ExtResource("5_ihofj")
+default_font_size = 20
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_cwcel")
 
@@ -214,20 +227,37 @@ zoom = Vector2(2, 2)
 script = ExtResource("4_nvm8u")
 
 [node name="Label" type="Label" parent="Camera2D"]
-offset_left = -79.0
-offset_top = -103.0
-offset_right = 55.0
-offset_bottom = -80.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.5
+offset_top = -106.0
+offset_right = 91.5
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = SubResource("Theme_xwboo")
 text = "FACTORG (Demo)"
 
 [node name="Start_button" type="Button" parent="Camera2D"]
 z_index = 5
-offset_left = -61.0
-offset_top = -20.0
-offset_right = 25.0
-offset_bottom = 11.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -47.5
+offset_right = 43.0
+offset_bottom = -16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_074w1")
 text = "Start"
-metadata/_edit_use_anchors_ = true
 
 [node name="Settings_button" type="Button" parent="Camera2D"]
 visible = false
@@ -241,12 +271,19 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Quit_button" type="Button" parent="Camera2D"]
 z_index = 5
-offset_left = -36.0
-offset_top = 78.0
-offset_right = 6.0
-offset_bottom = 109.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = 72.5
+offset_right = 21.0
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_inwpd")
 text = "Quit"
-metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Camera2D/Start_button" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="Camera2D/Quit_button" to="." method="_on_quit_button_pressed"]

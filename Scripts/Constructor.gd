@@ -10,16 +10,17 @@ var delete = 0
 var pos = Vector2i(0,0)
 var bitmap: BitMap = BitMap.new()
 
-func _ready():
-	var map = get_tree().current_scene.get_node("Generated_map")
-	var cell = map.local_to_map(position/2)
-	var data = map.get_cell_tile_data(cell)
-	if not data.get_custom_data("World") == "Unplaceable":
-		show()
-	else:
-		queue_free()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if clone == 0:
+		var map = get_tree().current_scene.get_node("Generated_map")
+		var cell = map.local_to_map(position/2)
+		var data = map.get_cell_tile_data(cell)
+		if not data.get_custom_data("World") == "Unplaceable":
+			global.constructor_cant_place = false
+		else:
+			global.constructor_cant_place = true
 	if clone == 0 and global.slot == 4:
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
@@ -70,17 +71,6 @@ func _on_recipe_selected():
 	if clone == 1 and $Recipe.visible == true:
 		$Recipe.hide()
 		$Recipe_list.show()
-
-
-func _on_body_entered(_body):
-	if clone == 0:
-		var map = get_tree().current_scene.get_node("Generated_map")
-		var cell = map.local_to_map(position/2)
-		var data = map.get_cell_tile_data(cell)
-		if not data.get_custom_data("World") == "Unplaceable":
-			global.buildings_cant_place = false
-		else:
-			global.buildings_cant_place = true
 
 
 func _on_iron_rod_pressed():

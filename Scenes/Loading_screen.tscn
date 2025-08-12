@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0cna8woy1w84"]
+[gd_scene load_steps=8 format=3 uid="uid://c0cna8woy1w84"]
 
 [ext_resource type="Script" uid="uid://bs05f3mmmecto" path="res://Scripts/Loading_screen.gd" id="1_deu6n"]
+[ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="2_gycv2"]
 [ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/Tilemap_gen.png" id="2_qxq7a"]
 [ext_resource type="Script" uid="uid://cywns0wfw84ca" path="res://Scripts/Tile_map.gd" id="3_e5jrn"]
+
+[sub_resource type="Theme" id="Theme_5c2l1"]
+default_font = ExtResource("2_gycv2")
+default_font_size = 180
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iupyu"]
 texture = ExtResource("2_qxq7a")
@@ -203,18 +208,26 @@ script = ExtResource("1_deu6n")
 
 [node name="MainMenu" type="Label" parent="."]
 z_index = 5
-offset_left = 369.0
-offset_top = 255.0
-offset_right = 803.0
-offset_bottom = 434.0
-theme_override_font_sizes/font_size = 100
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 281.5
+offset_top = 171.0
+offset_right = 886.5
+offset_bottom = 373.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5c2l1")
 text = "Loading"
+metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 z_index = 4
-offset_left = 202.0
+offset_left = 206.0
 offset_top = 400.0
-offset_right = 944.0
+offset_right = 948.0
 offset_bottom = 572.0
 step = 0.1
 
