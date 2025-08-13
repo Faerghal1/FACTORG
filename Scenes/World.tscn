@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=42 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" uid="uid://fgq76fstefsg" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/Belt.tscn" id="2_0b5rt"]
@@ -252,6 +252,9 @@ animations = [{
 "name": &"Controls",
 "speed": 5.0
 }]
+
+[sub_resource type="Theme" id="Theme_n1aqv"]
+default_font = ExtResource("22_y1bqn")
 
 [sub_resource type="Theme" id="Theme_mq4nq"]
 default_font = ExtResource("22_y1bqn")
@@ -560,6 +563,7 @@ offset_left = 288.0
 offset_top = -184.0
 offset_right = 328.0
 offset_bottom = -144.0
+theme = SubResource("Theme_n1aqv")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Belt_select"]
 layout_mode = 0
@@ -575,7 +579,6 @@ offset_top = 8.0
 offset_right = -55.0
 offset_bottom = 97.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "Conveyor belt:
 Transports items from one location to another
 Hotbar: 1"

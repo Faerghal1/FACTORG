@@ -12,15 +12,14 @@ var pos = Vector2i(0,0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if clone == 0:
+	if clone == 0 and global.slot == 3:
 		var map = get_tree().current_scene.get_node("Generated_map")
 		var cell = map.local_to_map(position/2)
 		var data = map.get_cell_tile_data(cell)
 		if not data.get_custom_data("World") == "Unplaceable":
-			global.smelter_cant_place = false
+			global.buildings_large_cant_place = false
 		else:
-			global.smelter_cant_place = true
-	if clone == 0 and global.slot == 3:
+			global.buildings_large_cant_place = true
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		var pos = Vector2i(position.snapped(Vector2(16,16))/16)

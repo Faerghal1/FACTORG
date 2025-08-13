@@ -91,14 +91,16 @@ func _process(_delta):
 	if not global.slot == 5: # Storage_tooltip
 		$Camera2D/Storage_select.hide()
 	if global.mouse_on_hotbar == false:
-		if Input.is_action_pressed("Left_click") and global.slot != 2 \
-		and global.slot != 0 and global.buildings_cant_place == true: # Buildings_cant_place
-			$"Camera2D/Can't Place Building".show()
-			$Timer.start()
-		if Input.is_action_pressed("Left_click") and global.slot != 2 \
-		and global.smelter_cant_place == true or global.constructor_cant_place == true:
-			$"Camera2D/Can't Place Building".show()
-			$Timer.start()
+		if Input.is_action_pressed("Left_click") \
+		and (global.slot != 2 and global.slot != 0): # Detection for placeable in world
+			if global.slot == 1 or global.slot == 5:
+				if global.buildings_cant_place == true: # Buildings_cant_place
+					$"Camera2D/Can't Place Building".show()
+					$Timer.start()
+			elif global.slot == 3 or global.slot == 4:
+				if global.buildings_large_cant_place == true: # Large_buildings_cant_place
+					$"Camera2D/Can't Place Building".show()
+					$Timer.start()
 		if Input.is_action_pressed("Left_click") and global.slot == 2 \
 		and global.extractor_cant_place == true: # Extractor_cant_place
 			$"Camera2D/Can't Place Extractor".show()
@@ -137,7 +139,7 @@ func _process(_delta):
 				global.bitmap.set_bit(pos.x, pos.y, true)
 				global.extractor_placed = true
 		if Input.is_action_pressed("Left_click") and global.slot == 3 \
-		and not global.smelter_cant_place: # Smelter_placement
+		and not global.buildings_large_cant_place: # Smelter_placement
 			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 			if not global.bitmap.get_bit(pos.x , pos.y ) and not global.bitmap.get_bit(pos.x+1, pos.y) \
 			and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
@@ -153,7 +155,7 @@ func _process(_delta):
 				global.bitmap.set_bit(pos.x, pos.y+1, true)
 				global.bitmap.set_bit(pos.x+1, pos.y+1, true)
 		if Input.is_action_pressed("Left_click") and global.slot == 4 \
-		and not global.constructor_cant_place: # Constructor_placement
+		and not global.buildings_large_cant_place: # Constructor_placement
 			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 			if not global.bitmap.get_bit(pos.x , pos.y ) and not global.bitmap.get_bit(pos.x+1, pos.y) \
 			and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
