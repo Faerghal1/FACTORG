@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://ch4dodtt3vdb7"]
 
 [ext_resource type="Script" uid="uid://cag4sf1i5y20t" path="res://Scripts/Rod.gd" id="1_k070t"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="2_b4ct5"]
-[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_mfwth"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="2_b4ct5"]
+[ext_resource type="Script" uid="uid://1dhwm4g2k74b" path="res://Scripts/Item_sprites.gd" id="3_mfwth"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85k5t"]
 size = Vector2(32, 25)
@@ -21,8 +21,8 @@ shape = SubResource("RectangleShape2D_85k5t")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
-metadata/Type = "Direction Rod"
 metadata/Rod = true
+metadata/Type = 6
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, 0)
@@ -37,6 +37,8 @@ script = ExtResource("3_mfwth")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
 [connection signal="ready" from="Area2D" to="." method="_on_ready"]

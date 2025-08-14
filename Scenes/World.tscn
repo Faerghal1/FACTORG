@@ -483,6 +483,7 @@ theme_override_font_sizes/font_size = 10
 text = "Can only be placed on Resource nodes"
 
 [node name="Can\'t Place Building" type="Control" parent="Camera2D"]
+visible = false
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
@@ -626,6 +627,7 @@ scale = Vector2(0.270635, 0.280159)
 texture = ExtResource("27_g01fq")
 
 [node name="Constructor_select" type="Control" parent="Camera2D"]
+visible = false
 z_index = 2
 layout_mode = 3
 anchors_preset = 0

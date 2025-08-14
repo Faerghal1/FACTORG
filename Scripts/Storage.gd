@@ -10,6 +10,12 @@ var bitmap: BitMap = BitMap.new()
 var item_type = ""
 var amount = 1
 var has_item = false
+@export var resource_scene: PackedScene
+@export var copper_scene: PackedScene
+@export var resource_ingot_scene: PackedScene
+@export var copper_ingot_scene: PackedScene
+@export var resource_rod_scene: PackedScene
+@export var copper_wire_scene: PackedScene
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -21,6 +27,76 @@ func _process(_delta):
 		rotation_degrees += 90
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		queue_free()
+	if clone == 1 and amount >=1:
+		if get_child(1).frame == 1:
+			if not $RayCast2D.get_collider():
+				var resource = copper_scene.instantiate()
+				resource.position = position
+				resource.modulate.a = 1
+				resource.rotation_degrees = rotation_degrees+90
+				resource.direction = rotation/90
+				resource.set_meta("Resource", direction/90)
+				add_sibling(resource)
+				resource.clone = 1
+				amount-=1
+		if get_child(1).frame == 2:
+			if not $RayCast2D.get_collider():
+				var resource = copper_ingot_scene.instantiate()
+				resource.position = position
+				resource.modulate.a = 1
+				resource.rotation_degrees = rotation_degrees+90
+				resource.direction = rotation/90
+				resource.set_meta("Resource", direction/90)
+				add_sibling(resource)
+				resource.clone = 1
+				amount-=1
+		if get_child(1).frame == 3:
+			if not $RayCast2D.get_collider():
+				var resource = copper_wire_scene.instantiate()
+				resource.position = position
+				resource.modulate.a = 1
+				resource.rotation_degrees = rotation_degrees+90
+				resource.direction = rotation/90
+				resource.set_meta("Resource", direction/90)
+				add_sibling(resource)
+				resource.clone = 1
+				amount-=1
+		if get_child(1).frame == 4:
+			if not $RayCast2D.get_collider():
+				var resource = resource_scene.instantiate()
+				resource.position = position
+				resource.modulate.a = 1
+				resource.rotation_degrees = rotation_degrees+90
+				resource.direction = rotation/90
+				resource.set_meta("Resource", direction/90)
+				add_sibling(resource)
+				resource.clone = 1
+				amount-=1
+		if get_child(1).frame == 5:
+			if not $RayCast2D.get_collider():
+				var resource = resource_ingot_scene.instantiate()
+				resource.position = position
+				resource.modulate.a = 1
+				resource.rotation_degrees = rotation_degrees+90
+				resource.direction = rotation/90
+				resource.set_meta("Resource", direction/90)
+				add_sibling(resource)
+				resource.clone = 1
+				amount-=1
+		if get_child(1).frame == 6:
+			if not $RayCast2D.get_collider():
+				var resource = resource_rod_scene.instantiate()
+				resource.position = position
+				resource.modulate.a = 1
+				resource.rotation_degrees = rotation_degrees+90
+				resource.direction = rotation/90
+				resource.set_meta("Resource", direction/90)
+				add_sibling(resource)
+				resource.clone = 1
+				amount-=1
+		if amount == 0: 
+			has_item = false
+			
 	if clone == 0:
 		if global.slot == 5:
 			show()
@@ -33,33 +109,12 @@ func _on_area_entered(area):
 		$ResourceAmount.text = (str(int(amount)))
 		if not has_item:
 			has_item = true
+			$Resource_Sprite.show()
 			item_type = area.get_meta("Type")
+			$Resource_Sprite.frame = area.get_meta("Type")
 			amount += 1
-		elif item_type == area.get_meta("Type"):
-			if area.get_meta("Type") == "Direction Resource":
-				$Iron_Ore.show()
-				print("Iron")
-				amount += 1
-			if area.get_meta("Type") == "Direction Ingot":
-				$Iron_Ingot.show()
-				print("Iron_Ingot")
-				amount += 1
-			if area.get_meta("Type") == "Direction Rod":
-				$Iron_Rod.show()
-				print("Iron_Rod")
-				amount += 1
-			if area.get_meta("Type") == "Direction Copper":
-				$Copper_Ore.show()
-				print("Copper")
-				amount += 1
-			if area.get_meta("Type") == "Direction Copper Ingot":
-				$Copper_ingot.show()
-				print("Copper_Ingot")
-				amount += 1
-			if area.get_meta("Type") == "Direction Wire":
-				$Copper_wire.show()
-				print("Copper_Wire")
-				amount += 1
+		else:
+			amount+=1
 
 
 func _on_mouse_entered():

@@ -34,6 +34,15 @@ func _process(_delta):
 			show()
 		else:
 			hide()
+		global.buildings_cant_place = false
+		for i in [Vector2i.ZERO, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.ONE]:
+			var map = get_tree().current_scene.get_node("Generated_map")
+			var cell = map.local_to_map((position - Vector2(8, 8))/2) + i
+			var data = map.get_cell_tile_data(cell)
+			if data.get_custom_data("World") == "Unplaceable":
+				global.buildings_cant_place = true
+				break
+		
 
 func _on_area_entered(area):
 	if clone == 1:
@@ -70,18 +79,6 @@ func _on_recipe_selected():
 	if clone == 1 and $Recipe.visible == true:
 		$Recipe.hide()
 		$Recipe_list.show()
-
-
-func _on_body_entered(_body):
-	if clone == 0:
-		var map = get_tree().current_scene.get_node("Generated_map")
-		var cell = map.local_to_map(position/2)
-		var data = map.get_cell_tile_data(cell)
-		print(data.get_custom_data("World"))
-		if not data.get_custom_data("World") == "Unplaceable":
-			global.buildings_cant_place = false
-		else:
-			global.buildings_cant_place = true
 
 
 func _on_iron_rod_pressed():
