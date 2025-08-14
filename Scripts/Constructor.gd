@@ -4,6 +4,7 @@ extends Area2D
 
 @export var rod_scene: PackedScene
 @export var copper_wire_scene: PackedScene
+@export var copper_foil_scene: PackedScene
 var clone = 0
 var direction = 0
 var delete = 0
@@ -54,9 +55,19 @@ func _on_area_entered(area):
 			copper_wire.modulate.a = 1
 			copper_wire.rotation = rotation
 			copper_wire.direction = rotation/90
-			copper_wire.set_meta("Rod", direction/90)
+			copper_wire.set_meta("Copper_wire", direction/90)
 			add_sibling.call_deferred(copper_wire)
 			copper_wire.clone = 1
+		if area.has_meta("Copper_ingot") and $Copper_foil.visible == true \
+		and not $RayCast2D.get_collider():
+			var copper_foil = copper_foil_scene.instantiate()
+			copper_foil.position = position
+			copper_foil.modulate.a = 1
+			copper_foil.rotation = rotation
+			copper_foil.direction = rotation/90
+			copper_foil.set_meta("Copper_foil", direction/90)
+			add_sibling.call_deferred(copper_foil)
+			copper_foil.clone = 1
 
 func _on_mouse_entered():
 	delete = 1
@@ -78,4 +89,9 @@ func _on_iron_rod_pressed():
 
 func _on_copper_wire_pressed():
 	$Copper_wire.show()
+	$Recipe_list.hide()
+
+
+func _on_copper_foil_pressed():
+	$Copper_foil.show()
 	$Recipe_list.hide()

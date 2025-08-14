@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=43 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" uid="uid://fgq76fstefsg" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/Belt.tscn" id="2_0b5rt"]
@@ -21,10 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/Storage.tscn" id="19_nil32"]
 [ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
 [ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="21_d3ars"]
-[ext_resource type="Texture2D" uid="uid://cvcqkw4r0706v" path="res://Assets/Controls-1.png" id="22_dpsl7"]
+[ext_resource type="Texture2D" uid="uid://f4hipo5ajyxd" path="res://Assets/Copper_foil.png" id="22_7dsfl"]
+[ext_resource type="Texture2D" uid="uid://bmtbl0cqnctve" path="res://Assets/Controls-1.png" id="22_dpsl7"]
 [ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="22_y1bqn"]
-[ext_resource type="Texture2D" uid="uid://b6dwj3sl5n5uw" path="res://Assets/Controls-2.png" id="23_enwp0"]
-[ext_resource type="Texture2D" uid="uid://dq4lgk3kfcrjn" path="res://Assets/Controls-3.png" id="24_n352l"]
+[ext_resource type="Texture2D" uid="uid://dnkpwf05umywb" path="res://Assets/Controls-2.png" id="23_enwp0"]
+[ext_resource type="Texture2D" uid="uid://dxuw8gej0o6h6" path="res://Assets/Controls-3.png" id="24_n352l"]
 [ext_resource type="Texture2D" uid="uid://dw73hko5drmfx" path="res://Assets/Belt_Tooltip.png" id="25_l11rc"]
 [ext_resource type="Texture2D" uid="uid://drtna0n4jt5sw" path="res://Assets/Extractor_tooltip.png" id="26_w86vl"]
 [ext_resource type="Texture2D" uid="uid://bm0cfq134j8t6" path="res://Assets/Smelter_Tooltip.png" id="27_g01fq"]
@@ -450,14 +451,15 @@ z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = -327.0
-offset_top = -25.0
+offset_top = -41.0
 offset_right = -238.0
-offset_bottom = 52.0
+offset_bottom = 36.0
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Goal"]
 layout_mode = 0
+offset_top = 4.0
 offset_right = 89.0
-offset_bottom = 77.0
+offset_bottom = 118.0
 
 [node name="RodGoal" type="Label" parent="Camera2D/Goal"]
 layout_mode = 0
@@ -488,6 +490,20 @@ vertical_alignment = 2
 [node name="Sprite2D2" type="Sprite2D" parent="Camera2D/Goal"]
 position = Vector2(65, 60)
 texture = ExtResource("21_d3ars")
+
+[node name="FoilGoal" type="Label" parent="Camera2D/Goal"]
+offset_left = 2.0
+offset_top = 89.0
+offset_right = 42.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0/20"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Sprite2D3" type="Sprite2D" parent="Camera2D/Goal"]
+position = Vector2(65, 100)
+texture = ExtResource("22_7dsfl")
 
 [node name="Can\'t Place Extractor" type="Control" parent="Camera2D"]
 visible = false
@@ -550,7 +566,7 @@ offset_right = -285.0
 offset_bottom = -144.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/Controls"]
-position = Vector2(62, 79)
+position = Vector2(60, 74)
 sprite_frames = SubResource("SpriteFrames_ylh7l")
 animation = &"Controls"
 
@@ -726,7 +742,7 @@ autowrap_mode = 3
 [node name="Pause_temp" type="Control" parent="Camera2D"]
 process_mode = 3
 visible = false
-z_index = 3
+z_index = 5
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

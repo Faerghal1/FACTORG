@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpql1vm2gnpml"]
+[gd_scene load_steps=11 format=3 uid="uid://cpql1vm2gnpml"]
 
 [ext_resource type="Script" uid="uid://tn6yr36r0py8" path="res://Scripts/Smelter.gd" id="1_tm5hi"]
 [ext_resource type="PackedScene" uid="uid://2frehtr7kvp6" path="res://Scenes/Ingot.tscn" id="2_lfqhs"]
@@ -6,10 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="3_b2xjd"]
 [ext_resource type="Texture2D" uid="uid://satlknjxuauh" path="res://Assets/Smelter.png" id="3_uxgp2"]
 [ext_resource type="Texture2D" uid="uid://cshbe5cqr5jtv" path="res://Assets/Recipe_List.png" id="4_whqqv"]
+[ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="6_e52dk"]
 [ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="6_g1kfd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0rc1"]
 size = Vector2(80, 80)
+
+[sub_resource type="Theme" id="Theme_abcaa"]
+default_font = ExtResource("6_e52dk")
 
 [node name="Area2D" type="Area2D"]
 modulate = Color(1, 1, 1, 0.588235)
@@ -51,6 +55,7 @@ offset_top = 10.0
 offset_right = 30.0
 offset_bottom = 50.0
 scale = Vector2(1.25, 1.25)
+theme = SubResource("Theme_abcaa")
 
 [node name="ColorRect" type="ColorRect" parent="Recipe_list"]
 layout_mode = 0
