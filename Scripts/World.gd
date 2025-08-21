@@ -35,6 +35,7 @@ func _process(_delta):
 		get_tree().paused = true
 	$Camera2D/Goal/RodGoal.text = (str(int(global.rod)) + "/10")
 	$Camera2D/Goal/WireGoal.text = (str(int(global.copper_wire)) + "/15")
+	$Camera2D/Goal/FoilGoal.text = (str(int(global.copper_foil)) + "/20")
 	if Input.is_action_just_pressed("Hotbar_1"): # Belt
 		if global.slot == 1:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
