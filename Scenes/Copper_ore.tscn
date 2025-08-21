@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ca06kmkaamar" path="res://Scripts/Resource.gd" id="1_ca78w"]
 [ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="2_7jkfa"]
-[ext_resource type="Script" uid="uid://1dhwm4g2k74b" path="res://Scripts/Item_sprites.gd" id="2_qkbiu"]
+[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="2_qkbiu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1xui"]
 size = Vector2(10, 10)
