@@ -98,6 +98,7 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Copper_foil" type="Button" parent="Recipe_list"]
+layout_mode = 0
 offset_left = 148.0
 offset_top = -38.0
 offset_right = 257.0
