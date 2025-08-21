@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4hdggvv8jbe2"
-path="res://.godot/imported/Iron_rod.png-73f7636230c3eecbb32c92e87d240991.ctex"
+uid="uid://x2l8dgvlpsee"
+path="res://.godot/imported/Iron_node.png-614274d40ab3ec92edf7fec97824e633.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Iron_rod.png"
-dest_files=["res://.godot/imported/Iron_rod.png-73f7636230c3eecbb32c92e87d240991.ctex"]
+source_file="res://Assets/Iron_node.png"
+dest_files=["res://.godot/imported/Iron_node.png-614274d40ab3ec92edf7fec97824e633.ctex"]
 
 [params]
 

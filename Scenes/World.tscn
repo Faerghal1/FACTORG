@@ -1,117 +1,121 @@
-[gd_scene load_steps=32 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=43 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" uid="uid://fgq76fstefsg" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/Belt.tscn" id="2_0b5rt"]
 [ext_resource type="PackedScene" uid="uid://b05iho5c44hkr" path="res://Scenes/Extractor.tscn" id="3_ofrym"]
 [ext_resource type="PackedScene" uid="uid://grkud06u2t6y" path="res://Scenes/Camera.tscn" id="5_fo33q"]
 [ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Conveyor_Belt.png" id="6_7m4c6"]
-[ext_resource type="Script" uid="uid://d2jyg2pjau1w4" path="res://Scripts/Belt_hotbar.gd" id="6_ksayx"]
+[ext_resource type="Script" uid="uid://da3piixp3i66s" path="res://Scripts/Belt_hotbar.gd" id="6_ksayx"]
 [ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/Tilemap_gen.png" id="7_807aw"]
 [ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor.png" id="7_eqtyl"]
-[ext_resource type="Script" uid="uid://bhe7eg0evwwl8" path="res://Scripts/Tile_map.gd" id="8_jb2q2"]
-[ext_resource type="Script" uid="uid://bxve1r65a8d0" path="res://Scripts/Extractor_hotbar.gd" id="8_lpojc"]
+[ext_resource type="Script" uid="uid://cywns0wfw84ca" path="res://Scripts/Tile_map.gd" id="8_jb2q2"]
+[ext_resource type="Script" uid="uid://s74xcsq238vq" path="res://Scripts/Extractor_hotbar.gd" id="8_lpojc"]
 [ext_resource type="Texture2D" uid="uid://satlknjxuauh" path="res://Assets/Smelter.png" id="9_kuaow"]
 [ext_resource type="PackedScene" uid="uid://cpql1vm2gnpml" path="res://Scenes/Smelter.tscn" id="10_glyoi"]
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="10_ydavp"]
-[ext_resource type="Script" uid="uid://broxhq5a77hwa" path="res://Scripts/Smelter_hotbar.gd" id="11_6dldg"]
+[ext_resource type="Script" uid="uid://bium40xiudj1c" path="res://Scripts/Smelter_hotbar.gd" id="11_6dldg"]
 [ext_resource type="Texture2D" uid="uid://bjl26wes5neh3" path="res://Assets/Storage.png" id="12_gpcpt"]
-[ext_resource type="Script" uid="uid://dhyhgp0v1407g" path="res://Scripts/Constructor_hotbar.gd" id="14_5awit"]
+[ext_resource type="Script" uid="uid://ct7od2d6humj2" path="res://Scripts/Constructor_hotbar.gd" id="14_5awit"]
 [ext_resource type="PackedScene" uid="uid://40e7gnocdmnt" path="res://Scenes/Constructor.tscn" id="15_wbpsv"]
-[ext_resource type="Script" uid="uid://u5muqorxpxsy" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
+[ext_resource type="Script" uid="uid://dl0kn83ihr5gl" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/Storage.tscn" id="19_nil32"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="20_1ap6o"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
 [ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="21_d3ars"]
-[ext_resource type="Texture2D" uid="uid://c05jg536kyj6a" path="res://Assets/Controls-1.png" id="22_dpsl7"]
-[ext_resource type="Texture2D" uid="uid://jkpminw2xuwx" path="res://Assets/Controls-2.png" id="23_enwp0"]
-[ext_resource type="Texture2D" uid="uid://cbocxqmgto26r" path="res://Assets/Controls-3.png" id="24_n352l"]
+[ext_resource type="Texture2D" uid="uid://f4hipo5ajyxd" path="res://Assets/Copper_foil.png" id="22_7dsfl"]
+[ext_resource type="Texture2D" uid="uid://bmtbl0cqnctve" path="res://Assets/Controls-1.png" id="22_dpsl7"]
+[ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="22_y1bqn"]
+[ext_resource type="Texture2D" uid="uid://dnkpwf05umywb" path="res://Assets/Controls-2.png" id="23_enwp0"]
+[ext_resource type="Texture2D" uid="uid://dxuw8gej0o6h6" path="res://Assets/Controls-3.png" id="24_n352l"]
 [ext_resource type="Texture2D" uid="uid://dw73hko5drmfx" path="res://Assets/Belt_Tooltip.png" id="25_l11rc"]
 [ext_resource type="Texture2D" uid="uid://drtna0n4jt5sw" path="res://Assets/Extractor_tooltip.png" id="26_w86vl"]
 [ext_resource type="Texture2D" uid="uid://bm0cfq134j8t6" path="res://Assets/Smelter_Tooltip.png" id="27_g01fq"]
 [ext_resource type="Texture2D" uid="uid://byitoxfrctirl" path="res://Assets/Constructer_Tooltip.png" id="28_0bcf6"]
+[ext_resource type="PackedScene" uid="uid://bfwa2odjnu25x" path="res://Scenes/Index.tscn" id="29_0bcf6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyi6n"]
 texture = ExtResource("7_807aw")
 texture_region_size = Vector2i(10, 10)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 4:0/0 = 0
-4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 5:0/0 = 0
-5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 6:0/0 = 0
-6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.3125, -2.4375, 2.125, -2.5, 2.1875, 2, -2.3125, 2)
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.74119, -2.94424, 2.84271, -2.84272, 2.94424, 2.84272, -2.74119, 2.74119)
+6:0/0/custom_data_1 = "Unplaceable"
 7:0/0 = 0
-7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.04577, -2.94424, 2.63966, -2.84272, 2.63966, 2.74119, -2.74119, 2.84272)
 8:0/0 = 0
-8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.3125, -2.4375, 2.125, -2.5, 2.1875, 2, -2.3125, 2)
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.74119, -2.94424, 2.84271, -2.84272, 2.94424, 2.84272, -2.74119, 2.74119)
 8:0/0/custom_data_1 = "Unplaceable"
 9:0/0 = 0
-9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.04577, -2.94424, 2.63966, -2.84272, 2.63966, 2.74119, -2.74119, 2.84272)
 10:0/0 = 0
-10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.3125, -2.4375, 2.125, -2.5, 2.1875, 2, -2.3125, 2)
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.74119, -2.94424, 2.84271, -2.84272, 2.94424, 2.84272, -2.74119, 2.74119)
 10:0/0/custom_data_1 = "Unplaceable"
 0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 2:1/0 = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 3:1/0 = 0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 4:1/0 = 0
-4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 5:1/0 = 0
-5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 6:1/0 = 0
 7:1/0 = 0
-7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.04577, -2.94424, 2.63966, -2.84272, 2.63966, 2.74119, -2.74119, 2.84272)
 8:1/0 = 0
 9:1/0 = 0
-9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.04577, -2.94424, 2.63966, -2.84272, 2.63966, 2.74119, -2.74119, 2.84272)
 10:1/0 = 0
 0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 1:2/0 = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 2:2/0 = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 4:2/0 = 0
-4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 5:2/0 = 0
-5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 6:2/0 = 0
 7:2/0 = 0
-7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.04577, -2.94424, 2.63966, -2.84272, 2.63966, 2.74119, -2.74119, 2.84272)
 8:2/0 = 0
 9:2/0 = 0
-9:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+9:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.04577, -2.94424, 2.63966, -2.84272, 2.63966, 2.74119, -2.74119, 2.84272)
 10:2/0 = 0
 0:3/0 = 0
-0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 2:3/0 = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 4:3/0 = 0
-4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 5:3/0 = 0
-5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.84272, -2.53814, 2.53814, -2.63966, 2.43661, 2.84272, -2.84272, 2.84272)
 6:3/0 = 0
 7:3/0 = 0
-7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.04577, -2.94424, 2.63966, -2.84272, 2.63966, 2.74119, -2.74119, 2.84272)
 8:3/0 = 0
 9:3/0 = 0
-9:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.875, -2.9375, 2.5625, -2.875, 2.625, 2.5, -2.875, 2.375)
+9:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.04577, -2.94424, 2.63966, -2.84272, 2.63966, 2.74119, -2.74119, 2.84272)
 10:3/0 = 0
 0:4/0 = 0
 0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.9375, -3.0625, 3, -3.0625, 3.0625, 3, -3, 3.0625)
@@ -225,6 +229,14 @@ custom_data_layer_1/name = "World"
 custom_data_layer_1/type = 4
 sources/0 = SubResource("TileSetAtlasSource_qyi6n")
 
+[sub_resource type="Theme" id="Theme_7dsfl"]
+default_font = ExtResource("22_y1bqn")
+default_font_size = 16
+
+[sub_resource type="Theme" id="Theme_y1bqn"]
+default_font = ExtResource("22_y1bqn")
+default_font_size = 16
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ylh7l"]
 animations = [{
 "frames": [{
@@ -241,6 +253,25 @@ animations = [{
 "name": &"Controls",
 "speed": 5.0
 }]
+
+[sub_resource type="Theme" id="Theme_n1aqv"]
+default_font = ExtResource("22_y1bqn")
+
+[sub_resource type="Theme" id="Theme_mq4nq"]
+default_font = ExtResource("22_y1bqn")
+
+[sub_resource type="Theme" id="Theme_371b6"]
+default_font = ExtResource("22_y1bqn")
+
+[sub_resource type="Theme" id="Theme_ao4cr"]
+default_font = ExtResource("22_y1bqn")
+
+[sub_resource type="Theme" id="Theme_irg3d"]
+default_font = ExtResource("22_y1bqn")
+
+[sub_resource type="Theme" id="Theme_y8a40"]
+default_font = ExtResource("22_y1bqn")
+default_font_size = 20
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_pqhfs")
@@ -420,14 +451,15 @@ z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = -327.0
-offset_top = -57.0
+offset_top = -41.0
 offset_right = -238.0
-offset_bottom = 20.0
+offset_bottom = 36.0
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Goal"]
 layout_mode = 0
+offset_top = 4.0
 offset_right = 89.0
-offset_bottom = 77.0
+offset_bottom = 118.0
 
 [node name="RodGoal" type="Label" parent="Camera2D/Goal"]
 layout_mode = 0
@@ -459,27 +491,44 @@ vertical_alignment = 2
 position = Vector2(65, 60)
 texture = ExtResource("21_d3ars")
 
+[node name="FoilGoal" type="Label" parent="Camera2D/Goal"]
+offset_left = 2.0
+offset_top = 89.0
+offset_right = 42.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0/20"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Sprite2D3" type="Sprite2D" parent="Camera2D/Goal"]
+position = Vector2(65, 100)
+texture = ExtResource("22_7dsfl")
+
 [node name="Can\'t Place Extractor" type="Control" parent="Camera2D"]
 visible = false
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = -93.5
-offset_top = 80.0
+offset_top = 77.0
 offset_right = 93.5
-offset_bottom = 96.0
+offset_bottom = 93.0
+theme = SubResource("Theme_7dsfl")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Can\'t Place Extractor"]
 layout_mode = 0
-offset_right = 187.0
-offset_bottom = 16.0
+offset_left = -38.0
+offset_top = 2.0
+offset_right = 228.0
+offset_bottom = 20.0
 
 [node name="Label" type="Label" parent="Camera2D/Can\'t Place Extractor"]
 layout_mode = 0
-offset_right = 187.0
-offset_bottom = 16.0
+offset_left = -37.0
+offset_right = 225.0
+offset_bottom = 19.0
 theme_override_colors/font_color = Color(0.568627, 0, 0, 1)
-theme_override_font_sizes/font_size = 10
 text = "Can only be placed on Resource nodes"
 
 [node name="Can\'t Place Building" type="Control" parent="Camera2D"]
@@ -491,20 +540,20 @@ offset_left = -118.0
 offset_top = 80.0
 offset_right = 54.0
 offset_bottom = 96.0
+theme = SubResource("Theme_y1bqn")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Can\'t Place Building"]
 layout_mode = 0
-offset_left = -4.0
-offset_right = 240.0
+offset_left = -51.0
+offset_right = 288.0
 offset_bottom = 16.0
 
 [node name="Label" type="Label" parent="Camera2D/Can\'t Place Building"]
 layout_mode = 0
-offset_left = -2.0
-offset_right = 174.0
-offset_bottom = 16.0
+offset_left = -49.0
+offset_right = 287.0
+offset_bottom = 19.0
 theme_override_colors/font_color = Color(0.568627, 0, 0, 1)
-theme_override_font_sizes/font_size = 10
 text = "Can't be placed on Water/Mountain, please move."
 
 [node name="Controls" type="Control" parent="Camera2D"]
@@ -517,7 +566,7 @@ offset_right = -285.0
 offset_bottom = -144.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/Controls"]
-position = Vector2(62, 59)
+position = Vector2(60, 74)
 sprite_frames = SubResource("SpriteFrames_ylh7l")
 animation = &"Controls"
 
@@ -530,6 +579,7 @@ offset_left = 288.0
 offset_top = -184.0
 offset_right = 328.0
 offset_bottom = -144.0
+theme = SubResource("Theme_n1aqv")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Belt_select"]
 layout_mode = 0
@@ -545,7 +595,6 @@ offset_top = 8.0
 offset_right = -55.0
 offset_bottom = 97.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "Conveyor belt:
 Transports items from one location to another
 Hotbar: 1"
@@ -565,6 +614,7 @@ offset_left = 288.0
 offset_top = -184.0
 offset_right = 328.0
 offset_bottom = -144.0
+theme = SubResource("Theme_mq4nq")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Extractor_select"]
 layout_mode = 0
@@ -580,7 +630,6 @@ offset_top = 7.0
 offset_right = -61.0
 offset_bottom = 96.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "Extractor:
 Excavates raw ore out of resource nodes.
 Hotbar: 2"
@@ -600,6 +649,7 @@ offset_left = 288.0
 offset_top = -184.0
 offset_right = 328.0
 offset_bottom = -144.0
+theme = SubResource("Theme_371b6")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Smelter_select"]
 layout_mode = 0
@@ -615,7 +665,6 @@ offset_top = 7.0
 offset_right = -60.0
 offset_bottom = 119.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "Smelter:
 Smelts raw ores into refined ingots.
 Hotbar: 3"
@@ -635,6 +684,7 @@ offset_left = 288.0
 offset_top = -184.0
 offset_right = 328.0
 offset_bottom = -144.0
+theme = SubResource("Theme_ao4cr")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Constructor_select"]
 layout_mode = 0
@@ -650,7 +700,6 @@ offset_top = 7.0
 offset_right = -55.0
 offset_bottom = 119.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "Constructor:
 Refines ingots into products for progression.
 Hotbar: 4"
@@ -670,6 +719,7 @@ offset_left = 288.0
 offset_top = -184.0
 offset_right = 328.0
 offset_bottom = -144.0
+theme = SubResource("Theme_irg3d")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Storage_select"]
 layout_mode = 0
@@ -685,25 +735,66 @@ offset_top = 7.0
 offset_right = 32.0
 offset_bottom = 96.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "Storage:
 Corresponding Items when placed in the storage will count toward the goal Hotbar: 5 "
 autowrap_mode = 3
 
-[node name="Extractor" parent="." instance=ExtResource("3_ofrym")]
-position = Vector2(44, 44)
+[node name="Pause_temp" type="Control" parent="Camera2D"]
+process_mode = 3
+visible = false
+z_index = 5
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_y8a40")
+
+[node name="Resume" type="Button" parent="Camera2D/Pause_temp"]
+z_index = 4
+layout_mode = 0
+offset_left = -52.0
+offset_top = -107.0
+offset_right = 18.0
+offset_bottom = -76.0
+scale = Vector2(1.5, 1.5)
+text = "Resume"
+
+[node name="Main Menu" type="Button" parent="Camera2D/Pause_temp"]
+z_index = 4
+layout_mode = 0
+offset_left = -72.0
+offset_top = -8.0
+offset_right = 24.0
+offset_bottom = 23.0
+scale = Vector2(1.5, 1.5)
+text = "Main Menu"
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Pause_temp"]
+layout_mode = 0
+offset_left = -329.0
+offset_top = -185.0
+offset_right = 329.0
+offset_bottom = 185.0
+mouse_filter = 2
+color = Color(0.408329, 0.408329, 0.408329, 0.647059)
+
+[node name="Index" parent="Camera2D" instance=ExtResource("29_0bcf6")]
+visible = false
 
 [node name="Belt" parent="." instance=ExtResource("2_0b5rt")]
-position = Vector2(44, 44)
-
-[node name="Smelter" parent="." instance=ExtResource("10_glyoi")]
-position = Vector2(36, 36)
+position = Vector2(32, 32)
 
 [node name="Constructor" parent="." instance=ExtResource("15_wbpsv")]
-position = Vector2(36, 36)
+position = Vector2(24, 24)
+
+[node name="Extractor" parent="." instance=ExtResource("3_ofrym")]
+position = Vector2(32, 32)
+
+[node name="Smelter" parent="." instance=ExtResource("10_glyoi")]
+position = Vector2(24, 24)
 
 [node name="Storage" parent="." instance=ExtResource("19_nil32")]
-position = Vector2(44, 44)
+position = Vector2(32, 32)
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -714,4 +805,6 @@ position = Vector2(44, 44)
 [connection signal="pressed" from="Camera2D/Hotbar/SmelterButton" to="Camera2D/Hotbar/SmelterButton" method="_on_smelter_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/ConstructorButton" to="Camera2D/Hotbar/ConstructorButton" method="_on_constructor_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/StorageButton" to="Camera2D/Hotbar/StorageButton" method="_on_storage_selected"]
+[connection signal="pressed" from="Camera2D/Pause_temp/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Camera2D/Pause_temp/Main Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

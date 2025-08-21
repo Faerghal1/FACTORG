@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b05iho5c44hkr"]
+[gd_scene load_steps=6 format=3 uid="uid://b05iho5c44hkr"]
 
 [ext_resource type="Script" uid="uid://csp0m2bsjwhpl" path="res://Scripts/Extractor.gd" id="1_6uykh"]
 [ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor.png" id="1_pfimx"]
 [ext_resource type="PackedScene" uid="uid://dal3rdkaxyfrd" path="res://Scenes/Iron_ore.tscn" id="2_dxtal"]
 [ext_resource type="PackedScene" uid="uid://unxnycyehs44" path="res://Scenes/Copper_ore.tscn" id="3_i524o"]
-[ext_resource type="PackedScene" uid="uid://wuhg1pdmfkjb" path="res://Scenes/Placement.tscn" id="5_brmf6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7jx5"]
 size = Vector2(2.5, 2.5)
@@ -35,8 +34,6 @@ autostart = true
 position = Vector2(0, 20)
 target_position = Vector2(0, 20)
 collision_mask = 2
-
-[node name="CPUParticles2D" parent="." instance=ExtResource("5_brmf6")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

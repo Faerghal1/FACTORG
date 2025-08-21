@@ -1,0 +1,965 @@
+[gd_scene load_steps=30 format=3 uid="uid://bfwa2odjnu25x"]
+
+[ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Iron_Ore.png" id="1_ketcf"]
+[ext_resource type="Script" uid="uid://d1ikaamtl7wdl" path="res://Scripts/Index.gd" id="1_nii28"]
+[ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="2_lhddn"]
+[ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="2_nii28"]
+[ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="3_r3dr4"]
+[ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="4_x6x8t"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="5_ethub"]
+[ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="6_71v2r"]
+[ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor.png" id="8_x6x8t"]
+[ext_resource type="Texture2D" uid="uid://reatv4uuwjtm" path="res://Assets/Production_arrow.png" id="9_ethub"]
+[ext_resource type="Texture2D" uid="uid://x2l8dgvlpsee" path="res://Assets/Iron_node.png" id="10_ethub"]
+[ext_resource type="Texture2D" uid="uid://db5eq232fobm7" path="res://Assets/Copper_node.png" id="11_71v2r"]
+[ext_resource type="Texture2D" uid="uid://satlknjxuauh" path="res://Assets/Smelter.png" id="12_d4fer"]
+[ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="13_lhddn"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_h6qgc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4fer"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhddn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4dfr"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.75, 0.75, 0.75, 0.75)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3akh"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcnie"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_laq7h"]
+VScrollBar/icons/decrement = SubResource("ImageTexture_h6qgc")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_h6qgc")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_h6qgc")
+VScrollBar/icons/increment = SubResource("ImageTexture_h6qgc")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_h6qgc")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_h6qgc")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_d4fer")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_lhddn")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_y4dfr")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_i3akh")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_pcnie")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_laq7h"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8kmj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lu501"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uaysb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkry7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_y4dfr"]
+default_font = ExtResource("2_lhddn")
+default_font_size = 16
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/styles/disabled = SubResource("StyleBoxFlat_laq7h")
+Button/styles/focus = SubResource("StyleBoxFlat_q8kmj")
+Button/styles/hover = SubResource("StyleBoxFlat_lu501")
+Button/styles/normal = SubResource("StyleBoxFlat_uaysb")
+Button/styles/pressed = SubResource("StyleBoxFlat_pkry7")
+
+[sub_resource type="Theme" id="Theme_lhddn"]
+default_font = ExtResource("2_lhddn")
+default_font_size = 18
+
+[sub_resource type="Theme" id="Theme_i3akh"]
+default_font = ExtResource("2_lhddn")
+default_font_size = 18
+
+[node name="Index" type="Control"]
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_nii28")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -204.0
+offset_top = -161.0
+offset_right = 204.0
+offset_bottom = 78.0
+color = Color(0.233925, 0.233925, 0.233925, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = -202.0
+offset_top = -157.0
+offset_right = -47.0
+offset_bottom = 74.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_laq7h")
+theme_override_constants/separation = 8
+
+[node name="IronOre" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_y4dfr")
+action_mode = 0
+text = "Iron Ore"
+icon = ExtResource("1_ketcf")
+
+[node name="CopperOre" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_y4dfr")
+text = "Copper Ore"
+icon = ExtResource("2_nii28")
+
+[node name="IronIngot" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_y4dfr")
+text = "Iron Ingot"
+icon = ExtResource("3_r3dr4")
+
+[node name="CopperIngot" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_y4dfr")
+text = "Copper Ingot"
+icon = ExtResource("4_x6x8t")
+
+[node name="IronRod" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_y4dfr")
+text = "Iron Rod"
+icon = ExtResource("5_ethub")
+
+[node name="CopperWire" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_y4dfr")
+text = "Copper Wire"
+icon = ExtResource("6_71v2r")
+
+[node name="IronOre" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_lhddn")
+
+[node name="Name" type="ColorRect" parent="IronOre"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -155.0
+offset_right = 23.0
+offset_bottom = -130.0
+
+[node name="Label" type="Label" parent="IronOre/Name"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 63.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Iron ore"
+
+[node name="Image" type="ColorRect" parent="IronOre"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -122.0
+offset_right = 14.0
+offset_bottom = -78.0
+
+[node name="TextureRect" type="TextureRect" parent="IronOre/Image"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 42.0
+texture = ExtResource("1_ketcf")
+
+[node name="Description" type="ColorRect" parent="IronOre"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = -155.0
+offset_right = 186.0
+offset_bottom = -78.0
+
+[node name="Label" type="Label" parent="IronOre/Description"]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Raw material"
+
+[node name="Recipe" type="ColorRect" parent="IronOre"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -62.0
+offset_right = 199.0
+offset_bottom = 32.0
+
+[node name="ColorRect" type="ColorRect" parent="IronOre/Recipe"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 238.0
+offset_bottom = 92.0
+color = Color(0.370364, 0.370364, 0.370364, 1)
+
+[node name="TextureRect" type="TextureRect" parent="IronOre/Recipe"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 24.0
+offset_right = 164.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("8_x6x8t")
+
+[node name="TextureRect2" type="TextureRect" parent="IronOre/Recipe"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 24.0
+offset_right = 256.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("1_ketcf")
+
+[node name="TextureRect3" type="TextureRect" parent="IronOre/Recipe"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 24.0
+offset_right = 210.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect4" type="TextureRect" parent="IronOre/Recipe"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 24.0
+offset_right = 116.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect5" type="TextureRect" parent="IronOre/Recipe"]
+layout_mode = 0
+offset_left = 6.00003
+offset_top = 24.0
+offset_right = 70.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("10_ethub")
+
+[node name="CopperOre" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_i3akh")
+
+[node name="Name" type="ColorRect" parent="CopperOre"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -155.0
+offset_right = 50.0
+offset_bottom = -130.0
+
+[node name="Label" type="Label" parent="CopperOre/Name"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 63.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Copper ore"
+
+[node name="Image" type="ColorRect" parent="CopperOre"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -122.0
+offset_right = 14.0
+offset_bottom = -78.0
+
+[node name="TextureRect" type="TextureRect" parent="CopperOre/Image"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 42.0
+texture = ExtResource("2_nii28")
+
+[node name="Description" type="ColorRect" parent="CopperOre"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = -155.0
+offset_right = 201.0
+offset_bottom = -78.0
+
+[node name="Label" type="Label" parent="CopperOre/Description"]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Raw material"
+
+[node name="Recipe" type="ColorRect" parent="CopperOre"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -62.0
+offset_right = 199.0
+offset_bottom = 32.0
+
+[node name="ColorRect" type="ColorRect" parent="CopperOre/Recipe"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 238.0
+offset_bottom = 92.0
+color = Color(0.370364, 0.370364, 0.370364, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CopperOre/Recipe"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 24.0
+offset_right = 164.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("8_x6x8t")
+
+[node name="TextureRect2" type="TextureRect" parent="CopperOre/Recipe"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 24.0
+offset_right = 256.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_nii28")
+
+[node name="TextureRect3" type="TextureRect" parent="CopperOre/Recipe"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 24.0
+offset_right = 210.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect4" type="TextureRect" parent="CopperOre/Recipe"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 24.0
+offset_right = 116.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect5" type="TextureRect" parent="CopperOre/Recipe"]
+layout_mode = 0
+offset_left = 6.00003
+offset_top = 24.0
+offset_right = 70.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("11_71v2r")
+
+[node name="IronIngot" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_i3akh")
+
+[node name="Name" type="ColorRect" parent="IronIngot"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -155.0
+offset_right = 38.0
+offset_bottom = -130.0
+
+[node name="Label" type="Label" parent="IronIngot/Name"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 63.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Iron ingot"
+
+[node name="Image" type="ColorRect" parent="IronIngot"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -122.0
+offset_right = 14.0
+offset_bottom = -78.0
+
+[node name="TextureRect" type="TextureRect" parent="IronIngot/Image"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 42.0
+texture = ExtResource("3_r3dr4")
+
+[node name="Description" type="ColorRect" parent="IronIngot"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = -155.0
+offset_right = 195.0
+offset_bottom = -78.0
+
+[node name="Label" type="Label" parent="IronIngot/Description"]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Refined ingot"
+
+[node name="Recipe" type="ColorRect" parent="IronIngot"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -62.0
+offset_right = 199.0
+offset_bottom = 32.0
+
+[node name="ColorRect" type="ColorRect" parent="IronIngot/Recipe"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 238.0
+offset_bottom = 92.0
+color = Color(0.370364, 0.370364, 0.370364, 1)
+
+[node name="TextureRect" type="TextureRect" parent="IronIngot/Recipe"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 24.0
+offset_right = 164.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("12_d4fer")
+
+[node name="TextureRect2" type="TextureRect" parent="IronIngot/Recipe"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 24.0
+offset_right = 256.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("3_r3dr4")
+
+[node name="TextureRect3" type="TextureRect" parent="IronIngot/Recipe"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 24.0
+offset_right = 210.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect4" type="TextureRect" parent="IronIngot/Recipe"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 24.0
+offset_right = 116.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect5" type="TextureRect" parent="IronIngot/Recipe"]
+layout_mode = 0
+offset_left = 6.00003
+offset_top = 24.0
+offset_right = 70.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("1_ketcf")
+
+[node name="CopperIngot" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_i3akh")
+
+[node name="Name" type="ColorRect" parent="CopperIngot"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -155.0
+offset_right = 62.0
+offset_bottom = -130.0
+
+[node name="Label" type="Label" parent="CopperIngot/Name"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 63.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Copper ingot"
+
+[node name="Image" type="ColorRect" parent="CopperIngot"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -122.0
+offset_right = 14.0
+offset_bottom = -78.0
+
+[node name="TextureRect" type="TextureRect" parent="CopperIngot/Image"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 42.0
+texture = ExtResource("4_x6x8t")
+
+[node name="Description" type="ColorRect" parent="CopperIngot"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = -155.0
+offset_right = 202.0
+offset_bottom = -78.0
+
+[node name="Label" type="Label" parent="CopperIngot/Description"]
+layout_mode = 0
+offset_right = 138.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Refined ingot"
+
+[node name="Recipe" type="ColorRect" parent="CopperIngot"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -62.0
+offset_right = 199.0
+offset_bottom = 32.0
+
+[node name="ColorRect" type="ColorRect" parent="CopperIngot/Recipe"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 238.0
+offset_bottom = 92.0
+color = Color(0.370364, 0.370364, 0.370364, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CopperIngot/Recipe"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 24.0
+offset_right = 164.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("12_d4fer")
+
+[node name="TextureRect2" type="TextureRect" parent="CopperIngot/Recipe"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 24.0
+offset_right = 256.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("4_x6x8t")
+
+[node name="TextureRect3" type="TextureRect" parent="CopperIngot/Recipe"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 24.0
+offset_right = 210.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect4" type="TextureRect" parent="CopperIngot/Recipe"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 24.0
+offset_right = 116.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect5" type="TextureRect" parent="CopperIngot/Recipe"]
+layout_mode = 0
+offset_left = 6.00003
+offset_top = 24.0
+offset_right = 70.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_nii28")
+
+[node name="IronRod" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_i3akh")
+
+[node name="Name" type="ColorRect" parent="IronRod"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -155.0
+offset_right = 23.0
+offset_bottom = -130.0
+
+[node name="Label" type="Label" parent="IronRod/Name"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 63.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Iron rod"
+
+[node name="Image" type="ColorRect" parent="IronRod"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -122.0
+offset_right = 14.0
+offset_bottom = -78.0
+
+[node name="TextureRect" type="TextureRect" parent="IronRod/Image"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 42.0
+texture = ExtResource("5_ethub")
+
+[node name="Description" type="ColorRect" parent="IronRod"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = -155.0
+offset_right = 186.0
+offset_bottom = -78.0
+
+[node name="Label" type="Label" parent="IronRod/Description"]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Refined material"
+
+[node name="Recipe" type="ColorRect" parent="IronRod"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -62.0
+offset_right = 199.0
+offset_bottom = 32.0
+
+[node name="ColorRect" type="ColorRect" parent="IronRod/Recipe"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 238.0
+offset_bottom = 92.0
+color = Color(0.370364, 0.370364, 0.370364, 1)
+
+[node name="TextureRect" type="TextureRect" parent="IronRod/Recipe"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 24.0
+offset_right = 164.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("13_lhddn")
+
+[node name="TextureRect2" type="TextureRect" parent="IronRod/Recipe"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 24.0
+offset_right = 256.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("5_ethub")
+
+[node name="TextureRect3" type="TextureRect" parent="IronRod/Recipe"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 24.0
+offset_right = 210.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect4" type="TextureRect" parent="IronRod/Recipe"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 24.0
+offset_right = 116.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect5" type="TextureRect" parent="IronRod/Recipe"]
+layout_mode = 0
+offset_left = 6.00003
+offset_top = 24.0
+offset_right = 70.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("3_r3dr4")
+
+[node name="CopperWire" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_i3akh")
+
+[node name="Name" type="ColorRect" parent="CopperWire"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -155.0
+offset_right = 55.0
+offset_bottom = -130.0
+
+[node name="Label" type="Label" parent="CopperWire/Name"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 63.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Copper wire"
+
+[node name="Image" type="ColorRect" parent="CopperWire"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -122.0
+offset_right = 14.0
+offset_bottom = -78.0
+
+[node name="TextureRect" type="TextureRect" parent="CopperWire/Image"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 42.0
+texture = ExtResource("6_71v2r")
+
+[node name="Description" type="ColorRect" parent="CopperWire"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = -155.0
+offset_right = 202.0
+offset_bottom = -78.0
+
+[node name="Label" type="Label" parent="CopperWire/Description"]
+layout_mode = 0
+offset_right = 145.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Refined material"
+
+[node name="Recipe" type="ColorRect" parent="CopperWire"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -62.0
+offset_right = 199.0
+offset_bottom = 32.0
+
+[node name="ColorRect" type="ColorRect" parent="CopperWire/Recipe"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 238.0
+offset_bottom = 92.0
+color = Color(0.370364, 0.370364, 0.370364, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CopperWire/Recipe"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 24.0
+offset_right = 164.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("13_lhddn")
+
+[node name="TextureRect2" type="TextureRect" parent="CopperWire/Recipe"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 24.0
+offset_right = 256.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("6_71v2r")
+
+[node name="TextureRect3" type="TextureRect" parent="CopperWire/Recipe"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 24.0
+offset_right = 210.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect4" type="TextureRect" parent="CopperWire/Recipe"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 24.0
+offset_right = 116.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect5" type="TextureRect" parent="CopperWire/Recipe"]
+layout_mode = 0
+offset_left = 6.00003
+offset_top = 24.0
+offset_right = 70.0
+offset_bottom = 88.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("4_x6x8t")
+
+[connection signal="mouse_entered" from="ScrollContainer/VBoxContainer/IronOre" to="." method="_on_iron_ore_mouse_entered"]
+[connection signal="mouse_entered" from="ScrollContainer/VBoxContainer/CopperOre" to="." method="_on_copper_ore_mouse_entered"]
+[connection signal="mouse_entered" from="ScrollContainer/VBoxContainer/IronIngot" to="." method="_on_iron_ingot_mouse_entered"]
+[connection signal="mouse_entered" from="ScrollContainer/VBoxContainer/CopperIngot" to="." method="_on_copper_ingot_mouse_entered"]
+[connection signal="mouse_entered" from="ScrollContainer/VBoxContainer/IronRod" to="." method="_on_iron_rod_mouse_entered"]
+[connection signal="mouse_entered" from="ScrollContainer/VBoxContainer/CopperWire" to="." method="_on_copper_wire_mouse_entered"]

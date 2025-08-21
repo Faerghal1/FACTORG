@@ -4,23 +4,24 @@ extends Area2D
 
 @export var rod_scene: PackedScene
 @export var copper_wire_scene: PackedScene
+@export var copper_foil_scene: PackedScene
 var clone = 0
 var direction = 0
 var delete = 0
 var pos = Vector2i(0,0)
 var bitmap: BitMap = BitMap.new()
 
-func _ready():
-	var map = get_tree().current_scene.get_node("Generated_map")
-	var cell = map.local_to_map(position/2)
-	var data = map.get_cell_tile_data(cell)
-	if not data.get_custom_data("World") == "Unplaceable":
-		show()
-	else:
-		queue_free()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if clone == 0 and global.slot == 4:
+		var map = get_tree().current_scene.get_node("Generated_map")
+		var cell = map.local_to_map(position/2)
+		var data = map.get_cell_tile_data(cell)
+		if not data.get_custom_data("World") == "Unplaceable":
+			global.buildings_large_cant_place = false
+		else:
+			global.buildings_large_cant_place = true
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		var pos = Vector2i(position.snapped(Vector2(16,16))/16)
@@ -63,9 +64,19 @@ func _on_area_entered(area):
 			copper_wire.modulate.a = 1
 			copper_wire.rotation = rotation
 			copper_wire.direction = rotation/90
-			copper_wire.set_meta("Rod", direction/90)
+			copper_wire.set_meta("Copper_wire", direction/90)
 			add_sibling.call_deferred(copper_wire)
 			copper_wire.clone = 1
+		if area.has_meta("Copper_ingot") and $Copper_foil.visible == true \
+		and not $RayCast2D.get_collider():
+			var copper_foil = copper_foil_scene.instantiate()
+			copper_foil.position = position
+			copper_foil.modulate.a = 1
+			copper_foil.rotation = rotation
+			copper_foil.direction = rotation/90
+			copper_foil.set_meta("Copper_foil", direction/90)
+			add_sibling.call_deferred(copper_foil)
+			copper_foil.clone = 1
 
 func _on_mouse_entered():
 	delete = 1
@@ -87,4 +98,9 @@ func _on_iron_rod_pressed():
 
 func _on_copper_wire_pressed():
 	$Copper_wire.show()
+	$Recipe_list.hide()
+
+
+func _on_copper_foil_pressed():
+	$Copper_foil.show()
 	$Recipe_list.hide()
