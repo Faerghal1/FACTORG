@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqv62kkyefluf"]
+[gd_scene load_steps=10 format=3 uid="uid://dqv62kkyefluf"]
 
 [ext_resource type="Script" uid="uid://bd0rdk2g2vc67" path="res://Scripts/Storage.gd" id="1_m7wf3"]
 [ext_resource type="Texture2D" uid="uid://bjl26wes5neh3" path="res://Assets/Storage.png" id="1_mvajw"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="6_q3m1a"]
 [ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="7_ldl4g"]
 [ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="8_ivhcs"]
-[ext_resource type="Texture2D" uid="uid://f4hipo5ajyxd" path="res://Assets/Copper_foil.png" id="9_7xubt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpwve"]
 size = Vector2(40, 40)
@@ -60,11 +59,6 @@ visible = false
 position = Vector2(-5.06639e-07, -5.06639e-07)
 scale = Vector2(0.9375, 0.9375)
 texture = ExtResource("8_ivhcs")
-
-[node name="Copper_foil" type="Sprite2D" parent="."]
-position = Vector2(-5.06639e-07, -5.06639e-07)
-scale = Vector2(0.9375, 0.9375)
-texture = ExtResource("9_7xubt")
 
 [node name="ResourceAmount" type="Label" parent="."]
 offset_left = 2.5
