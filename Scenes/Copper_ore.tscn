@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ca06kmkaamar" path="res://Scripts/Resource.gd" id="1_ca78w"]
 [ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="2_7jkfa"]
-[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="2_qkbiu"]
+[ext_resource type="Script" uid="uid://1dhwm4g2k74b" path="res://Scripts/Item_sprites.gd" id="2_qkbiu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1xui"]
 size = Vector2(10, 10)
@@ -20,8 +20,8 @@ shape = SubResource("RectangleShape2D_o1xui")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
-metadata/Type = "Direction Copper"
 metadata/Copper = true
+metadata/Type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -2.38419e-07)
@@ -37,6 +37,8 @@ script = ExtResource("2_qkbiu")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

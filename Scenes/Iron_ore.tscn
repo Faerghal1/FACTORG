@@ -1,8 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://dal3rdkaxyfrd"]
 
+<<<<<<<< HEAD:Scenes/Iron_ore.tscn
 [ext_resource type="Script" uid="uid://ca06kmkaamar" path="res://Scripts/Resource.gd" id="1_7avij"]
 [ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Iron_Ore.png" id="2_1by24"]
 [ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_4ihnc"]
+========
+[ext_resource type="Script" uid="uid://ca06kmkaamar" path="res://Scripts/Resource.gd" id="1_chsbp"]
+[ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Iron_Ore.png" id="2_qavul"]
+[ext_resource type="Script" uid="uid://1dhwm4g2k74b" path="res://Scripts/Item_sprites.gd" id="3_ompfr"]
+>>>>>>>> Fearghal_Branch:Scenes/Iron_Ore.tscn
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1xui"]
 size = Vector2(10, 10)
@@ -20,8 +26,8 @@ shape = SubResource("RectangleShape2D_o1xui")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
-metadata/Type = "Direction Resource"
 metadata/Resource = true
+metadata/Type = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -2.38419e-07)
@@ -37,6 +43,8 @@ script = ExtResource("3_4ihnc")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
