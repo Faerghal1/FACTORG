@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://40e7gnocdmnt"]
+[gd_scene load_steps=10 format=3 uid="uid://40e7gnocdmnt"]
 
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="1_gcfcv"]
 [ext_resource type="Script" uid="uid://deus7g6hi4ux2" path="res://Scripts/Constructor.gd" id="1_lq4kr"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ruyfkei3vd2f" path="res://Scenes/Copper_wire.tscn" id="3_nk0dk"]
 [ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="4_ywd4q"]
 [ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="5_qaxfn"]
+[ext_resource type="PackedScene" uid="uid://brc27e625si0x" path="res://Scenes/Large_placement.tscn" id="8_0tltr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifi30"]
 size = Vector2(80, 79)
@@ -100,6 +101,8 @@ visible = false
 position = Vector2(-5.06639e-07, 20)
 scale = Vector2(0.9375, 0.9375)
 texture = ExtResource("5_qaxfn")
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("8_0tltr")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
