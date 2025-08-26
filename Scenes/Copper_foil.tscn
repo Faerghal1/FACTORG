@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bgbpriagevdu3"]
 
-[ext_resource type="Script" uid="uid://q3hdfeociipu" path="res://Scripts/Copper_foil.gd" id="1_qgg60"]
+[ext_resource type="Script" path="res://Scripts/Copper_foil.gd" id="1_qgg60"]
 [ext_resource type="Texture2D" uid="uid://f4hipo5ajyxd" path="res://Assets/Copper_foil.png" id="2_np31v"]
 [ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_3agtk"]
 
@@ -22,8 +22,8 @@ shape = SubResource("RectangleShape2D_85k5t")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
-metadata/Type = "Direction Copper Foil"
 metadata/Foil = true
+metadata/Type = 7
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.2, 0)

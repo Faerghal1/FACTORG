@@ -31,7 +31,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("Pause"):
 		$Camera2D/Pause_temp.show()
 		get_tree().paused = true
-	if global.copper_wire >= 15 and global.rod >= 10:
+	if global.copper_wire >= 15 and global.rod >= 10 and global.copper_foil >=20:
 		get_tree().paused = true
 	$Camera2D/Goal/RodGoal.text = (str(int(global.rod)) + "/10")
 	$Camera2D/Goal/WireGoal.text = (str(int(global.copper_wire)) + "/15")

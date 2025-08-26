@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dqv62kkyefluf"]
+[gd_scene load_steps=20 format=3 uid="uid://dqv62kkyefluf"]
 
 [ext_resource type="Script" uid="uid://bd0rdk2g2vc67" path="res://Scripts/Storage.gd" id="1_m7wf3"]
 [ext_resource type="Texture2D" uid="uid://bjl26wes5neh3" path="res://Assets/Storage.png" id="1_mvajw"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ruyfkei3vd2f" path="res://Scenes/Copper_wire.tscn" id="7_6xfhd"]
 [ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="7_ldl4g"]
 [ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="8_ivhcs"]
+[ext_resource type="Texture2D" uid="uid://f4hipo5ajyxd" path="res://Assets/Copper_foil.png" id="13_mipfg"]
 [ext_resource type="PackedScene" uid="uid://wuhg1pdmfkjb" path="res://Scenes/Placement.tscn" id="16_dbjfs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivhcs"]
@@ -40,6 +41,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_lfbm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_mipfg")
 }],
 "loop": true,
 "name": &"default",
