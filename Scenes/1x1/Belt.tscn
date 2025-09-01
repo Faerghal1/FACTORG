@@ -25,6 +25,7 @@ scale = Vector2(1.255, 1.255)
 texture = ExtResource("2_j2ave")
 
 [node name="CPUParticles2D" parent="." instance=ExtResource("3_bj6fn")]
+scale = Vector2(1, 1)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

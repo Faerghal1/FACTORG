@@ -1,25 +1,25 @@
 [gd_scene load_steps=43 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" uid="uid://fgq76fstefsg" path="res://Scripts/World.gd" id="1_pqhfs"]
-[ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/Belt.tscn" id="2_0b5rt"]
-[ext_resource type="PackedScene" uid="uid://b05iho5c44hkr" path="res://Scenes/Extractor.tscn" id="3_ofrym"]
+[ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/1x1/Belt.tscn" id="2_0b5rt"]
+[ext_resource type="PackedScene" uid="uid://b05iho5c44hkr" path="res://Scenes/1x1/Extractor.tscn" id="3_ofrym"]
 [ext_resource type="PackedScene" uid="uid://grkud06u2t6y" path="res://Scenes/Camera.tscn" id="5_fo33q"]
 [ext_resource type="Texture2D" uid="uid://ct2optecgx78d" path="res://Assets/Conveyor_Belt.png" id="6_7m4c6"]
-[ext_resource type="Script" uid="uid://da3piixp3i66s" path="res://Scripts/Belt_hotbar.gd" id="6_ksayx"]
+[ext_resource type="Script" uid="uid://d2jyg2pjau1w4" path="res://Scripts/Belt_hotbar.gd" id="6_ksayx"]
 [ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/Tilemap_gen.png" id="7_807aw"]
 [ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor.png" id="7_eqtyl"]
 [ext_resource type="Script" uid="uid://cywns0wfw84ca" path="res://Scripts/Tile_map.gd" id="8_jb2q2"]
-[ext_resource type="Script" uid="uid://s74xcsq238vq" path="res://Scripts/Extractor_hotbar.gd" id="8_lpojc"]
+[ext_resource type="Script" uid="uid://bxve1r65a8d0" path="res://Scripts/Extractor_hotbar.gd" id="8_lpojc"]
 [ext_resource type="Texture2D" uid="uid://satlknjxuauh" path="res://Assets/Smelter.png" id="9_kuaow"]
-[ext_resource type="PackedScene" uid="uid://cpql1vm2gnpml" path="res://Scenes/Smelter.tscn" id="10_glyoi"]
+[ext_resource type="PackedScene" uid="uid://cpql1vm2gnpml" path="res://Scenes/2x2/Smelter.tscn" id="10_glyoi"]
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="10_ydavp"]
-[ext_resource type="Script" uid="uid://bium40xiudj1c" path="res://Scripts/Smelter_hotbar.gd" id="11_6dldg"]
+[ext_resource type="Script" uid="uid://broxhq5a77hwa" path="res://Scripts/Smelter_hotbar.gd" id="11_6dldg"]
 [ext_resource type="Texture2D" uid="uid://bjl26wes5neh3" path="res://Assets/Storage.png" id="12_gpcpt"]
-[ext_resource type="Script" uid="uid://ct7od2d6humj2" path="res://Scripts/Constructor_hotbar.gd" id="14_5awit"]
-[ext_resource type="PackedScene" uid="uid://40e7gnocdmnt" path="res://Scenes/Constructor.tscn" id="15_wbpsv"]
-[ext_resource type="Script" uid="uid://dl0kn83ihr5gl" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
-[ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/Storage.tscn" id="19_nil32"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
+[ext_resource type="Script" uid="uid://dhyhgp0v1407g" path="res://Scripts/Constructor_hotbar.gd" id="14_5awit"]
+[ext_resource type="PackedScene" uid="uid://40e7gnocdmnt" path="res://Scenes/2x2/Constructor.tscn" id="15_wbpsv"]
+[ext_resource type="Script" uid="uid://u5muqorxpxsy" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
+[ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/1x1/Storage.tscn" id="19_nil32"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="20_1ap6o"]
 [ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="21_d3ars"]
 [ext_resource type="Texture2D" uid="uid://f4hipo5ajyxd" path="res://Assets/Copper_foil.png" id="22_7dsfl"]
 [ext_resource type="Texture2D" uid="uid://bmtbl0cqnctve" path="res://Assets/Controls-1.png" id="22_dpsl7"]
@@ -492,6 +492,7 @@ position = Vector2(65, 60)
 texture = ExtResource("21_d3ars")
 
 [node name="FoilGoal" type="Label" parent="Camera2D/Goal"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 89.0
 offset_right = 42.0
