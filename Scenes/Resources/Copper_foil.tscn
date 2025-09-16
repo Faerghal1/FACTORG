@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Copper_foil.gd" id="1_nv6a8"]
 [ext_resource type="Texture2D" uid="uid://f4hipo5ajyxd" path="res://Assets/Copper_foil.png" id="2_brbkq"]
-[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_hcy81"]
+[ext_resource type="Script" uid="uid://1dhwm4g2k74b" path="res://Scripts/Item_sprites.gd" id="3_hcy81"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85k5t"]
 size = Vector2(30, 27.5)
