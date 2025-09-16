@@ -12,6 +12,7 @@ var copper_wire = 0
 var copper_foil = 0
 var extractor_placed = false
 var slot = 0
+var hotbar_pressed = 0
 var extractor_cant_place = true
 var buildings_cant_place = true
 var buildings_large_cant_place = true

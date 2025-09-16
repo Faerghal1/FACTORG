@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="1_gcfcv"]
 [ext_resource type="Script" uid="uid://deus7g6hi4ux2" path="res://Scripts/Constructor.gd" id="1_lq4kr"]
 [ext_resource type="Texture2D" uid="uid://cshbe5cqr5jtv" path="res://Assets/Recipe_List.png" id="2_758gw"]
-[ext_resource type="PackedScene" uid="uid://ch4dodtt3vdb7" path="res://Scenes/Rod.tscn" id="2_tl7yo"]
-[ext_resource type="PackedScene" uid="uid://ruyfkei3vd2f" path="res://Scenes/Copper_wire.tscn" id="3_nk0dk"]
-[ext_resource type="PackedScene" uid="uid://bgbpriagevdu3" path="res://Scenes/Copper_foil.tscn" id="4_0tltr"]
+[ext_resource type="PackedScene" uid="uid://ch4dodtt3vdb7" path="res://Scenes/Resources/Rod.tscn" id="2_tl7yo"]
+[ext_resource type="PackedScene" uid="uid://ruyfkei3vd2f" path="res://Scenes/Resources/Copper_wire.tscn" id="3_nk0dk"]
+[ext_resource type="PackedScene" uid="uid://bgbpriagevdu3" path="res://Scenes/Resources/Copper_foil.tscn" id="4_0tltr"]
 [ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="4_ywd4q"]
 [ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="5_qaxfn"]
 [ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="7_8deiw"]
@@ -51,6 +51,7 @@ collision_mask = 2
 
 [node name="Recipe_list" type="Control" parent="."]
 visible = false
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = -10.0

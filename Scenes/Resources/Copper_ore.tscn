@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://unxnycyehs44"]
 
-[ext_resource type="Script" uid="uid://ca06kmkaamar" path="res://Scripts/Resource.gd" id="1_ca78w"]
-[ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="2_7jkfa"]
-[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="2_qkbiu"]
+[ext_resource type="Script" uid="uid://ca06kmkaamar" path="res://Scripts/Resource.gd" id="1_1kf3c"]
+[ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="2_3070t"]
+[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_85dk8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1xui"]
 size = Vector2(10, 10)
@@ -13,7 +13,7 @@ size = Vector2(5.33333, 5.33333)
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_ca78w")
+script = ExtResource("1_1kf3c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_o1xui")
@@ -31,8 +31,8 @@ shape = SubResource("RectangleShape2D_22j22")
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 z_index = 1
 scale = Vector2(1.255, 1.255)
-texture = ExtResource("2_7jkfa")
-script = ExtResource("2_qkbiu")
+texture = ExtResource("2_3070t")
+script = ExtResource("3_85dk8")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

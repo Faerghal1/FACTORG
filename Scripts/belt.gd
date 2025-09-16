@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var global = get_node("/root/Global")
+@onready var animation = $AnimatedSprite2D
 
 var clone = 0
 var direction = 0
@@ -10,6 +11,8 @@ var pos = Vector2i(0,0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if clone == 1:
+		animation.play("", 2.0)
 	if clone == 0 and global.slot == 1:
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 		position.x -= 8

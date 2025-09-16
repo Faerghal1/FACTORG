@@ -20,6 +20,7 @@ func _process(_delta):
 	if Input.is_action_pressed("Right_click") and clone and delete == 1:
 		queue_free()
 
+
 func _on_area_entered(area):
 	if area.has_meta("Belt") and area.get_meta("Belt")>=0:
 		move = 1
@@ -30,7 +31,6 @@ func _on_area_entered(area):
 	if area.has_meta("Storage") and area.get_meta("Storage")>=0:
 		global.iron_ore += 1
 		queue_free()
-
 
 
 func _on_area_exited(area):

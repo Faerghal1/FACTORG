@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://cpql1vm2gnpml"]
 
 [ext_resource type="Script" uid="uid://tn6yr36r0py8" path="res://Scripts/Smelter.gd" id="1_tm5hi"]
-[ext_resource type="PackedScene" uid="uid://2frehtr7kvp6" path="res://Scenes/Ingot.tscn" id="2_lfqhs"]
-[ext_resource type="PackedScene" uid="uid://dpnajo1dbl2um" path="res://Scenes/Copper_ingot.tscn" id="3_6xb37"]
+[ext_resource type="PackedScene" uid="uid://2frehtr7kvp6" path="res://Scenes/Resources/Ingot.tscn" id="2_lfqhs"]
+[ext_resource type="PackedScene" uid="uid://dpnajo1dbl2um" path="res://Scenes/Resources/Copper_ingot.tscn" id="3_6xb37"]
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="3_b2xjd"]
 [ext_resource type="Texture2D" uid="uid://satlknjxuauh" path="res://Assets/Smelter.png" id="3_uxgp2"]
 [ext_resource type="Texture2D" uid="uid://cshbe5cqr5jtv" path="res://Assets/Recipe_List.png" id="4_whqqv"]
@@ -48,6 +48,7 @@ collision_mask = 2
 
 [node name="Recipe_list" type="Control" parent="."]
 visible = false
+z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = -10.0
