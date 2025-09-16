@@ -55,6 +55,7 @@ func _on_timer_timeout():
 			resource.clone = 1
 		if global.extractor_placed == true \
 		and not $RayCast2D.get_collider() and is_copper == true:
+			print("1")
 			var copper = copper_scene.instantiate()
 			copper.position = position
 			copper.modulate.a = 1
@@ -62,6 +63,7 @@ func _on_timer_timeout():
 			copper.direction = rotation/90
 			copper.set_meta("Copper", direction/90)
 			add_sibling(copper)
+			print("2")
 			copper.clone = 1
 
 func _on_mouse_entered():

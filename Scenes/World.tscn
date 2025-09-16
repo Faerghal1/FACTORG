@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://40e7gnocdmnt" path="res://Scenes/2x2/Constructor.tscn" id="15_wbpsv"]
 [ext_resource type="Script" uid="uid://dl0kn83ihr5gl" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/1x1/Storage.tscn" id="19_nil32"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="20_1ap6o"]
 [ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="21_d3ars"]
 [ext_resource type="Texture2D" uid="uid://f4hipo5ajyxd" path="res://Assets/Copper_foil.png" id="22_7dsfl"]
 [ext_resource type="Texture2D" uid="uid://bmtbl0cqnctve" path="res://Assets/Controls-1.png" id="22_dpsl7"]
@@ -800,6 +800,10 @@ position = Vector2(24, 24)
 [node name="Storage" parent="." instance=ExtResource("19_nil32")]
 position = Vector2(32, 32)
 
+[node name="Belt_Timer" type="Timer" parent="."]
+wait_time = 0.04
+autostart = true
+
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="Camera2D/Pause_temp/Resume" to="." method="_on_resume_pressed"]
@@ -811,4 +815,5 @@ position = Vector2(32, 32)
 [connection signal="pressed" from="Camera2D/Hotbar/SmelterButton" to="Camera2D/Hotbar/SmelterButton" method="_on_smelter_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/ConstructorButton" to="Camera2D/Hotbar/ConstructorButton" method="_on_constructor_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/StorageButton" to="Camera2D/Hotbar/StorageButton" method="_on_storage_selected"]
+[connection signal="timeout" from="Belt_Timer" to="." method="_on_belt_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
