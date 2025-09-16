@@ -4,4 +4,7 @@ extends Button
 
 
 func _on_belt_selected():
-	global.slot = 1
+	if global.hotbar_pressed == 1:
+		global.hotbar_pressed = 0
+	else:
+		global.hotbar_pressed = 1

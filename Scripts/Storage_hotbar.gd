@@ -4,4 +4,7 @@ extends Button
 
 
 func _on_storage_selected():
-	global.slot = 5
+	if global.hotbar_pressed == 5:
+		global.hotbar_pressed = 0
+	else:
+		global.hotbar_pressed = 5

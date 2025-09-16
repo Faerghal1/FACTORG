@@ -26,17 +26,18 @@ func _process(_delta):
 	if Input.is_action_just_pressed("Index"):
 		if $Camera2D/Index.visible == false:
 			$Camera2D/Index.show()
-		elif $Camera2D/Index.visible == true:
-			$Camera2D/Index.hide()
 	if Input.is_action_just_pressed("Pause"):
-		$Camera2D/Pause_temp.show()
-		get_tree().paused = true
+		if $Camera2D/Index.visible == true:
+			$Camera2D/Index.hide()
+		else:
+			$Camera2D/Pause_temp.show()
+			get_tree().paused = true
 	if global.copper_wire >= 15 and global.rod >= 10 and global.copper_foil >=20:
 		get_tree().paused = true
 	$Camera2D/Goal/RodGoal.text = (str(int(global.rod)) + "/10")
 	$Camera2D/Goal/WireGoal.text = (str(int(global.copper_wire)) + "/15")
 	$Camera2D/Goal/FoilGoal.text = (str(int(global.copper_foil)) + "/20")
-	if Input.is_action_just_pressed("Hotbar_1"): # Belt
+	if Input.is_action_just_pressed("Hotbar_1"): # Belt hotkey selection
 		if global.slot == 1:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
 			$Camera2D/Belt_select.hide()
@@ -45,7 +46,7 @@ func _process(_delta):
 			global.slot = 1
 			$Camera2D/Controls/AnimatedSprite2D.frame = 2
 			$Camera2D/Belt_select.show()
-	if Input.is_action_just_pressed("Hotbar_2"): # Extractor
+	if Input.is_action_just_pressed("Hotbar_2"): # Extractor hotkey selection
 		if global.slot == 2:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
 			$Camera2D/Extractor_select.hide()
@@ -54,7 +55,7 @@ func _process(_delta):
 			global.slot = 2
 			$Camera2D/Controls/AnimatedSprite2D.frame = 2
 			$Camera2D/Extractor_select.show()
-	if Input.is_action_just_pressed("Hotbar_3"): # Smelter
+	if Input.is_action_just_pressed("Hotbar_3"): # Smelter hotkey selection
 		if global.slot == 3:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
 			$Camera2D/Smelter_select.hide()
@@ -63,7 +64,7 @@ func _process(_delta):
 			global.slot = 3
 			$Camera2D/Controls/AnimatedSprite2D.frame = 1
 			$Camera2D/Smelter_select.show()
-	if Input.is_action_just_pressed("Hotbar_4"): # Constructor
+	if Input.is_action_just_pressed("Hotbar_4"): # Constructor hotkey selection
 		if global.slot == 4:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
 			$Camera2D/Constructor_select.hide()
@@ -72,12 +73,32 @@ func _process(_delta):
 			global.slot = 4
 			$Camera2D/Controls/AnimatedSprite2D.frame = 1
 			$Camera2D/Constructor_select.show()
-	if Input.is_action_just_pressed("Hotbar_5"): # Storage
+	if Input.is_action_just_pressed("Hotbar_5"): # Storage hotkey selection
 		if global.slot == 5:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
 			$Camera2D/Storage_select.hide()
 			global.slot = 0
 		else:
+			global.slot = 5
+			$Camera2D/Controls/AnimatedSprite2D.frame = 2
+			$Camera2D/Storage_select.show()
+	if global.hotbar_pressed == 1: # Belt hotbar selection
+			global.slot = 1
+			$Camera2D/Controls/AnimatedSprite2D.frame = 2
+			$Camera2D/Belt_select.show()
+	if global.hotbar_pressed == 2: # Extractor hotbar selection
+			global.slot = 2
+			$Camera2D/Controls/AnimatedSprite2D.frame = 2
+			$Camera2D/Extractor_select.show()
+	if global.hotbar_pressed == 3: # Smelter hotbar selection
+			global.slot = 3
+			$Camera2D/Controls/AnimatedSprite2D.frame = 1
+			$Camera2D/Smelter_select.show()
+	if global.hotbar_pressed == 4: # Constructor hotbar selection
+			global.slot = 4
+			$Camera2D/Controls/AnimatedSprite2D.frame = 1
+			$Camera2D/Constructor_select.show()
+	if global.hotbar_pressed == 5: # Storage hotbar selection
 			global.slot = 5
 			$Camera2D/Controls/AnimatedSprite2D.frame = 2
 			$Camera2D/Storage_select.show()
