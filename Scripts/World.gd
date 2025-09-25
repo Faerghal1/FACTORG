@@ -236,3 +236,10 @@ func _on_main_menu_pressed():
 func _on_resume_pressed():
 	$Camera2D/Pause_temp.hide()
 	get_tree().paused = false
+
+
+func _on_belt_timer_timeout() -> void: # Animates the conveyer belt
+	if global.frames < 10:
+		global.frames += 1
+	else:
+		global.frames = 0

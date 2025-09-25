@@ -47,9 +47,12 @@ func _on_timer_timeout():
 	move = 0
 
 
-func _on_mouse_entered() -> void:
+
+
+func _on_area_2d_mouse_entered() -> void:
+	print("enter")
 	delete = 1
 
-
-func _on_mouse_exited() -> void:
+func _on_area_2d_mouse_exited() -> void:
+	print("exited")
 	delete = 0

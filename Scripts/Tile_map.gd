@@ -54,7 +54,7 @@ var tiles = {"grass": Vector2i(0,0), "grass_tree": Vector2i(0,2),
 var biome_data = {
 	"plains": {"grass": 0.8, "grass_tree": 0.15, "grass_rock": 0.025, "grass_boulder": 0.0125,
 	"grass_iron": 0.00625, "grass_copper": 0.00625},
-	
+			
 	"jungle": {"jungle_grass": 0.6, "jungle_tree": 0.27, "jungle_apple_tree": 0.05,
 	 "jungle_rock": 0.01 , "jungle_boulder": 0.02, "jungle_iron": 0.025, "jungle_copper": 0.025},
 	

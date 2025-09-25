@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ql4nlye8y264" path="res://Scripts/Ingot.gd" id="1_tausi"]
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="2_sqffh"]
-[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_cmkcw"]
+[ext_resource type="Script" uid="uid://1dhwm4g2k74b" path="res://Scripts/Item_sprites.gd" id="3_cmkcw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8cko"]
 size = Vector2(20, 15)

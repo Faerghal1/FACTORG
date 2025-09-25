@@ -17,3 +17,4 @@ var extractor_cant_place = true
 var buildings_cant_place = true
 var buildings_large_cant_place = true
 var mouse_on_hotbar = false
+var frames = 0 # Controls what frame the conveyer belt is.

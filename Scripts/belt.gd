@@ -10,9 +10,9 @@ var pos = Vector2i(0,0)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(_delta):# Sets the frames of the belt. It's globally linked 
 	if clone == 1:
-		animation.play("", 2.0)
+		animation.set_frame(global.frames)
 	if clone == 0 and global.slot == 1:
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 		position.x -= 8
