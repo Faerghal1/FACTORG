@@ -43,7 +43,7 @@ func _process(_delta):
 			if data.get_custom_data("World") == "Unplaceable":
 				global.buildings_cant_place = true
 				break
-		
+
 
 func _on_area_entered(area):
 	if clone == 1:

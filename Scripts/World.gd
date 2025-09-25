@@ -7,6 +7,7 @@ extends Node2D
 @export var smelter_scene: PackedScene
 @export var constructor_scene: PackedScene
 @export var storage_scene: PackedScene
+@export var combiner_scene: PackedScene
 var direction = 0
 var bitmap_height = 10000
 var bitmap_width = 10000 # needs to be even number
@@ -82,26 +83,39 @@ func _process(_delta):
 			global.slot = 5
 			$Camera2D/Controls/AnimatedSprite2D.frame = 2
 			$Camera2D/Storage_select.show()
+	if Input.is_action_just_pressed("Hotbar_6"): # Combiner hotkey selection
+		if global.slot == 6:
+			$Camera2D/Controls/AnimatedSprite2D.frame = 0
+			
+			global.slot = 0
+		else:
+			global.slot = 6
+			$Camera2D/Controls/AnimatedSprite2D.frame = 1
+			
 	if global.hotbar_pressed == 1: # Belt hotbar selection
-			global.slot = 1
-			$Camera2D/Controls/AnimatedSprite2D.frame = 2
-			$Camera2D/Belt_select.show()
+		global.slot = 1
+		$Camera2D/Controls/AnimatedSprite2D.frame = 2
+		$Camera2D/Belt_select.show()
 	if global.hotbar_pressed == 2: # Extractor hotbar selection
-			global.slot = 2
-			$Camera2D/Controls/AnimatedSprite2D.frame = 2
-			$Camera2D/Extractor_select.show()
+		global.slot = 2
+		$Camera2D/Controls/AnimatedSprite2D.frame = 2
+		$Camera2D/Extractor_select.show()
 	if global.hotbar_pressed == 3: # Smelter hotbar selection
-			global.slot = 3
-			$Camera2D/Controls/AnimatedSprite2D.frame = 1
-			$Camera2D/Smelter_select.show()
+		global.slot = 3
+		$Camera2D/Controls/AnimatedSprite2D.frame = 1
+		$Camera2D/Smelter_select.show()
 	if global.hotbar_pressed == 4: # Constructor hotbar selection
-			global.slot = 4
-			$Camera2D/Controls/AnimatedSprite2D.frame = 1
-			$Camera2D/Constructor_select.show()
+		global.slot = 4
+		$Camera2D/Controls/AnimatedSprite2D.frame = 1
+		$Camera2D/Constructor_select.show()
 	if global.hotbar_pressed == 5: # Storage hotbar selection
-			global.slot = 5
-			$Camera2D/Controls/AnimatedSprite2D.frame = 2
-			$Camera2D/Storage_select.show()
+		global.slot = 5
+		$Camera2D/Controls/AnimatedSprite2D.frame = 2
+		$Camera2D/Storage_select.show()
+	if global.hotbar_pressed == 6: # Combiner hotbar selection
+		global.slot = 6
+		$Camera2D/Controls/AnimatedSprite2D.frame = 2
+		
 	if not global.slot == 1: # Belt_tooltip
 		$Camera2D/Belt_select.hide()
 	if not global.slot == 2: # Extractor_tooltip
@@ -112,6 +126,8 @@ func _process(_delta):
 		$Camera2D/Constructor_select.hide()
 	if not global.slot == 5: # Storage_tooltip
 		$Camera2D/Storage_select.hide()
+	if not global.slot == 6: # Combiner_tooltip
+		pass
 	if global.mouse_on_hotbar == false:
 		if Input.is_action_pressed("Left_click") \
 		and (global.slot != 2 and global.slot != 0): # Detection for placeable in world
@@ -119,7 +135,7 @@ func _process(_delta):
 				if global.buildings_cant_place == true: # Buildings_cant_place
 					$"Camera2D/Can't Place Building".show()
 					$Timer.start()
-			elif global.slot == 3 or global.slot == 4:
+			elif global.slot == 3 or global.slot == 4 or global.slot == 6:
 				if global.buildings_large_cant_place == true: # Large_buildings_cant_place
 					$"Camera2D/Can't Place Building".show()
 					$Timer.start()
@@ -208,6 +224,24 @@ func _process(_delta):
 				add_sibling(storage)
 				storage.clone = 1
 				global.bitmap.set_bit(pos.x, pos.y, true)
+		if Input.is_action_pressed("Left_click") and global.slot == 6 \
+		and not global.buildings_large_cant_place: # Combiner_placement
+			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
+			if not global.bitmap.get_bit(pos.x , pos.y ) and not global.bitmap.get_bit(pos.x+1, pos.y) \
+			and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
+				print(pos)
+				var combiner = combiner_scene.instantiate()
+				combiner.position = pos*16
+				combiner.position.x -= 8
+				combiner.position.y -= 8
+				combiner.modulate.a = 1
+				combiner.set_meta("Combiner", direction/90)
+				add_sibling(combiner)
+				combiner.clone = 1
+				global.bitmap.set_bit(pos.x, pos.y, true)
+				global.bitmap.set_bit(pos.x+1, pos.y, true)
+				global.bitmap.set_bit(pos.x, pos.y+1, true)
+				global.bitmap.set_bit(pos.x+1, pos.y+1, true)
 	if Input.is_action_pressed("Right_click"):
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if global.bitmap.get_bit(pos.x, pos.y):

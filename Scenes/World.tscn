@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=44 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" uid="uid://fgq76fstefsg" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/1x1/Belt.tscn" id="2_0b5rt"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://da3piixp3i66s" path="res://Scripts/Belt_hotbar.gd" id="6_ksayx"]
 [ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/Tilemap_gen.png" id="7_807aw"]
 [ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor.png" id="7_eqtyl"]
+[ext_resource type="PackedScene" uid="uid://cg6k12ug0e7vs" path="res://Scenes/3x3/Combiner.tscn" id="7_mq4nq"]
 [ext_resource type="Script" uid="uid://cywns0wfw84ca" path="res://Scripts/Tile_map.gd" id="8_jb2q2"]
 [ext_resource type="Script" uid="uid://s74xcsq238vq" path="res://Scripts/Extractor_hotbar.gd" id="8_lpojc"]
 [ext_resource type="Texture2D" uid="uid://satlknjxuauh" path="res://Assets/Smelter.png" id="9_kuaow"]
@@ -19,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://40e7gnocdmnt" path="res://Scenes/2x2/Constructor.tscn" id="15_wbpsv"]
 [ext_resource type="Script" uid="uid://dl0kn83ihr5gl" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/1x1/Storage.tscn" id="19_nil32"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="20_1ap6o"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
 [ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="21_d3ars"]
 [ext_resource type="Texture2D" uid="uid://f4hipo5ajyxd" path="res://Assets/Copper_foil.png" id="22_7dsfl"]
 [ext_resource type="Texture2D" uid="uid://bmtbl0cqnctve" path="res://Assets/Controls-1.png" id="22_dpsl7"]
@@ -280,6 +281,7 @@ extractor_scene = ExtResource("3_ofrym")
 smelter_scene = ExtResource("10_glyoi")
 constructor_scene = ExtResource("15_wbpsv")
 storage_scene = ExtResource("19_nil32")
+combiner_scene = ExtResource("7_mq4nq")
 
 [node name="Generated_map" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
@@ -800,8 +802,11 @@ position = Vector2(24, 24)
 [node name="Storage" parent="." instance=ExtResource("19_nil32")]
 position = Vector2(32, 32)
 
+[node name="Combiner" parent="." instance=ExtResource("7_mq4nq")]
+position = Vector2(16, 16)
+
 [node name="Belt_Timer" type="Timer" parent="."]
-wait_time = 0.04
+wait_time = 0.08
 autostart = true
 
 [node name="Timer" type="Timer" parent="."]

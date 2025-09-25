@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dprxouw24n6mq" path="res://Scripts/Copper_wire.gd" id="1_6aa5o"]
 [ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="2_2gob8"]
-[ext_resource type="Script" uid="uid://1dhwm4g2k74b" path="res://Scripts/Item_sprites.gd" id="3_6fqfa"]
+[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_6fqfa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85k5t"]
 size = Vector2(30, 27.5)
