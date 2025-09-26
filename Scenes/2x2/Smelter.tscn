@@ -1,10 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cpql1vm2gnpml"]
+[gd_scene load_steps=28 format=3 uid="uid://cpql1vm2gnpml"]
 
 [ext_resource type="Script" uid="uid://tn6yr36r0py8" path="res://Scripts/Smelter.gd" id="1_tm5hi"]
 [ext_resource type="PackedScene" uid="uid://2frehtr7kvp6" path="res://Scenes/Resources/Ingot.tscn" id="2_lfqhs"]
 [ext_resource type="PackedScene" uid="uid://dpnajo1dbl2um" path="res://Scenes/Resources/Copper_ingot.tscn" id="3_6xb37"]
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="3_b2xjd"]
-[ext_resource type="Texture2D" uid="uid://satlknjxuauh" path="res://Assets/Smelter.png" id="3_uxgp2"]
+[ext_resource type="Texture2D" uid="uid://78ouifcule55" path="res://Assets/Smelter Animation.png" id="4_0yww3"]
 [ext_resource type="Texture2D" uid="uid://cshbe5cqr5jtv" path="res://Assets/Recipe_List.png" id="4_whqqv"]
 [ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="6_e52dk"]
 [ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="6_g1kfd"]
@@ -12,6 +12,91 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0rc1"]
 size = Vector2(80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1ogg"]
+atlas = ExtResource("4_0yww3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwy7f"]
+atlas = ExtResource("4_0yww3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ijsaw"]
+atlas = ExtResource("4_0yww3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwryj"]
+atlas = ExtResource("4_0yww3")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq630"]
+atlas = ExtResource("4_0yww3")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7hys"]
+atlas = ExtResource("4_0yww3")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5072"]
+atlas = ExtResource("4_0yww3")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyc2n"]
+atlas = ExtResource("4_0yww3")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm74d"]
+atlas = ExtResource("4_0yww3")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y75h4"]
+atlas = ExtResource("4_0yww3")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85nl2"]
+atlas = ExtResource("4_0yww3")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mr54s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1ogg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwy7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ijsaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwryj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yq630")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7hys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5072")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyc2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lm74d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y75h4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85nl2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Theme" id="Theme_abcaa"]
 default_font = ExtResource("6_e52dk")
@@ -44,9 +129,9 @@ copper_ingot_scene = ExtResource("3_6xb37")
 position = Vector2(2.38419e-06, 0)
 shape = SubResource("RectangleShape2D_c0rc1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.255, 1.255)
-texture = ExtResource("3_uxgp2")
+sprite_frames = SubResource("SpriteFrames_mr54s")
 
 [node name="Recipe" type="Button" parent="."]
 offset_left = -15.0

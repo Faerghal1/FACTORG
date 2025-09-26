@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var global = get_node("/root/Global")
+@onready var animation = $AnimatedSprite2D
 
 @export var ingot_scene: PackedScene
 @export var copper_ingot_scene: PackedScene
@@ -12,6 +13,8 @@ var pos = Vector2i(0,0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if clone == 1:
+		animation.set_frame(global.frames)
 	if clone == 0 and global.slot == 3:
 		var map = get_tree().current_scene.get_node("Generated_map")
 		var cell = map.local_to_map(position/2)

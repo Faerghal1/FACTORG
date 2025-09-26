@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cg6k12ug0e7vs" path="res://Scenes/3x3/Combiner.tscn" id="7_mq4nq"]
 [ext_resource type="Script" uid="uid://cywns0wfw84ca" path="res://Scripts/Tile_map.gd" id="8_jb2q2"]
 [ext_resource type="Script" uid="uid://s74xcsq238vq" path="res://Scripts/Extractor_hotbar.gd" id="8_lpojc"]
-[ext_resource type="Texture2D" uid="uid://satlknjxuauh" path="res://Assets/Smelter.png" id="9_kuaow"]
+[ext_resource type="Texture2D" uid="uid://buh3wptotswsy" path="res://Assets/Smelter.png" id="9_kuaow"]
 [ext_resource type="PackedScene" uid="uid://cpql1vm2gnpml" path="res://Scenes/2x2/Smelter.tscn" id="10_glyoi"]
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="10_ydavp"]
 [ext_resource type="Script" uid="uid://bium40xiudj1c" path="res://Scripts/Smelter_hotbar.gd" id="11_6dldg"]

@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://f4hipo5ajyxd" path="res://Assets/Copper_foil.png" id="9_y4dfr"]
 [ext_resource type="Texture2D" uid="uid://x2l8dgvlpsee" path="res://Assets/Iron_node.png" id="10_ethub"]
 [ext_resource type="Texture2D" uid="uid://db5eq232fobm7" path="res://Assets/Copper_node.png" id="11_71v2r"]
-[ext_resource type="Texture2D" uid="uid://satlknjxuauh" path="res://Assets/Smelter.png" id="12_d4fer"]
+[ext_resource type="Texture2D" uid="uid://buh3wptotswsy" path="res://Assets/Smelter.png" id="12_d4fer"]
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="13_lhddn"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_h6qgc"]

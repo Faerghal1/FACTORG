@@ -1,10 +1,10 @@
 extends Area2D
 
 @onready var global = get_node("/root/Global")
+@onready var animation = $AnimatedSprite2D
 
 @export var ingot_scene: PackedScene
 @export var copper_ingot_scene: PackedScene
-@onready var animation = $AnimatedSprite2D
 var clone = 0
 var direction = 0
 var delete = 0

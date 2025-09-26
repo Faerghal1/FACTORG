@@ -126,6 +126,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="Recipe_list"]
+layout_mode = 0
 offset_left = 68.0
 offset_top = -25.0
 offset_right = 148.0
