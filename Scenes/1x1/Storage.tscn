@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dqv62kkyefluf"]
+[gd_scene load_steps=22 format=3 uid="uid://dqv62kkyefluf"]
 
 [ext_resource type="Script" uid="uid://bd0rdk2g2vc67" path="res://Scripts/Storage.gd" id="1_m7wf3"]
 [ext_resource type="Texture2D" uid="uid://bjl26wes5neh3" path="res://Assets/Storage.png" id="1_mvajw"]
@@ -12,10 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://dpnajo1dbl2um" path="res://Scenes/Resources/Copper_ingot.tscn" id="5_pu6sn"]
 [ext_resource type="PackedScene" uid="uid://ch4dodtt3vdb7" path="res://Scenes/Resources/Rod.tscn" id="6_8kxa5"]
 [ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="6_q3m1a"]
-[ext_resource type="PackedScene" uid="uid://ruyfkei3vd2f" path="res://Scenes/Resources/Copper_wire.tscn" id="7_6xfhd"]
+[ext_resource type="PackedScene" uid="uid://ruyfkei3vd2f" path="res://Scenes/Resources/Gold_wire.tscn" id="7_6xfhd"]
 [ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="7_ldl4g"]
-[ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="8_ivhcs"]
+[ext_resource type="Texture2D" uid="uid://bunxefb1ux8da" path="res://Assets/Gold_ore.png" id="12_152l4"]
+[ext_resource type="Texture2D" uid="uid://cwa67ouggcrk6" path="res://Assets/Gold_wire.png" id="12_tgups"]
 [ext_resource type="Texture2D" uid="uid://f4hipo5ajyxd" path="res://Assets/Copper_foil.png" id="13_mipfg"]
+[ext_resource type="Texture2D" uid="uid://omt2sfe5q1h6" path="res://Assets/Gold_ingot.png" id="15_d508p"]
 [ext_resource type="PackedScene" uid="uid://wuhg1pdmfkjb" path="res://Scenes/Placement.tscn" id="16_dbjfs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivhcs"]
@@ -25,25 +27,31 @@ animations = [{
 "texture": ExtResource("3_7xubt")
 }, {
 "duration": 1.0,
+"texture": ExtResource("5_2fq5u")
+}, {
+"duration": 1.0,
 "texture": ExtResource("6_q3m1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_152l4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w5myp")
 }, {
 "duration": 1.0,
 "texture": ExtResource("7_ldl4g")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_ivhcs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_2fq5u")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_w5myp")
+"texture": ExtResource("15_d508p")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_lfbm8")
 }, {
 "duration": 1.0,
 "texture": ExtResource("13_mipfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tgups")
 }],
 "loop": true,
 "name": &"default",
@@ -68,7 +76,7 @@ copper_wire_scene = ExtResource("7_6xfhd")
 scale = Vector2(1.255, 1.255)
 texture = ExtResource("1_mvajw")
 
-[node name="Resource_Sprite" type="AnimatedSprite2D" parent="."]
+[node name="StoredSprite" type="AnimatedSprite2D" parent="."]
 visible = false
 scale = Vector2(1.255, 1.255)
 sprite_frames = SubResource("SpriteFrames_ivhcs")
@@ -76,7 +84,7 @@ sprite_frames = SubResource("SpriteFrames_ivhcs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wpwve")
 
-[node name="ResourceAmount" type="Label" parent="."]
+[node name="StoredAmount" type="Label" parent="."]
 offset_left = 2.5
 offset_top = 2.5
 offset_right = 14.5

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://ruyfkei3vd2f"]
 
-[ext_resource type="Script" uid="uid://dprxouw24n6mq" path="res://Scripts/Copper_wire.gd" id="1_6aa5o"]
-[ext_resource type="Texture2D" uid="uid://cperpel02ekcw" path="res://Assets/Copper Wire.png" id="2_2gob8"]
-[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_6fqfa"]
+[ext_resource type="Script" uid="uid://dprxouw24n6mq" path="res://Scripts/Copper_wire.gd" id="1_7rqn3"]
+[ext_resource type="Texture2D" uid="uid://cwa67ouggcrk6" path="res://Assets/Gold_wire.png" id="2_b3idc"]
+[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_s2dig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85k5t"]
 size = Vector2(30, 27.5)
@@ -13,7 +13,7 @@ size = Vector2(11, 12)
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_6aa5o")
+script = ExtResource("1_7rqn3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.4, 0.4)
@@ -22,7 +22,7 @@ shape = SubResource("RectangleShape2D_85k5t")
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
 metadata/Wire = true
-metadata/Type = 3
+metadata/Type = 9
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, 0)
@@ -31,8 +31,8 @@ shape = SubResource("RectangleShape2D_1y7ed")
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 z_index = 1
 scale = Vector2(1.255, 1.255)
-texture = ExtResource("2_2gob8")
-script = ExtResource("3_6fqfa")
+texture = ExtResource("2_b3idc")
+script = ExtResource("3_s2dig")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

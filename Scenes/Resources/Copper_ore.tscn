@@ -21,7 +21,7 @@ shape = SubResource("RectangleShape2D_o1xui")
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
 metadata/Copper = true
-metadata/Type = 1
+metadata/Type = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -2.38419e-07)
@@ -41,6 +41,5 @@ one_shot = true
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="ready" from="Area2D" to="." method="_on_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

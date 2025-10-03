@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b05iho5c44hkr"]
+[gd_scene load_steps=7 format=3 uid="uid://b05iho5c44hkr"]
 
 [ext_resource type="Script" uid="uid://csp0m2bsjwhpl" path="res://Scripts/Extractor.gd" id="1_6uykh"]
 [ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor.png" id="1_pfimx"]
 [ext_resource type="PackedScene" uid="uid://dkxuhvtv7jy05" path="res://Scenes/Resources/Iron_Ore.tscn" id="2_dxtal"]
 [ext_resource type="PackedScene" uid="uid://unxnycyehs44" path="res://Scenes/Resources/Copper_ore.tscn" id="3_i524o"]
+[ext_resource type="PackedScene" uid="uid://8pb4nm0qtxvv" path="res://Scenes/Resources/Gold_ore.tscn" id="4_6rndr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7jx5"]
 size = Vector2(2.5, 2.5)
@@ -14,6 +15,7 @@ scale = Vector2(0.4, 0.4)
 script = ExtResource("1_6uykh")
 resource_scene = ExtResource("2_dxtal")
 copper_scene = ExtResource("3_i524o")
+gold_scene = ExtResource("4_6rndr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.86264e-06, 2.04891e-06)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cperpel02ekcw"
-path="res://.godot/imported/Copper Wire.png-cc6b6deb9d9b38fd26f212512a8dae12.ctex"
+uid="uid://cwa67ouggcrk6"
+path="res://.godot/imported/Gold_wire.png-338b0a0f660953097bd36613c6eb0547.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Copper Wire.png"
-dest_files=["res://.godot/imported/Copper Wire.png-cc6b6deb9d9b38fd26f212512a8dae12.ctex"]
+source_file="res://Assets/Gold_wire.png"
+dest_files=["res://.godot/imported/Gold_wire.png-338b0a0f660953097bd36613c6eb0547.ctex"]
 
 [params]
 

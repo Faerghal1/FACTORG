@@ -1,14 +1,16 @@
-[gd_scene load_steps=28 format=3 uid="uid://cpql1vm2gnpml"]
+[gd_scene load_steps=30 format=3 uid="uid://cpql1vm2gnpml"]
 
 [ext_resource type="Script" uid="uid://tn6yr36r0py8" path="res://Scripts/Smelter.gd" id="1_tm5hi"]
 [ext_resource type="PackedScene" uid="uid://2frehtr7kvp6" path="res://Scenes/Resources/Ingot.tscn" id="2_lfqhs"]
 [ext_resource type="PackedScene" uid="uid://dpnajo1dbl2um" path="res://Scenes/Resources/Copper_ingot.tscn" id="3_6xb37"]
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="3_b2xjd"]
 [ext_resource type="Texture2D" uid="uid://78ouifcule55" path="res://Assets/Smelter Animation.png" id="4_0yww3"]
+[ext_resource type="PackedScene" uid="uid://qnkunt58yt1x" path="res://Scenes/Resources/Gold_ingot.tscn" id="4_pwy7f"]
 [ext_resource type="Texture2D" uid="uid://cshbe5cqr5jtv" path="res://Assets/Recipe_List.png" id="4_whqqv"]
 [ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="6_e52dk"]
 [ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="6_g1kfd"]
 [ext_resource type="PackedScene" uid="uid://brc27e625si0x" path="res://Scenes/Large_placement.tscn" id="9_0yww3"]
+[ext_resource type="Texture2D" uid="uid://omt2sfe5q1h6" path="res://Assets/Gold_ingot.png" id="9_m1ogg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0rc1"]
 size = Vector2(80, 80)
@@ -124,6 +126,7 @@ scale = Vector2(0.4, 0.4)
 script = ExtResource("1_tm5hi")
 ingot_scene = ExtResource("2_lfqhs")
 copper_ingot_scene = ExtResource("3_6xb37")
+gold_ingot_scene = ExtResource("4_pwy7f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.38419e-06, 0)
@@ -155,9 +158,9 @@ z_index = 2
 layout_mode = 3
 anchors_preset = 0
 offset_left = -10.0
-offset_top = 10.0
+offset_top = -6.0
 offset_right = 30.0
-offset_bottom = 50.0
+offset_bottom = 34.0
 scale = Vector2(1.25, 1.25)
 theme = SubResource("Theme_abcaa")
 
@@ -166,7 +169,7 @@ layout_mode = 0
 offset_left = 45.0
 offset_top = -41.0
 offset_right = 97.0
-offset_bottom = -17.0
+offset_bottom = 5.0
 scale = Vector2(2, 2)
 color = Color(0.0807833, 0.0807833, 0.0807833, 1)
 
@@ -198,6 +201,19 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
+[node name="Gold_ingot" type="Button" parent="Recipe_list"]
+offset_left = 48.0
+offset_top = 6.0
+offset_right = 157.0
+offset_bottom = 92.0
+scale = Vector2(0.5, 0.5)
+text = "Gold Ingot"
+icon = ExtResource("9_m1ogg")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
 [node name="Iron_ingot" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(-5.36442e-07, 20)
@@ -209,6 +225,12 @@ visible = false
 position = Vector2(5.36442e-07, 20)
 scale = Vector2(0.9375, 0.9375)
 texture = ExtResource("6_g1kfd")
+
+[node name="Gold_ingot" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-4.76837e-07, 20)
+scale = Vector2(0.9375, 0.9375)
+texture = ExtResource("9_m1ogg")
 
 [node name="Placement" parent="." instance=ExtResource("9_0yww3")]
 
@@ -248,3 +270,4 @@ color_ramp = SubResource("Gradient_pwy7f")
 [connection signal="pressed" from="Recipe" to="." method="_on_recipe_selected"]
 [connection signal="pressed" from="Recipe_list/Iron_ingot" to="." method="_on_iron_ingot_pressed"]
 [connection signal="pressed" from="Recipe_list/Copper_ingot" to="." method="_on_copper_ingot_pressed"]
+[connection signal="pressed" from="Recipe_list/Gold_ingot" to="." method="_on_gold_ingot_pressed"]

@@ -1,44 +1,55 @@
 extends Control
 
-@onready var ironore = $IronOre
-@onready var copperore = $CopperOre
-@onready var ironingot = $IronIngot
-@onready var copperingot = $CopperIngot
-@onready var ironrod = $IronRod
-@onready var copperwire = $CopperWire
-@onready var copperfoil = $CopperFoil
+@onready var iron_ore = $IronOre
+@onready var copper_ore = $CopperOre
+@onready var gold_ore = $GoldOre
+@onready var iron_ingot = $IronIngot
+@onready var copper_ingot = $CopperIngot
+@onready var gold_ingot = $GoldIngot
+@onready var iron_rod = $IronRod
+@onready var copper_foil = $CopperFoil
+@onready var gold_wire = $GoldWire
+
 var recipe = 0
 
 
 func _process(_delta):
 	if recipe == 1:
-		ironore.show()
+		iron_ore.show()
 	if recipe == 2:
-		copperore.show()
+		copper_ore.show()
 	if recipe == 3:
-		ironingot.show()
+		gold_ore.show()
 	if recipe == 4:
-		copperingot.show()
+		iron_ingot.show()
 	if recipe == 5:
-		ironrod.show()
+		copper_ingot.show()
 	if recipe == 6:
-		copperwire.show()
+		gold_ingot.show()
 	if recipe == 7:
-		copperfoil.show()
+		iron_rod.show()
+	if recipe == 8:
+		copper_foil.show()
+	if recipe == 9:
+		gold_wire.show()
 	if not recipe == 1:
-		ironore.hide()
+		iron_ore.hide()
 	if not recipe == 2:
-		copperore.hide()
+		copper_ore.hide()
 	if not recipe == 3:
-		ironingot.hide()
+		gold_ore.hide()
 	if not recipe == 4:
-		copperingot.hide()
+		iron_ingot.hide()
 	if not recipe == 5:
-		ironrod.hide()
+		copper_ingot.hide()
 	if not recipe == 6:
-		copperwire.hide()
+		gold_ingot.hide()
 	if not recipe == 7:
-		copperfoil.hide()
+		iron_rod.hide()
+	if not recipe == 8:
+		copper_foil.hide()
+	if not recipe == 9:
+		gold_wire.hide()
 
 
 func _on_iron_ore_mouse_entered():
@@ -49,21 +60,29 @@ func _on_copper_ore_mouse_entered():
 	recipe = 2
 
 
-func _on_iron_ingot_mouse_entered():
+func _on_gold_ore_mouse_entered():
 	recipe = 3
 
 
-func _on_copper_ingot_mouse_entered():
+func _on_iron_ingot_mouse_entered():
 	recipe = 4
 
 
-func _on_iron_rod_mouse_entered():
+func _on_copper_ingot_mouse_entered():
 	recipe = 5
 
 
-func _on_copper_wire_mouse_entered():
+func _on_gold_ingot_mouse_entered():
 	recipe = 6
 
 
-func _on_copper_foil_mouse_entered():
+func _on_iron_rod_mouse_entered():
 	recipe = 7
+
+
+func _on_copper_foil_mouse_entered():
+	recipe = 8
+
+
+func _on_gold_wire_mouse_entered():
+	recipe = 9

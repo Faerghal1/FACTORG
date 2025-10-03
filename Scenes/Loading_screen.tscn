@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bs05f3mmmecto" path="res://Scripts/Loading_screen.gd" id="1_deu6n"]
 [ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="2_gycv2"]
-[ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/Tilemap_gen.png" id="2_qxq7a"]
+[ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/Tilemap_gen_old.png" id="2_qxq7a"]
 [ext_resource type="Script" uid="uid://cywns0wfw84ca" path="res://Scripts/Tile_map.gd" id="3_e5jrn"]
 
 [sub_resource type="Theme" id="Theme_5c2l1"]

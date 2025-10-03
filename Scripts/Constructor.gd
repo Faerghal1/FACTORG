@@ -1,9 +1,15 @@
 extends Area2D
 
 @onready var global = get_node("/root/Global")
+@onready var raycast = $RayCast2D
+@onready var recipe = $Recipe
+@onready var recipe_list = $Recipe_list
+@onready var iron_rod_recipe = $Rod
+@onready var copper_foil_recipe = $Copper_foil
+@onready var gold_wire_recipe = $Gold_wire
 
 @export var rod_scene: PackedScene
-@export var copper_wire_scene: PackedScene
+@export var gold_wire_scene: PackedScene
 @export var copper_foil_scene: PackedScene
 var clone = 0
 var direction = 0
@@ -47,8 +53,8 @@ func _process(_delta):
 
 func _on_area_entered(area):
 	if clone == 1:
-		if area.has_meta("Ingot") and $Rod.visible == true \
-		and not $RayCast2D.get_collider():
+		if area.has_meta("Ingot") and iron_rod_recipe.visible == true \
+		and not raycast.get_collider():
 			var rod = rod_scene.instantiate()
 			rod.position = position
 			rod.modulate.a = 1
@@ -57,18 +63,8 @@ func _on_area_entered(area):
 			rod.set_meta("Rod", direction/90)
 			add_sibling.call_deferred(rod)
 			rod.clone = 1
-		if area.has_meta("Copper_ingot") and $Copper_wire.visible == true \
-		and not $RayCast2D.get_collider():
-			var copper_wire = copper_wire_scene.instantiate()
-			copper_wire.position = position
-			copper_wire.modulate.a = 1
-			copper_wire.rotation = rotation
-			copper_wire.direction = rotation/90
-			copper_wire.set_meta("Copper_wire", direction/90)
-			add_sibling.call_deferred(copper_wire)
-			copper_wire.clone = 1
-		if area.has_meta("Copper_ingot") and $Copper_foil.visible == true \
-		and not $RayCast2D.get_collider():
+		if area.has_meta("Copper_ingot") and copper_foil_recipe.visible == true \
+		and not raycast.get_collider():
 			var copper_foil = copper_foil_scene.instantiate()
 			copper_foil.position = position
 			copper_foil.modulate.a = 1
@@ -77,6 +73,17 @@ func _on_area_entered(area):
 			copper_foil.set_meta("Copper_foil", direction/90)
 			add_sibling.call_deferred(copper_foil)
 			copper_foil.clone = 1
+		if area.has_meta("Gold_ingot") and gold_wire_recipe.visible == true \
+		and not raycast.get_collider():
+			var gold_wire = gold_wire_scene.instantiate()
+			gold_wire.position = position
+			gold_wire.modulate.a = 1
+			gold_wire.rotation = rotation
+			gold_wire.direction = rotation/90
+			gold_wire.set_meta("Gold_wire", direction/90)
+			add_sibling.call_deferred(gold_wire)
+			gold_wire.clone = 1
+
 
 func _on_mouse_entered():
 	delete = 1
@@ -87,20 +94,20 @@ func _on_mouse_exited():
 
 
 func _on_recipe_selected():
-	if clone == 1 and $Recipe.visible == true:
-		$Recipe.hide()
-		$Recipe_list.show()
+	if clone == 1 and recipe.visible == true:
+		recipe.hide()
+		recipe_list.show()
 
 
 func _on_iron_rod_pressed():
-	$Rod.show()
-	$Recipe_list.hide()
+	iron_rod_recipe.show()
+	recipe_list.hide()
 
-func _on_copper_wire_pressed():
-	$Copper_wire.show()
-	$Recipe_list.hide()
+func _on_gold_wire_pressed():
+	gold_wire_recipe.show()
+	recipe_list.hide()
 
 
 func _on_copper_foil_pressed():
-	$Copper_foil.show()
-	$Recipe_list.hide()
+	copper_foil_recipe.show()
+	recipe_list.hide()

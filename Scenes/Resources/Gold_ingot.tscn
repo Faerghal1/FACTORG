@@ -1,40 +1,40 @@
-[gd_scene load_steps=6 format=3 uid="uid://2frehtr7kvp6"]
+[gd_scene load_steps=6 format=3 uid="uid://qnkunt58yt1x"]
 
-[ext_resource type="Script" uid="uid://ql4nlye8y264" path="res://Scripts/Ingot.gd" id="1_tausi"]
-[ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="2_sqffh"]
-[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_cmkcw"]
+[ext_resource type="Script" uid="uid://cg3c2cv4q5o4m" path="res://Scripts/Gold_ingot.gd" id="1_nrxsd"]
+[ext_resource type="Texture2D" uid="uid://omt2sfe5q1h6" path="res://Assets/Gold_ingot.png" id="1_vxh5e"]
+[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="2_nrxsd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8cko"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a27ws"]
 size = Vector2(20, 15)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlib0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq6vm"]
 size = Vector2(2, 3)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_tausi")
+script = ExtResource("1_nrxsd")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.19209e-07)
 scale = Vector2(0.4, 0.4)
-shape = SubResource("RectangleShape2D_k8cko")
+shape = SubResource("RectangleShape2D_a27ws")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
-metadata/Ingot = true
-metadata/Type = 4
+metadata/Gold_ingot = true
+metadata/Type = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 1.19209e-07)
 scale = Vector2(2.5, 2.5)
-shape = SubResource("RectangleShape2D_rlib0")
+shape = SubResource("RectangleShape2D_dq6vm")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 z_index = 1
 scale = Vector2(1.255, 1.255)
-texture = ExtResource("2_sqffh")
-script = ExtResource("3_cmkcw")
+texture = ExtResource("1_vxh5e")
+script = ExtResource("2_nrxsd")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

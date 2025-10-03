@@ -1,7 +1,15 @@
 extends Area2D
 
 @onready var global = get_node("/root/Global")
+@onready var stored_amount = $StoredAmount
+@onready var stored_sprite = $StoredSprite
 
+@export var resource_scene: PackedScene
+@export var copper_scene: PackedScene
+@export var resource_ingot_scene: PackedScene
+@export var copper_ingot_scene: PackedScene
+@export var resource_rod_scene: PackedScene
+@export var copper_wire_scene: PackedScene
 var clone = 0
 var direction = 0
 var delete = 0
@@ -10,12 +18,7 @@ var bitmap: BitMap = BitMap.new()
 var item_type = ""
 var amount = 1
 var has_item = false
-@export var resource_scene: PackedScene
-@export var copper_scene: PackedScene
-@export var resource_ingot_scene: PackedScene
-@export var copper_ingot_scene: PackedScene
-@export var resource_rod_scene: PackedScene
-@export var copper_wire_scene: PackedScene
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -105,12 +108,12 @@ func _process(_delta):
 
 func _on_area_entered(area):
 	if area.has_meta("Type") and clone == 1:
-		$ResourceAmount.text = (str(int(amount)))
+		stored_amount.text = (str(int(amount)))
 		if not has_item:
 			has_item = true
-			$Resource_Sprite.show()
+			stored_sprite.show()
 			item_type = area.get_meta("Type")
-			$Resource_Sprite.frame = area.get_meta("Type")
+			stored_sprite.frame = area.get_meta("Type")
 			amount += 1
 		else:
 			amount+=1

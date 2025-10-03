@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkxuhvtv7jy05"]
+[gd_scene load_steps=6 format=3 uid="uid://8pb4nm0qtxvv"]
 
-[ext_resource type="Script" uid="uid://ca06kmkaamar" path="res://Scripts/Resource.gd" id="1_4extd"]
-[ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Iron_Ore.png" id="2_o0hrw"]
-[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_u1wld"]
+[ext_resource type="Script" uid="uid://vwof0xom384e" path="res://Scripts/Gold_ore.gd" id="1_61rny"]
+[ext_resource type="Texture2D" uid="uid://bunxefb1ux8da" path="res://Assets/Gold_ore.png" id="2_lmftd"]
+[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_g8uy8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1xui"]
 size = Vector2(10, 10)
@@ -13,15 +13,15 @@ size = Vector2(5.33333, 5.33333)
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_4extd")
+script = ExtResource("1_61rny")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_o1xui")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
-metadata/Resource = true
-metadata/Type = 1
+metadata/Gold = true
+metadata/Type = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -2.38419e-07)
@@ -31,8 +31,8 @@ shape = SubResource("RectangleShape2D_22j22")
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 z_index = 1
 scale = Vector2(1.255, 1.255)
-texture = ExtResource("2_o0hrw")
-script = ExtResource("3_u1wld")
+texture = ExtResource("2_lmftd")
+script = ExtResource("3_g8uy8")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

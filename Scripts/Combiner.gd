@@ -2,6 +2,9 @@ extends Area2D
 
 @onready var global = get_node("/root/Global")
 @onready var animation = $AnimatedSprite2D
+@onready var raycast = $RayCast2D
+@onready var recipe = $Recipe
+@onready var recipe_list = $Recipe_list
 
 @export var ingot_scene: PackedScene
 @export var copper_ingot_scene: PackedScene
@@ -32,6 +35,11 @@ func _process(_delta):
 		global.bitmap.set_bit(pos.x+1, pos.y, false)
 		global.bitmap.set_bit(pos.x, pos.y+1, false)
 		global.bitmap.set_bit(pos.x+1, pos.y+1, false)
+		global.bitmap.set_bit(pos.x-1, pos.y, false)
+		global.bitmap.set_bit(pos.x-1, pos.y+1, false)
+		global.bitmap.set_bit(pos.x-1, pos.y-1, false)
+		global.bitmap.set_bit(pos.x, pos.y-1, false)
+		global.bitmap.set_bit(pos.x+1, pos.y-1, false)
 		queue_free()
 	if clone == 0:
 		if global.slot == 6:
@@ -49,6 +57,6 @@ func _on_mouse_exited():
 
 
 func _on_recipe_selected():
-	if clone == 1 and $Recipe.visible == true:
-		$Recipe.hide()
-		$Recipe_list.show()
+	if clone == 1 and recipe.visible == true:
+		recipe.hide()
+		recipe_list.show()

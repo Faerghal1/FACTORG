@@ -2,9 +2,16 @@ extends Area2D
 
 @onready var global = get_node("/root/Global")
 @onready var animation = $AnimatedSprite2D
+@onready var raycast = $RayCast2D
+@onready var recipe = $Recipe
+@onready var recipe_list = $Recipe_list
+@onready var iron_ingot_recipe = $Iron_ingot
+@onready var copper_ingot_recipe = $Copper_ingot
+@onready var gold_ingot_recipe = $Gold_ingot
 
 @export var ingot_scene: PackedScene
 @export var copper_ingot_scene: PackedScene
+@export var gold_ingot_scene: PackedScene
 var clone = 0
 var direction = 0
 var delete = 0
@@ -40,10 +47,8 @@ func _process(_delta):
 
 func _on_area_entered(area):
 	if clone == 1:
-		if area.has_meta("Resource") and $Iron_ingot.visible == true \
-		and not $RayCast2D.get_collider():
-			print($RayCast2D.get_collider())
-			print("Iron Ingot")
+		if area.has_meta("Resource") and iron_ingot_recipe.visible == true \
+		and not raycast.get_collider():
 			var ingot = ingot_scene.instantiate()
 			ingot.position = position
 			ingot.modulate.a = 1
@@ -52,8 +57,8 @@ func _on_area_entered(area):
 			ingot.set_meta("Ingot", direction/90)
 			add_sibling.call_deferred(ingot)
 			ingot.clone = 1
-		if area.has_meta("Copper") and $Copper_ingot.visible == true \
-		and not $RayCast2D.get_collider():
+		if area.has_meta("Copper") and copper_ingot_recipe.visible == true \
+		and not raycast.get_collider():
 			var copper_ingot = copper_ingot_scene.instantiate()
 			copper_ingot.position = position
 			copper_ingot.modulate.a = 1
@@ -62,6 +67,16 @@ func _on_area_entered(area):
 			copper_ingot.set_meta("Copper_ingot", direction/90)
 			add_sibling.call_deferred(copper_ingot)
 			copper_ingot.clone = 1
+		if area.has_meta("Gold") and gold_ingot_recipe.visible == true \
+		and not raycast.get_collider():
+			var gold_ingot = gold_ingot_scene.instantiate()
+			gold_ingot.position = position
+			gold_ingot.modulate.a = 1
+			gold_ingot.rotation = rotation
+			gold_ingot.direction = rotation/90
+			gold_ingot.set_meta("Gold_ingot", direction/90)
+			add_sibling.call_deferred(gold_ingot)
+			gold_ingot.clone = 1
 
 
 func _on_mouse_entered():
@@ -73,16 +88,21 @@ func _on_mouse_exited():
 
 
 func _on_recipe_selected():
-	if clone == 1 and $Recipe.visible == true:
-		$Recipe.hide()
-		$Recipe_list.show()
+	if clone == 1 and recipe.visible == true:
+		recipe.hide()
+		recipe_list.show()
 
 
 func _on_iron_ingot_pressed():
-	$Iron_ingot.show()
-	$Recipe_list.hide()
+	iron_ingot_recipe.show()
+	recipe_list.hide()
 
 
 func _on_copper_ingot_pressed():
-	$Copper_ingot.show()
-	$Recipe_list.hide()
+	copper_ingot_recipe.show()
+	recipe_list.hide()
+
+
+func _on_gold_ingot_pressed():
+	gold_ingot_recipe.show()
+	recipe_list.hide()

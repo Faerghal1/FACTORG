@@ -33,10 +33,10 @@ func _process(_delta):
 		else:
 			$Camera2D/Pause_temp.show()
 			get_tree().paused = true
-	if global.copper_wire >= 15 and global.rod >= 10 and global.copper_foil >=20:
+	if global.gold_wire >= 15 and global.rod >= 10 and global.copper_foil >=20:
 		get_tree().paused = true
 	$Camera2D/Goal/RodGoal.text = (str(int(global.rod)) + "/10")
-	$Camera2D/Goal/WireGoal.text = (str(int(global.copper_wire)) + "/15")
+	$Camera2D/Goal/WireGoal.text = (str(int(global.gold_wire)) + "/15")
 	$Camera2D/Goal/FoilGoal.text = (str(int(global.copper_foil)) + "/20")
 	if Input.is_action_just_pressed("Hotbar_1"): # Belt hotkey selection
 		if global.slot == 1:
@@ -227,8 +227,15 @@ func _process(_delta):
 		if Input.is_action_pressed("Left_click") and global.slot == 6 \
 		and not global.buildings_large_cant_place: # Combiner_placement
 			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-			if not global.bitmap.get_bit(pos.x , pos.y ) and not global.bitmap.get_bit(pos.x+1, pos.y) \
-			and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
+			if not global.bitmap.get_bit(pos.x , pos.y ) \
+			and not global.bitmap.get_bit(pos.x+1, pos.y) \
+			and not global.bitmap.get_bit(pos.x, pos.y+1 ) \
+			and not global.bitmap.get_bit(pos.x+1, pos.y+1) \
+			and not global.bitmap.get_bit(pos.x-1, pos.y) \
+			and not global.bitmap.get_bit(pos.x-1, pos.y+1) \
+			and not global.bitmap.get_bit(pos.x-1, pos.y-1) \
+			and not global.bitmap.get_bit(pos.x, pos.y-1) \
+			and not global.bitmap.get_bit(pos.x+1, pos.y-1):
 				print(pos)
 				var combiner = combiner_scene.instantiate()
 				combiner.position = pos*16
@@ -242,6 +249,11 @@ func _process(_delta):
 				global.bitmap.set_bit(pos.x+1, pos.y, true)
 				global.bitmap.set_bit(pos.x, pos.y+1, true)
 				global.bitmap.set_bit(pos.x+1, pos.y+1, true)
+				global.bitmap.set_bit(pos.x-1, pos.y, true)
+				global.bitmap.set_bit(pos.x-1, pos.y+1, true)
+				global.bitmap.set_bit(pos.x-1, pos.y-1, true)
+				global.bitmap.set_bit(pos.x, pos.y-1, true)
+				global.bitmap.set_bit(pos.x+1, pos.y-1, true)
 	if Input.is_action_pressed("Right_click"):
 		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if global.bitmap.get_bit(pos.x, pos.y):
