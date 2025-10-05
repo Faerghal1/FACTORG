@@ -33,11 +33,10 @@ func _process(_delta):
 		else:
 			$Camera2D/Pause_temp.show()
 			get_tree().paused = true
-	if global.gold_wire >= 15 and global.rod >= 10 and global.copper_foil >=20:
+	if global.circuit_board >= 25 and global.rod >= 20:
 		get_tree().paused = true
-	$Camera2D/Goal/RodGoal.text = (str(int(global.rod)) + "/10")
-	$Camera2D/Goal/WireGoal.text = (str(int(global.gold_wire)) + "/15")
-	$Camera2D/Goal/FoilGoal.text = (str(int(global.copper_foil)) + "/20")
+	$Camera2D/Goal/RodGoal.text = (str(int(global.rod)) + "/20")
+	$Camera2D/Goal/WireGoal.text = (str(int(global.circuit_board)) + "/25")
 	if Input.is_action_just_pressed("Hotbar_1"): # Belt hotkey selection
 		if global.slot == 1:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0

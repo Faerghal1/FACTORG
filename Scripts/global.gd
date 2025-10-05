@@ -12,6 +12,7 @@ var gold_ingot = 0
 var rod = 0
 var copper_foil = 0
 var gold_wire = 0
+var circuit_board = 0
 var extractor_placed = false
 var slot = 0
 var hotbar_pressed = 0

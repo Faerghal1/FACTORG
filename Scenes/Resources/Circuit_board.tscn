@@ -1,39 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://ruyfkei3vd2f"]
+[gd_scene load_steps=6 format=3 uid="uid://b2j1dlq1bvplm"]
 
-[ext_resource type="Script" uid="uid://dprxouw24n6mq" path="res://Scripts/Copper_wire.gd" id="1_7rqn3"]
-[ext_resource type="Texture2D" uid="uid://cwa67ouggcrk6" path="res://Assets/Gold_wire.png" id="2_b3idc"]
-[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_s2dig"]
+[ext_resource type="Script" uid="uid://dwk5i7bbxlulj" path="res://Scripts/Circuit_board.gd" id="1_nnq4a"]
+[ext_resource type="Texture2D" uid="uid://dac1hff0lc02g" path="res://Assets/Circuit_board.png" id="1_rwhdc"]
+[ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_rg516"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_85k5t"]
-size = Vector2(25, 25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnq4a"]
+size = Vector2(30, 27.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1y7ed"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rg516"]
 size = Vector2(11, 12)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_7rqn3")
+script = ExtResource("1_nnq4a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.78814e-07)
 scale = Vector2(0.4, 0.4)
-shape = SubResource("RectangleShape2D_85k5t")
+shape = SubResource("RectangleShape2D_nnq4a")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.4, 0.4)
-metadata/Wire = true
-metadata/Type = 9
+metadata/Circuit_board = true
+metadata/Type = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-5.96046e-08, 0)
-shape = SubResource("RectangleShape2D_1y7ed")
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_rg516")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-z_index = 1
 scale = Vector2(1.255, 1.255)
-texture = ExtResource("2_b3idc")
-script = ExtResource("3_s2dig")
+texture = ExtResource("1_rwhdc")
+script = ExtResource("3_rg516")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

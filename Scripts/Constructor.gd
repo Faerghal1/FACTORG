@@ -70,7 +70,7 @@ func _on_area_entered(area):
 			copper_foil.modulate.a = 1
 			copper_foil.rotation = rotation
 			copper_foil.direction = rotation/90
-			copper_foil.set_meta("Copper_foil", direction/90)
+			copper_foil.set_meta("Foil", direction/90)
 			add_sibling.call_deferred(copper_foil)
 			copper_foil.clone = 1
 		if area.has_meta("Gold_ingot") and gold_wire_recipe.visible == true \
@@ -80,7 +80,7 @@ func _on_area_entered(area):
 			gold_wire.modulate.a = 1
 			gold_wire.rotation = rotation
 			gold_wire.direction = rotation/90
-			gold_wire.set_meta("Gold_wire", direction/90)
+			gold_wire.set_meta("Wire", direction/90)
 			add_sibling.call_deferred(gold_wire)
 			gold_wire.clone = 1
 

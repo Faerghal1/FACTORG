@@ -5,17 +5,31 @@ extends Area2D
 @onready var raycast = $RayCast2D
 @onready var recipe = $Recipe
 @onready var recipe_list = $Recipe_list
+@onready var circuit_board_recipe = $Circuit_board
 
-@export var ingot_scene: PackedScene
-@export var copper_ingot_scene: PackedScene
+@export var circuit_board_scene: PackedScene
 var clone = 0
 var direction = 0
 var delete = 0
 var pos = Vector2i(0,0)
+var wire = false
+var foil = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if wire == true and foil == true \
+	and circuit_board_recipe.visible == true and not raycast.get_collider():
+		var circuit_board = circuit_board_scene.instantiate()
+		circuit_board.position = position
+		circuit_board.modulate.a = 1
+		circuit_board.rotation = rotation
+		circuit_board.direction = rotation/90
+		circuit_board.set_meta("Circuit_board", direction/90)
+		add_sibling.call_deferred(circuit_board)
+		circuit_board.clone = 1
+		wire = false
+		foil = false
 	if clone == 1:
 		animation.set_frame(global.frames)
 	if clone == 0 and global.slot == 6:
@@ -48,6 +62,14 @@ func _process(_delta):
 			hide()
 
 
+func _on_area_entered(area):
+	if clone == 1:
+		if area.has_meta("Wire"):
+			wire = true
+		if area.has_meta("Foil"):
+			foil = true
+
+
 func _on_mouse_entered():
 	delete = 1
 
@@ -60,3 +82,8 @@ func _on_recipe_selected():
 	if clone == 1 and recipe.visible == true:
 		recipe.hide()
 		recipe_list.show()
+
+
+func _on_circuit_board_pressed():
+	circuit_board_recipe.show()
+	recipe_list.hide()

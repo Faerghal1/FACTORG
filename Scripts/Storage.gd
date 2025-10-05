@@ -10,6 +10,7 @@ extends Area2D
 @export var copper_ingot_scene: PackedScene
 @export var resource_rod_scene: PackedScene
 @export var copper_wire_scene: PackedScene
+@export var circuit_board_scene: PackedScene
 var clone = 0
 var direction = 0
 var delete = 0

@@ -1,8 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://cg6k12ug0e7vs"]
+[gd_scene load_steps=19 format=3 uid="uid://cg6k12ug0e7vs"]
 
 [ext_resource type="Script" uid="uid://dpk7bevbnjvm" path="res://Scripts/Combiner.gd" id="1_a4puo"]
 [ext_resource type="Texture2D" uid="uid://dwhy67iwgrnsu" path="res://Assets/Combiner Animation.png" id="2_a4puo"]
+[ext_resource type="PackedScene" uid="uid://b2j1dlq1bvplm" path="res://Scenes/Resources/Circuit_board.tscn" id="2_cgs2a"]
 [ext_resource type="Texture2D" uid="uid://cshbe5cqr5jtv" path="res://Assets/Recipe_List.png" id="3_mjcxk"]
+[ext_resource type="Texture2D" uid="uid://dac1hff0lc02g" path="res://Assets/Circuit_board.png" id="4_byplo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtd18"]
 size = Vector2(120, 120)
@@ -96,6 +98,7 @@ animations = [{
 modulate = Color(1, 1, 1, 0.588235)
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_a4puo")
+circuit_board_scene = ExtResource("2_cgs2a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gtd18")
@@ -117,6 +120,7 @@ expand_icon = true
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-60, 0)
 target_position = Vector2(-25, 0)
+collision_mask = 2
 
 [node name="Recipe_list" type="Control" parent="."]
 visible = false
@@ -127,12 +131,33 @@ offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="Recipe_list"]
 layout_mode = 0
-offset_left = 68.0
+offset_left = 70.0
 offset_top = -25.0
-offset_right = 148.0
+offset_right = 100.5
 scale = Vector2(2, 2)
 color = Color(0.0807833, 0.0807833, 0.0807833, 1)
 
+[node name="Circuit_board" type="Button" parent="Recipe_list"]
+offset_left = 73.0
+offset_top = -21.5
+offset_right = 183.0
+offset_bottom = 64.5
+scale = Vector2(0.5, 0.5)
+text = "Circuit Board"
+icon = ExtResource("4_byplo")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Circuit_board" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-4.76837e-07, -3.57628e-07)
+scale = Vector2(0.9375, 0.9375)
+texture = ExtResource("4_byplo")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="Recipe" to="." method="_on_recipe_selected"]
+[connection signal="pressed" from="Recipe_list/Circuit_board" to="." method="_on_circuit_board_pressed"]
