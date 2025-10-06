@@ -138,6 +138,7 @@ scale = Vector2(2, 2)
 color = Color(0.0807833, 0.0807833, 0.0807833, 1)
 
 [node name="Circuit_board" type="Button" parent="Recipe_list"]
+layout_mode = 0
 offset_left = 73.0
 offset_top = -21.5
 offset_right = 183.0

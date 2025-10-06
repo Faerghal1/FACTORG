@@ -113,7 +113,7 @@ func _process(_delta):
 		$Camera2D/Storage_select.show()
 	if global.hotbar_pressed == 6: # Combiner hotbar selection
 		global.slot = 6
-		$Camera2D/Controls/AnimatedSprite2D.frame = 2
+		$Camera2D/Controls/AnimatedSprite2D.frame = 1
 		
 	if not global.slot == 1: # Belt_tooltip
 		$Camera2D/Belt_select.hide()
@@ -267,10 +267,12 @@ func _on_timer_timeout():
 
 
 func _on_hotbar_mouse_entered():
+	print("mouse entered")
 	global.mouse_on_hotbar = true
 
 
 func _on_hotbar_mouse_exited():
+	print("mouse exited")
 	global.mouse_on_hotbar = false
 
 
