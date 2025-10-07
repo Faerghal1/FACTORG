@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://40e7gnocdmnt" path="res://Scenes/2x2/Constructor.tscn" id="15_wbpsv"]
 [ext_resource type="Script" uid="uid://dl0kn83ihr5gl" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/1x1/Storage.tscn" id="19_nil32"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="20_1ap6o"]
 [ext_resource type="Texture2D" uid="uid://bmtbl0cqnctve" path="res://Assets/Controls-1.png" id="22_dpsl7"]
 [ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="22_y1bqn"]
 [ext_resource type="Texture2D" uid="uid://dnkpwf05umywb" path="res://Assets/Controls-2.png" id="23_enwp0"]

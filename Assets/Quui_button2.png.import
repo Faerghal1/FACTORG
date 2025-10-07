@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4hdggvv8jbe2"
-path="res://.godot/imported/Iron_Rod.png-dddc243e6f35de7c463aab1878d39322.ctex"
+uid="uid://h04wb6mfk2j7"
+path="res://.godot/imported/Quui_button2.png-12230207e0cfe9705f2bb4df82ca4817.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Iron_Rod.png"
-dest_files=["res://.godot/imported/Iron_Rod.png-dddc243e6f35de7c463aab1878d39322.ctex"]
+source_file="res://Assets/Quui_button2.png"
+dest_files=["res://.godot/imported/Quui_button2.png-12230207e0cfe9705f2bb4df82ca4817.ctex"]
 
 [params]
 

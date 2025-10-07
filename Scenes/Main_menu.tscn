@@ -1,10 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://b04i20vta7r31"]
+[gd_scene load_steps=17 format=3 uid="uid://b04i20vta7r31"]
 
 [ext_resource type="Script" uid="uid://bf48i6vi82vci" path="res://Scripts/Main_menu.gd" id="1_cwcel"]
 [ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/Tilemap_gen_old.png" id="3_qr2n2"]
 [ext_resource type="Script" uid="uid://cywns0wfw84ca" path="res://Scripts/Tile_map.gd" id="4_j7h1k"]
-[ext_resource type="Script" uid="uid://dnfmspblpsk2u" path="res://Scripts/Camera_main_menu.gd" id="4_nvm8u"]
+[ext_resource type="Script" uid="uid://bn2mi5df5byvg" path="res://Scripts/Camera_main_menu.gd" id="4_nvm8u"]
 [ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="5_ihofj"]
+[ext_resource type="Texture2D" uid="uid://bruuptfrc3ng4" path="res://Assets/Title.png" id="6_q0gj4"]
+[ext_resource type="Texture2D" uid="uid://xd1g4fu6p2c" path="res://Assets/Play_button0.png" id="6_yst1x"]
+[ext_resource type="Texture2D" uid="uid://c7akbo863bn4c" path="res://Assets/Play_button2.png" id="7_72l6q"]
+[ext_resource type="Texture2D" uid="uid://rd3y0ws7o3di" path="res://Assets/Play_button1.png" id="7_ehbya"]
+[ext_resource type="Texture2D" uid="uid://cw75gijsy1p5" path="res://Assets/Quit_button0.png" id="8_72l6q"]
+[ext_resource type="Texture2D" uid="uid://bugl1x1jd7rga" path="res://Assets/Quit_button1.png" id="9_q0gj4"]
+[ext_resource type="Texture2D" uid="uid://h04wb6mfk2j7" path="res://Assets/Quui_button2.png" id="10_72l6q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klm5o"]
 texture = ExtResource("3_qr2n2")
@@ -204,10 +211,6 @@ sources/0 = SubResource("TileSetAtlasSource_klm5o")
 default_font = ExtResource("5_ihofj")
 default_font_size = 24
 
-[sub_resource type="Theme" id="Theme_074w1"]
-default_font = ExtResource("5_ihofj")
-default_font_size = 20
-
 [sub_resource type="Theme" id="Theme_inwpd"]
 default_font = ExtResource("5_ihofj")
 default_font_size = 20
@@ -226,38 +229,41 @@ position = Vector2(381, 800)
 zoom = Vector2(2, 2)
 script = ExtResource("4_nvm8u")
 
-[node name="Label" type="Label" parent="Camera2D"]
+[node name="Label" type="TextureRect" parent="Camera2D"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -91.5
-offset_top = -106.0
-offset_right = 91.5
-offset_bottom = -78.0
+offset_left = -68.5
+offset_top = -115.0
+offset_right = 71.5
+offset_bottom = -65.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = SubResource("Theme_xwboo")
-text = "FACTORG (Demo)"
+texture = ExtResource("6_q0gj4")
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Start_button" type="Button" parent="Camera2D"]
+[node name="Start_button" type="TextureButton" parent="Camera2D"]
 z_index = 5
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -43.0
-offset_top = -47.5
-offset_right = 43.0
-offset_bottom = -16.5
+offset_left = -65.0
+offset_top = -24.0
+offset_right = 68.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_074w1")
-text = "Start"
+texture_normal = ExtResource("6_yst1x")
+texture_pressed = ExtResource("7_72l6q")
+texture_hover = ExtResource("7_ehbya")
 
 [node name="Settings_button" type="Button" parent="Camera2D"]
 visible = false
@@ -269,7 +275,7 @@ offset_bottom = 60.0
 text = "Settings"
 metadata/_edit_use_anchors_ = true
 
-[node name="Quit_button" type="Button" parent="Camera2D"]
+[node name="Quit_button" type="TextureButton" parent="Camera2D"]
 z_index = 5
 anchors_preset = 8
 anchor_left = 0.5
@@ -278,12 +284,14 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -21.0
 offset_top = 72.5
-offset_right = 21.0
+offset_right = 24.0
 offset_bottom = 103.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_inwpd")
-text = "Quit"
+texture_normal = ExtResource("8_72l6q")
+texture_pressed = ExtResource("10_72l6q")
+texture_hover = ExtResource("9_q0gj4")
 
 [connection signal="pressed" from="Camera2D/Start_button" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="Camera2D/Quit_button" to="." method="_on_quit_button_pressed"]

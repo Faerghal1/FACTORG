@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4hdggvv8jbe2"
-path="res://.godot/imported/Iron_Rod.png-dddc243e6f35de7c463aab1878d39322.ctex"
+uid="uid://bugl1x1jd7rga"
+path="res://.godot/imported/Quit_button1.png-9181617d79ea0b25a260dbc15b9ff528.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Iron_Rod.png"
-dest_files=["res://.godot/imported/Iron_Rod.png-dddc243e6f35de7c463aab1878d39322.ctex"]
+source_file="res://Assets/Quit_button1.png"
+dest_files=["res://.godot/imported/Quit_button1.png-9181617d79ea0b25a260dbc15b9ff528.ctex"]
 
 [params]
 
