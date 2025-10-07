@@ -17,8 +17,9 @@ func _process(_delta):
 		if not test_move(transform, Vector2(16, 0).rotated(rotation)):
 			$Timer.start()
 			move = 0
-	if Input.is_action_pressed("Right_click") and clone and delete == 1:
+	if Input.is_action_pressed("Right_click") and delete == 1:
 		queue_free()
+
 
 func _on_area_entered(area):
 	if area.has_meta("Belt") and area.get_meta("Belt")>=0:
@@ -33,7 +34,7 @@ func _on_area_entered(area):
 
 
 func _on_area_exited(area):
-	if area.has_meta("Belt"):
+	if area.has_meta("Direction_belt"):
 		move = 0
 
 

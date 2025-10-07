@@ -17,7 +17,7 @@ func _process(_delta):
 		if not test_move(transform, Vector2(16, 0).rotated(rotation)):
 			$Timer.start()
 			move = 0
-	if Input.is_action_pressed("Right_click") and clone == 1 and delete == 1:
+	if Input.is_action_pressed("Right_click") and delete == 1:
 		queue_free()
 
 

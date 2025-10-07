@@ -267,12 +267,10 @@ func _on_timer_timeout():
 
 
 func _on_hotbar_mouse_entered():
-	print("mouse entered")
 	global.mouse_on_hotbar = true
 
 
 func _on_hotbar_mouse_exited():
-	print("mouse exited")
 	global.mouse_on_hotbar = false
 
 
