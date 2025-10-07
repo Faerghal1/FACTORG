@@ -37,7 +37,6 @@ position = Vector2(0, 20)
 target_position = Vector2(0, 20)
 collision_mask = 2
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

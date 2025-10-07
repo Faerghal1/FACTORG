@@ -32,6 +32,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if clone == 0 and global.slot == 2:
+		var map = get_tree().current_scene.get_node("Generated_map")
+		var cell = map.local_to_map(position/2)
+		var data = map.get_cell_tile_data(cell)
+		if data.get_custom_data("Resource") == "Iron" \
+		or data.get_custom_data("Resource") == "Copper" \
+		or data.get_custom_data("Resource") == "Gold":
+			global.extractor_cant_place = false
+		else:
+			global.extractor_cant_place = true
 		position = get_global_mouse_position().snapped(Vector2(16,16))
 		position.x -= 8
 		position.y -= 8
@@ -86,16 +95,3 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	delete = 0
-
-
-func _on_body_entered(_body):
-	if clone == 0:
-		var map = get_tree().current_scene.get_node("Generated_map")
-		var cell = map.local_to_map(position/2)
-		var data = map.get_cell_tile_data(cell)
-		if data.get_custom_data("Resource") == "Iron" \
-		or data.get_custom_data("Resource") == "Copper" \
-		or data.get_custom_data("Resource") == "Gold":
-			global.extractor_cant_place = false
-		else:
-			global.extractor_cant_place = true
