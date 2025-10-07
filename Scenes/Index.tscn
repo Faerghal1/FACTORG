@@ -1385,7 +1385,7 @@ layout_mode = 0
 offset_right = 133.0
 offset_bottom = 77.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Combined-
+text = "Advanced-
 resource"
 
 [node name="Recipe" type="ColorRect" parent="CircuitBoard"]

@@ -85,12 +85,12 @@ func _process(_delta):
 	if Input.is_action_just_pressed("Hotbar_6"): # Combiner hotkey selection
 		if global.slot == 6:
 			$Camera2D/Controls/AnimatedSprite2D.frame = 0
-			
+			$Camera2D/Combiner_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 6
 			$Camera2D/Controls/AnimatedSprite2D.frame = 1
-			
+			$Camera2D/Combiner_select.show()
 	if global.hotbar_pressed == 1: # Belt hotbar selection
 		global.slot = 1
 		$Camera2D/Controls/AnimatedSprite2D.frame = 2
@@ -114,7 +114,7 @@ func _process(_delta):
 	if global.hotbar_pressed == 6: # Combiner hotbar selection
 		global.slot = 6
 		$Camera2D/Controls/AnimatedSprite2D.frame = 1
-		
+		$Camera2D/Combiner_select.show()
 	if not global.slot == 1: # Belt_tooltip
 		$Camera2D/Belt_select.hide()
 	if not global.slot == 2: # Extractor_tooltip
@@ -126,7 +126,7 @@ func _process(_delta):
 	if not global.slot == 5: # Storage_tooltip
 		$Camera2D/Storage_select.hide()
 	if not global.slot == 6: # Combiner_tooltip
-		pass
+		$Camera2D/Combiner_select.hide()
 	if global.mouse_on_hotbar == false:
 		if Input.is_action_pressed("Left_click") \
 		and (global.slot != 2 and global.slot != 0): # Detection for placeable in world

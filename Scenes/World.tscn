@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=46 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" uid="uid://fgq76fstefsg" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/1x1/Belt.tscn" id="2_0b5rt"]
@@ -29,10 +29,11 @@
 [ext_resource type="Script" uid="uid://bjwhh4kk1x8so" path="res://Scripts/Combiner_hotbar.gd" id="24_ao4cr"]
 [ext_resource type="Texture2D" uid="uid://dxuw8gej0o6h6" path="res://Assets/Controls-3.png" id="24_n352l"]
 [ext_resource type="Texture2D" uid="uid://dw73hko5drmfx" path="res://Assets/Belt_Tooltip.png" id="25_l11rc"]
-[ext_resource type="Texture2D" uid="uid://drtna0n4jt5sw" path="res://Assets/Extractor_tooltip.png" id="26_w86vl"]
-[ext_resource type="Texture2D" uid="uid://bm0cfq134j8t6" path="res://Assets/Smelter_Tooltip.png" id="27_g01fq"]
-[ext_resource type="Texture2D" uid="uid://byitoxfrctirl" path="res://Assets/Constructer_Tooltip.png" id="28_0bcf6"]
+[ext_resource type="Texture2D" uid="uid://gp27vd07r7ei" path="res://Assets/Extractor_tooltip.png" id="26_w86vl"]
 [ext_resource type="PackedScene" uid="uid://bfwa2odjnu25x" path="res://Scenes/Index.tscn" id="29_0bcf6"]
+[ext_resource type="Texture2D" uid="uid://bld52wkaysfrs" path="res://Assets/Smelter_tooltip.png" id="32_371b6"]
+[ext_resource type="Texture2D" uid="uid://8ohjtfqtptld" path="res://Assets/Constructor_tooltip.png" id="33_371b6"]
+[ext_resource type="Texture2D" uid="uid://b7ny3qmeqlrpg" path="res://Assets/Combiner_tooltip.png" id="34_ao4cr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_371b6"]
 texture = ExtResource("8_mq4nq")
@@ -703,8 +704,8 @@ Hotbar: 2"
 autowrap_mode = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/Extractor_select"]
-position = Vector2(-13.5645, 51.8618)
-scale = Vector2(0.268817, 0.266696)
+position = Vector2(-14.5, 52.5)
+scale = Vector2(0.465, 0.465)
 texture = ExtResource("26_w86vl")
 
 [node name="Smelter_select" type="Control" parent="Camera2D"]
@@ -738,9 +739,9 @@ Hotbar: 3"
 autowrap_mode = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/Smelter_select"]
-position = Vector2(-13.4, 51.875)
-scale = Vector2(0.270635, 0.280159)
-texture = ExtResource("27_g01fq")
+position = Vector2(-14.5, 52.5)
+scale = Vector2(0.465, 0.465)
+texture = ExtResource("32_371b6")
 
 [node name="Constructor_select" type="Control" parent="Camera2D"]
 visible = false
@@ -773,9 +774,9 @@ Hotbar: 4"
 autowrap_mode = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/Constructor_select"]
-position = Vector2(-13.392, 52)
-scale = Vector2(0.264676, 0.260355)
-texture = ExtResource("28_0bcf6")
+position = Vector2(-14.5, 52.5)
+scale = Vector2(0.465, 0.465)
+texture = ExtResource("33_371b6")
 
 [node name="Storage_select" type="Control" parent="Camera2D"]
 visible = false
@@ -805,6 +806,41 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Storage:
 Corresponding Items when placed in the storage will count toward the goal Hotbar: 5 "
 autowrap_mode = 3
+
+[node name="Combiner_select" type="Control" parent="Camera2D"]
+visible = false
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = 288.0
+offset_top = -184.0
+offset_right = 328.0
+offset_bottom = -144.0
+theme = SubResource("Theme_ao4cr")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Combiner_select"]
+layout_mode = 0
+offset_left = -238.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 101.0
+
+[node name="Label" type="Label" parent="Camera2D/Combiner_select"]
+layout_mode = 0
+offset_left = -230.0
+offset_top = 7.0
+offset_right = -55.0
+offset_bottom = 119.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Combiner:
+Processes two resources into one resource
+Hotbar: 6"
+autowrap_mode = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/Combiner_select"]
+position = Vector2(-14.5, 52.5)
+scale = Vector2(0.465, 0.465)
+texture = ExtResource("34_ao4cr")
 
 [node name="Belt" parent="." instance=ExtResource("2_0b5rt")]
 position = Vector2(32, 32)

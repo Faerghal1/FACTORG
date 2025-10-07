@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byitoxfrctirl"
-path="res://.godot/imported/Constructer_Tooltip.png-3cdf52fbd61dd929f7d09c5e2dc652b2.ctex"
+uid="uid://b7ny3qmeqlrpg"
+path="res://.godot/imported/Combiner_tooltip.png-a925733fffb103dc099b1a3143600cc6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Constructer_Tooltip.png"
-dest_files=["res://.godot/imported/Constructer_Tooltip.png-3cdf52fbd61dd929f7d09c5e2dc652b2.ctex"]
+source_file="res://Assets/Combiner_tooltip.png"
+dest_files=["res://.godot/imported/Combiner_tooltip.png-a925733fffb103dc099b1a3143600cc6.ctex"]
 
 [params]
 

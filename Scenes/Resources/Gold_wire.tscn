@@ -25,7 +25,6 @@ metadata/Type = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(2.98023e-06, 3.27825e-06)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_b3idc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]

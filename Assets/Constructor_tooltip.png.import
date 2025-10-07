@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bld52wkaysfrs"
-path="res://.godot/imported/Smelter_tooltip.png-8a68d4a6a41847a857fa38ab071b36e2.ctex"
+uid="uid://8ohjtfqtptld"
+path="res://.godot/imported/Constructor_tooltip.png-8ad8348686ac81f761317c5675b647fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Smelter_tooltip.png"
-dest_files=["res://.godot/imported/Smelter_tooltip.png-8a68d4a6a41847a857fa38ab071b36e2.ctex"]
+source_file="res://Assets/Constructor_tooltip.png"
+dest_files=["res://.godot/imported/Constructor_tooltip.png-8ad8348686ac81f761317c5675b647fa.ctex"]
 
 [params]
 
