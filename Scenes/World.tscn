@@ -354,7 +354,7 @@ script = ExtResource("8_jb2q2")
 [node name="Camera2D" parent="." instance=ExtResource("5_fo33q")]
 zoom = Vector2(1.75, 1.75)
 
-[node name="Pause_temp" type="Control" parent="Camera2D"]
+[node name="Pause_menu" type="Control" parent="Camera2D"]
 process_mode = 3
 visible = false
 z_index = 10
@@ -364,7 +364,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme = SubResource("Theme_y8a40")
 
-[node name="Resume" type="Button" parent="Camera2D/Pause_temp"]
+[node name="Resume" type="Button" parent="Camera2D/Pause_menu"]
 process_mode = 3
 z_index = 1
 layout_mode = 0
@@ -375,7 +375,7 @@ offset_bottom = -76.0
 scale = Vector2(1.5, 1.5)
 text = "Resume"
 
-[node name="Main Menu" type="Button" parent="Camera2D/Pause_temp"]
+[node name="Main Menu" type="Button" parent="Camera2D/Pause_menu"]
 process_mode = 3
 z_index = 1
 layout_mode = 0
@@ -386,7 +386,7 @@ offset_bottom = 23.0
 scale = Vector2(1.5, 1.5)
 text = "Main Menu"
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D/Pause_temp"]
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Pause_menu"]
 layout_mode = 0
 offset_left = -329.0
 offset_top = -185.0
@@ -558,7 +558,7 @@ vertical_alignment = 2
 position = Vector2(65, 20)
 texture = ExtResource("20_1ap6o")
 
-[node name="WireGoal" type="Label" parent="Camera2D/Goal"]
+[node name="CircuitBoardGoal" type="Label" parent="Camera2D/Goal"]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 49.0
@@ -866,8 +866,8 @@ autostart = true
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="pressed" from="Camera2D/Pause_temp/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="Camera2D/Pause_temp/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Camera2D/Pause_menu/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Camera2D/Pause_menu/Main Menu" to="." method="_on_main_menu_pressed"]
 [connection signal="mouse_entered" from="Camera2D/Hotbar" to="." method="_on_hotbar_mouse_entered"]
 [connection signal="mouse_exited" from="Camera2D/Hotbar" to="." method="_on_hotbar_mouse_exited"]
 [connection signal="pressed" from="Camera2D/Hotbar/HotbarIcons/HBoxContainer/ConveyorButton" to="Camera2D/Hotbar/HotbarIcons/HBoxContainer/ConveyorButton" method="_on_belt_selected"]
