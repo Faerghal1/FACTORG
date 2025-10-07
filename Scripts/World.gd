@@ -1,6 +1,21 @@
 extends Node2D
 
 @onready var global = get_node("/root/Global")
+@onready var camera = $Camera2D
+@onready var controls = $Camera2D/Controls/AnimatedSprite2D
+@onready var index = $Camera2D/Index
+@onready var pause_menu = $Camera2D/Pause_menu
+@onready var rod_goal = $Camera2D/Goal/RodGoal
+@onready var circuit_board_goal = $Camera2D/Goal/CircuitBoardGoal
+@onready var belt_select = $Camera2D/Belt_select
+@onready var extractor_select = $Camera2D/Extractor_select
+@onready var smelter_select = $Camera2D/Smelter_select
+@onready var constructor_select = $Camera2D/Constructor_select
+@onready var storage_select = $Camera2D/Storage_select
+@onready var combiner_select = $Camera2D/Combiner_select
+@onready var building_cant_place = $"Camera2D/Can't Place Building"
+@onready var extractor_cant_place = $"Camera2D/Can't Place Extractor"
+@onready var timer = $Timer
 
 @export var belt_scene: PackedScene
 @export var extractor_scene: PackedScene
@@ -18,130 +33,130 @@ var extractor_position = Vector2i(0,0)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	global.bitmap.resize(Vector2i(bitmap_width,bitmap_height))
-	$Camera2D.position.x += global.width * 8
-	$Camera2D.position.y += global.height * 8
-	$Camera2D/Controls/AnimatedSprite2D.frame = 0
+	camera.position.x += global.width * 8
+	camera.position.y += global.height * 8
+	controls.frame = 0
 
 
 func _process(_delta):
 	if Input.is_action_just_pressed("Index"):
-		if $Camera2D/Index.visible == false:
-			$Camera2D/Index.show()
+		if index.visible == false:
+			index.show()
 	if Input.is_action_just_pressed("Pause"):
-		if $Camera2D/Index.visible == true:
-			$Camera2D/Index.hide()
+		if index.visible == true:
+			index.hide()
 		else:
-			$Camera2D/Pause_temp.show()
+			pause_menu.show()
 			get_tree().paused = true
 	if global.circuit_board >= 25 and global.rod >= 20:
 		get_tree().paused = true
-	$Camera2D/Goal/RodGoal.text = (str(int(global.rod)) + "/20")
-	$Camera2D/Goal/WireGoal.text = (str(int(global.circuit_board)) + "/25")
+	rod_goal.text = (str(int(global.rod)) + "/20")
+	circuit_board_goal.text = (str(int(global.circuit_board)) + "/25")
 	if Input.is_action_just_pressed("Hotbar_1"): # Belt hotkey selection
 		if global.slot == 1:
-			$Camera2D/Controls/AnimatedSprite2D.frame = 0
-			$Camera2D/Belt_select.hide()
+			controls.frame = 0
+			belt_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 1
-			$Camera2D/Controls/AnimatedSprite2D.frame = 2
-			$Camera2D/Belt_select.show()
+			controls.frame = 2
+			belt_select.show()
 	if Input.is_action_just_pressed("Hotbar_2"): # Extractor hotkey selection
 		if global.slot == 2:
-			$Camera2D/Controls/AnimatedSprite2D.frame = 0
-			$Camera2D/Extractor_select.hide()
+			controls.frame = 0
+			extractor_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 2
-			$Camera2D/Controls/AnimatedSprite2D.frame = 2
-			$Camera2D/Extractor_select.show()
+			controls.frame = 2
+			extractor_select.show()
 	if Input.is_action_just_pressed("Hotbar_3"): # Smelter hotkey selection
 		if global.slot == 3:
-			$Camera2D/Controls/AnimatedSprite2D.frame = 0
-			$Camera2D/Smelter_select.hide()
+			controls.frame = 0
+			smelter_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 3
-			$Camera2D/Controls/AnimatedSprite2D.frame = 1
-			$Camera2D/Smelter_select.show()
+			controls.frame = 1
+			smelter_select.show()
 	if Input.is_action_just_pressed("Hotbar_4"): # Constructor hotkey selection
 		if global.slot == 4:
-			$Camera2D/Controls/AnimatedSprite2D.frame = 0
-			$Camera2D/Constructor_select.hide()
+			controls.frame = 0
+			constructor_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 4
-			$Camera2D/Controls/AnimatedSprite2D.frame = 1
-			$Camera2D/Constructor_select.show()
+			controls.frame = 1
+			constructor_select.show()
 	if Input.is_action_just_pressed("Hotbar_5"): # Storage hotkey selection
 		if global.slot == 5:
-			$Camera2D/Controls/AnimatedSprite2D.frame = 0
-			$Camera2D/Storage_select.hide()
+			controls.frame = 0
+			storage_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 5
-			$Camera2D/Controls/AnimatedSprite2D.frame = 2
-			$Camera2D/Storage_select.show()
+			controls.frame = 2
+			storage_select.show()
 	if Input.is_action_just_pressed("Hotbar_6"): # Combiner hotkey selection
 		if global.slot == 6:
-			$Camera2D/Controls/AnimatedSprite2D.frame = 0
-			
+			controls.frame = 0
+			combiner_select.hide()
 			global.slot = 0
 		else:
 			global.slot = 6
-			$Camera2D/Controls/AnimatedSprite2D.frame = 1
-			
+			controls.frame = 1
+			combiner_select.show()
 	if global.hotbar_pressed == 1: # Belt hotbar selection
 		global.slot = 1
-		$Camera2D/Controls/AnimatedSprite2D.frame = 2
-		$Camera2D/Belt_select.show()
+		controls.frame = 2
+		belt_select.show()
 	if global.hotbar_pressed == 2: # Extractor hotbar selection
 		global.slot = 2
-		$Camera2D/Controls/AnimatedSprite2D.frame = 2
-		$Camera2D/Extractor_select.show()
+		controls.frame = 2
+		extractor_select.show()
 	if global.hotbar_pressed == 3: # Smelter hotbar selection
 		global.slot = 3
-		$Camera2D/Controls/AnimatedSprite2D.frame = 1
-		$Camera2D/Smelter_select.show()
+		controls.frame = 1
+		smelter_select.show()
 	if global.hotbar_pressed == 4: # Constructor hotbar selection
 		global.slot = 4
-		$Camera2D/Controls/AnimatedSprite2D.frame = 1
-		$Camera2D/Constructor_select.show()
+		controls.frame = 1
+		constructor_select.show()
 	if global.hotbar_pressed == 5: # Storage hotbar selection
 		global.slot = 5
-		$Camera2D/Controls/AnimatedSprite2D.frame = 2
-		$Camera2D/Storage_select.show()
+		controls.frame = 2
+		storage_select.show()
 	if global.hotbar_pressed == 6: # Combiner hotbar selection
 		global.slot = 6
-		$Camera2D/Controls/AnimatedSprite2D.frame = 2
-		
+		controls.frame = 1
+		combiner_select.show()
 	if not global.slot == 1: # Belt_tooltip
-		$Camera2D/Belt_select.hide()
+		belt_select.hide()
 	if not global.slot == 2: # Extractor_tooltip
-		$Camera2D/Extractor_select.hide()
+		extractor_select.hide()
 	if not global.slot == 3: # Smelter_tooltip
-		$Camera2D/Smelter_select.hide()
+		smelter_select.hide()
 	if not global.slot == 4: # Constructor_tooltip
-		$Camera2D/Constructor_select.hide()
+		constructor_select.hide()
 	if not global.slot == 5: # Storage_tooltip
-		$Camera2D/Storage_select.hide()
+		storage_select.hide()
 	if not global.slot == 6: # Combiner_tooltip
-		pass
+		combiner_select.hide()
 	if global.mouse_on_hotbar == false:
 		if Input.is_action_pressed("Left_click") \
 		and (global.slot != 2 and global.slot != 0): # Detection for placeable in world
 			if global.slot == 1 or global.slot == 5:
 				if global.buildings_cant_place == true: # Buildings_cant_place
-					$"Camera2D/Can't Place Building".show()
-					$Timer.start()
+					building_cant_place.show()
+					timer.start()
 			elif global.slot == 3 or global.slot == 4 or global.slot == 6:
 				if global.buildings_large_cant_place == true: # Large_buildings_cant_place
-					$"Camera2D/Can't Place Building".show()
-					$Timer.start()
+					building_cant_place.show()
+					timer.start()
 		if Input.is_action_pressed("Left_click") and global.slot == 2 \
 		and global.extractor_cant_place == true: # Extractor_cant_place
-			$"Camera2D/Can't Place Extractor".show()
-			$Timer.start()
+			extractor_cant_place.show()
+			timer.start()
 		if Input.is_action_pressed("Left_click") and global.slot == 1 \
 		and not global.buildings_cant_place: # Belt_placement
 			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
@@ -262,8 +277,8 @@ func _process(_delta):
 
 
 func _on_timer_timeout():
-	$"Camera2D/Can't Place Extractor".hide()
-	$"Camera2D/Can't Place Building".hide()
+	extractor_cant_place.hide()
+	building_cant_place.hide()
 
 
 func _on_hotbar_mouse_entered():
@@ -279,7 +294,7 @@ func _on_main_menu_pressed():
 
 
 func _on_resume_pressed():
-	$Camera2D/Pause_temp.hide()
+	pause_menu.hide()
 	get_tree().paused = false
 
 

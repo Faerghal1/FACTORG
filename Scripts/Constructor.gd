@@ -41,14 +41,6 @@ func _process(_delta):
 			show()
 		else:
 			hide()
-		global.buildings_cant_place = false
-		for i in [Vector2i.ZERO, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.ONE]:
-			var map = get_tree().current_scene.get_node("Generated_map")
-			var cell = map.local_to_map((position - Vector2(8, 8))/2) + i
-			var data = map.get_cell_tile_data(cell)
-			if data.get_custom_data("World") == "Unplaceable":
-				global.buildings_cant_place = true
-				break
 
 
 func _on_area_entered(area):

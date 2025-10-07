@@ -8,7 +8,7 @@
 size = Vector2(20, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlib0"]
-size = Vector2(2, 3)
+size = Vector2(35, 20)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
@@ -26,8 +26,7 @@ metadata/Copper_ingot = true
 metadata/Type = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 1.19209e-07)
-scale = Vector2(2.5, 2.5)
+position = Vector2(0, 5.96046e-07)
 shape = SubResource("RectangleShape2D_rlib0")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
@@ -39,9 +38,9 @@ script = ExtResource("3_owdt5")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_mouse_exited"]
 [connection signal="ready" from="Area2D" to="." method="_on_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

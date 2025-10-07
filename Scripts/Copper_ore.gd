@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var global = get_node("/root/Global")
+@onready var timer = $Timer
 
 var clone = 0
 var direction = 0
@@ -15,10 +16,11 @@ func _process(_delta):
 		position.y -= 8
 	if move == 1:
 		if not test_move(transform, Vector2(16, 0).rotated(rotation)):
-			$Timer.start()
+			timer.start()
 			move = 0
-	if Input.is_action_pressed("Right_click") and clone == 1 and delete == 1:
+	if Input.is_action_pressed("Right_click") and delete == 1:
 		queue_free()
+
 
 func _on_area_entered(area):
 	if area.has_meta("Belt") and area.get_meta("Belt")>=0:
@@ -32,9 +34,8 @@ func _on_area_entered(area):
 		queue_free()
 
 
-
 func _on_area_exited(area):
-	if area.has_meta("Belt"):
+	if area.has_meta("Direction_belt"):
 		move = 0
 
 
@@ -49,6 +50,7 @@ func _on_timer_timeout():
 
 func _on_mouse_entered() -> void:
 	delete = 1
+
 
 func _on_mouse_exited() -> void:
 	delete = 0
