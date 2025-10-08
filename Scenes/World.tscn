@@ -434,6 +434,7 @@ offset_bottom = 76.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/Hotbar/HotbarIcons"]
 layout_mode = 2
+theme_override_constants/separation = 4
 alignment = 1
 
 [node name="ConveyorButton" type="Button" parent="Camera2D/Hotbar/HotbarIcons/HBoxContainer"]
