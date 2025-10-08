@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=47 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" uid="uid://fgq76fstefsg" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/1x1/Belt.tscn" id="2_0b5rt"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="10_ydavp"]
 [ext_resource type="Script" uid="uid://bium40xiudj1c" path="res://Scripts/Smelter_hotbar.gd" id="11_6dldg"]
 [ext_resource type="Texture2D" uid="uid://ccygs458s3gwr" path="res://Assets/Storage.png" id="12_gpcpt"]
+[ext_resource type="Texture2D" uid="uid://dpwxjdxdg4if8" path="res://Assets/Hotbar.png" id="13_irg3d"]
 [ext_resource type="Script" uid="uid://ct7od2d6humj2" path="res://Scripts/Constructor_hotbar.gd" id="14_5awit"]
 [ext_resource type="PackedScene" uid="uid://40e7gnocdmnt" path="res://Scenes/2x2/Constructor.tscn" id="15_wbpsv"]
 [ext_resource type="Script" uid="uid://dl0kn83ihr5gl" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
@@ -26,12 +27,12 @@
 [ext_resource type="Texture2D" uid="uid://dlgyyqmiqvfeq" path="res://Assets/Combiner.png" id="23_371b6"]
 [ext_resource type="Texture2D" uid="uid://dnkpwf05umywb" path="res://Assets/Controls-2.png" id="23_enwp0"]
 [ext_resource type="Texture2D" uid="uid://dac1hff0lc02g" path="res://Assets/Circuit_board.png" id="24_7dsfl"]
-[ext_resource type="Script" uid="uid://bjwhh4kk1x8so" path="res://Scripts/Combiner_hotbar.gd" id="24_ao4cr"]
+[ext_resource type="Script" path="res://Scripts/Combiner_hotbar.gd" id="24_ao4cr"]
 [ext_resource type="Texture2D" uid="uid://dxuw8gej0o6h6" path="res://Assets/Controls-3.png" id="24_n352l"]
 [ext_resource type="Texture2D" uid="uid://dw73hko5drmfx" path="res://Assets/Belt_Tooltip.png" id="25_l11rc"]
 [ext_resource type="Texture2D" uid="uid://gp27vd07r7ei" path="res://Assets/Extractor_tooltip.png" id="26_w86vl"]
 [ext_resource type="PackedScene" uid="uid://bfwa2odjnu25x" path="res://Scenes/Index.tscn" id="29_0bcf6"]
-[ext_resource type="Texture2D" uid="uid://bld52wkaysfrs" path="res://Assets/Smelter_tooltip.png" id="32_371b6"]
+[ext_resource type="Texture2D" uid="uid://bld52wkaysfrs" path="res://Assets/Smelter_Tooltip.png" id="32_371b6"]
 [ext_resource type="Texture2D" uid="uid://8ohjtfqtptld" path="res://Assets/Constructor_tooltip.png" id="33_371b6"]
 [ext_resource type="Texture2D" uid="uid://b7ny3qmeqlrpg" path="res://Assets/Combiner_tooltip.png" id="34_ao4cr"]
 
@@ -409,17 +410,18 @@ offset_right = 228.0
 offset_bottom = 179.0
 mouse_filter = 1
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D/Hotbar"]
+[node name="ColorRect" type="TextureRect" parent="Camera2D/Hotbar"]
 layout_mode = 0
-offset_right = 456.0
+offset_left = 1.0
+offset_right = 457.0
 offset_bottom = 80.0
-mouse_filter = 1
+texture = ExtResource("13_irg3d")
 
 [node name="Button" type="Button" parent="Camera2D/Hotbar"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 1.0
-offset_right = 457.0
+offset_left = 2.0
+offset_right = 458.0
 offset_bottom = 80.0
 mouse_filter = 1
 
