@@ -16,23 +16,23 @@
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="10_ydavp"]
 [ext_resource type="Script" uid="uid://bium40xiudj1c" path="res://Scripts/Smelter_hotbar.gd" id="11_6dldg"]
 [ext_resource type="Texture2D" uid="uid://ccygs458s3gwr" path="res://Assets/Storage.png" id="12_gpcpt"]
-[ext_resource type="Texture2D" uid="uid://dpwxjdxdg4if8" path="res://Assets/Hotbar.png" id="13_irg3d"]
+[ext_resource type="Texture2D" uid="uid://c4em7b1lvnwhh" path="res://Assets/Hotbar.png" id="13_irg3d"]
 [ext_resource type="Script" uid="uid://ct7od2d6humj2" path="res://Scripts/Constructor_hotbar.gd" id="14_5awit"]
 [ext_resource type="PackedScene" uid="uid://40e7gnocdmnt" path="res://Scenes/2x2/Constructor.tscn" id="15_wbpsv"]
 [ext_resource type="Script" uid="uid://dl0kn83ihr5gl" path="res://Scripts/Storage_hotbar.gd" id="17_dpebd"]
 [ext_resource type="PackedScene" uid="uid://dqv62kkyefluf" path="res://Scenes/1x1/Storage.tscn" id="19_nil32"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="20_1ap6o"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="20_1ap6o"]
 [ext_resource type="Texture2D" uid="uid://bmtbl0cqnctve" path="res://Assets/Controls-1.png" id="22_dpsl7"]
 [ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="22_y1bqn"]
 [ext_resource type="Texture2D" uid="uid://dlgyyqmiqvfeq" path="res://Assets/Combiner.png" id="23_371b6"]
 [ext_resource type="Texture2D" uid="uid://dnkpwf05umywb" path="res://Assets/Controls-2.png" id="23_enwp0"]
 [ext_resource type="Texture2D" uid="uid://dac1hff0lc02g" path="res://Assets/Circuit_board.png" id="24_7dsfl"]
-[ext_resource type="Script" path="res://Scripts/Combiner_hotbar.gd" id="24_ao4cr"]
+[ext_resource type="Script" uid="uid://bjwhh4kk1x8so" path="res://Scripts/Combiner_hotbar.gd" id="24_ao4cr"]
 [ext_resource type="Texture2D" uid="uid://dxuw8gej0o6h6" path="res://Assets/Controls-3.png" id="24_n352l"]
 [ext_resource type="Texture2D" uid="uid://dw73hko5drmfx" path="res://Assets/Belt_Tooltip.png" id="25_l11rc"]
 [ext_resource type="Texture2D" uid="uid://gp27vd07r7ei" path="res://Assets/Extractor_tooltip.png" id="26_w86vl"]
 [ext_resource type="PackedScene" uid="uid://bfwa2odjnu25x" path="res://Scenes/Index.tscn" id="29_0bcf6"]
-[ext_resource type="Texture2D" uid="uid://bld52wkaysfrs" path="res://Assets/Smelter_Tooltip.png" id="32_371b6"]
+[ext_resource type="Texture2D" uid="uid://bld52wkaysfrs" path="res://Assets/Smelter_tooltip.png" id="32_371b6"]
 [ext_resource type="Texture2D" uid="uid://8ohjtfqtptld" path="res://Assets/Constructor_tooltip.png" id="33_371b6"]
 [ext_resource type="Texture2D" uid="uid://b7ny3qmeqlrpg" path="res://Assets/Combiner_tooltip.png" id="34_ao4cr"]
 
@@ -404,37 +404,34 @@ z_index = 5
 z_index = 3
 layout_mode = 3
 anchors_preset = 0
-offset_left = -228.0
+offset_left = -230.0
 offset_top = 99.0
-offset_right = 228.0
+offset_right = 230.0
 offset_bottom = 179.0
 mouse_filter = 1
 
 [node name="ColorRect" type="TextureRect" parent="Camera2D/Hotbar"]
 layout_mode = 0
-offset_left = 1.0
-offset_right = 457.0
+offset_right = 460.0
 offset_bottom = 80.0
 texture = ExtResource("13_irg3d")
 
 [node name="Button" type="Button" parent="Camera2D/Hotbar"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 2.0
-offset_right = 458.0
+offset_right = 460.0
 offset_bottom = 80.0
 mouse_filter = 1
 
 [node name="HotbarIcons" type="MarginContainer" parent="Camera2D/Hotbar"]
 layout_mode = 0
-offset_left = 2.5
+offset_left = 4.0
 offset_top = 4.0
-offset_right = 454.5
+offset_right = 456.0
 offset_bottom = 76.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/Hotbar/HotbarIcons"]
 layout_mode = 2
-theme_override_constants/separation = 4
 alignment = 1
 
 [node name="ConveyorButton" type="Button" parent="Camera2D/Hotbar/HotbarIcons/HBoxContainer"]
