@@ -6,14 +6,18 @@ extends Area2D
 @onready var recipe = $Recipe
 @onready var recipe_list = $Recipe_list
 @onready var circuit_board_recipe = $Circuit_board
+@onready var metal_frame_recipe = $Metal_frame
 
 @export var circuit_board_scene: PackedScene
+@export var metal_frame_scene: PackedScene
 var clone = 0
 var direction = 0
 var delete = 0
 var pos = Vector2i(0,0)
 var wire = false
 var foil = false
+var rod = false
+var ingot = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,6 +34,18 @@ func _process(_delta):
 		circuit_board.clone = 1
 		wire = false
 		foil = false
+	if rod == true and ingot == true \
+	and metal_frame_recipe.visible == true and not raycast.get_collider():
+		var metal_frame = metal_frame_scene.instantiate()
+		metal_frame.position = position
+		metal_frame.modulate.a = 1
+		metal_frame.rotation = rotation
+		metal_frame.direction = rotation/90
+		metal_frame.set_meta("Metal_frame", direction/90)
+		add_sibling.call_deferred(metal_frame)
+		metal_frame.clone = 1
+		rod = false
+		ingot = false
 	if clone == 1:
 		animation.set_frame(global.frames)
 	if clone == 0 and global.slot == 6:
@@ -68,6 +84,10 @@ func _on_area_entered(area):
 			wire = true
 		if area.has_meta("Foil"):
 			foil = true
+		if area.has_meta("Rod"):
+			rod = true
+		if area.has_meta("Ingot"):
+			ingot = true
 
 
 func _on_mouse_entered():
@@ -86,4 +106,9 @@ func _on_recipe_selected():
 
 func _on_circuit_board_pressed():
 	circuit_board_recipe.show()
+	recipe_list.hide()
+
+
+func _on_metal_frame_pressed():
+	metal_frame_recipe.show()
 	recipe_list.hide()

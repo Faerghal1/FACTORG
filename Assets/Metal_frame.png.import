@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv5f8xkr4pryf"
-path="res://.godot/imported/Hotbar.png-ca7e3b496b871c296ee6162f24bca4c8.ctex"
+uid="uid://0ahtge75n5um"
+path="res://.godot/imported/Metal_frame.png-1a985e6240e92a2621c1a3ffbe2d8a0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Hotbar.png"
-dest_files=["res://.godot/imported/Hotbar.png-ca7e3b496b871c296ee6162f24bca4c8.ctex"]
+source_file="res://Assets/Metal_frame.png"
+dest_files=["res://.godot/imported/Metal_frame.png-1a985e6240e92a2621c1a3ffbe2d8a0c.ctex"]
 
 [params]
 

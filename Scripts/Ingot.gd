@@ -32,6 +32,8 @@ func _on_area_entered(area):
 	if area.has_meta("Storage") and area.get_meta("Storage")>=0:
 		global.ingot += 1
 		queue_free()
+	if area.has_meta("Combiner") and area.get_meta("Combiner")>=0:
+		queue_free()
 
 
 func _on_area_exited(area):

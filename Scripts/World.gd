@@ -5,8 +5,8 @@ extends Node2D
 @onready var controls = $Camera2D/Controls/AnimatedSprite2D
 @onready var index = $Camera2D/Index
 @onready var pause_menu = $Camera2D/Pause_menu
-@onready var rod_goal = $Camera2D/Goal/RodGoal
-@onready var circuit_board_goal = $Camera2D/Goal/CircuitBoardGoal
+@onready var metal_frame_goal = $Camera2D/Goal/GoalText/MetalFrameGoal
+@onready var circuit_board_goal = $Camera2D/Goal/GoalText/CircuitBoardGoal
 @onready var belt_select = $Camera2D/Belt_select
 @onready var extractor_select = $Camera2D/Extractor_select
 @onready var smelter_select = $Camera2D/Smelter_select
@@ -48,9 +48,9 @@ func _process(_delta):
 		else:
 			pause_menu.show()
 			get_tree().paused = true
-	if global.circuit_board >= 25 and global.rod >= 20:
+	if global.circuit_board >= 25 and global.metal_frame >= 20:
 		get_tree().paused = true
-	rod_goal.text = (str(int(global.rod)) + "/20")
+	metal_frame_goal.text = (str(int(global.metal_frame)) + "/20")
 	circuit_board_goal.text = (str(int(global.circuit_board)) + "/25")
 	if Input.is_action_just_pressed("Hotbar_1"): # Belt hotkey selection
 		if global.slot == 1:

@@ -28,9 +28,7 @@ func _on_area_entered(area):
 		var dir = area.get_meta("Belt")
 		rotation_degrees = dir*90
 	if area.has_meta("Storage") and area.get_meta("Storage")>=0:
-		global.rod += 1
-		queue_free()
-	if area.has_meta("Combiner") and area.get_meta("Combiner")>=0:
+		global.metal_frame += 1
 		queue_free()
 
 
@@ -40,8 +38,7 @@ func _on_area_exited(area):
 
 
 func _on_ready():
-	move_local_y(8)
-	move_local_x(-24)
+	move_local_x(-32)
 
 
 func _on_timer_timeout():

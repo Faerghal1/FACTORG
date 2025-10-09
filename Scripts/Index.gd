@@ -10,6 +10,7 @@ extends Control
 @onready var copper_foil = $CopperFoil
 @onready var gold_wire = $GoldWire
 @onready var circuit_board = $CircuitBoard
+@onready var metal_frame = $MetalFrame
 
 var recipe = 0
 
@@ -35,6 +36,8 @@ func _process(_delta):
 		gold_wire.show()
 	if recipe == 10:
 		circuit_board.show()
+	if recipe == 11:
+		metal_frame.show()
 	if not recipe == 1:
 		iron_ore.hide()
 	if not recipe == 2:
@@ -55,6 +58,8 @@ func _process(_delta):
 		gold_wire.hide()
 	if not recipe == 10:
 		circuit_board.hide()
+	if not recipe == 11:
+		metal_frame.hide()
 
 
 func _on_iron_ore_mouse_entered():
@@ -95,3 +100,7 @@ func _on_gold_wire_mouse_entered():
 
 func _on_circuit_board_mouse_entered():
 	recipe = 10
+
+
+func _on_metal_frame_mouse_entered():
+	recipe = 11
