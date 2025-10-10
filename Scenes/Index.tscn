@@ -1,12 +1,13 @@
-[gd_scene load_steps=37 format=3 uid="uid://bfwa2odjnu25x"]
+[gd_scene load_steps=38 format=3 uid="uid://bfwa2odjnu25x"]
 
 [ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Iron_Ore.png" id="1_ketcf"]
 [ext_resource type="Script" uid="uid://d1ikaamtl7wdl" path="res://Scripts/Index.gd" id="1_nii28"]
 [ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="2_lhddn"]
 [ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="2_nii28"]
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="3_r3dr4"]
+[ext_resource type="Texture2D" uid="uid://chu4wfbul6c8v" path="res://Assets/Index_iron.png" id="4_pkry7"]
 [ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="4_x6x8t"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="5_ethub"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="5_ethub"]
 [ext_resource type="Texture2D" uid="uid://bunxefb1ux8da" path="res://Assets/Gold_ore.png" id="5_pcnie"]
 [ext_resource type="Texture2D" uid="uid://cwa67ouggcrk6" path="res://Assets/Gold_wire.png" id="8_i3akh"]
 [ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor.png" id="8_x6x8t"]
@@ -243,6 +244,10 @@ theme = SubResource("Theme_y4dfr")
 action_mode = 0
 text = "Iron Ore"
 icon = ExtResource("1_ketcf")
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_pkry7")
 
 [node name="CopperOre" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -1340,7 +1345,6 @@ scale = Vector2(0.65, 0.65)
 texture = ExtResource("16_i3akh")
 
 [node name="CircuitBoard" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

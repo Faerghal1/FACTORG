@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bld52wkaysfrs"
-path="res://.godot/imported/Smelter_Tooltip.png-32b55423019eeb13fc55507a105acf63.ctex"
+uid="uid://ikpm7tljdn1f"
+path="res://.godot/imported/Resume_button1.png-2b39e56fe7157fced5e2174461c7c5d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Smelter_Tooltip.png"
-dest_files=["res://.godot/imported/Smelter_Tooltip.png-32b55423019eeb13fc55507a105acf63.ctex"]
+source_file="res://Assets/Resume_button1.png"
+dest_files=["res://.godot/imported/Resume_button1.png-2b39e56fe7157fced5e2174461c7c5d6.ctex"]
 
 [params]
 
