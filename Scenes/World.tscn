@@ -912,6 +912,94 @@ position = Vector2(-14.5, 52.5)
 scale = Vector2(0.465, 0.465)
 texture = ExtResource("34_ao4cr")
 
+[node name="StopwatchUI" type="Control" parent="Camera2D"]
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = -34.0
+offset_top = -180.0
+offset_right = 34.0
+offset_bottom = -157.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Camera2D/StopwatchUI"]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 46.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("26_y8a40")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="TimeLabel" type="Label" parent="Camera2D/StopwatchUI"]
+layout_mode = 0
+offset_right = 68.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "00:00:00"
+horizontal_alignment = 1
+
+[node name="Win_screen" type="Control" parent="Camera2D"]
+visible = false
+z_index = 4
+layout_mode = 3
+anchors_preset = 0
+offset_left = -128.0
+offset_top = -180.0
+offset_right = 128.0
+offset_bottom = -100.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Win_screen"]
+offset_left = -201.0
+offset_top = -5.0
+offset_right = 457.0
+offset_bottom = 365.0
+color = Color(0.408329, 0.408329, 0.408329, 0.647059)
+
+[node name="WinScreenBackground" type="VBoxContainer" parent="Camera2D/Win_screen"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 80.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/Win_screen/WinScreenBackground"]
+layout_mode = 2
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Camera2D/Win_screen/WinScreenBackground/HBoxContainer"]
+custom_minimum_size = Vector2(256, 80)
+layout_mode = 2
+texture = ExtResource("26_y8a40")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="WinScreenText" type="VBoxContainer" parent="Camera2D/Win_screen"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 252.0
+offset_bottom = 77.0
+
+[node name="YouWon" type="Label" parent="Camera2D/Win_screen/WinScreenText"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "You Won!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeElasped" type="Label" parent="Camera2D/Win_screen/WinScreenText"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "Time Elasped:"
+vertical_alignment = 1
+
+[node name="BestTime" type="Label" parent="Camera2D/Win_screen/WinScreenText"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "Best Time:"
+vertical_alignment = 1
+
 [node name="Belt" parent="." instance=ExtResource("2_0b5rt")]
 position = Vector2(32, 32)
 

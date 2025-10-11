@@ -156,6 +156,7 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Metal_frame" type="Button" parent="Recipe_list"]
+layout_mode = 0
 offset_left = 133.0
 offset_top = -21.5
 offset_right = 243.0

@@ -16,6 +16,10 @@ extends Node2D
 @onready var building_cant_place = $"Camera2D/Can't Place Building"
 @onready var extractor_cant_place = $"Camera2D/Can't Place Extractor"
 @onready var timer = $Timer
+@onready var win_screen = $Camera2D/Win_screen
+@onready var time_label = $Camera2D/StopwatchUI/TimeLabel
+@onready var time_elasped_label = $Camera2D/Win_screen/WinScreenText/TimeElasped
+@onready var best_time_label = $Camera2D/Win_screen/WinScreenText/BestTime
 
 @export var belt_scene: PackedScene
 @export var extractor_scene: PackedScene
@@ -28,6 +32,13 @@ var bitmap_height = 10000
 var bitmap_width = 10000 # needs to be even number
 var placed = false
 var extractor_position = Vector2i(0,0)
+var elapsed_time: float = 0.0
+var is_running: bool = false
+var best_time = null
+var b_minutes
+var b_seconds
+var b_milliseconds
+const SAVE_PATH = "user://game_data.json"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -36,9 +47,14 @@ func _ready():
 	camera.position.x += global.width * 8
 	camera.position.y += global.height * 8
 	controls.frame = 0
+	is_running = true
+	update_time_display()
 
 
-func _process(_delta):
+func _process(delta):
+	if is_running == true:
+		elapsed_time += delta
+		update_time_display()
 	if Input.is_action_just_pressed("Index"):
 		if index.visible == false:
 			index.show()
@@ -50,6 +66,22 @@ func _process(_delta):
 			get_tree().paused = true
 	if global.circuit_board >= 25 and global.metal_frame >= 20:
 		get_tree().paused = true
+		is_running = false
+		load_game_data()
+		if best_time == null:
+			print("no best time")
+			best_time = elapsed_time
+			save_game_data(best_time)
+		if elapsed_time < best_time:
+			print("new best time")
+			best_time = elapsed_time
+			save_game_data(best_time)
+		b_minutes = int(best_time / 60)
+		b_seconds = int(fmod(best_time, 60))
+		b_milliseconds = int(fmod(best_time, 1) * 100)
+		best_time_label.text = ("Best Time: " \
+		+ "%02d:%02d.%02d" % [b_minutes, b_seconds, b_milliseconds])
+		win_screen.show()
 	metal_frame_goal.text = (str(int(global.metal_frame)) + "/20")
 	circuit_board_goal.text = (str(int(global.circuit_board)) + "/25")
 	if Input.is_action_just_pressed("Hotbar_1"): # Belt hotkey selection
@@ -269,7 +301,8 @@ func _process(_delta):
 				global.bitmap.set_bit(pos.x, pos.y-1, true)
 				global.bitmap.set_bit(pos.x+1, pos.y-1, true)
 	if Input.is_action_pressed("Right_click"):
-		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
+		var pos \
+		= Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
 		if global.bitmap.get_bit(pos.x, pos.y):
 			global.bitmap.set_bit(pos.x, pos.y, false)
 	if Input.is_action_just_pressed("Rotate(R)"):
@@ -303,3 +336,46 @@ func _on_belt_timer_timeout() -> void: # Animates the conveyer belt
 		global.frames += 1
 	else:
 		global.frames = 0
+
+
+func update_time_display():
+	var minutes = int(elapsed_time / 60)
+	var seconds = int(fmod(elapsed_time, 60))
+	var milliseconds = int(fmod(elapsed_time, 1) * 100)
+	time_label.text = "%02d:%02d.%02d" % [minutes, seconds, milliseconds]
+	time_elasped_label.text = ("Time Elasped: " \
+	+ "%02d:%02d.%02d" % [minutes, seconds, milliseconds])
+
+
+func save_game_data(best_time: float):
+	var save_data = {
+		"best_time": best_time
+	}
+	
+	var json_string = JSON.stringify(save_data)
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if file:
+		file.store_string(json_string)
+		file.close()
+	else:
+		print("Error opening file to save data")
+
+
+func load_game_data():
+	if FileAccess.file_exists(SAVE_PATH):
+		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+		if file:
+			var json_string = file.get_as_text()
+			file.close()
+			var parse_result = JSON.parse_string(json_string)
+			if parse_result is Dictionary:
+				var loaded_data = parse_result
+				best_time = loaded_data.get("best_time", null)
+				return loaded_data
+			else:
+				print("Error parsing JSON data")
+		else:
+			print("Error opening file to load data")
+	else:
+		print("Save file does not exist")
+	return {}
