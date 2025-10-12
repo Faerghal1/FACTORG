@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bf48i6vi82vci" path="res://Scripts/Main_menu.gd" id="1_cwcel"]
 [ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/Tilemap_gen_old.png" id="3_qr2n2"]
 [ext_resource type="Script" uid="uid://cywns0wfw84ca" path="res://Scripts/Tile_map.gd" id="4_j7h1k"]
-[ext_resource type="Script" uid="uid://bn2mi5df5byvg" path="res://Scripts/Camera_main_menu.gd" id="4_nvm8u"]
+[ext_resource type="Script" uid="uid://dnfmspblpsk2u" path="res://Scripts/Camera_main_menu.gd" id="4_nvm8u"]
 [ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="5_ihofj"]
 [ext_resource type="Texture2D" uid="uid://bruuptfrc3ng4" path="res://Assets/Title.png" id="6_q0gj4"]
 [ext_resource type="Texture2D" uid="uid://xd1g4fu6p2c" path="res://Assets/Play_button0.png" id="6_yst1x"]

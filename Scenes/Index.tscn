@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="3_r3dr4"]
 [ext_resource type="Texture2D" uid="uid://chu4wfbul6c8v" path="res://Assets/Index_iron.png" id="4_pkry7"]
 [ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="4_x6x8t"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="5_ethub"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="5_ethub"]
 [ext_resource type="Texture2D" uid="uid://bunxefb1ux8da" path="res://Assets/Gold_ore.png" id="5_pcnie"]
 [ext_resource type="Texture2D" uid="uid://cwa67ouggcrk6" path="res://Assets/Gold_wire.png" id="8_i3akh"]
 [ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor.png" id="8_x6x8t"]
@@ -1345,6 +1345,7 @@ scale = Vector2(0.65, 0.65)
 texture = ExtResource("16_i3akh")
 
 [node name="CircuitBoard" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
