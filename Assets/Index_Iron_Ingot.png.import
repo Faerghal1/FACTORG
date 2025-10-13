@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chu4wfbul6c8v"
-path="res://.godot/imported/Index_iron.png-d8206f602f3d58e93060bde989e918a4.ctex"
+uid="uid://bo5dgni5f3f4d"
+path="res://.godot/imported/Index_Iron_Ingot.png-685993ef4a8bc3577dcfb2723fe7e9f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Index_iron.png"
-dest_files=["res://.godot/imported/Index_iron.png-d8206f602f3d58e93060bde989e918a4.ctex"]
+source_file="res://Assets/Index_Iron_Ingot.png"
+dest_files=["res://.godot/imported/Index_Iron_Ingot.png-685993ef4a8bc3577dcfb2723fe7e9f6.ctex"]
 
 [params]
 
