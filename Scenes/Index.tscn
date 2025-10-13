@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bng8yk7xdn14c" path="res://Assets/Index_Copper_Ore.png" id="4_85vxe"]
 [ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="4_x6x8t"]
 [ext_resource type="Texture2D" uid="uid://baklkexyo6dhh" path="res://Assets/Index_Gold_Ore.png" id="5_doyfs"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="5_ethub"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="5_ethub"]
 [ext_resource type="Texture2D" uid="uid://bunxefb1ux8da" path="res://Assets/Gold_ore.png" id="5_pcnie"]
 [ext_resource type="Texture2D" uid="uid://bo5dgni5f3f4d" path="res://Assets/Index_Iron_Ingot.png" id="6_5tb43"]
 [ext_resource type="Texture2D" uid="uid://cnb31gacmxk6d" path="res://Assets/Index_Copper_Ingot.png" id="7_4lwgu"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://l2h4yfm8devt" path="res://Assets/Index_Metal_Frame.png" id="13_3w5tx"]
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="13_lhddn"]
 [ext_resource type="Texture2D" uid="uid://0ahtge75n5um" path="res://Assets/Metal_frame.png" id="13_uaysb"]
+[ext_resource type="Texture2D" uid="uid://cpter0w0l5kkx" path="res://Assets/UI_background.png" id="14_85vxe"]
 [ext_resource type="Texture2D" uid="uid://omt2sfe5q1h6" path="res://Assets/Gold_ingot.png" id="16_i3akh"]
 [ext_resource type="Texture2D" uid="uid://ddq14duqx6qya" path="res://Assets/Gold_node.png" id="16_laq7h"]
 [ext_resource type="Texture2D" uid="uid://dlgyyqmiqvfeq" path="res://Assets/Combiner.png" id="20_uaysb"]
@@ -213,10 +214,6 @@ Button/styles/hover = SubResource("StyleBoxFlat_lu501")
 Button/styles/normal = SubResource("StyleBoxFlat_uaysb")
 Button/styles/pressed = SubResource("StyleBoxFlat_pkry7")
 
-[sub_resource type="Theme" id="Theme_lhddn"]
-default_font = ExtResource("2_lhddn")
-default_font_size = 18
-
 [sub_resource type="Theme" id="Theme_i3akh"]
 default_font = ExtResource("2_lhddn")
 default_font_size = 18
@@ -228,10 +225,10 @@ script = ExtResource("1_nii28")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -214.0
-offset_top = -161.0
-offset_right = 204.0
-offset_bottom = 78.0
+offset_left = -217.0
+offset_top = -162.0
+offset_right = 323.0
+offset_bottom = 77.0
 color = Color(0.233925, 0.233925, 0.233925, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
@@ -309,32 +306,43 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_lhddn")
+theme = SubResource("Theme_i3akh")
 
-[node name="Name" type="ColorRect" parent="IronOre"]
+[node name="Name" type="NinePatchRect" parent="IronOre"]
 layout_mode = 0
-offset_left = -41.0
+offset_left = -40.0
 offset_top = -155.0
-offset_right = 23.0
-offset_bottom = -130.0
+offset_right = 67.0
+offset_bottom = -133.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="IronOre/Name"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 63.0
-offset_bottom = 24.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 3.0
+offset_right = 104.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 text = "Iron ore"
 
-[node name="Image" type="ColorRect" parent="IronOre"]
+[node name="Image" type="NinePatchRect" parent="IronOre"]
 layout_mode = 0
-offset_left = -30.0
-offset_top = -122.0
-offset_right = 14.0
-offset_bottom = -78.0
+offset_left = -18.0
+offset_top = -129.0
+offset_right = 46.0
+offset_bottom = -65.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="IronOre/Image"]
 layout_mode = 0
@@ -342,81 +350,93 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 42.0
 offset_bottom = 42.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_ketcf")
 
-[node name="Description" type="ColorRect" parent="IronOre"]
+[node name="Description" type="NinePatchRect" parent="IronOre"]
 layout_mode = 0
-offset_left = 38.0
+offset_left = 72.0
 offset_top = -155.0
-offset_right = 186.0
-offset_bottom = -78.0
+offset_right = 317.0
+offset_bottom = -80.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="IronOre/Description"]
 layout_mode = 0
-offset_right = 148.0
-offset_bottom = 77.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Raw material"
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 242.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "- Raw resource
+- Extracted from Iron nodes"
 
-[node name="Recipe" type="ColorRect" parent="IronOre"]
+[node name="Recipe" type="NinePatchRect" parent="IronOre"]
 layout_mode = 0
-offset_left = -41.0
-offset_top = -62.0
-offset_right = 199.0
-offset_bottom = 32.0
+offset_left = -40.0
+offset_top = -61.0
+offset_right = 312.0
+offset_bottom = 71.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="ColorRect" type="ColorRect" parent="IronOre/Recipe"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 238.0
-offset_bottom = 92.0
-color = Color(0.370364, 0.370364, 0.370364, 1)
+[node name="VBoxContainer" type="VBoxContainer" parent="IronOre/Recipe"]
+layout_mode = 2
+offset_left = 3.59999
+offset_top = 3.0
+offset_right = 71.6
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="IronOre/Recipe"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 24.0
-offset_right = 164.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("8_x6x8t")
+[node name="HBoxContainer" type="HBoxContainer" parent="IronOre/Recipe/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="TextureRect2" type="TextureRect" parent="IronOre/Recipe"]
+[node name="TextureRect5" type="TextureRect" parent="IronOre/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_ethub")
+
+[node name="TextureRect4" type="TextureRect" parent="IronOre/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="IronOre/Recipe"]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 24.0
-offset_right = 256.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
+offset_left = 226.0
+offset_top = 3.0
+offset_right = 294.0
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="IronOre/Recipe/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect3" type="TextureRect" parent="IronOre/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect2" type="TextureRect" parent="IronOre/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("1_ketcf")
 
-[node name="TextureRect3" type="TextureRect" parent="IronOre/Recipe"]
+[node name="TextureRect" type="TextureRect" parent="IronOre"]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 0
-offset_left = 146.0
-offset_top = 24.0
-offset_right = 210.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect4" type="TextureRect" parent="IronOre/Recipe"]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 24.0
-offset_right = 116.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect5" type="TextureRect" parent="IronOre/Recipe"]
-layout_mode = 0
-offset_left = 6.00003
-offset_top = 24.0
-offset_right = 70.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("10_ethub")
+offset_left = 86.0
+offset_top = -43.0
+offset_right = 182.0
+offset_bottom = 53.0
+texture = ExtResource("8_x6x8t")
 
 [node name="CopperOre" type="Control" parent="."]
 visible = false
@@ -424,32 +444,43 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_i3akh")
 
-[node name="Name" type="ColorRect" parent="CopperOre"]
+[node name="Name" type="NinePatchRect" parent="CopperOre"]
 layout_mode = 0
-offset_left = -41.0
+offset_left = -40.0
 offset_top = -155.0
-offset_right = 50.0
-offset_bottom = -130.0
+offset_right = 67.0
+offset_bottom = -133.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="CopperOre/Name"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 63.0
-offset_bottom = 24.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 3.0
+offset_right = 104.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 text = "Copper ore"
 
-[node name="Image" type="ColorRect" parent="CopperOre"]
+[node name="Image" type="NinePatchRect" parent="CopperOre"]
 layout_mode = 0
-offset_left = -30.0
-offset_top = -122.0
-offset_right = 14.0
-offset_bottom = -78.0
+offset_left = -18.0
+offset_top = -129.0
+offset_right = 46.0
+offset_bottom = -65.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="CopperOre/Image"]
 layout_mode = 0
@@ -457,81 +488,93 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 42.0
 offset_bottom = 42.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_nii28")
 
-[node name="Description" type="ColorRect" parent="CopperOre"]
+[node name="Description" type="NinePatchRect" parent="CopperOre"]
 layout_mode = 0
-offset_left = 53.0
+offset_left = 72.0
 offset_top = -155.0
-offset_right = 201.0
-offset_bottom = -78.0
+offset_right = 317.0
+offset_bottom = -80.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="CopperOre/Description"]
 layout_mode = 0
-offset_right = 148.0
-offset_bottom = 77.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Raw material"
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 235.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "- Raw resource
+- Extracted from Copper nodes"
 
-[node name="Recipe" type="ColorRect" parent="CopperOre"]
+[node name="Recipe" type="NinePatchRect" parent="CopperOre"]
 layout_mode = 0
-offset_left = -41.0
-offset_top = -62.0
-offset_right = 199.0
-offset_bottom = 32.0
+offset_left = -40.0
+offset_top = -61.0
+offset_right = 312.0
+offset_bottom = 71.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="ColorRect" type="ColorRect" parent="CopperOre/Recipe"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 238.0
-offset_bottom = 92.0
-color = Color(0.370364, 0.370364, 0.370364, 1)
+[node name="VBoxContainer" type="VBoxContainer" parent="CopperOre/Recipe"]
+layout_mode = 2
+offset_left = 3.59999
+offset_top = 3.0
+offset_right = 71.6
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CopperOre/Recipe"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 24.0
-offset_right = 164.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("8_x6x8t")
+[node name="HBoxContainer" type="HBoxContainer" parent="CopperOre/Recipe/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="TextureRect2" type="TextureRect" parent="CopperOre/Recipe"]
+[node name="TextureRect5" type="TextureRect" parent="CopperOre/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("11_71v2r")
+
+[node name="TextureRect4" type="TextureRect" parent="CopperOre/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CopperOre/Recipe"]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 24.0
-offset_right = 256.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
+offset_left = 226.0
+offset_top = 3.0
+offset_right = 294.0
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CopperOre/Recipe/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect3" type="TextureRect" parent="CopperOre/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect2" type="TextureRect" parent="CopperOre/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("2_nii28")
 
-[node name="TextureRect3" type="TextureRect" parent="CopperOre/Recipe"]
+[node name="TextureRect" type="TextureRect" parent="CopperOre"]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 0
-offset_left = 146.0
-offset_top = 24.0
-offset_right = 210.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect4" type="TextureRect" parent="CopperOre/Recipe"]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 24.0
-offset_right = 116.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect5" type="TextureRect" parent="CopperOre/Recipe"]
-layout_mode = 0
-offset_left = 6.00003
-offset_top = 24.0
-offset_right = 70.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("11_71v2r")
+offset_left = 86.0
+offset_top = -43.0
+offset_right = 182.0
+offset_bottom = 53.0
+texture = ExtResource("8_x6x8t")
 
 [node name="GoldOre" type="Control" parent="."]
 visible = false
@@ -539,32 +582,43 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_i3akh")
 
-[node name="Name" type="ColorRect" parent="GoldOre"]
+[node name="Name" type="NinePatchRect" parent="GoldOre"]
 layout_mode = 0
-offset_left = -41.0
+offset_left = -40.0
 offset_top = -155.0
-offset_right = 28.0
-offset_bottom = -130.0
+offset_right = 67.0
+offset_bottom = -133.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="GoldOre/Name"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 63.0
-offset_bottom = 24.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 3.0
+offset_right = 104.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 text = "Gold ore"
 
-[node name="Image" type="ColorRect" parent="GoldOre"]
+[node name="Image" type="NinePatchRect" parent="GoldOre"]
 layout_mode = 0
-offset_left = -30.0
-offset_top = -122.0
-offset_right = 14.0
-offset_bottom = -78.0
+offset_left = -18.0
+offset_top = -129.0
+offset_right = 46.0
+offset_bottom = -65.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="GoldOre/Image"]
 layout_mode = 0
@@ -572,81 +626,93 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 42.0
 offset_bottom = 42.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_pcnie")
 
-[node name="Description" type="ColorRect" parent="GoldOre"]
+[node name="Description" type="NinePatchRect" parent="GoldOre"]
 layout_mode = 0
-offset_left = 53.0
+offset_left = 72.0
 offset_top = -155.0
-offset_right = 201.0
-offset_bottom = -78.0
+offset_right = 317.0
+offset_bottom = -80.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="GoldOre/Description"]
 layout_mode = 0
-offset_right = 148.0
-offset_bottom = 77.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Raw material"
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 242.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "- Raw resource
+- Extracted from Gold nodes"
 
-[node name="Recipe" type="ColorRect" parent="GoldOre"]
+[node name="Recipe" type="NinePatchRect" parent="GoldOre"]
 layout_mode = 0
-offset_left = -41.0
-offset_top = -62.0
-offset_right = 199.0
-offset_bottom = 32.0
+offset_left = -40.0
+offset_top = -61.0
+offset_right = 312.0
+offset_bottom = 71.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="ColorRect" type="ColorRect" parent="GoldOre/Recipe"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 238.0
-offset_bottom = 92.0
-color = Color(0.370364, 0.370364, 0.370364, 1)
+[node name="VBoxContainer" type="VBoxContainer" parent="GoldOre/Recipe"]
+layout_mode = 2
+offset_left = 3.59999
+offset_top = 3.0
+offset_right = 71.6
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="GoldOre/Recipe"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 24.0
-offset_right = 164.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("8_x6x8t")
+[node name="HBoxContainer" type="HBoxContainer" parent="GoldOre/Recipe/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="TextureRect2" type="TextureRect" parent="GoldOre/Recipe"]
+[node name="TextureRect5" type="TextureRect" parent="GoldOre/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("16_laq7h")
+
+[node name="TextureRect4" type="TextureRect" parent="GoldOre/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GoldOre/Recipe"]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 24.0
-offset_right = 256.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
+offset_left = 226.0
+offset_top = 3.0
+offset_right = 294.0
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GoldOre/Recipe/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect3" type="TextureRect" parent="GoldOre/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect2" type="TextureRect" parent="GoldOre/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("5_pcnie")
 
-[node name="TextureRect3" type="TextureRect" parent="GoldOre/Recipe"]
+[node name="TextureRect" type="TextureRect" parent="GoldOre"]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 0
-offset_left = 146.0
-offset_top = 24.0
-offset_right = 210.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect4" type="TextureRect" parent="GoldOre/Recipe"]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 24.0
-offset_right = 116.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect5" type="TextureRect" parent="GoldOre/Recipe"]
-layout_mode = 0
-offset_left = 6.00003
-offset_top = 24.0
-offset_right = 70.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("16_laq7h")
+offset_left = 86.0
+offset_top = -43.0
+offset_right = 182.0
+offset_bottom = 53.0
+texture = ExtResource("8_x6x8t")
 
 [node name="IronIngot" type="Control" parent="."]
 visible = false
@@ -654,32 +720,43 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_i3akh")
 
-[node name="Name" type="ColorRect" parent="IronIngot"]
+[node name="Name" type="NinePatchRect" parent="IronIngot"]
 layout_mode = 0
-offset_left = -41.0
+offset_left = -40.0
 offset_top = -155.0
-offset_right = 38.0
-offset_bottom = -130.0
+offset_right = 67.0
+offset_bottom = -133.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="IronIngot/Name"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 63.0
-offset_bottom = 24.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 3.0
+offset_right = 104.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 text = "Iron ingot"
 
-[node name="Image" type="ColorRect" parent="IronIngot"]
+[node name="Image" type="NinePatchRect" parent="IronIngot"]
 layout_mode = 0
-offset_left = -30.0
-offset_top = -122.0
-offset_right = 14.0
-offset_bottom = -78.0
+offset_left = -18.0
+offset_top = -129.0
+offset_right = 46.0
+offset_bottom = -65.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="IronIngot/Image"]
 layout_mode = 0
@@ -687,81 +764,93 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 42.0
 offset_bottom = 42.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_r3dr4")
 
-[node name="Description" type="ColorRect" parent="IronIngot"]
+[node name="Description" type="NinePatchRect" parent="IronIngot"]
 layout_mode = 0
-offset_left = 47.0
+offset_left = 72.0
 offset_top = -155.0
-offset_right = 195.0
-offset_bottom = -78.0
+offset_right = 317.0
+offset_bottom = -80.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="IronIngot/Description"]
 layout_mode = 0
-offset_right = 148.0
-offset_bottom = 77.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Refined ingot"
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 242.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "- Basic resource
+- Produced in the Smelter"
 
-[node name="Recipe" type="ColorRect" parent="IronIngot"]
+[node name="Recipe" type="NinePatchRect" parent="IronIngot"]
 layout_mode = 0
-offset_left = -41.0
-offset_top = -62.0
-offset_right = 199.0
-offset_bottom = 32.0
+offset_left = -40.0
+offset_top = -61.0
+offset_right = 312.0
+offset_bottom = 71.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="ColorRect" type="ColorRect" parent="IronIngot/Recipe"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 238.0
-offset_bottom = 92.0
-color = Color(0.370364, 0.370364, 0.370364, 1)
+[node name="VBoxContainer" type="VBoxContainer" parent="IronIngot/Recipe"]
+layout_mode = 2
+offset_left = 3.59999
+offset_top = 3.0
+offset_right = 71.6
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="IronIngot/Recipe"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 24.0
-offset_right = 164.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("12_d4fer")
+[node name="HBoxContainer" type="HBoxContainer" parent="IronIngot/Recipe/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="TextureRect2" type="TextureRect" parent="IronIngot/Recipe"]
+[node name="TextureRect5" type="TextureRect" parent="IronIngot/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_ketcf")
+
+[node name="TextureRect4" type="TextureRect" parent="IronIngot/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="IronIngot/Recipe"]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 24.0
-offset_right = 256.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
+offset_left = 226.0
+offset_top = 3.0
+offset_right = 294.0
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="IronIngot/Recipe/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect3" type="TextureRect" parent="IronIngot/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect2" type="TextureRect" parent="IronIngot/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("3_r3dr4")
 
-[node name="TextureRect3" type="TextureRect" parent="IronIngot/Recipe"]
+[node name="TextureRect" type="TextureRect" parent="IronIngot"]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 0
-offset_left = 146.0
-offset_top = 24.0
-offset_right = 210.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect4" type="TextureRect" parent="IronIngot/Recipe"]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 24.0
-offset_right = 116.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect5" type="TextureRect" parent="IronIngot/Recipe"]
-layout_mode = 0
-offset_left = 6.00003
-offset_top = 24.0
-offset_right = 70.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("1_ketcf")
+offset_left = 86.0
+offset_top = -43.0
+offset_right = 182.0
+offset_bottom = 53.0
+texture = ExtResource("12_d4fer")
 
 [node name="CopperIngot" type="Control" parent="."]
 visible = false
@@ -769,32 +858,43 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_i3akh")
 
-[node name="Name" type="ColorRect" parent="CopperIngot"]
+[node name="Name" type="NinePatchRect" parent="CopperIngot"]
 layout_mode = 0
-offset_left = -41.0
+offset_left = -40.0
 offset_top = -155.0
-offset_right = 62.0
-offset_bottom = -130.0
+offset_right = 67.0
+offset_bottom = -133.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="CopperIngot/Name"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 63.0
-offset_bottom = 24.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 3.0
+offset_right = 104.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 text = "Copper ingot"
 
-[node name="Image" type="ColorRect" parent="CopperIngot"]
+[node name="Image" type="NinePatchRect" parent="CopperIngot"]
 layout_mode = 0
-offset_left = -30.0
-offset_top = -122.0
-offset_right = 14.0
-offset_bottom = -78.0
+offset_left = -18.0
+offset_top = -129.0
+offset_right = 46.0
+offset_bottom = -65.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="CopperIngot/Image"]
 layout_mode = 0
@@ -802,81 +902,93 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 42.0
 offset_bottom = 42.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_x6x8t")
 
-[node name="Description" type="ColorRect" parent="CopperIngot"]
+[node name="Description" type="NinePatchRect" parent="CopperIngot"]
 layout_mode = 0
-offset_left = 64.0
+offset_left = 72.0
 offset_top = -155.0
-offset_right = 202.0
-offset_bottom = -78.0
+offset_right = 317.0
+offset_bottom = -80.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="CopperIngot/Description"]
 layout_mode = 0
-offset_right = 138.0
-offset_bottom = 77.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Refined ingot"
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 242.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "- Basic resource
+- Produced in the Smelter"
 
-[node name="Recipe" type="ColorRect" parent="CopperIngot"]
+[node name="Recipe" type="NinePatchRect" parent="CopperIngot"]
 layout_mode = 0
-offset_left = -41.0
-offset_top = -62.0
-offset_right = 199.0
-offset_bottom = 32.0
+offset_left = -40.0
+offset_top = -61.0
+offset_right = 312.0
+offset_bottom = 71.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="ColorRect" type="ColorRect" parent="CopperIngot/Recipe"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 238.0
-offset_bottom = 92.0
-color = Color(0.370364, 0.370364, 0.370364, 1)
+[node name="VBoxContainer" type="VBoxContainer" parent="CopperIngot/Recipe"]
+layout_mode = 2
+offset_left = 3.59999
+offset_top = 3.0
+offset_right = 71.6
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CopperIngot/Recipe"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 24.0
-offset_right = 164.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("12_d4fer")
+[node name="HBoxContainer" type="HBoxContainer" parent="CopperIngot/Recipe/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="TextureRect2" type="TextureRect" parent="CopperIngot/Recipe"]
+[node name="TextureRect5" type="TextureRect" parent="CopperIngot/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_nii28")
+
+[node name="TextureRect4" type="TextureRect" parent="CopperIngot/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CopperIngot/Recipe"]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 24.0
-offset_right = 256.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
+offset_left = 226.0
+offset_top = 3.0
+offset_right = 294.0
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CopperIngot/Recipe/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect3" type="TextureRect" parent="CopperIngot/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect2" type="TextureRect" parent="CopperIngot/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("4_x6x8t")
 
-[node name="TextureRect3" type="TextureRect" parent="CopperIngot/Recipe"]
+[node name="TextureRect" type="TextureRect" parent="CopperIngot"]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 0
-offset_left = 146.0
-offset_top = 24.0
-offset_right = 210.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect4" type="TextureRect" parent="CopperIngot/Recipe"]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 24.0
-offset_right = 116.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect5" type="TextureRect" parent="CopperIngot/Recipe"]
-layout_mode = 0
-offset_left = 6.00003
-offset_top = 24.0
-offset_right = 70.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("2_nii28")
+offset_left = 86.0
+offset_top = -43.0
+offset_right = 182.0
+offset_bottom = 53.0
+texture = ExtResource("12_d4fer")
 
 [node name="GoldIngot" type="Control" parent="."]
 visible = false
@@ -884,32 +996,43 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_i3akh")
 
-[node name="Name" type="ColorRect" parent="GoldIngot"]
+[node name="Name" type="NinePatchRect" parent="GoldIngot"]
 layout_mode = 0
-offset_left = -41.0
+offset_left = -40.0
 offset_top = -155.0
-offset_right = 42.0
-offset_bottom = -130.0
+offset_right = 67.0
+offset_bottom = -133.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="GoldIngot/Name"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 63.0
-offset_bottom = 24.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 3.0
+offset_right = 104.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 text = "Gold ingot"
 
-[node name="Image" type="ColorRect" parent="GoldIngot"]
+[node name="Image" type="NinePatchRect" parent="GoldIngot"]
 layout_mode = 0
-offset_left = -30.0
-offset_top = -122.0
-offset_right = 14.0
-offset_bottom = -78.0
+offset_left = -18.0
+offset_top = -129.0
+offset_right = 46.0
+offset_bottom = -65.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="GoldIngot/Image"]
 layout_mode = 0
@@ -917,81 +1040,93 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 42.0
 offset_bottom = 42.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("16_i3akh")
 
-[node name="Description" type="ColorRect" parent="GoldIngot"]
+[node name="Description" type="NinePatchRect" parent="GoldIngot"]
 layout_mode = 0
-offset_left = 64.0
+offset_left = 72.0
 offset_top = -155.0
-offset_right = 202.0
-offset_bottom = -78.0
+offset_right = 317.0
+offset_bottom = -80.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="GoldIngot/Description"]
 layout_mode = 0
-offset_right = 138.0
-offset_bottom = 77.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Refined ingot"
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 242.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "- Basic resource
+- Produced in the Smelter"
 
-[node name="Recipe" type="ColorRect" parent="GoldIngot"]
+[node name="Recipe" type="NinePatchRect" parent="GoldIngot"]
 layout_mode = 0
-offset_left = -41.0
-offset_top = -62.0
-offset_right = 199.0
-offset_bottom = 32.0
+offset_left = -40.0
+offset_top = -61.0
+offset_right = 312.0
+offset_bottom = 71.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="ColorRect" type="ColorRect" parent="GoldIngot/Recipe"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 238.0
-offset_bottom = 92.0
-color = Color(0.370364, 0.370364, 0.370364, 1)
+[node name="VBoxContainer" type="VBoxContainer" parent="GoldIngot/Recipe"]
+layout_mode = 2
+offset_left = 3.59999
+offset_top = 3.0
+offset_right = 71.6
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="GoldIngot/Recipe"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 24.0
-offset_right = 164.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("12_d4fer")
+[node name="HBoxContainer" type="HBoxContainer" parent="GoldIngot/Recipe/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="TextureRect2" type="TextureRect" parent="GoldIngot/Recipe"]
+[node name="TextureRect5" type="TextureRect" parent="GoldIngot/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_pcnie")
+
+[node name="TextureRect4" type="TextureRect" parent="GoldIngot/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GoldIngot/Recipe"]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 24.0
-offset_right = 256.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
+offset_left = 226.0
+offset_top = 3.0
+offset_right = 294.0
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GoldIngot/Recipe/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect3" type="TextureRect" parent="GoldIngot/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect2" type="TextureRect" parent="GoldIngot/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("16_i3akh")
 
-[node name="TextureRect3" type="TextureRect" parent="GoldIngot/Recipe"]
+[node name="TextureRect" type="TextureRect" parent="GoldIngot"]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 0
-offset_left = 146.0
-offset_top = 24.0
-offset_right = 210.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect4" type="TextureRect" parent="GoldIngot/Recipe"]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 24.0
-offset_right = 116.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect5" type="TextureRect" parent="GoldIngot/Recipe"]
-layout_mode = 0
-offset_left = 6.00003
-offset_top = 24.0
-offset_right = 70.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("5_pcnie")
+offset_left = 86.0
+offset_top = -43.0
+offset_right = 182.0
+offset_bottom = 53.0
+texture = ExtResource("12_d4fer")
 
 [node name="IronRod" type="Control" parent="."]
 visible = false
@@ -999,32 +1134,43 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_i3akh")
 
-[node name="Name" type="ColorRect" parent="IronRod"]
+[node name="Name" type="NinePatchRect" parent="IronRod"]
 layout_mode = 0
-offset_left = -41.0
+offset_left = -40.0
 offset_top = -155.0
-offset_right = 23.0
-offset_bottom = -130.0
+offset_right = 67.0
+offset_bottom = -133.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="IronRod/Name"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 63.0
-offset_bottom = 24.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 3.0
+offset_right = 104.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 text = "Iron rod"
 
-[node name="Image" type="ColorRect" parent="IronRod"]
+[node name="Image" type="NinePatchRect" parent="IronRod"]
 layout_mode = 0
-offset_left = -30.0
-offset_top = -122.0
-offset_right = 14.0
-offset_bottom = -78.0
+offset_left = -18.0
+offset_top = -129.0
+offset_right = 46.0
+offset_bottom = -65.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="IronRod/Image"]
 layout_mode = 0
@@ -1032,81 +1178,93 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 42.0
 offset_bottom = 42.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_ethub")
 
-[node name="Description" type="ColorRect" parent="IronRod"]
+[node name="Description" type="NinePatchRect" parent="IronRod"]
 layout_mode = 0
-offset_left = 38.0
+offset_left = 72.0
 offset_top = -155.0
-offset_right = 186.0
-offset_bottom = -78.0
+offset_right = 317.0
+offset_bottom = -80.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="IronRod/Description"]
 layout_mode = 0
-offset_right = 148.0
-offset_bottom = 77.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Refined material"
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 242.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "- Refined resource
+- Produced in the Constructor"
 
-[node name="Recipe" type="ColorRect" parent="IronRod"]
+[node name="Recipe" type="NinePatchRect" parent="IronRod"]
 layout_mode = 0
-offset_left = -41.0
-offset_top = -62.0
-offset_right = 199.0
-offset_bottom = 32.0
+offset_left = -40.0
+offset_top = -61.0
+offset_right = 312.0
+offset_bottom = 71.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="ColorRect" type="ColorRect" parent="IronRod/Recipe"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 238.0
-offset_bottom = 92.0
-color = Color(0.370364, 0.370364, 0.370364, 1)
+[node name="VBoxContainer" type="VBoxContainer" parent="IronRod/Recipe"]
+layout_mode = 2
+offset_left = 3.59999
+offset_top = 3.0
+offset_right = 71.6
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="IronRod/Recipe"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 24.0
-offset_right = 164.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("13_lhddn")
+[node name="HBoxContainer" type="HBoxContainer" parent="IronRod/Recipe/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="TextureRect2" type="TextureRect" parent="IronRod/Recipe"]
+[node name="TextureRect5" type="TextureRect" parent="IronRod/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_r3dr4")
+
+[node name="TextureRect4" type="TextureRect" parent="IronRod/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="IronRod/Recipe"]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 24.0
-offset_right = 256.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
+offset_left = 226.0
+offset_top = 3.0
+offset_right = 294.0
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="IronRod/Recipe/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect3" type="TextureRect" parent="IronRod/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect2" type="TextureRect" parent="IronRod/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("5_ethub")
 
-[node name="TextureRect3" type="TextureRect" parent="IronRod/Recipe"]
+[node name="TextureRect" type="TextureRect" parent="IronRod"]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 0
-offset_left = 146.0
-offset_top = 24.0
-offset_right = 210.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect4" type="TextureRect" parent="IronRod/Recipe"]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 24.0
-offset_right = 116.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect5" type="TextureRect" parent="IronRod/Recipe"]
-layout_mode = 0
-offset_left = 6.00003
-offset_top = 24.0
-offset_right = 70.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("3_r3dr4")
+offset_left = 86.0
+offset_top = -43.0
+offset_right = 182.0
+offset_bottom = 53.0
+texture = ExtResource("13_lhddn")
 
 [node name="CopperFoil" type="Control" parent="."]
 visible = false
@@ -1114,32 +1272,43 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_i3akh")
 
-[node name="Name" type="ColorRect" parent="CopperFoil"]
+[node name="Name" type="NinePatchRect" parent="CopperFoil"]
 layout_mode = 0
-offset_left = -41.0
+offset_left = -40.0
 offset_top = -155.0
-offset_right = 47.0
-offset_bottom = -130.0
+offset_right = 67.0
+offset_bottom = -133.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="CopperFoil/Name"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 63.0
-offset_bottom = 24.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 3.0
+offset_right = 104.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 text = "Copper foil"
 
-[node name="Image" type="ColorRect" parent="CopperFoil"]
+[node name="Image" type="NinePatchRect" parent="CopperFoil"]
 layout_mode = 0
-offset_left = -30.0
-offset_top = -122.0
-offset_right = 14.0
-offset_bottom = -78.0
+offset_left = -18.0
+offset_top = -129.0
+offset_right = 46.0
+offset_bottom = -65.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="CopperFoil/Image"]
 layout_mode = 0
@@ -1147,81 +1316,93 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 42.0
 offset_bottom = 42.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("9_y4dfr")
 
-[node name="Description" type="ColorRect" parent="CopperFoil"]
+[node name="Description" type="NinePatchRect" parent="CopperFoil"]
 layout_mode = 0
-offset_left = 57.0
+offset_left = 72.0
 offset_top = -155.0
-offset_right = 202.0
-offset_bottom = -78.0
+offset_right = 317.0
+offset_bottom = -80.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="CopperFoil/Description"]
 layout_mode = 0
-offset_right = 145.0
-offset_bottom = 77.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Refined material"
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 242.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "- Refined resource
+- Produced in the Constructor"
 
-[node name="Recipe" type="ColorRect" parent="CopperFoil"]
+[node name="Recipe" type="NinePatchRect" parent="CopperFoil"]
 layout_mode = 0
-offset_left = -41.0
-offset_top = -62.0
-offset_right = 199.0
-offset_bottom = 32.0
+offset_left = -40.0
+offset_top = -61.0
+offset_right = 312.0
+offset_bottom = 71.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="ColorRect" type="ColorRect" parent="CopperFoil/Recipe"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 238.0
-offset_bottom = 92.0
-color = Color(0.370364, 0.370364, 0.370364, 1)
+[node name="VBoxContainer" type="VBoxContainer" parent="CopperFoil/Recipe"]
+layout_mode = 2
+offset_left = 3.59999
+offset_top = 3.0
+offset_right = 71.6
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CopperFoil/Recipe"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 24.0
-offset_right = 164.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("13_lhddn")
+[node name="HBoxContainer" type="HBoxContainer" parent="CopperFoil/Recipe/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="TextureRect2" type="TextureRect" parent="CopperFoil/Recipe"]
+[node name="TextureRect5" type="TextureRect" parent="CopperFoil/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_x6x8t")
+
+[node name="TextureRect4" type="TextureRect" parent="CopperFoil/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CopperFoil/Recipe"]
 layout_mode = 0
-offset_left = 192.0
-offset_top = 24.0
-offset_right = 256.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
+offset_left = 226.0
+offset_top = 3.0
+offset_right = 294.0
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CopperFoil/Recipe/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect3" type="TextureRect" parent="CopperFoil/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect2" type="TextureRect" parent="CopperFoil/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("9_y4dfr")
 
-[node name="TextureRect3" type="TextureRect" parent="CopperFoil/Recipe"]
+[node name="TextureRect" type="TextureRect" parent="CopperFoil"]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 0
-offset_left = 146.0
-offset_top = 24.0
-offset_right = 210.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect4" type="TextureRect" parent="CopperFoil/Recipe"]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 24.0
-offset_right = 116.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect5" type="TextureRect" parent="CopperFoil/Recipe"]
-layout_mode = 0
-offset_left = 6.00003
-offset_top = 24.0
-offset_right = 70.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("4_x6x8t")
+offset_left = 86.0
+offset_top = -43.0
+offset_right = 182.0
+offset_bottom = 53.0
+texture = ExtResource("13_lhddn")
 
 [node name="GoldWire" type="Control" parent="."]
 visible = false
@@ -1229,32 +1410,43 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_i3akh")
 
-[node name="Name" type="ColorRect" parent="GoldWire"]
+[node name="Name" type="NinePatchRect" parent="GoldWire"]
 layout_mode = 0
-offset_left = -41.0
+offset_left = -40.0
 offset_top = -155.0
-offset_right = 36.0
-offset_bottom = -130.0
+offset_right = 67.0
+offset_bottom = -133.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="GoldWire/Name"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 63.0
-offset_bottom = 24.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 3.0
+offset_right = 104.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 text = "Gold wire"
 
-[node name="Image" type="ColorRect" parent="GoldWire"]
+[node name="Image" type="NinePatchRect" parent="GoldWire"]
 layout_mode = 0
-offset_left = -30.0
-offset_top = -122.0
-offset_right = 14.0
-offset_bottom = -78.0
+offset_left = -18.0
+offset_top = -129.0
+offset_right = 46.0
+offset_bottom = -65.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="GoldWire/Image"]
 layout_mode = 0
@@ -1262,113 +1454,137 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 42.0
 offset_bottom = 42.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("8_i3akh")
 
-[node name="Description" type="ColorRect" parent="GoldWire"]
+[node name="Description" type="NinePatchRect" parent="GoldWire"]
 layout_mode = 0
-offset_left = 57.0
+offset_left = 72.0
 offset_top = -155.0
-offset_right = 202.0
-offset_bottom = -78.0
+offset_right = 317.0
+offset_bottom = -80.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="GoldWire/Description"]
 layout_mode = 0
-offset_right = 145.0
-offset_bottom = 77.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Refined material"
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 242.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "- Refined resource
+- Produced in the Constructor"
 
-[node name="Recipe" type="ColorRect" parent="GoldWire"]
+[node name="Recipe" type="NinePatchRect" parent="GoldWire"]
 layout_mode = 0
-offset_left = -41.0
-offset_top = -62.0
-offset_right = 199.0
-offset_bottom = 32.0
+offset_left = -40.0
+offset_top = -61.0
+offset_right = 312.0
+offset_bottom = 71.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="ColorRect" type="ColorRect" parent="GoldWire/Recipe"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 238.0
-offset_bottom = 92.0
-color = Color(0.370364, 0.370364, 0.370364, 1)
+[node name="VBoxContainer" type="VBoxContainer" parent="GoldWire/Recipe"]
+layout_mode = 2
+offset_left = 3.59999
+offset_top = 3.0
+offset_right = 71.6
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="GoldWire/Recipe"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 24.0
-offset_right = 164.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("13_lhddn")
+[node name="HBoxContainer" type="HBoxContainer" parent="GoldWire/Recipe/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="TextureRect2" type="TextureRect" parent="GoldWire/Recipe"]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 24.0
-offset_right = 256.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("8_i3akh")
-
-[node name="TextureRect3" type="TextureRect" parent="GoldWire/Recipe"]
-layout_mode = 0
-offset_left = 146.0
-offset_top = 24.0
-offset_right = 210.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect4" type="TextureRect" parent="GoldWire/Recipe"]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 24.0
-offset_right = 116.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect5" type="TextureRect" parent="GoldWire/Recipe"]
-layout_mode = 0
-offset_left = 6.00003
-offset_top = 24.0
-offset_right = 70.0
-offset_bottom = 88.0
-scale = Vector2(0.65, 0.65)
+[node name="TextureRect5" type="TextureRect" parent="GoldWire/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("16_i3akh")
 
+[node name="TextureRect4" type="TextureRect" parent="GoldWire/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GoldWire/Recipe"]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 3.0
+offset_right = 294.0
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GoldWire/Recipe/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect3" type="TextureRect" parent="GoldWire/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect2" type="TextureRect" parent="GoldWire/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_i3akh")
+
+[node name="TextureRect" type="TextureRect" parent="GoldWire"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 0
+offset_left = 86.0
+offset_top = -43.0
+offset_right = 182.0
+offset_bottom = 53.0
+texture = ExtResource("13_lhddn")
+
 [node name="CircuitBoard" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_i3akh")
 
-[node name="Name" type="ColorRect" parent="CircuitBoard"]
+[node name="Name" type="NinePatchRect" parent="CircuitBoard"]
 layout_mode = 0
-offset_left = -41.0
+offset_left = -40.0
 offset_top = -155.0
-offset_right = 62.0
-offset_bottom = -130.0
+offset_right = 67.0
+offset_bottom = -133.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="CircuitBoard/Name"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 102.0
-offset_bottom = 24.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 3.0
+offset_right = 104.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 text = "Circuit board"
 
-[node name="Image" type="ColorRect" parent="CircuitBoard"]
+[node name="Image" type="NinePatchRect" parent="CircuitBoard"]
 layout_mode = 0
-offset_left = -30.0
-offset_top = -122.0
-offset_right = 14.0
-offset_bottom = -78.0
+offset_left = -18.0
+offset_top = -129.0
+offset_right = 46.0
+offset_bottom = -65.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="CircuitBoard/Image"]
 layout_mode = 0
@@ -1376,100 +1592,104 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 42.0
 offset_bottom = 42.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("12_lu501")
 
-[node name="Description" type="ColorRect" parent="CircuitBoard"]
+[node name="Description" type="NinePatchRect" parent="CircuitBoard"]
 layout_mode = 0
-offset_left = 66.0
+offset_left = 72.0
 offset_top = -155.0
-offset_right = 199.0
-offset_bottom = -78.0
+offset_right = 317.0
+offset_bottom = -80.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="CircuitBoard/Description"]
 layout_mode = 0
-offset_right = 133.0
-offset_bottom = 77.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Advanced-
-resource"
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 242.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "- Advanced resource
+- Produced in the Combiner
+- Needed for completion"
 
-[node name="Recipe" type="ColorRect" parent="CircuitBoard"]
+[node name="Recipe" type="NinePatchRect" parent="CircuitBoard"]
 layout_mode = 0
-offset_left = -39.0
-offset_top = -62.0
-offset_right = 201.0
-offset_bottom = 32.0
+offset_left = -40.0
+offset_top = -61.0
+offset_right = 312.0
+offset_bottom = 71.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="ColorRect" type="ColorRect" parent="CircuitBoard/Recipe"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 238.0
-offset_bottom = 92.0
-color = Color(0.370364, 0.370364, 0.370364, 1)
+[node name="VBoxContainer" type="VBoxContainer" parent="CircuitBoard/Recipe"]
+layout_mode = 2
+offset_left = 3.59999
+offset_top = 3.0
+offset_right = 71.6
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
 
-[node name="TextureRect" type="TextureRect" parent="CircuitBoard/Recipe"]
-layout_mode = 0
-offset_left = 90.0
-offset_top = 17.0
-offset_right = 186.0
-offset_bottom = 113.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("20_uaysb")
+[node name="HBoxContainer" type="HBoxContainer" parent="CircuitBoard/Recipe/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="TextureRect2" type="TextureRect" parent="CircuitBoard/Recipe"]
-layout_mode = 0
-offset_left = 193.0
-offset_top = 25.0
-offset_right = 257.0
-offset_bottom = 89.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("12_lu501")
-
-[node name="TextureRect3" type="TextureRect" parent="CircuitBoard/Recipe"]
-layout_mode = 0
-offset_left = 156.0
-offset_top = 27.0
-offset_right = 211.0
-offset_bottom = 91.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect5" type="TextureRect" parent="CircuitBoard/Recipe"]
-layout_mode = 0
-offset_left = 6.00003
-offset_top = 5.0
-offset_right = 70.0
-offset_bottom = 69.0
-scale = Vector2(0.65, 0.65)
+[node name="TextureRect5" type="TextureRect" parent="CircuitBoard/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("8_i3akh")
 
-[node name="TextureRect4" type="TextureRect" parent="CircuitBoard/Recipe"]
-layout_mode = 0
-offset_left = 49.0
-offset_top = 5.0
-offset_right = 107.0
-offset_bottom = 69.0
-scale = Vector2(0.65, 0.65)
+[node name="TextureRect4" type="TextureRect" parent="CircuitBoard/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("9_ethub")
 
-[node name="TextureRect6" type="TextureRect" parent="CircuitBoard/Recipe"]
-layout_mode = 0
-offset_left = 6.00003
-offset_top = 47.0
-offset_right = 70.0
-offset_bottom = 111.0
-scale = Vector2(0.65, 0.65)
+[node name="HBoxContainer2" type="HBoxContainer" parent="CircuitBoard/Recipe/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="CircuitBoard/Recipe/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
 texture = ExtResource("9_y4dfr")
 
-[node name="TextureRect7" type="TextureRect" parent="CircuitBoard/Recipe"]
-layout_mode = 0
-offset_left = 49.0
-offset_top = 47.0
-offset_right = 107.0
-offset_bottom = 111.0
-scale = Vector2(0.65, 0.65)
+[node name="TextureRect4" type="TextureRect" parent="CircuitBoard/Recipe/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
 texture = ExtResource("9_ethub")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CircuitBoard/Recipe"]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 3.0
+offset_right = 294.0
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CircuitBoard/Recipe/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect3" type="TextureRect" parent="CircuitBoard/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect2" type="TextureRect" parent="CircuitBoard/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("12_lu501")
+
+[node name="TextureRect" type="TextureRect" parent="CircuitBoard"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 0
+offset_left = 86.0
+offset_top = -43.0
+offset_right = 182.0
+offset_bottom = 53.0
+texture = ExtResource("20_uaysb")
 
 [node name="MetalFrame" type="Control" parent="."]
 visible = false
@@ -1477,32 +1697,43 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_i3akh")
 
-[node name="Name" type="ColorRect" parent="MetalFrame"]
+[node name="Name" type="NinePatchRect" parent="MetalFrame"]
 layout_mode = 0
-offset_left = -41.0
+offset_left = -40.0
 offset_top = -155.0
-offset_right = 54.0
-offset_bottom = -130.0
+offset_right = 67.0
+offset_bottom = -133.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="MetalFrame/Name"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 63.0
-offset_bottom = 24.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 3.0
+offset_right = 104.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 text = "Metal frame"
 
-[node name="Image" type="ColorRect" parent="MetalFrame"]
+[node name="Image" type="NinePatchRect" parent="MetalFrame"]
 layout_mode = 0
-offset_left = -30.0
-offset_top = -122.0
-offset_right = 14.0
-offset_bottom = -78.0
+offset_left = -18.0
+offset_top = -129.0
+offset_right = 46.0
+offset_bottom = -65.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="MetalFrame/Image"]
 layout_mode = 0
@@ -1510,100 +1741,104 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 42.0
 offset_bottom = 42.0
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("13_uaysb")
 
-[node name="Description" type="ColorRect" parent="MetalFrame"]
+[node name="Description" type="NinePatchRect" parent="MetalFrame"]
 layout_mode = 0
-offset_left = 66.0
+offset_left = 72.0
 offset_top = -155.0
-offset_right = 199.0
-offset_bottom = -78.0
+offset_right = 317.0
+offset_bottom = -80.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="Label" type="Label" parent="MetalFrame/Description"]
 layout_mode = 0
-offset_right = 133.0
-offset_bottom = 77.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Advanced-
-resource"
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 242.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
+text = "- Advanced resource
+- Produced in the Combiner
+- Needed for completion"
 
-[node name="Recipe" type="ColorRect" parent="MetalFrame"]
+[node name="Recipe" type="NinePatchRect" parent="MetalFrame"]
 layout_mode = 0
-offset_left = -41.0
-offset_top = -62.0
-offset_right = 199.0
-offset_bottom = 32.0
+offset_left = -40.0
+offset_top = -61.0
+offset_right = 312.0
+offset_bottom = 71.0
+texture = ExtResource("14_85vxe")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="ColorRect" type="ColorRect" parent="MetalFrame/Recipe"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 238.0
-offset_bottom = 92.0
-color = Color(0.370364, 0.370364, 0.370364, 1)
+[node name="VBoxContainer" type="VBoxContainer" parent="MetalFrame/Recipe"]
+layout_mode = 2
+offset_left = 3.59999
+offset_top = 3.0
+offset_right = 71.6
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
 
-[node name="TextureRect" type="TextureRect" parent="MetalFrame/Recipe"]
-layout_mode = 0
-offset_left = 90.0
-offset_top = 17.0
-offset_right = 186.0
-offset_bottom = 113.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("20_uaysb")
+[node name="HBoxContainer" type="HBoxContainer" parent="MetalFrame/Recipe/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
 
-[node name="TextureRect2" type="TextureRect" parent="MetalFrame/Recipe"]
-layout_mode = 0
-offset_left = 193.0
-offset_top = 25.0
-offset_right = 257.0
-offset_bottom = 89.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("13_uaysb")
-
-[node name="TextureRect3" type="TextureRect" parent="MetalFrame/Recipe"]
-layout_mode = 0
-offset_left = 156.0
-offset_top = 27.0
-offset_right = 211.0
-offset_bottom = 91.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect5" type="TextureRect" parent="MetalFrame/Recipe"]
-layout_mode = 0
-offset_left = 6.00003
-offset_top = 5.0
-offset_right = 70.0
-offset_bottom = 69.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("5_ethub")
-
-[node name="TextureRect4" type="TextureRect" parent="MetalFrame/Recipe"]
-layout_mode = 0
-offset_left = 49.0
-offset_top = 5.0
-offset_right = 107.0
-offset_bottom = 69.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("9_ethub")
-
-[node name="TextureRect6" type="TextureRect" parent="MetalFrame/Recipe"]
-layout_mode = 0
-offset_left = 6.00003
-offset_top = 47.0
-offset_right = 70.0
-offset_bottom = 111.0
-scale = Vector2(0.65, 0.65)
+[node name="TextureRect5" type="TextureRect" parent="MetalFrame/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("3_r3dr4")
 
-[node name="TextureRect7" type="TextureRect" parent="MetalFrame/Recipe"]
-layout_mode = 0
-offset_left = 49.0
-offset_top = 47.0
-offset_right = 107.0
-offset_bottom = 111.0
-scale = Vector2(0.65, 0.65)
+[node name="TextureRect4" type="TextureRect" parent="MetalFrame/Recipe/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 texture = ExtResource("9_ethub")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MetalFrame/Recipe/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="MetalFrame/Recipe/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("5_ethub")
+
+[node name="TextureRect4" type="TextureRect" parent="MetalFrame/Recipe/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MetalFrame/Recipe"]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 3.0
+offset_right = 294.0
+offset_bottom = 73.0
+scale = Vector2(1.8, 1.8)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MetalFrame/Recipe/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TextureRect3" type="TextureRect" parent="MetalFrame/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_ethub")
+
+[node name="TextureRect2" type="TextureRect" parent="MetalFrame/Recipe/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("13_uaysb")
+
+[node name="TextureRect" type="TextureRect" parent="MetalFrame"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 0
+offset_left = 86.0
+offset_top = -43.0
+offset_right = 182.0
+offset_bottom = 53.0
+texture = ExtResource("20_uaysb")
 
 [connection signal="mouse_entered" from="ScrollContainer/VBoxContainer/IronOre" to="." method="_on_iron_ore_mouse_entered"]
 [connection signal="mouse_entered" from="ScrollContainer/VBoxContainer/CopperOre" to="." method="_on_copper_ore_mouse_entered"]
