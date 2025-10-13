@@ -1,52 +1,54 @@
 extends TileMapLayer
 
+@onready var player = get_parent().get_child(1)
+@onready var global = get_node("/root/Global")
 var moisture = FastNoiseLite.new()
 var temperature = FastNoiseLite.new()
 var altitude = FastNoiseLite.new()
 var biome = {}
-@onready var player = get_parent().get_child(1)
-@onready var global = get_node("/root/Global")
-
 var objects = {}
+const SAVE_SEED = "user://game_seed.json"
+var Seed = null
 
+var tiles = {
+	"grass": Vector2i(0,0), "grass_tree": Vector2i(0,2),
+	"grass_rock": Vector2i(0,1), "grass_boulder": Vector2i(0,3),
+	"grass_iron": Vector2i(0,4),"grass_copper": Vector2i(0,5),
 
-var tiles = {"grass": Vector2i(0,0), "grass_tree": Vector2i(0,2),
-"grass_rock": Vector2i(0,1), "grass_boulder": Vector2i(0,3),
-"grass_iron": Vector2i(0,4),"grass_copper": Vector2i(0,5),
+	"jungle_grass": Vector2i(1,0), "jungle_tree": Vector2i(1,2),
+	"jungle_rock": Vector2i(1,1), "jungle_boulder": Vector2i(1,3),
+	"jungle_copper": Vector2i(1,5), "jungle_apple_tree": Vector2i(1,10), 
 
-"jungle_grass": Vector2i(1,0), "jungle_tree": Vector2i(1,2),
-"jungle_rock": Vector2i(1,1), "jungle_boulder": Vector2i(1,3),
-"jungle_copper": Vector2i(1,5), "jungle_apple_tree": Vector2i(1,10), 
+	"spruce_grass": Vector2i(2,0), "spruce_tree": Vector2i(2,2),
+	"spruce_rock": Vector2i(2,1), "spruce_boulder": Vector2i(2,3),
+	"spruce_iron": Vector2i(2,4), 
 
-"spruce_grass": Vector2i(2,0), "spruce_tree": Vector2i(2,2),
-"spruce_rock": Vector2i(2,1), "spruce_boulder": Vector2i(2,3),
-"spruce_iron": Vector2i(2,4), 
+	"swamp_grass": Vector2i(3,0), "swamp_tree": Vector2i(3,2),
+	"swamp_rock": Vector2i(3,1), "swamp_boulder": Vector2i(3,3),
+	"swamp_iron": Vector2i(3,4),"swamp_copper": Vector2i(3,5), 
 
-"swamp_grass": Vector2i(3,0), "swamp_tree": Vector2i(3,2),
-"swamp_rock": Vector2i(3,1), "swamp_boulder": Vector2i(3,3),
-"swamp_iron": Vector2i(3,4),"swamp_copper": Vector2i(3,5), 
+	"dark_oak_grass": Vector2i(4,0), "dark_oak_tree": Vector2i(4,2),
+	"dark_oak_rock": Vector2i(4,1), "dark_oak_boulder": Vector2i(4,3),
+	"dark_oak_copper": Vector2i(4,5), 
 
-"dark_oak_grass": Vector2i(4,0), "dark_oak_tree": Vector2i(4,2),
-"dark_oak_rock": Vector2i(4,1), "dark_oak_boulder": Vector2i(4,3),
-"dark_oak_copper": Vector2i(4,5), 
+	"snow_grass": Vector2i(5,0), "snow_tree": Vector2i(5,2),
+	"snow_rock": Vector2i(5,1), "snow_boulder": Vector2i(5,3),
+	"snow_iron": Vector2i(5,4),
 
-"snow_grass": Vector2i(5,0), "snow_tree": Vector2i(5,2),
-"snow_rock": Vector2i(5,1), "snow_boulder": Vector2i(5,3),
-"snow_iron": Vector2i(5,4),
+	"water": Vector2i(6,0),
 
-"water": Vector2i(6,0),
+	"mud_grass": Vector2i(7,0), "mud_tree": Vector2i(7,2),
+	"mud_rock": Vector2i(7,1), "mud_boulder": Vector2i(7,3),
 
-"mud_grass": Vector2i(7,0), "mud_tree": Vector2i(7,2),
-"mud_rock": Vector2i(7,1), "mud_boulder": Vector2i(7,3),
+	"deep_water": Vector2i(8,0),
 
-"deep_water": Vector2i(8,0),
+	"sand": Vector2i(9,0),"sand_cactus_1": Vector2i(9,2), 
+	"sand_cactus_2": Vector2i(9,3), "sand_cactus_3": Vector2i(9,10), 
+	"sand_rock": Vector2i(9,1), "sand_boulder": Vector2i(9,0),
+	"sand_gold": Vector2i(9,6),
 
-"sand": Vector2i(9,0),"sand_cactus_1": Vector2i(9,2), 
-"sand_cactus_2": Vector2i(9,3), "sand_cactus_3": Vector2i(9,10), 
-"sand_rock": Vector2i(9,1), "sand_boulder": Vector2i(9,0),
-"sand_gold": Vector2i(9,6),
-
-"stone": Vector2i(10,0)}
+	"stone": Vector2i(10,0)
+	}
 
 
 var biome_data = {
@@ -96,19 +98,48 @@ var object_data = {
 
 func random_tile(data, biome):
 	var current_biome = data[biome]
-	var rand_num = randf()
+	var rand_num = Seed.randf()
 	var running_total = 0
 	for tile in current_biome:
 		running_total = running_total + current_biome[tile]
 		if rand_num <= running_total:
 			return tile
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	moisture.seed = randi() # Having three randi so that they are unique
-	temperature.seed = randi()
-	altitude.seed = randi()
+	randomize()
+	Seed = load_game_data()
+	print(Seed)
+	if Seed == null:
+		Seed = RandomNumberGenerator.new()
+		save_seed(Seed)
+		print(Seed)
+	moisture.seed = Seed.randi() # Having three randi so that they are unique
+	temperature.seed = Seed.randi()
+	altitude.seed = Seed.randi()
 	generate_chunk(player.position)
+	print(Seed)
+
+
+func load_game_data():
+	if FileAccess.file_exists(SAVE_SEED):
+		var file = FileAccess.open(SAVE_SEED, FileAccess.READ)
+		if file:
+			var json_string = file.get_as_text()
+			file.close()
+			var parse_result = JSON.parse_string(json_string)
+			if parse_result is Dictionary:
+				var loaded_data = parse_result
+				Seed = loaded_data.get("Seed", null)
+				return loaded_data
+			else:
+				print("Error parsing JSON data")
+		else:
+			print("Error opening file to load seed")
+	else:
+		print("Save file does not exist")
+	return {}
 
 
 func generate_chunk(position):
@@ -180,3 +211,17 @@ func generate_chunk(position):
 				biome[pos] = "snow"
 				set_cell(Vector2i(x, y), 0,
 				tiles[random_tile(biome_data, "snow")])
+
+
+func save_seed(Seed: float):
+	var save_data = {
+		"Seed": Seed
+	}
+	
+	var json_string = JSON.stringify(save_data)
+	var file = FileAccess.open(SAVE_SEED, FileAccess.WRITE)
+	if file:
+		file.store_string(json_string)
+		file.close()
+	else:
+		print("Error opening file to save data")

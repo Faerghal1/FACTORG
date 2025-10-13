@@ -622,6 +622,7 @@ offset_bottom = 94.0
 theme = SubResource("Theme_7dsfl")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Camera2D/Can\'t Place Extractor"]
+layout_mode = 0
 offset_left = -77.0
 offset_top = -3.0
 offset_right = 264.0
@@ -642,6 +643,7 @@ theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 text = "Can only be placed on Resource nodes"
 
 [node name="Can\'t Place Building" type="Control" parent="Camera2D"]
+visible = false
 z_index = 3
 layout_mode = 3
 anchors_preset = 0
@@ -652,6 +654,7 @@ offset_bottom = 96.0
 theme = SubResource("Theme_y1bqn")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Camera2D/Can\'t Place Building"]
+layout_mode = 0
 offset_left = -52.0
 offset_top = -5.0
 offset_right = 289.0
@@ -686,6 +689,7 @@ sprite_frames = SubResource("SpriteFrames_ylh7l")
 animation = &"Controls"
 
 [node name="Belt_select" type="Control" parent="Camera2D"]
+visible = false
 z_index = 3
 layout_mode = 3
 anchors_preset = 0
@@ -696,6 +700,7 @@ offset_bottom = -144.0
 theme = SubResource("Theme_n1aqv")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Camera2D/Belt_select"]
+layout_mode = 0
 offset_left = -234.0
 offset_top = 4.0
 offset_right = 36.0
@@ -735,6 +740,7 @@ offset_bottom = -144.0
 theme = SubResource("Theme_mq4nq")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Camera2D/Extractor_select"]
+layout_mode = 0
 offset_left = -234.0
 offset_top = 4.0
 offset_right = 36.0
@@ -774,6 +780,7 @@ offset_bottom = -144.0
 theme = SubResource("Theme_371b6")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Camera2D/Smelter_select"]
+layout_mode = 0
 offset_left = -234.0
 offset_top = 4.0
 offset_right = 36.0
@@ -813,6 +820,7 @@ offset_bottom = -144.0
 theme = SubResource("Theme_ao4cr")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Camera2D/Constructor_select"]
+layout_mode = 0
 offset_left = -234.0
 offset_top = 4.0
 offset_right = 36.0
@@ -852,6 +860,7 @@ offset_bottom = -144.0
 theme = SubResource("Theme_irg3d")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Camera2D/Storage_select"]
+layout_mode = 0
 offset_left = -234.0
 offset_top = 4.0
 offset_right = 36.0
@@ -885,6 +894,7 @@ offset_bottom = -144.0
 theme = SubResource("Theme_ao4cr")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Camera2D/Combiner_select"]
+layout_mode = 0
 offset_left = -234.0
 offset_top = 4.0
 offset_right = 36.0
@@ -951,6 +961,7 @@ offset_right = 128.0
 offset_bottom = -100.0
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D/Win_screen"]
+layout_mode = 0
 offset_left = -201.0
 offset_top = -5.0
 offset_right = 457.0

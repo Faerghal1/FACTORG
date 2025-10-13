@@ -18,48 +18,70 @@ var recipe = 0
 func _process(_delta):
 	if recipe == 1:
 		iron_ore.show()
+	else: 
+		iron_ore.hide()
 	if recipe == 2:
 		copper_ore.show()
+	else:
+		copper_ore.hide()
 	if recipe == 3:
 		gold_ore.show()
+	else:
+		gold_ore.hide()
 	if recipe == 4:
 		iron_ingot.show()
+	else:
+		iron_ingot.hide()
 	if recipe == 5:
 		copper_ingot.show()
+	else:
+		copper_ingot.hide()
 	if recipe == 6:
 		gold_ingot.show()
+	else:
+		gold_ingot.hide()
 	if recipe == 7:
 		iron_rod.show()
+	else:
+		iron_rod.hide()
 	if recipe == 8:
 		copper_foil.show()
+	else:
+		copper_foil.hide()
 	if recipe == 9:
 		gold_wire.show()
+	else:
+		gold_wire.hide()
 	if recipe == 10:
 		circuit_board.show()
+	else:
+		circuit_board.hide()
 	if recipe == 11:
 		metal_frame.show()
-	if not recipe == 1:
-		iron_ore.hide()
-	if not recipe == 2:
-		copper_ore.hide()
-	if not recipe == 3:
-		gold_ore.hide()
-	if not recipe == 4:
-		iron_ingot.hide()
-	if not recipe == 5:
-		copper_ingot.hide()
-	if not recipe == 6:
-		gold_ingot.hide()
-	if not recipe == 7:
-		iron_rod.hide()
-	if not recipe == 8:
-		copper_foil.hide()
-	if not recipe == 9:
-		gold_wire.hide()
-	if not recipe == 10:
-		circuit_board.hide()
-	if not recipe == 11:
+	else:
 		metal_frame.hide()
+	#if not recipe == 1:
+		#iron_ore.hide()
+	#if not recipe == 2:
+		#copper_ore.hide()
+	#if not recipe == 3:
+		#gold_ore.hide()
+	#if not recipe == 4:
+		#iron_ingot.hide()
+	#if not recipe == 5:
+		#copper_ingot.hide()
+	#if not recipe == 6:
+		#gold_ingot.hide()
+	#if not recipe == 7:
+		#iron_rod.hide()
+	#if not recipe == 8:
+		#copper_foil.hide()
+	#if not recipe == 9:
+		#gold_wire.hide()
+	#if not recipe == 10:
+		#circuit_board.hide()
+	#if not recipe == 11:
+		#metal_frame.hide()
 
 
 func _on_iron_ore_mouse_entered():

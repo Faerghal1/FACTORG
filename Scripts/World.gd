@@ -347,7 +347,7 @@ func update_time_display():
 	+ "%02d:%02d.%02d" % [minutes, seconds, milliseconds])
 
 
-func save_game_data(best_time: float):
+func save_game_data(besft_time: float):
 	var save_data = {
 		"best_time": best_time
 	}

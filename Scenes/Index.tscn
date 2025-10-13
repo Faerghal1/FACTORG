@@ -1,22 +1,32 @@
-[gd_scene load_steps=38 format=3 uid="uid://bfwa2odjnu25x"]
+[gd_scene load_steps=48 format=3 uid="uid://bfwa2odjnu25x"]
 
 [ext_resource type="Texture2D" uid="uid://dsrubefivt1x1" path="res://Assets/Iron_Ore.png" id="1_ketcf"]
 [ext_resource type="Script" uid="uid://d1ikaamtl7wdl" path="res://Scripts/Index.gd" id="1_nii28"]
 [ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="2_lhddn"]
 [ext_resource type="Texture2D" uid="uid://bp01ikdggl71t" path="res://Assets/Copper_Ore.png" id="2_nii28"]
+[ext_resource type="Texture2D" uid="uid://dumqdvx3pfss0" path="res://Assets/Index_Iron_Ore.png" id="3_pkry7"]
 [ext_resource type="Texture2D" uid="uid://cbsnqo5wxtwb6" path="res://Assets/Iron_Ingot.png" id="3_r3dr4"]
-[ext_resource type="Texture2D" uid="uid://chu4wfbul6c8v" path="res://Assets/Index_iron.png" id="4_pkry7"]
+[ext_resource type="Texture2D" uid="uid://bng8yk7xdn14c" path="res://Assets/Index_Copper_Ore.png" id="4_85vxe"]
 [ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="4_x6x8t"]
+[ext_resource type="Texture2D" uid="uid://baklkexyo6dhh" path="res://Assets/Index_Gold_Ore.png" id="5_doyfs"]
 [ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="5_ethub"]
 [ext_resource type="Texture2D" uid="uid://bunxefb1ux8da" path="res://Assets/Gold_ore.png" id="5_pcnie"]
+[ext_resource type="Texture2D" uid="uid://bo5dgni5f3f4d" path="res://Assets/Index_Iron_Ingot.png" id="6_5tb43"]
+[ext_resource type="Texture2D" uid="uid://cnb31gacmxk6d" path="res://Assets/Index_Copper_Ingot.png" id="7_4lwgu"]
+[ext_resource type="Texture2D" uid="uid://b2eknfqp8vm5p" path="res://Assets/Index_Gold_Ingot.png" id="8_3he3b"]
 [ext_resource type="Texture2D" uid="uid://cwa67ouggcrk6" path="res://Assets/Gold_wire.png" id="8_i3akh"]
 [ext_resource type="Texture2D" uid="uid://8s5kve5pa5dm" path="res://Assets/Extractor.png" id="8_x6x8t"]
 [ext_resource type="Texture2D" uid="uid://reatv4uuwjtm" path="res://Assets/Production_arrow.png" id="9_ethub"]
+[ext_resource type="Texture2D" uid="uid://cov62umempygd" path="res://Assets/Index_Iron_Rod.png" id="9_k1iju"]
 [ext_resource type="Texture2D" uid="uid://f4hipo5ajyxd" path="res://Assets/Copper_foil.png" id="9_y4dfr"]
+[ext_resource type="Texture2D" uid="uid://c6e4acgcydq1b" path="res://Assets/Index_Copper_Foil.png" id="10_6qvmb"]
 [ext_resource type="Texture2D" uid="uid://x2l8dgvlpsee" path="res://Assets/Iron_node.png" id="10_ethub"]
 [ext_resource type="Texture2D" uid="uid://db5eq232fobm7" path="res://Assets/Copper_node.png" id="11_71v2r"]
+[ext_resource type="Texture2D" uid="uid://vi6kjpqebpek" path="res://Assets/Index_Gold_Wire.png" id="11_jb33p"]
 [ext_resource type="Texture2D" uid="uid://buh3wptotswsy" path="res://Assets/Smelter.png" id="12_d4fer"]
+[ext_resource type="Texture2D" uid="uid://bxkrlcvlgmyk4" path="res://Assets/Index_Circuit_Board.png" id="12_jcutd"]
 [ext_resource type="Texture2D" uid="uid://dac1hff0lc02g" path="res://Assets/Circuit_board.png" id="12_lu501"]
+[ext_resource type="Texture2D" uid="uid://l2h4yfm8devt" path="res://Assets/Index_Metal_Frame.png" id="13_3w5tx"]
 [ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="13_lhddn"]
 [ext_resource type="Texture2D" uid="uid://0ahtge75n5um" path="res://Assets/Metal_frame.png" id="13_uaysb"]
 [ext_resource type="Texture2D" uid="uid://omt2sfe5q1h6" path="res://Assets/Gold_ingot.png" id="16_i3akh"]
@@ -218,7 +228,7 @@ script = ExtResource("1_nii28")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -204.0
+offset_left = -214.0
 offset_top = -161.0
 offset_right = 204.0
 offset_bottom = 78.0
@@ -226,11 +236,10 @@ color = Color(0.233925, 0.233925, 0.233925, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
-offset_left = -202.0
-offset_top = -157.0
-offset_right = -47.0
-offset_bottom = 74.0
-scroll_vertical = 1
+offset_left = -213.0
+offset_top = -160.0
+offset_right = -42.0
+offset_bottom = 77.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
@@ -238,76 +247,61 @@ size_flags_vertical = 3
 theme = SubResource("Theme_laq7h")
 theme_override_constants/separation = 8
 
-[node name="IronOre" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="IronOre" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_y4dfr")
 action_mode = 0
-text = "Iron Ore"
-icon = ExtResource("1_ketcf")
+texture_normal = ExtResource("3_pkry7")
 
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("4_pkry7")
-
-[node name="CopperOre" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="CopperOre" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_y4dfr")
-text = "Copper Ore"
-icon = ExtResource("2_nii28")
+texture_normal = ExtResource("4_85vxe")
 
-[node name="GoldOre" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="GoldOre" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_y4dfr")
-text = "Gold Ore"
-icon = ExtResource("5_pcnie")
+texture_normal = ExtResource("5_doyfs")
 
-[node name="IronIngot" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="IronIngot" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_y4dfr")
-text = "Iron Ingot"
-icon = ExtResource("3_r3dr4")
+texture_normal = ExtResource("6_5tb43")
 
-[node name="CopperIngot" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="CopperIngot" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_y4dfr")
-text = "Copper Ingot"
-icon = ExtResource("4_x6x8t")
+texture_normal = ExtResource("7_4lwgu")
 
-[node name="GoldIngot" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="GoldIngot" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_y4dfr")
-text = "Gold Ingot"
-icon = ExtResource("16_i3akh")
+texture_normal = ExtResource("8_3he3b")
 
-[node name="IronRod" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="IronRod" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_y4dfr")
-text = "Iron Rod"
-icon = ExtResource("5_ethub")
+texture_normal = ExtResource("9_k1iju")
 
-[node name="CopperFoil" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="CopperFoil" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_y4dfr")
-text = "Copper Foil"
-icon = ExtResource("9_y4dfr")
+texture_normal = ExtResource("10_6qvmb")
 
-[node name="GoldWire" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="GoldWire" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_y4dfr")
-text = "Gold Wire"
-icon = ExtResource("8_i3akh")
+texture_normal = ExtResource("11_jb33p")
 
-[node name="CircuitBoard" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="CircuitBoard" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_y4dfr")
-text = "Circuit Board"
-icon = ExtResource("12_lu501")
+texture_normal = ExtResource("12_jcutd")
 
-[node name="MetalFrame" type="Button" parent="ScrollContainer/VBoxContainer"]
+[node name="MetalFrame" type="TextureButton" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_y4dfr")
-text = "Metal Frame"
-icon = ExtResource("13_uaysb")
+texture_normal = ExtResource("13_3w5tx")
 
 [node name="IronOre" type="Control" parent="."]
 visible = false
@@ -1364,7 +1358,7 @@ offset_bottom = -130.0
 layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
-offset_right = 63.0
+offset_right = 102.0
 offset_bottom = 24.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Circuit board"
