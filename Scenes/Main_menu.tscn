@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b04i20vta7r31"]
+[gd_scene load_steps=26 format=3 uid="uid://b04i20vta7r31"]
 
 [ext_resource type="Script" uid="uid://bf48i6vi82vci" path="res://Scripts/Main_menu.gd" id="1_cwcel"]
 [ext_resource type="Texture2D" uid="uid://3bwtausy8bee" path="res://Assets/Tilemap_gen_old.png" id="3_qr2n2"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://cw75gijsy1p5" path="res://Assets/Quit_button0.png" id="8_72l6q"]
 [ext_resource type="Texture2D" uid="uid://bugl1x1jd7rga" path="res://Assets/Quit_button1.png" id="9_q0gj4"]
 [ext_resource type="Texture2D" uid="uid://h04wb6mfk2j7" path="res://Assets/Quit_button2.png" id="10_72l6q"]
+[ext_resource type="Texture2D" uid="uid://8drgts4j85np" path="res://Assets/Seed_button0.png" id="13_nv4gm"]
+[ext_resource type="Texture2D" uid="uid://lyalngfrde44" path="res://Assets/Seed_button2.png" id="14_1jq03"]
+[ext_resource type="Texture2D" uid="uid://u4gswc8vlyng" path="res://Assets/Seed_button1.png" id="15_jn1t5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klm5o"]
 texture = ExtResource("3_qr2n2")
@@ -215,6 +218,102 @@ default_font_size = 24
 default_font = ExtResource("5_ihofj")
 default_font_size = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_laq7h"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8kmj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lu501"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uaysb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkry7"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_krujr"]
+default_font = ExtResource("5_ihofj")
+default_font_size = 16
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/styles/disabled = SubResource("StyleBoxFlat_laq7h")
+Button/styles/focus = SubResource("StyleBoxFlat_q8kmj")
+Button/styles/hover = SubResource("StyleBoxFlat_lu501")
+Button/styles/normal = SubResource("StyleBoxFlat_uaysb")
+Button/styles/pressed = SubResource("StyleBoxFlat_pkry7")
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_cwcel")
 
@@ -235,10 +334,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -68.5
-offset_top = -115.0
-offset_right = 71.5
-offset_bottom = -65.0
+offset_left = -68.0
+offset_top = -134.0
+offset_right = 72.0
+offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -255,15 +354,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -65.0
-offset_top = -24.0
-offset_right = 68.0
-offset_bottom = 19.0
+offset_left = -68.0
+offset_top = -46.5
+offset_right = 72.0
+offset_bottom = 3.5
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("6_yst1x")
 texture_pressed = ExtResource("7_72l6q")
 texture_hover = ExtResource("7_ehbya")
+metadata/_edit_use_anchors_ = true
 
 [node name="Settings_button" type="Button" parent="Camera2D"]
 visible = false
@@ -282,10 +382,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = 72.5
-offset_right = 24.0
-offset_bottom = 103.5
+offset_left = -68.0
+offset_top = 96.0
+offset_right = 72.0
+offset_bottom = 146.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_inwpd")
@@ -293,5 +393,17 @@ texture_normal = ExtResource("8_72l6q")
 texture_pressed = ExtResource("10_72l6q")
 texture_hover = ExtResource("9_q0gj4")
 
+[node name="New_Save_Button" type="TextureButton" parent="Camera2D"]
+offset_left = -67.5
+offset_top = 24.0
+offset_right = 91.5
+offset_bottom = 74.0
+theme = SubResource("Theme_krujr")
+action_mode = 0
+texture_normal = ExtResource("13_nv4gm")
+texture_pressed = ExtResource("14_1jq03")
+texture_hover = ExtResource("15_jn1t5")
+
 [connection signal="pressed" from="Camera2D/Start_button" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="Camera2D/Quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="button_up" from="Camera2D/New_Save_Button" to="." method="_on_new_save_button_button_up"]
