@@ -39,7 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://gp27vd07r7ei" path="res://Assets/Extractor_tooltip.png" id="26_w86vl"]
 [ext_resource type="Texture2D" uid="uid://cpter0w0l5kkx" path="res://Assets/UI_background.png" id="26_y8a40"]
 [ext_resource type="PackedScene" uid="uid://bfwa2odjnu25x" path="res://Scenes/Index.tscn" id="29_0bcf6"]
-[ext_resource type="Texture2D" uid="uid://bld52wkaysfrs" path="res://Assets/Smelter_tooltip.png" id="32_371b6"]
+[ext_resource type="Texture2D" uid="uid://bld52wkaysfrs" path="res://Assets/Smelter_Tooltip.png" id="32_371b6"]
 [ext_resource type="Texture2D" uid="uid://8ohjtfqtptld" path="res://Assets/Constructor_tooltip.png" id="33_371b6"]
 [ext_resource type="Texture2D" uid="uid://b7ny3qmeqlrpg" path="res://Assets/Combiner_tooltip.png" id="34_ao4cr"]
 [ext_resource type="Texture2D" uid="uid://dgf6jc1i306um" path="res://Assets/Save_button0.png" id="43_qtjmb"]
@@ -1167,7 +1167,7 @@ autostart = true
 [node name="In_World_Clones" type="Node2D" parent="."]
 
 [connection signal="pressed" from="Camera2D/Pause_menu/Resume" to="." method="_on_resume_pressed"]
-[connection signal="button_up" from="Camera2D/Pause_menu/Quit_button" to="." method="_on_quit_button_button_up"]
+[connection signal="pressed" from="Camera2D/Pause_menu/Quit_button" to="." method="_on_quit_button_pressed"]
 [connection signal="mouse_entered" from="Camera2D/Hotbar" to="." method="_on_hotbar_mouse_entered"]
 [connection signal="mouse_exited" from="Camera2D/Hotbar" to="." method="_on_hotbar_mouse_exited"]
 [connection signal="pressed" from="Camera2D/Hotbar/HotbarIcons/HBoxContainer/ConveyorButton" to="Camera2D/Hotbar/HotbarIcons/HBoxContainer/ConveyorButton" method="_on_belt_selected"]

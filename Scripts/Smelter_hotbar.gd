@@ -4,7 +4,7 @@ extends Button
 
 
 func _on_smelter_selected():
-	if global.hotbar_pressed == 0:
-		global.hotbar_pressed = 3
+	if global.hotbar_slot == global.slot.NONE:
+		global.hotbar_slot = global.slot.SMELTER
 	else:
-		global.hotbar_pressed = 0
+		global.hotbar_slot = global.slot.NONE

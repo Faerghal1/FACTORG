@@ -4,7 +4,7 @@ extends Button
 
 
 func _on_constructor_selected():
-	if global.hotbar_pressed == 0:
-		global.hotbar_pressed = 4
+	if global.hotbar_slot == global.slot.NONE:
+		global.hotbar_slot = global.slot.CONSTRUCTOR
 	else:
-		global.hotbar_pressed = 0
+		global.hotbar_slot = global.slot.NONE

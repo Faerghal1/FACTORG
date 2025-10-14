@@ -52,8 +52,9 @@ const NUM_ANIMATION_FRAMES: int = 10
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	global.bitmap.resize(Vector2i(bitmap_width,bitmap_height))
-	camera.position.x += global.width * TILE_OFFSET
-	camera.position.y += global.height * TILE_OFFSET
+	var tile_size = 8
+	camera.position.x += global.width * tile_size
+	camera.position.y += global.height * tile_size
 	controls.frame = 0
 	is_running = true
 	update_time_display()
@@ -92,32 +93,32 @@ func _process(delta):
 		win_screen.show()
 	metal_frame_goal.text = (str(int(global.metal_frame)) + "/20")
 	circuit_board_goal.text = (str(int(global.circuit_board)) + "/25")
-	if Input.is_action_just_pressed("Hotbar_1") or global.hotbar_pressed == 1:
+	if Input.is_action_just_pressed("Hotbar_1"):
 		if global.hotbar_slot == global.slot.NONE:
 			global.hotbar_slot = global.slot.BELT
 		else:
 			global.hotbar_slot = global.slot.NONE
-	if Input.is_action_just_pressed("Hotbar_2") or global.hotbar_pressed == 2:
+	if Input.is_action_just_pressed("Hotbar_2"):
 		if global.hotbar_slot == global.slot.NONE:
 			global.hotbar_slot = global.slot.EXTRACTOR
 		else:
 			global.hotbar_slot = global.slot.NONE
-	if Input.is_action_just_pressed("Hotbar_3") or global.hotbar_pressed == 3:
+	if Input.is_action_just_pressed("Hotbar_3"):
 		if global.hotbar_slot == global.slot.NONE:
 			global.hotbar_slot = global.slot.SMELTER
 		else:
 			global.hotbar_slot = global.slot.NONE
-	if Input.is_action_just_pressed("Hotbar_4") or global.hotbar_pressed == 4:
+	if Input.is_action_just_pressed("Hotbar_4"):
 		if global.hotbar_slot == global.slot.NONE:
 			global.hotbar_slot = global.slot.CONSTRUCTOR
 		else:
 			global.hotbar_slot = global.slot.NONE
-	if Input.is_action_just_pressed("Hotbar_5") or global.hotbar_pressed == 5:
+	if Input.is_action_just_pressed("Hotbar_5"):
 		if global.hotbar_slot == global.slot.NONE:
 			global.hotbar_slot = global.slot.STORAGE
 		else:
 			global.hotbar_slot = global.slot.NONE
-	if Input.is_action_just_pressed("Hotbar_6") or global.hotbar_pressed == 6:
+	if Input.is_action_just_pressed("Hotbar_6"):
 		if global.hotbar_slot == global.slot.NONE:
 			global.hotbar_slot = global.slot.COMBINER
 		else:
@@ -174,9 +175,8 @@ func _process(delta):
 			if not global.bitmap.get_bit(pos.x, pos.y):
 				print(pos)
 				var belt = belt_scene.instantiate()
-				belt.position = pos * TILE_SIZE
-				belt.position.x -= TILE_OFFSET
-				belt.position.y -= TILE_OFFSET
+				belt.position = (get_global_mouse_position() - Vector2.ONE * 8).snapped(Vector2(16,16))
+				belt.position += Vector2.ONE * 8
 				belt.modulate.a = 1
 				belt.rotation_degrees = direction
 				belt.direction = rotation/QUARTER_ROTATION
@@ -191,9 +191,8 @@ func _process(delta):
 			if not global.bitmap.get_bit(pos.x, pos.y):
 				print(pos)
 				var extractor = extractor_scene.instantiate()
-				extractor.position = pos * TILE_SIZE
-				extractor.position.x -= TILE_OFFSET
-				extractor.position.y -= TILE_OFFSET
+				extractor.position = (get_global_mouse_position() - Vector2.ONE * 8).snapped(Vector2(16,16))
+				extractor.position += Vector2.ONE * 8
 				extractor.modulate.a = 1
 				extractor.rotation_degrees = direction
 				extractor.direction = rotation/QUARTER_ROTATION
@@ -245,9 +244,8 @@ func _process(delta):
 			if not global.bitmap.get_bit(pos.x, pos.y):
 				print(pos)
 				var storage = storage_scene.instantiate()
-				storage.position = pos * TILE_SIZE
-				storage.position.x -= TILE_OFFSET
-				storage.position.y -= TILE_OFFSET
+				storage.position = (get_global_mouse_position() - Vector2.ONE * 8).snapped(Vector2(16,16))
+				storage.position += Vector2.ONE * 8
 				storage.modulate.a = 1
 				storage.rotation_degrees = direction
 				storage.direction = rotation/QUARTER_ROTATION
@@ -270,9 +268,8 @@ func _process(delta):
 			and not global.bitmap.get_bit(pos.x+1, pos.y-1):
 				print(pos)
 				var combiner = combiner_scene.instantiate()
-				combiner.position = pos * TILE_SIZE
-				combiner.position.x -= TILE_OFFSET
-				combiner.position.y -= TILE_OFFSET
+				combiner.position = (get_global_mouse_position() - Vector2.ONE * 8).snapped(Vector2(16,16))
+				combiner.position += Vector2.ONE * 8
 				combiner.modulate.a = 1
 				combiner.set_meta("Combiner", direction/QUARTER_ROTATION)
 				in_world_clones.add_child(combiner)
@@ -404,5 +401,5 @@ func _on_new_save_button_button_up() -> void:
 	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))
 
 
-func _on_quit_button_button_up() -> void:
+func _on_quit_button_pressed() -> void:
 	get_tree().quit()

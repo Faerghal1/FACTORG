@@ -15,7 +15,6 @@ var bitmap: BitMap = BitMap.new()
 var is_copper: bool = false
 var is_iron: bool = false
 var is_gold: bool= false
-const TILE_OFFSET: int = 8
 const QUARTER_ROTATION: int = 90
 
 func _ready():
@@ -42,9 +41,8 @@ func _process(_delta):
 			global.extractor_cant_place = false
 		else:
 			global.extractor_cant_place = true
-		position = get_global_mouse_position().snapped(Vector2(16,16))
-		position.x -= TILE_OFFSET
-		position.y -= TILE_OFFSET
+		position = (get_global_mouse_position() - Vector2.ONE * 8).snapped(Vector2(16,16))
+		position += Vector2.ONE * 8
 	if Input.is_action_just_pressed("Rotate(R)") and clone == false:
 		rotation_degrees += QUARTER_ROTATION
 	if Input.is_action_pressed("Right_click") and clone and delete:

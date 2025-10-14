@@ -12,7 +12,6 @@ var bitmap: BitMap = BitMap.new()
 var item_type: int = 0
 var amount: int = 1
 var has_item: bool = false
-const TILE_OFFSET: int = 8
 const QUARTER_ROTATION: int = 90
 
 
@@ -26,9 +25,8 @@ func _process(_delta):
 			global.buildings_cant_place = false
 		else:
 			global.buildings_cant_place = true
-		position = get_global_mouse_position().snapped(Vector2(16,16))
-		position.x -= TILE_OFFSET
-		position.y -= TILE_OFFSET
+		position = (get_global_mouse_position() - Vector2.ONE * 8).snapped(Vector2(16,16))
+		position += Vector2.ONE * 8
 	if Input.is_action_just_pressed("Rotate(R)") and clone == false:
 		rotation_degrees += QUARTER_ROTATION
 	if Input.is_action_pressed("Right_click") and clone and delete:
