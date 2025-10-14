@@ -8,8 +8,6 @@ var altitude = FastNoiseLite.new()
 var biome = {}
 var objects = {}
 const SAVE_SEED = "user://game_seed.json"
-var Seed = null
-
 var tiles = {
 	"grass": Vector2i(0,0), "grass_tree": Vector2i(0,2),
 	"grass_rock": Vector2i(0,1), "grass_boulder": Vector2i(0,3),
@@ -49,8 +47,6 @@ var tiles = {
 
 	"stone": Vector2i(10,0)
 	}
-
-
 var biome_data = {
 	"plains": {"grass": 0.8, "grass_tree": 0.15, "grass_rock": 0.025, "grass_boulder": 0.0125,
 	"grass_iron": 0.00625, "grass_copper": 0.00625},
@@ -83,7 +79,6 @@ var biome_data = {
 
 	"beach":  {"sand": 0.99, "stone": 0.01},
 	}
-
 var object_data = {
 	"plains": {"tree": 0.03},
 	"beach": {"tree": 0.01}, 
@@ -98,7 +93,7 @@ var object_data = {
 
 func random_tile(data, biome):
 	var current_biome = data[biome]
-	var rand_num = Seed.randf()
+	var rand_num = randf()
 	var running_total = 0
 	for tile in current_biome:
 		running_total = running_total + current_biome[tile]
@@ -108,21 +103,16 @@ func random_tile(data, biome):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	randomize()
-	Seed = load_game_data()
-	print(Seed)
-	if Seed == null:
-		Seed = RandomNumberGenerator.new()
-		save_seed(Seed)
-		print(Seed)
-	moisture.seed = Seed.randi() # Having three randi so that they are unique
-	temperature.seed = Seed.randi()
-	altitude.seed = Seed.randi()
+	print(global.seed)
+	seed(global.seed)
+	moisture.seed = randi() # Having three randi so that they are unique
+	temperature.seed = randi()
+	altitude.seed = randi()
 	generate_chunk(player.position)
-	print(Seed)
+	print(global.seed)
 
 
-func load_game_data():
+func load_seed():
 	if FileAccess.file_exists(SAVE_SEED):
 		var file = FileAccess.open(SAVE_SEED, FileAccess.READ)
 		if file:
@@ -131,7 +121,7 @@ func load_game_data():
 			var parse_result = JSON.parse_string(json_string)
 			if parse_result is Dictionary:
 				var loaded_data = parse_result
-				Seed = loaded_data.get("Seed", null)
+				global.seed = loaded_data.get("Seed", 0)
 				return loaded_data
 			else:
 				print("Error parsing JSON data")
@@ -213,11 +203,10 @@ func generate_chunk(position):
 				tiles[random_tile(biome_data, "snow")])
 
 
-func save_seed(Seed: float):
+func save_seed(seed: int):
 	var save_data = {
-		"Seed": Seed
+		"Seed": seed
 	}
-	
 	var json_string = JSON.stringify(save_data)
 	var file = FileAccess.open(SAVE_SEED, FileAccess.WRITE)
 	if file:

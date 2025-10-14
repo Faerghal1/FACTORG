@@ -11,7 +11,6 @@ extends Control
 @onready var gold_wire = $GoldWire
 @onready var circuit_board = $CircuitBoard
 @onready var metal_frame = $MetalFrame
-
 var recipe = 0
 
 
@@ -60,30 +59,6 @@ func _process(_delta):
 		metal_frame.show()
 	else:
 		metal_frame.hide()
-	#if not recipe == 1:
-		#iron_ore.hide()
-	#if not recipe == 2:
-		#copper_ore.hide()
-	#if not recipe == 3:
-		#gold_ore.hide()
-	#if not recipe == 4:
-		#iron_ingot.hide()
-	#if not recipe == 5:
-		#copper_ingot.hide()
-	#if not recipe == 6:
-		#gold_ingot.hide()
-	#if not recipe == 7:
-		#iron_rod.hide()
-	#if not recipe == 8:
-		#copper_foil.hide()
-	#if not recipe == 9:
-		#gold_wire.hide()
-	#if not recipe == 10:
-		#circuit_board.hide()
-	#if not recipe == 11:
-		#metal_frame.hide()
-
-
 func _on_iron_ore_mouse_entered():
 	recipe = 1
 

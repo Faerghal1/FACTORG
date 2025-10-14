@@ -39,6 +39,7 @@ var b_minutes
 var b_seconds
 var b_milliseconds
 const SAVE_PATH = "user://game_data.json"
+const SAVE_SEED = "user://game_seed.json"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -347,7 +348,7 @@ func update_time_display():
 	+ "%02d:%02d.%02d" % [minutes, seconds, milliseconds])
 
 
-func save_game_data(besft_time: float):
+func save_game_data(best_time: float):
 	var save_data = {
 		"best_time": best_time
 	}
@@ -379,3 +380,48 @@ func load_game_data():
 	else:
 		print("Save file does not exist")
 	return {}
+
+func save_seed(Seed: int):
+	var save_data = {
+		"Seed": Seed
+	}
+	var json_string = JSON.stringify(save_data)
+	var file = FileAccess.open(SAVE_SEED, FileAccess.WRITE)
+	if file:
+		file.store_string(json_string)
+		file.close()
+	else:
+		print("Error opening file to save data")
+
+
+func load_seed():
+	if FileAccess.file_exists(SAVE_SEED):
+		var file = FileAccess.open(SAVE_SEED, FileAccess.READ)
+		if file:
+			var json_string = file.get_as_text()
+			file.close()
+			var parse_result = JSON.parse_string(json_string)
+			if parse_result is Dictionary:
+				var loaded_data = parse_result
+				global.seed = loaded_data.get("Seed", 0)
+				return loaded_data
+			else:
+				print("Error parsing JSON data")
+		else:
+			print("Error opening file to load seed")
+	else:
+		print("Save file does not exist")
+	return {}
+
+
+func _on_save_button_pressed() -> void:
+	save_seed(global.seed)
+
+
+func _on_new_save_button_button_up() -> void:
+	global.seed += 1
+	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))
+
+
+func _on_quit_button_button_up() -> void:
+	get_tree().quit()

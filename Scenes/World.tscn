@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=67 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" uid="uid://fgq76fstefsg" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/1x1/Belt.tscn" id="2_0b5rt"]
@@ -42,6 +42,12 @@
 [ext_resource type="Texture2D" uid="uid://bld52wkaysfrs" path="res://Assets/Smelter_Tooltip.png" id="32_371b6"]
 [ext_resource type="Texture2D" uid="uid://8ohjtfqtptld" path="res://Assets/Constructor_tooltip.png" id="33_371b6"]
 [ext_resource type="Texture2D" uid="uid://b7ny3qmeqlrpg" path="res://Assets/Combiner_tooltip.png" id="34_ao4cr"]
+[ext_resource type="Texture2D" uid="uid://dgf6jc1i306um" path="res://Assets/Save_button0.png" id="43_qtjmb"]
+[ext_resource type="Texture2D" uid="uid://8drgts4j85np" path="res://Assets/Seed_button0.png" id="44_ivbkn"]
+[ext_resource type="Texture2D" uid="uid://bfm047avtigj6" path="res://Assets/Save_button2.png" id="44_wi82k"]
+[ext_resource type="Texture2D" uid="uid://lyalngfrde44" path="res://Assets/Seed_button2.png" id="45_0fglf"]
+[ext_resource type="Texture2D" uid="uid://bbyjv408v14lq" path="res://Assets/Save_button1.png" id="45_l7i8q"]
+[ext_resource type="Texture2D" uid="uid://u4gswc8vlyng" path="res://Assets/Seed_button1.png" id="46_qtjmb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_371b6"]
 texture = ExtResource("8_mq4nq")
@@ -348,6 +354,102 @@ default_font = ExtResource("22_y1bqn")
 
 [sub_resource type="Theme" id="Theme_irg3d"]
 default_font = ExtResource("22_y1bqn")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivfu3"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fq1sc"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivbkn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fglf"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtjmb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_ivfu3"]
+default_font = ExtResource("22_y1bqn")
+default_font_size = 16
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/styles/disabled = SubResource("StyleBoxFlat_ivfu3")
+Button/styles/focus = SubResource("StyleBoxFlat_fq1sc")
+Button/styles/hover = SubResource("StyleBoxFlat_ivbkn")
+Button/styles/normal = SubResource("StyleBoxFlat_0fglf")
+Button/styles/pressed = SubResource("StyleBoxFlat_qtjmb")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_pqhfs")
@@ -1011,6 +1113,30 @@ theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 text = "Best Time:"
 vertical_alignment = 1
 
+[node name="Save Button" type="TextureButton" parent="Camera2D"]
+offset_left = 256.0
+offset_top = -183.0
+offset_right = 415.0
+offset_bottom = -133.0
+scale = Vector2(0.5, 0.5)
+theme = SubResource("Theme_ivfu3")
+action_mode = 0
+texture_normal = ExtResource("43_qtjmb")
+texture_pressed = ExtResource("44_wi82k")
+texture_hover = ExtResource("45_l7i8q")
+
+[node name="New_Save_Button" type="TextureButton" parent="Camera2D"]
+offset_left = 256.0
+offset_top = -154.0
+offset_right = 415.0
+offset_bottom = -104.0
+scale = Vector2(0.5, 0.5)
+theme = SubResource("Theme_ivfu3")
+action_mode = 0
+texture_normal = ExtResource("44_ivbkn")
+texture_pressed = ExtResource("45_0fglf")
+texture_hover = ExtResource("46_qtjmb")
+
 [node name="Belt" parent="." instance=ExtResource("2_0b5rt")]
 position = Vector2(32, 32)
 
@@ -1036,6 +1162,7 @@ autostart = true
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="Camera2D/Pause_menu/Resume" to="." method="_on_resume_pressed"]
+[connection signal="button_up" from="Camera2D/Pause_menu/Quit_button" to="." method="_on_quit_button_button_up"]
 [connection signal="mouse_entered" from="Camera2D/Hotbar" to="." method="_on_hotbar_mouse_entered"]
 [connection signal="mouse_exited" from="Camera2D/Hotbar" to="." method="_on_hotbar_mouse_exited"]
 [connection signal="pressed" from="Camera2D/Hotbar/HotbarIcons/HBoxContainer/ConveyorButton" to="Camera2D/Hotbar/HotbarIcons/HBoxContainer/ConveyorButton" method="_on_belt_selected"]
@@ -1044,5 +1171,8 @@ autostart = true
 [connection signal="pressed" from="Camera2D/Hotbar/HotbarIcons/HBoxContainer/ConstructorButton" to="Camera2D/Hotbar/HotbarIcons/HBoxContainer/ConstructorButton" method="_on_constructor_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/HotbarIcons/HBoxContainer/StorageButton" to="Camera2D/Hotbar/HotbarIcons/HBoxContainer/StorageButton" method="_on_storage_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/HotbarIcons/HBoxContainer/CombinerButton" to="Camera2D/Hotbar/HotbarIcons/HBoxContainer/CombinerButton" method="_on_combiner_selected"]
+[connection signal="pressed" from="Camera2D/Save Button" to="." method="_on_save_button_pressed"]
+[connection signal="button_up" from="Camera2D/New_Save_Button" to="." method="_on_new_save_button_button_up"]
+[connection signal="pressed" from="Camera2D/New_Save_Button" to="." method="_on_new_save_button_pressed"]
 [connection signal="timeout" from="Belt_Timer" to="." method="_on_belt_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
