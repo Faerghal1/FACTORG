@@ -220,6 +220,7 @@ offset_bottom = 373.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_5c2l1")
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 text = "Loading"
 metadata/_edit_use_anchors_ = true
 
@@ -229,6 +230,7 @@ offset_left = 206.0
 offset_top = 400.0
 offset_right = 948.0
 offset_bottom = 572.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 step = 0.1
 
 [node name="Loading_map" type="TileMapLayer" parent="."]
