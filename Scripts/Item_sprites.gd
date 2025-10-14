@@ -1,10 +1,12 @@
 extends Sprite2D
 
+const RESET_ROTATION: float = 0.0
+
 
 func _ready():
-	global_rotation = 0.0
+	global_rotation = RESET_ROTATION
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	global_rotation = 0.0
+	global_rotation = RESET_ROTATION

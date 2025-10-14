@@ -1,13 +1,15 @@
 extends Node2D
 
-@onready var global = get_node("/root/Global")
-const SAVE_SEED = "user://game_seed.json"
+@onready var global: Node = get_node("/root/Global")
+
+const SAVE_SEED: String = "user://game_seed.json"
+
 
 func _ready() :
 	load_seed()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	get_tree().change_scene_to_file("res://Scenes/Main_menu.tscn")
 
 

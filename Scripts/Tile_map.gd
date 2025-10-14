@@ -1,14 +1,14 @@
 extends TileMapLayer
 
-@onready var player = get_parent().get_child(1)
-@onready var global = get_node("/root/Global")
-var moisture = FastNoiseLite.new()
-var temperature = FastNoiseLite.new()
-var altitude = FastNoiseLite.new()
-var biome = {}
-var objects = {}
-const SAVE_SEED = "user://game_seed.json"
-var tiles = {
+@onready var player: Node = get_parent().get_child(1)
+@onready var global: Node = get_node("/root/Global")
+
+var moisture: FastNoiseLite = FastNoiseLite.new()
+var temperature: FastNoiseLite = FastNoiseLite.new()
+var altitude: FastNoiseLite = FastNoiseLite.new()
+var biome: Dictionary = {}
+var objects: Dictionary = {}
+var tiles: Dictionary = {
 	"grass": Vector2i(0,0), "grass_tree": Vector2i(0,2),
 	"grass_rock": Vector2i(0,1), "grass_boulder": Vector2i(0,3),
 	"grass_iron": Vector2i(0,4),"grass_copper": Vector2i(0,5),
@@ -47,7 +47,7 @@ var tiles = {
 
 	"stone": Vector2i(10,0)
 	}
-var biome_data = {
+var biome_data: Dictionary = {
 	"plains": {"grass": 0.8, "grass_tree": 0.15, "grass_rock": 0.025, "grass_boulder": 0.0125,
 	"grass_iron": 0.00625, "grass_copper": 0.00625},
 			
@@ -79,7 +79,7 @@ var biome_data = {
 
 	"beach":  {"sand": 0.99, "stone": 0.01},
 	}
-var object_data = {
+var object_data: Dictionary = {
 	"plains": {"tree": 0.03},
 	"beach": {"tree": 0.01}, 
 	"jungle": {"tree": 0.04},
@@ -89,7 +89,7 @@ var object_data = {
 	"snow": {"spruce_tree": 0.02},
 	"ocean":{}
 }
-
+const SAVE_SEED: String = "user://game_seed.json"
 
 func random_tile(data, biome):
 	var current_biome = data[biome]

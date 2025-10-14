@@ -1,23 +1,26 @@
 extends Area2D
 
-@onready var global = get_node("/root/Global")
-@onready var animation = $AnimatedSprite2D
-@onready var raycast = $RayCast2D
-@onready var recipe = $Recipe
-@onready var recipe_list = $Recipe_list
-@onready var circuit_board_recipe = $Circuit_board
-@onready var metal_frame_recipe = $Metal_frame
+@onready var global: Node = get_node("/root/Global")
+@onready var animation: AnimatedSprite2D = $AnimatedSprite2D
+@onready var raycast: RayCast2D = $RayCast2D
+@onready var recipe: Button = $Recipe
+@onready var recipe_list: Control = $Recipe_list
+@onready var circuit_board_recipe: Sprite2D = $Circuit_board
+@onready var metal_frame_recipe: Sprite2D = $Metal_frame
 
 @export var circuit_board_scene: PackedScene
 @export var metal_frame_scene: PackedScene
-var clone = 0
-var direction = 0
-var delete = 0
-var pos = Vector2i(0,0)
-var wire = false
-var foil = false
-var rod = false
-var ingot = false
+var clone: bool = false
+var direction: int = 0
+var delete: bool = false
+var pos: Vector2i = Vector2i(0,0)
+var wire: bool = false
+var foil: bool = false
+var rod: bool = false
+var ingot: bool = false
+const QUARTER_ROTATION: int = 90
+const TILE_OFFSET: int = 8
+const TILE_SIZE: int = 16
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,10 +31,9 @@ func _process(_delta):
 		circuit_board.position = position
 		circuit_board.modulate.a = 1
 		circuit_board.rotation = rotation
-		circuit_board.direction = rotation/90
-		circuit_board.set_meta("Circuit_board", direction/90)
+		circuit_board.direction = rotation/QUARTER_ROTATION
+		circuit_board.set_meta("Circuit_board", direction/QUARTER_ROTATION)
 		add_sibling.call_deferred(circuit_board)
-		circuit_board.clone = 1
 		wire = false
 		foil = false
 	if rod == true and ingot == true \
@@ -40,15 +42,14 @@ func _process(_delta):
 		metal_frame.position = position
 		metal_frame.modulate.a = 1
 		metal_frame.rotation = rotation
-		metal_frame.direction = rotation/90
-		metal_frame.set_meta("Metal_frame", direction/90)
+		metal_frame.direction = rotation/QUARTER_ROTATION
+		metal_frame.set_meta("Metal_frame", direction/QUARTER_ROTATION)
 		add_sibling.call_deferred(metal_frame)
-		metal_frame.clone = 1
 		rod = false
 		ingot = false
-	if clone == 1:
+	if clone == true:
 		animation.set_frame(global.frames)
-	if clone == 0 and global.slot == 6:
+	if clone == false and global.hotbar_slot == global.slot.COMBINER:
 		var map = get_tree().current_scene.get_node("Generated_map")
 		var cell = map.local_to_map(position/2)
 		var data = map.get_cell_tile_data(cell)
@@ -57,10 +58,10 @@ func _process(_delta):
 		else:
 			global.buildings_large_cant_place = true
 		position = get_global_mouse_position().snapped(Vector2(16,16))
-		position.x -= 8
-		position.y -= 8
-	if Input.is_action_pressed("Right_click") and clone and delete == 1:
-		var pos = Vector2i(position.snapped(Vector2(16,16))/16)
+		position.x -= TILE_OFFSET
+		position.y -= TILE_OFFSET
+	if Input.is_action_pressed("Right_click") and clone and delete:
+		var pos = Vector2i(position.snapped(Vector2(16,16))/TILE_SIZE)
 		global.bitmap.set_bit(pos.x, pos.y, false)
 		global.bitmap.set_bit(pos.x+1, pos.y, false)
 		global.bitmap.set_bit(pos.x, pos.y+1, false)
@@ -71,15 +72,15 @@ func _process(_delta):
 		global.bitmap.set_bit(pos.x, pos.y-1, false)
 		global.bitmap.set_bit(pos.x+1, pos.y-1, false)
 		queue_free()
-	if clone == 0:
-		if global.slot == 6:
+	if clone == false:
+		if global.hotbar_slot == global.slot.COMBINER:
 			show()
 		else:
 			hide()
 
 
 func _on_area_entered(area):
-	if clone == 1:
+	if clone == true:
 		if area.has_meta("Wire"):
 			wire = true
 		if area.has_meta("Foil"):
@@ -91,15 +92,15 @@ func _on_area_entered(area):
 
 
 func _on_mouse_entered():
-	delete = 1
+	delete = true
 
 
 func _on_mouse_exited():
-	delete = 0
+	delete = false
 
 
 func _on_recipe_selected():
-	if clone == 1 and recipe.visible == true:
+	if clone == true and recipe.visible == true:
 		recipe.hide()
 		recipe_list.show()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dqv62kkyefluf"]
+[gd_scene load_steps=19 format=3 uid="uid://dqv62kkyefluf"]
 
 [ext_resource type="Script" uid="uid://bd0rdk2g2vc67" path="res://Scripts/Storage.gd" id="1_m7wf3"]
 [ext_resource type="Texture2D" uid="uid://ccygs458s3gwr" path="res://Assets/Storage.png" id="1_mvajw"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://f4hipo5ajyxd" path="res://Assets/Copper_foil.png" id="13_mipfg"]
 [ext_resource type="Texture2D" uid="uid://0ahtge75n5um" path="res://Assets/Metal_frame.png" id="14_147u0"]
 [ext_resource type="Texture2D" uid="uid://omt2sfe5q1h6" path="res://Assets/Gold_ingot.png" id="15_d508p"]
+[ext_resource type="Texture2D" uid="uid://cpter0w0l5kkx" path="res://Assets/UI_background.png" id="15_jikty"]
 [ext_resource type="PackedScene" uid="uid://wuhg1pdmfkjb" path="res://Scenes/Placement.tscn" id="16_dbjfs"]
 [ext_resource type="Texture2D" uid="uid://dac1hff0lc02g" path="res://Assets/Circuit_board.png" id="19_d508p"]
 
@@ -79,13 +80,26 @@ scale = Vector2(0.9375, 0.9375)
 sprite_frames = SubResource("SpriteFrames_ivhcs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wpwve")
 
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = -1.0
+offset_top = 3.0
+offset_right = 18.0
+offset_bottom = 17.0
+texture = ExtResource("15_jikty")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
 [node name="StoredAmount" type="Label" parent="."]
-offset_left = 2.5
-offset_top = 2.5
-offset_right = 14.5
-offset_bottom = 16.5
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 15.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(0.94902, 0.501961, 0.207843, 1)
 theme_override_font_sizes/font_size = 10
 text = "00"
 horizontal_alignment = 2

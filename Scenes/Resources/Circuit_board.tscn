@@ -28,6 +28,7 @@ position = Vector2(2.98023e-06, 3.27825e-06)
 shape = SubResource("RectangleShape2D_fnqln")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+z_index = 1
 scale = Vector2(1.255, 1.255)
 texture = ExtResource("1_rwhdc")
 script = ExtResource("3_rg516")

@@ -1,10 +1,14 @@
 extends Node2D
 
-@onready var global = get_node("/root/Global")
-# Called when the node enters the sce	ne tree for the first time.
+@onready var global: Node = get_node("/root/Global")
+
+const MAIN_MENU_SIZE: int = 200
+
+
+# Called when the node enters the scene tree for the first time.
 func _ready() :
-	global.height = 200
-	global.width = 200 #this does not change the tilemap size:(
+	global.height = MAIN_MENU_SIZE
+	global.width = MAIN_MENU_SIZE #this does not change the tilemap size:(
 
 
 func _on_main_menu_button_pressed() -> void:
@@ -15,6 +19,7 @@ func _on_main_menu_button_pressed() -> void:
 
 func _on_quit_button_pressed():
 	get_tree().quit()
+
 
 func _on_new_save_button_button_up() -> void:
 	global.seed += 1

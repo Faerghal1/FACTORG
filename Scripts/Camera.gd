@@ -1,20 +1,22 @@
 extends Camera2D
 
-@onready var timer = $Timer
+@onready var timer: Timer = $Timer
 
-const POSITION_Y := 128.0
-const POSITION_X := 128.0
-var temppos_y := 500.0 * 8
-var temppos_x := 500.0 * 8
-var move_y = true
-var move_x = true
+var temppos_y: float = 500.0 * 8
+var temppos_x: float = 500.0 * 8
+var move_y: bool = true
+var move_x: bool = true
+const POSITION_Y:float = 128.0
+const POSITION_X:float = 128.0
+const FASTER_TIMER: float = 0.01
+const SLOWER_TIMER: float = 0.1
 
 
 func _process(_delta):
 	if Input.is_action_pressed("Shift"):
-		timer.wait_time = 0.01
+		timer.wait_time = FASTER_TIMER
 	else:
-		timer.wait_time = 0.1
+		timer.wait_time = SLOWER_TIMER
 	if Input.is_action_pressed("Up") and move_y:
 		timer.start()
 		temppos_y = position.y - POSITION_Y

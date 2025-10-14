@@ -1115,10 +1115,11 @@ text = "Best Time:"
 vertical_alignment = 1
 
 [node name="Save Button" type="TextureButton" parent="Camera2D"]
+z_index = 3
 offset_left = 256.0
-offset_top = -183.0
-offset_right = 415.0
-offset_bottom = -133.0
+offset_top = -81.0
+offset_right = 396.0
+offset_bottom = -31.0
 scale = Vector2(0.5, 0.5)
 theme = SubResource("Theme_ivfu3")
 action_mode = 0
@@ -1127,10 +1128,11 @@ texture_pressed = ExtResource("44_wi82k")
 texture_hover = ExtResource("45_l7i8q")
 
 [node name="New_Save_Button" type="TextureButton" parent="Camera2D"]
+z_index = 3
 offset_left = 256.0
-offset_top = -154.0
-offset_right = 415.0
-offset_bottom = -104.0
+offset_top = -52.0
+offset_right = 396.0
+offset_bottom = -2.0
 scale = Vector2(0.5, 0.5)
 theme = SubResource("Theme_ivfu3")
 action_mode = 0
@@ -1161,6 +1163,8 @@ wait_time = 0.08
 autostart = true
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="In_World_Clones" type="Node2D" parent="."]
 
 [connection signal="pressed" from="Camera2D/Pause_menu/Resume" to="." method="_on_resume_pressed"]
 [connection signal="button_up" from="Camera2D/Pause_menu/Quit_button" to="." method="_on_quit_button_button_up"]

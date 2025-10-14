@@ -1,15 +1,16 @@
 extends Camera2D
 
-const POSITION_Y := 128.0
-const POSITION_X := 128.0
-var temppos_y := 100.0 * 8
-var temppos_x := 300.0 * 8
-var move_y = true
-var move_x = true
+var temppos_y: float = 100.0 * 8
+var temppos_x: float = 300.0 * 8
+var move_y: bool = true
+var move_x: bool = true
+const POSITION_Y: float = 128.0
+const POSITION_X: float = 128.0
+const TILE_OFFSET: int = 8
 
 
 func _process(_delta):
-	temppos_x = position.x + 8
+	temppos_x = position.x + TILE_OFFSET
 	position.y = lerp(position.y,temppos_y, 0.1)
 	position.x = lerp(position.x,temppos_x, 0.1)
 

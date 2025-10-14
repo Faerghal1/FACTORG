@@ -1,25 +1,26 @@
 extends Node2D
 
 @onready var global = get_node("/root/Global")
-@onready var camera = $Camera2D
-@onready var controls = $Camera2D/Controls/AnimatedSprite2D
-@onready var index = $Camera2D/Index
-@onready var pause_menu = $Camera2D/Pause_menu
-@onready var metal_frame_goal = $Camera2D/Goal/GoalText/MetalFrameGoal
-@onready var circuit_board_goal = $Camera2D/Goal/GoalText/CircuitBoardGoal
-@onready var belt_select = $Camera2D/Belt_select
-@onready var extractor_select = $Camera2D/Extractor_select
-@onready var smelter_select = $Camera2D/Smelter_select
-@onready var constructor_select = $Camera2D/Constructor_select
-@onready var storage_select = $Camera2D/Storage_select
-@onready var combiner_select = $Camera2D/Combiner_select
-@onready var building_cant_place = $"Camera2D/Can't Place Building"
-@onready var extractor_cant_place = $"Camera2D/Can't Place Extractor"
-@onready var timer = $Timer
-@onready var win_screen = $Camera2D/Win_screen
-@onready var time_label = $Camera2D/StopwatchUI/TimeLabel
-@onready var time_elasped_label = $Camera2D/Win_screen/WinScreenText/TimeElasped
-@onready var best_time_label = $Camera2D/Win_screen/WinScreenText/BestTime
+@onready var camera: Camera2D = $Camera2D
+@onready var controls: AnimatedSprite2D = $Camera2D/Controls/AnimatedSprite2D
+@onready var index: Control = $Camera2D/Index
+@onready var pause_menu: Control = $Camera2D/Pause_menu
+@onready var metal_frame_goal: Label = $Camera2D/Goal/GoalText/MetalFrameGoal
+@onready var circuit_board_goal: Label = $Camera2D/Goal/GoalText/CircuitBoardGoal
+@onready var belt_select: Control = $Camera2D/Belt_select
+@onready var extractor_select: Control = $Camera2D/Extractor_select
+@onready var smelter_select: Control = $Camera2D/Smelter_select
+@onready var constructor_select: Control = $Camera2D/Constructor_select
+@onready var storage_select: Control = $Camera2D/Storage_select
+@onready var combiner_select: Control = $Camera2D/Combiner_select
+@onready var building_cant_place: Control = $"Camera2D/Can't Place Building"
+@onready var extractor_cant_place: Control = $"Camera2D/Can't Place Extractor"
+@onready var timer: Timer = $Timer
+@onready var win_screen: Control = $Camera2D/Win_screen
+@onready var time_label: Label = $Camera2D/StopwatchUI/TimeLabel
+@onready var time_elasped_label: Label = $Camera2D/Win_screen/WinScreenText/TimeElasped
+@onready var best_time_label: Label = $Camera2D/Win_screen/WinScreenText/BestTime
+@onready var in_world_clones: Node = $In_World_Clones
 
 @export var belt_scene: PackedScene
 @export var extractor_scene: PackedScene
@@ -27,26 +28,32 @@ extends Node2D
 @export var constructor_scene: PackedScene
 @export var storage_scene: PackedScene
 @export var combiner_scene: PackedScene
-var direction = 0
-var bitmap_height = 10000
-var bitmap_width = 10000 # needs to be even number
-var placed = false
-var extractor_position = Vector2i(0,0)
+var direction: int = 0
+var bitmap_height: int = 10000
+var bitmap_width: int = 10000 # needs to be even number
+var placed: bool = false
+var extractor_position: Vector2i = Vector2i(0,0)
 var elapsed_time: float = 0.0
 var is_running: bool = false
 var best_time = null
-var b_minutes
-var b_seconds
-var b_milliseconds
-const SAVE_PATH = "user://game_data.json"
-const SAVE_SEED = "user://game_seed.json"
+var b_minutes: int = 0
+var b_seconds: int = 0
+var b_milliseconds: int = 0
+const SAVE_PATH: String = "user://game_data.json"
+const SAVE_SEED : String = "user://game_seed.json"
+const TILE_OFFSET: int = 8
+const TILE_SIZE: int = 16
+const TOP_GOAL_AMOUNT: int = 20
+const BOTTOM_GOAL_AMOUNT: int = 25
+const QUARTER_ROTATION: int = 90
+const NUM_ANIMATION_FRAMES: int = 10
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	global.bitmap.resize(Vector2i(bitmap_width,bitmap_height))
-	camera.position.x += global.width * 8
-	camera.position.y += global.height * 8
+	camera.position.x += global.width * TILE_OFFSET
+	camera.position.y += global.height * TILE_OFFSET
 	controls.frame = 0
 	is_running = true
 	update_time_display()
@@ -65,7 +72,7 @@ func _process(delta):
 		else:
 			pause_menu.show()
 			get_tree().paused = true
-	if global.circuit_board >= 25 and global.metal_frame >= 20:
+	if global.circuit_board >= BOTTOM_GOAL_AMOUNT and global.metal_frame >= TOP_GOAL_AMOUNT:
 		get_tree().paused = true
 		is_running = false
 		load_game_data()
@@ -85,196 +92,174 @@ func _process(delta):
 		win_screen.show()
 	metal_frame_goal.text = (str(int(global.metal_frame)) + "/20")
 	circuit_board_goal.text = (str(int(global.circuit_board)) + "/25")
-	if Input.is_action_just_pressed("Hotbar_1"): # Belt hotkey selection
-		if global.slot == 1:
-			controls.frame = 0
-			belt_select.hide()
-			global.slot = 0
+	if Input.is_action_just_pressed("Hotbar_1") or global.hotbar_pressed == 1:
+		if global.hotbar_slot == global.slot.NONE:
+			global.hotbar_slot = global.slot.BELT
 		else:
-			global.slot = 1
-			controls.frame = 2
-			belt_select.show()
-	if Input.is_action_just_pressed("Hotbar_2"): # Extractor hotkey selection
-		if global.slot == 2:
-			controls.frame = 0
-			extractor_select.hide()
-			global.slot = 0
+			global.hotbar_slot = global.slot.NONE
+	if Input.is_action_just_pressed("Hotbar_2") or global.hotbar_pressed == 2:
+		if global.hotbar_slot == global.slot.NONE:
+			global.hotbar_slot = global.slot.EXTRACTOR
 		else:
-			global.slot = 2
-			controls.frame = 2
-			extractor_select.show()
-	if Input.is_action_just_pressed("Hotbar_3"): # Smelter hotkey selection
-		if global.slot == 3:
-			controls.frame = 0
-			smelter_select.hide()
-			global.slot = 0
+			global.hotbar_slot = global.slot.NONE
+	if Input.is_action_just_pressed("Hotbar_3") or global.hotbar_pressed == 3:
+		if global.hotbar_slot == global.slot.NONE:
+			global.hotbar_slot = global.slot.SMELTER
 		else:
-			global.slot = 3
-			controls.frame = 1
-			smelter_select.show()
-	if Input.is_action_just_pressed("Hotbar_4"): # Constructor hotkey selection
-		if global.slot == 4:
-			controls.frame = 0
-			constructor_select.hide()
-			global.slot = 0
+			global.hotbar_slot = global.slot.NONE
+	if Input.is_action_just_pressed("Hotbar_4") or global.hotbar_pressed == 4:
+		if global.hotbar_slot == global.slot.NONE:
+			global.hotbar_slot = global.slot.CONSTRUCTOR
 		else:
-			global.slot = 4
-			controls.frame = 1
-			constructor_select.show()
-	if Input.is_action_just_pressed("Hotbar_5"): # Storage hotkey selection
-		if global.slot == 5:
-			controls.frame = 0
-			storage_select.hide()
-			global.slot = 0
+			global.hotbar_slot = global.slot.NONE
+	if Input.is_action_just_pressed("Hotbar_5") or global.hotbar_pressed == 5:
+		if global.hotbar_slot == global.slot.NONE:
+			global.hotbar_slot = global.slot.STORAGE
 		else:
-			global.slot = 5
-			controls.frame = 2
-			storage_select.show()
-	if Input.is_action_just_pressed("Hotbar_6"): # Combiner hotkey selection
-		if global.slot == 6:
-			controls.frame = 0
-			combiner_select.hide()
-			global.slot = 0
+			global.hotbar_slot = global.slot.NONE
+	if Input.is_action_just_pressed("Hotbar_6") or global.hotbar_pressed == 6:
+		if global.hotbar_slot == global.slot.NONE:
+			global.hotbar_slot = global.slot.COMBINER
 		else:
-			global.slot = 6
-			controls.frame = 1
-			combiner_select.show()
-	if global.hotbar_pressed == 1: # Belt hotbar selection
-		global.slot = 1
+			global.hotbar_slot = global.slot.NONE
+	if global.hotbar_slot == global.slot.BELT:
 		controls.frame = 2
 		belt_select.show()
-	if global.hotbar_pressed == 2: # Extractor hotbar selection
-		global.slot = 2
+	if global.hotbar_slot == global.slot.EXTRACTOR:
 		controls.frame = 2
 		extractor_select.show()
-	if global.hotbar_pressed == 3: # Smelter hotbar selection
-		global.slot = 3
+	if global.hotbar_slot == global.slot.SMELTER:
 		controls.frame = 1
 		smelter_select.show()
-	if global.hotbar_pressed == 4: # Constructor hotbar selection
-		global.slot = 4
+	if global.hotbar_slot == global.slot.CONSTRUCTOR:
 		controls.frame = 1
 		constructor_select.show()
-	if global.hotbar_pressed == 5: # Storage hotbar selection
-		global.slot = 5
+	if global.hotbar_slot == global.slot.STORAGE:
 		controls.frame = 2
 		storage_select.show()
-	if global.hotbar_pressed == 6: # Combiner hotbar selection
-		global.slot = 6
+	if global.hotbar_slot == global.slot.COMBINER:
 		controls.frame = 1
 		combiner_select.show()
-	if not global.slot == 1: # Belt_tooltip
+	elif global.hotbar_slot == global.slot.NONE:
+		controls.frame = 0
 		belt_select.hide()
-	if not global.slot == 2: # Extractor_tooltip
 		extractor_select.hide()
-	if not global.slot == 3: # Smelter_tooltip
 		smelter_select.hide()
-	if not global.slot == 4: # Constructor_tooltip
 		constructor_select.hide()
-	if not global.slot == 5: # Storage_tooltip
 		storage_select.hide()
-	if not global.slot == 6: # Combiner_tooltip
 		combiner_select.hide()
 	if global.mouse_on_hotbar == false:
 		if Input.is_action_pressed("Left_click") \
-		and (global.slot != 2 and global.slot != 0): # Detection for placeable in world
-			if global.slot == 1 or global.slot == 5:
+		and (global.hotbar_slot != global.slot.EXTRACTOR \
+		and global.hotbar_slot != global.slot.NONE): # Detection for placeable in world
+			if global.hotbar_slot == global.slot.BELT or global.hotbar_slot == global.slot.STORAGE:
 				if global.buildings_cant_place == true: # Buildings_cant_place
 					building_cant_place.show()
 					timer.start()
-			elif global.slot == 3 or global.slot == 4 or global.slot == 6:
+			elif global.hotbar_slot == global.slot.SMELTER \
+			or global.hotbar_slot == global.slot.CONSTRUCTOR \
+			or global.hotbar_slot == global.slot.COMBINER:
 				if global.buildings_large_cant_place == true: # Large_buildings_cant_place
 					building_cant_place.show()
 					timer.start()
-		if Input.is_action_pressed("Left_click") and global.slot == 2 \
+		if Input.is_action_pressed("Left_click") \
+		and global.hotbar_slot == global.slot.EXTRACTOR \
 		and global.extractor_cant_place == true: # Extractor_cant_place
 			extractor_cant_place.show()
 			timer.start()
-		if Input.is_action_pressed("Left_click") and global.slot == 1 \
+		if Input.is_action_pressed("Left_click") \
+		and global.hotbar_slot == global.slot.BELT \
 		and not global.buildings_cant_place: # Belt_placement
-			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-			if not global.bitmap.get_bit(pos.x , pos.y ):
+			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/TILE_SIZE)
+			if not global.bitmap.get_bit(pos.x, pos.y):
 				print(pos)
 				var belt = belt_scene.instantiate()
-				belt.position = pos*16
-				belt.position.x -= 8
-				belt.position.y -= 8
+				belt.position = pos * TILE_SIZE
+				belt.position.x -= TILE_OFFSET
+				belt.position.y -= TILE_OFFSET
 				belt.modulate.a = 1
 				belt.rotation_degrees = direction
-				belt.direction = rotation/90
-				belt.set_meta("Belt", direction/90)
-				add_sibling(belt)
-				belt.clone = 1
+				belt.direction = rotation/QUARTER_ROTATION
+				belt.set_meta("Belt", direction/QUARTER_ROTATION)
+				in_world_clones.add_child(belt)
+				belt.clone = true
 				global.bitmap.set_bit(pos.x, pos.y, true)
-		if Input.is_action_pressed("Left_click") and global.slot == 2 \
+		if Input.is_action_pressed("Left_click") \
+		and global.hotbar_slot == global.slot.EXTRACTOR \
 		and not global.extractor_cant_place: # Extractor_placement
-			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-			if not global.bitmap.get_bit(pos.x , pos.y ):
+			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/TILE_SIZE)
+			if not global.bitmap.get_bit(pos.x, pos.y):
 				print(pos)
 				var extractor = extractor_scene.instantiate()
-				extractor.position = pos*16
-				extractor.position.x -= 8
-				extractor.position.y -= 8
-				extractor.modulate.a = 255
+				extractor.position = pos * TILE_SIZE
+				extractor.position.x -= TILE_OFFSET
+				extractor.position.y -= TILE_OFFSET
+				extractor.modulate.a = 1
 				extractor.rotation_degrees = direction
-				extractor.direction = rotation/90
-				extractor.set_meta("Extractor", direction/90)
-				add_sibling(extractor)
-				extractor.clone = 1
+				extractor.direction = rotation/QUARTER_ROTATION
+				extractor.set_meta("Extractor", direction/QUARTER_ROTATION)
+				in_world_clones.add_child(extractor)
+				extractor.clone = true
 				global.bitmap.set_bit(pos.x, pos.y, true)
 				global.extractor_placed = true
-		if Input.is_action_pressed("Left_click") and global.slot == 3 \
+		if Input.is_action_pressed("Left_click") \
+		and global.hotbar_slot == global.slot.SMELTER \
 		and not global.buildings_large_cant_place: # Smelter_placement
 			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-			if not global.bitmap.get_bit(pos.x , pos.y ) and not global.bitmap.get_bit(pos.x+1, pos.y) \
+			if not global.bitmap.get_bit(pos.x, pos.y) and not global.bitmap.get_bit(pos.x+1, pos.y) \
 			and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
 				print(pos)
 				var smelter = smelter_scene.instantiate()
-				smelter.position = pos*16
+				smelter.position = pos * TILE_SIZE
 				smelter.modulate.a = 1
-				smelter.set_meta("Smelter", direction/90)
-				add_sibling(smelter)
-				smelter.clone = 1
+				smelter.set_meta("Smelter", direction/QUARTER_ROTATION)
+				in_world_clones.add_child(smelter)
+				smelter.clone = true
 				global.bitmap.set_bit(pos.x, pos.y, true)
 				global.bitmap.set_bit(pos.x+1, pos.y, true)
 				global.bitmap.set_bit(pos.x, pos.y+1, true)
 				global.bitmap.set_bit(pos.x+1, pos.y+1, true)
-		if Input.is_action_pressed("Left_click") and global.slot == 4 \
+		if Input.is_action_pressed("Left_click") \
+		and global.hotbar_slot == global.slot.CONSTRUCTOR \
 		and not global.buildings_large_cant_place: # Constructor_placement
-			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-			if not global.bitmap.get_bit(pos.x , pos.y ) and not global.bitmap.get_bit(pos.x+1, pos.y) \
-			and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
+			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/TILE_SIZE)
+			if not global.bitmap.get_bit(pos.x, pos.y) \
+			and not global.bitmap.get_bit(pos.x+1, pos.y) \
+			and not global.bitmap.get_bit(pos.x, pos.y+1) \
+			and not global.bitmap.get_bit(pos.x+1, pos.y+1):
 				print(pos)
 				var constructor = constructor_scene.instantiate()
-				constructor.position = pos*16
+				constructor.position = pos * TILE_SIZE
 				constructor.modulate.a = 1
-				constructor.set_meta("Constructor", direction/90)
-				add_sibling(constructor)
-				constructor.clone = 1
+				constructor.set_meta("Constructor", direction/QUARTER_ROTATION)
+				in_world_clones.add_child(constructor)
+				constructor.clone = true
 				global.bitmap.set_bit(pos.x, pos.y, true)
 				global.bitmap.set_bit(pos.x+1, pos.y, true)
 				global.bitmap.set_bit(pos.x, pos.y+1, true)
 				global.bitmap.set_bit(pos.x+1, pos.y+1, true)
-		if Input.is_action_pressed("Left_click") and global.slot == 5 \
+		if Input.is_action_pressed("Left_click") \
+		and global.hotbar_slot == global.slot.STORAGE \
 		and not global.buildings_cant_place: # Storage_placement
-			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-			if not global.bitmap.get_bit(pos.x , pos.y ):
+			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/TILE_SIZE)
+			if not global.bitmap.get_bit(pos.x, pos.y):
 				print(pos)
 				var storage = storage_scene.instantiate()
-				storage.position = pos*16
-				storage.position.x -= 8
-				storage.position.y -= 8
+				storage.position = pos * TILE_SIZE
+				storage.position.x -= TILE_OFFSET
+				storage.position.y -= TILE_OFFSET
 				storage.modulate.a = 1
 				storage.rotation_degrees = direction
-				storage.direction = rotation/180
-				storage.set_meta("Storage", direction/180)
-				add_sibling(storage)
-				storage.clone = 1
+				storage.direction = rotation/QUARTER_ROTATION
+				storage.set_meta("Storage", direction/QUARTER_ROTATION)
+				in_world_clones.add_child(storage)
+				storage.clone = true
 				global.bitmap.set_bit(pos.x, pos.y, true)
-		if Input.is_action_pressed("Left_click") and global.slot == 6 \
+		if Input.is_action_pressed("Left_click") \
+		and global.hotbar_slot == global.slot.COMBINER \
 		and not global.buildings_large_cant_place: # Combiner_placement
-			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-			if not global.bitmap.get_bit(pos.x , pos.y ) \
+			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/TILE_SIZE)
+			if not global.bitmap.get_bit(pos.x, pos.y) \
 			and not global.bitmap.get_bit(pos.x+1, pos.y) \
 			and not global.bitmap.get_bit(pos.x, pos.y+1 ) \
 			and not global.bitmap.get_bit(pos.x+1, pos.y+1) \
@@ -285,13 +270,13 @@ func _process(delta):
 			and not global.bitmap.get_bit(pos.x+1, pos.y-1):
 				print(pos)
 				var combiner = combiner_scene.instantiate()
-				combiner.position = pos*16
-				combiner.position.x -= 8
-				combiner.position.y -= 8
+				combiner.position = pos * TILE_SIZE
+				combiner.position.x -= TILE_OFFSET
+				combiner.position.y -= TILE_OFFSET
 				combiner.modulate.a = 1
-				combiner.set_meta("Combiner", direction/90)
-				add_sibling(combiner)
-				combiner.clone = 1
+				combiner.set_meta("Combiner", direction/QUARTER_ROTATION)
+				in_world_clones.add_child(combiner)
+				combiner.clone = true
 				global.bitmap.set_bit(pos.x, pos.y, true)
 				global.bitmap.set_bit(pos.x+1, pos.y, true)
 				global.bitmap.set_bit(pos.x, pos.y+1, true)
@@ -302,12 +287,11 @@ func _process(delta):
 				global.bitmap.set_bit(pos.x, pos.y-1, true)
 				global.bitmap.set_bit(pos.x+1, pos.y-1, true)
 	if Input.is_action_pressed("Right_click"):
-		var pos \
-		= Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
+		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/TILE_SIZE)
 		if global.bitmap.get_bit(pos.x, pos.y):
 			global.bitmap.set_bit(pos.x, pos.y, false)
 	if Input.is_action_just_pressed("Rotate(R)"):
-		direction += 90
+		direction += QUARTER_ROTATION
 
 
 func _on_timer_timeout():
@@ -323,17 +307,13 @@ func _on_hotbar_mouse_exited():
 	global.mouse_on_hotbar = false
 
 
-func _on_main_menu_pressed():
-	get_tree().quit()
-
-
 func _on_resume_pressed():
 	pause_menu.hide()
 	get_tree().paused = false
 
 
 func _on_belt_timer_timeout() -> void: # Animates the conveyer belt
-	if global.frames < 10:
+	if global.frames < NUM_ANIMATION_FRAMES:
 		global.frames += 1
 	else:
 		global.frames = 0
@@ -380,6 +360,7 @@ func load_game_data():
 	else:
 		print("Save file does not exist")
 	return {}
+
 
 func save_seed(Seed: int):
 	var save_data = {
