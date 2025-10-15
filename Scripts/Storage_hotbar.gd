@@ -4,6 +4,7 @@ extends Button
 
 
 func _on_storage_selected():
+	# Toggles global.hotbar_slot to be either 0 or 5 indicating either null or Storage
 	if global.hotbar_slot == global.slot.NONE:
 		global.hotbar_slot = global.slot.STORAGE
 	else:

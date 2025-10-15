@@ -29,8 +29,8 @@ extends Node2D
 @export var storage_scene: PackedScene
 @export var combiner_scene: PackedScene
 var direction: int = 0
-var bitmap_height: int = 10000
-var bitmap_width: int = 10000 # needs to be even number
+var bitmap_height: int = 10000 # Needs to be an even number
+var bitmap_width: int = 10000 # Needs to be an even number
 var placed: bool = false
 var extractor_position: Vector2i = Vector2i(0,0)
 var elapsed_time: float = 0.0
@@ -39,6 +39,12 @@ var best_time = null
 var b_minutes: int = 0
 var b_seconds: int = 0
 var b_milliseconds: int = 0
+# Numerical list of all control frames starting from 0 ending at 2
+enum control_frames {
+	DEFAULT_FRAME,
+	CANT_ROTATE_FRAME,
+	CAN_ROTATE_FRAME,
+}
 const SAVE_PATH: String = "user://game_data.json"
 const SAVE_SEED : String = "user://game_seed.json"
 const TILE_OFFSET: int = 8
@@ -47,20 +53,25 @@ const TOP_GOAL_AMOUNT: int = 20
 const BOTTOM_GOAL_AMOUNT: int = 25
 const QUARTER_ROTATION: int = 90
 const NUM_ANIMATION_FRAMES: int = 10
+const MINUTES_FACTOR: int = 60
+const MILLISECONDS_FACTOR: int = 100
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	global.bitmap.resize(Vector2i(bitmap_width,bitmap_height))
-	var tile_size = 8
-	camera.position.x += global.width * tile_size
-	camera.position.y += global.height * tile_size
-	controls.frame = 0
+	camera.position.x += global.width * TILE_OFFSET
+	camera.position.y += global.height * TILE_OFFSET
+	controls.frame = control_frames.DEFAULT_FRAME
 	is_running = true
 	update_time_display()
 
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	metal_frame_goal.text = (str(int(global.metal_frame)) + "/20")
+	circuit_board_goal.text = (str(int(global.circuit_board)) + "/25")
+	# If the stopwatch is running it increases elapsed_time and updates the display
 	if is_running == true:
 		elapsed_time += delta
 		update_time_display()
@@ -73,220 +84,289 @@ func _process(delta):
 		else:
 			pause_menu.show()
 			get_tree().paused = true
+	# Checks to see if the user has delivered the required components for completion
 	if global.circuit_board >= BOTTOM_GOAL_AMOUNT and global.metal_frame >= TOP_GOAL_AMOUNT:
 		get_tree().paused = true
 		is_running = false
 		load_game_data()
+		# Checks to see if no best_time is set and sets best_time to the elapsed_time
 		if best_time == null:
 			print("no best time")
 			best_time = elapsed_time
 			save_game_data(best_time)
+		# Checks to see if elapsed_time is lower than best_time and sets best_time to elasped_time
 		if elapsed_time < best_time:
 			print("new best time")
 			best_time = elapsed_time
 			save_game_data(best_time)
-		b_minutes = int(best_time / 60)
-		b_seconds = int(fmod(best_time, 60))
-		b_milliseconds = int(fmod(best_time, 1) * 100)
+		# Updates the best_time label seen in the Win_screen
+		b_minutes = int(best_time / MINUTES_FACTOR)
+		b_seconds = int(fmod(best_time, MINUTES_FACTOR))
+		b_milliseconds = int(fmod(best_time, 1) * MILLISECONDS_FACTOR)
 		best_time_label.text = ("Best Time: " \
 		+ "%02d:%02d.%02d" % [b_minutes, b_seconds, b_milliseconds])
 		win_screen.show()
-	metal_frame_goal.text = (str(int(global.metal_frame)) + "/20")
-	circuit_board_goal.text = (str(int(global.circuit_board)) + "/25")
+	# Checks to see if the user has inputted the 1 key and will select or deselect the Belt
 	if Input.is_action_just_pressed("Hotbar_1"):
 		if global.hotbar_slot == global.slot.NONE:
 			global.hotbar_slot = global.slot.BELT
 		else:
 			global.hotbar_slot = global.slot.NONE
+	# Checks to see if the user has inputted the 2 key and will select or deselect the Extractor
 	if Input.is_action_just_pressed("Hotbar_2"):
 		if global.hotbar_slot == global.slot.NONE:
 			global.hotbar_slot = global.slot.EXTRACTOR
 		else:
 			global.hotbar_slot = global.slot.NONE
+	# Checks to see if the user has inputted the 3 key and will select or deselect the Smelter
 	if Input.is_action_just_pressed("Hotbar_3"):
 		if global.hotbar_slot == global.slot.NONE:
 			global.hotbar_slot = global.slot.SMELTER
 		else:
 			global.hotbar_slot = global.slot.NONE
+	# Checks to see if the user has inputted the 4 key and will select or deselect the Constructor
 	if Input.is_action_just_pressed("Hotbar_4"):
 		if global.hotbar_slot == global.slot.NONE:
 			global.hotbar_slot = global.slot.CONSTRUCTOR
 		else:
 			global.hotbar_slot = global.slot.NONE
+	# Checks to see if the user has inputted the 5 key and will select or deselect the Storage
 	if Input.is_action_just_pressed("Hotbar_5"):
 		if global.hotbar_slot == global.slot.NONE:
 			global.hotbar_slot = global.slot.STORAGE
 		else:
 			global.hotbar_slot = global.slot.NONE
+	# Checks to see if the user has inputted the 6 key and will select or deselect the Combiner
 	if Input.is_action_just_pressed("Hotbar_6"):
 		if global.hotbar_slot == global.slot.NONE:
 			global.hotbar_slot = global.slot.COMBINER
 		else:
 			global.hotbar_slot = global.slot.NONE
+	# Checks if global.hotbar_slot = 1 and updates the UI to the Belt UI
 	if global.hotbar_slot == global.slot.BELT:
-		controls.frame = 2
+		controls.frame = control_frames.CAN_ROTATE_FRAME
 		belt_select.show()
+	# Checks if global.hotbar_slot = 2 and updates the UI to the Extractor UI
 	if global.hotbar_slot == global.slot.EXTRACTOR:
-		controls.frame = 2
+		controls.frame = control_frames.CAN_ROTATE_FRAME
 		extractor_select.show()
+	# Checks if global.hotbar_slot = 3 and updates the UI to the Smelter UI
 	if global.hotbar_slot == global.slot.SMELTER:
-		controls.frame = 1
+		controls.frame = control_frames.CANT_ROTATE_FRAME
 		smelter_select.show()
+	# Checks if global.hotbar_slot = 4 and updates the UI to the Constructor UI
 	if global.hotbar_slot == global.slot.CONSTRUCTOR:
-		controls.frame = 1
+		controls.frame = control_frames.CANT_ROTATE_FRAME
 		constructor_select.show()
+	# Checks if global.hotbar_slot = 5 and updates the UI to the Storage UI
 	if global.hotbar_slot == global.slot.STORAGE:
-		controls.frame = 2
+		controls.frame = control_frames.CAN_ROTATE_FRAME
 		storage_select.show()
+	# Checks if global.hotbar_slot = 6 and updates the UI to the Combiner UI
 	if global.hotbar_slot == global.slot.COMBINER:
-		controls.frame = 1
+		controls.frame = control_frames.CANT_ROTATE_FRAME
 		combiner_select.show()
+	# Runs if global.hotbar_slot doesn't equal 1-6 and checks it equals 0
 	elif global.hotbar_slot == global.slot.NONE:
-		controls.frame = 0
+		controls.frame = control_frames.DEFAULT_FRAME
 		belt_select.hide()
 		extractor_select.hide()
 		smelter_select.hide()
 		constructor_select.hide()
 		storage_select.hide()
 		combiner_select.hide()
+	# Checks to see if the user is trying to place a building while not hovering over the hotbar
 	if global.mouse_on_hotbar == false:
-		if Input.is_action_pressed("Left_click") \
-		and (global.hotbar_slot != global.slot.EXTRACTOR \
-		and global.hotbar_slot != global.slot.NONE): # Detection for placeable in world
-			if global.hotbar_slot == global.slot.BELT or global.hotbar_slot == global.slot.STORAGE:
-				if global.buildings_cant_place == true: # Buildings_cant_place
+		# Checks to see if the user has tried to place a building that isn't the Extractor or null
+		if ( 
+				Input.is_action_pressed("Left_click")
+				and (global.hotbar_slot != global.slot.EXTRACTOR
+				and global.hotbar_slot != global.slot.NONE)
+		):
+			# Checks to see if the users has selected any 1x1 building except Extractor
+			if (
+					global.hotbar_slot == global.slot.BELT 
+					or global.hotbar_slot == global.slot.STORAGE
+			):
+				# Checks to see if 1x1 buildings can't be placed in world except Extractor
+				if global.buildings_cant_place == true:
 					building_cant_place.show()
 					timer.start()
-			elif global.hotbar_slot == global.slot.SMELTER \
-			or global.hotbar_slot == global.slot.CONSTRUCTOR \
-			or global.hotbar_slot == global.slot.COMBINER:
-				if global.buildings_large_cant_place == true: # Large_buildings_cant_place
+			# Checks to see if the users has selected any non 1x1 building
+			elif (
+					global.hotbar_slot == global.slot.SMELTER \
+					or global.hotbar_slot == global.slot.CONSTRUCTOR \
+					or global.hotbar_slot == global.slot.COMBINER
+			):
+				# Checks to see if non 1x1 buildings can't be placed in world
+				if global.buildings_large_cant_place == true:
 					building_cant_place.show()
 					timer.start()
-		if Input.is_action_pressed("Left_click") \
-		and global.hotbar_slot == global.slot.EXTRACTOR \
-		and global.extractor_cant_place == true: # Extractor_cant_place
+		# Checks to see if the Extractor can't be placed in world
+		if (
+				Input.is_action_pressed("Left_click")
+				and global.hotbar_slot == global.slot.EXTRACTOR
+				and global.extractor_cant_place == true
+		):
 			extractor_cant_place.show()
 			timer.start()
-		if Input.is_action_pressed("Left_click") \
-		and global.hotbar_slot == global.slot.BELT \
-		and not global.buildings_cant_place: # Belt_placement
-			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/TILE_SIZE)
+		# Checks to see if the user has selected the Belt and it can be placed in world
+		if (
+				Input.is_action_pressed("Left_click")
+				and global.hotbar_slot == global.slot.BELT
+				and not global.buildings_cant_place
+		):
+			var pos: Vector2i = Vector2i(get_global_mouse_position().snapped(Vector2(16,16)) / TILE_SIZE)
+			# Creates an instansiated clone of the Belt and sets the bitmap
 			if not global.bitmap.get_bit(pos.x, pos.y):
 				print(pos)
-				var belt = belt_scene.instantiate()
-				belt.position = (get_global_mouse_position() - Vector2.ONE * 8).snapped(Vector2(16,16))
-				belt.position += Vector2.ONE * 8
+				var belt: Node = belt_scene.instantiate()
+				belt.position = (get_global_mouse_position() \
+				- Vector2.ONE * TILE_OFFSET).snapped(Vector2(16,16))
+				belt.position += Vector2.ONE * TILE_OFFSET
 				belt.modulate.a = 1
 				belt.rotation_degrees = direction
-				belt.direction = rotation/QUARTER_ROTATION
-				belt.set_meta("Belt", direction/QUARTER_ROTATION)
+				belt.direction = rotation / QUARTER_ROTATION
+				belt.set_meta("Belt", direction / QUARTER_ROTATION)
 				in_world_clones.add_child(belt)
 				belt.clone = true
 				global.bitmap.set_bit(pos.x, pos.y, true)
-		if Input.is_action_pressed("Left_click") \
-		and global.hotbar_slot == global.slot.EXTRACTOR \
-		and not global.extractor_cant_place: # Extractor_placement
-			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/TILE_SIZE)
+		# Checks to see if the user has selected the Extractor and it can be placed in world
+		if (
+				Input.is_action_pressed("Left_click")
+				and global.hotbar_slot == global.slot.EXTRACTOR
+				and not global.extractor_cant_place
+		):
+			var pos: Vector2i = Vector2i(get_global_mouse_position().snapped(Vector2(16,16)) / TILE_SIZE)
+			# Creates an instansiated clone of the Extractor and sets the bitmap
 			if not global.bitmap.get_bit(pos.x, pos.y):
 				print(pos)
-				var extractor = extractor_scene.instantiate()
-				extractor.position = (get_global_mouse_position() - Vector2.ONE * 8).snapped(Vector2(16,16))
-				extractor.position += Vector2.ONE * 8
+				var extractor: Node = extractor_scene.instantiate()
+				extractor.position = (get_global_mouse_position() \
+				- Vector2.ONE * TILE_OFFSET).snapped(Vector2(16,16))
+				extractor.position += Vector2.ONE * TILE_OFFSET
 				extractor.modulate.a = 1
 				extractor.rotation_degrees = direction
-				extractor.direction = rotation/QUARTER_ROTATION
-				extractor.set_meta("Extractor", direction/QUARTER_ROTATION)
+				extractor.direction = rotation / QUARTER_ROTATION
+				extractor.set_meta("Extractor", direction / QUARTER_ROTATION)
 				in_world_clones.add_child(extractor)
 				extractor.clone = true
 				global.bitmap.set_bit(pos.x, pos.y, true)
 				global.extractor_placed = true
-		if Input.is_action_pressed("Left_click") \
-		and global.hotbar_slot == global.slot.SMELTER \
-		and not global.buildings_large_cant_place: # Smelter_placement
-			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/16)
-			if not global.bitmap.get_bit(pos.x, pos.y) and not global.bitmap.get_bit(pos.x+1, pos.y) \
-			and not global.bitmap.get_bit(pos.x, pos.y+1 ) and not global.bitmap.get_bit(pos.x+1, pos.y+1):
+		# Checks to see if the user has selected the Smelter and it can be placed in world
+		if (
+				Input.is_action_pressed("Left_click")
+				and global.hotbar_slot == global.slot.SMELTER
+				and not global.buildings_large_cant_place
+		):
+			var pos: Vector2i = Vector2i(get_global_mouse_position().snapped(Vector2(16,16)) / TILE_SIZE)
+			# Creates an instansiated clone of the Smelter and sets the bitmap
+			if (
+					not global.bitmap.get_bit(pos.x, pos.y) 
+					and not global.bitmap.get_bit(pos.x + 1, pos.y)
+					and not global.bitmap.get_bit(pos.x, pos.y + 1 ) 
+					and not global.bitmap.get_bit(pos.x + 1, pos.y + 1)
+			):
 				print(pos)
-				var smelter = smelter_scene.instantiate()
+				var smelter: Node = smelter_scene.instantiate()
 				smelter.position = pos * TILE_SIZE
 				smelter.modulate.a = 1
-				smelter.set_meta("Smelter", direction/QUARTER_ROTATION)
+				smelter.set_meta("Smelter", direction / QUARTER_ROTATION)
 				in_world_clones.add_child(smelter)
 				smelter.clone = true
 				global.bitmap.set_bit(pos.x, pos.y, true)
-				global.bitmap.set_bit(pos.x+1, pos.y, true)
-				global.bitmap.set_bit(pos.x, pos.y+1, true)
-				global.bitmap.set_bit(pos.x+1, pos.y+1, true)
-		if Input.is_action_pressed("Left_click") \
-		and global.hotbar_slot == global.slot.CONSTRUCTOR \
-		and not global.buildings_large_cant_place: # Constructor_placement
-			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/TILE_SIZE)
-			if not global.bitmap.get_bit(pos.x, pos.y) \
-			and not global.bitmap.get_bit(pos.x+1, pos.y) \
-			and not global.bitmap.get_bit(pos.x, pos.y+1) \
-			and not global.bitmap.get_bit(pos.x+1, pos.y+1):
+				global.bitmap.set_bit(pos.x + 1, pos.y, true)
+				global.bitmap.set_bit(pos.x, pos.y + 1, true)
+				global.bitmap.set_bit(pos.x + 1, pos.y + 1, true)
+		# Checks to see if the user has selected the Constructor and it can be placed in world
+		if (
+				Input.is_action_pressed("Left_click") \
+				and global.hotbar_slot == global.slot.CONSTRUCTOR \
+				and not global.buildings_large_cant_place
+		):
+			var pos: Vector2i = Vector2i(get_global_mouse_position().snapped(Vector2(16,16)) / TILE_SIZE)
+			# Creates an instansiated clone of the Constructor and sets the bitmap
+			if (
+					not global.bitmap.get_bit(pos.x, pos.y) \
+					and not global.bitmap.get_bit(pos.x + 1, pos.y) \
+					and not global.bitmap.get_bit(pos.x, pos.y + 1) \
+					and not global.bitmap.get_bit(pos.x + 1, pos.y + 1)
+			):
 				print(pos)
-				var constructor = constructor_scene.instantiate()
+				var constructor: Node = constructor_scene.instantiate()
 				constructor.position = pos * TILE_SIZE
 				constructor.modulate.a = 1
-				constructor.set_meta("Constructor", direction/QUARTER_ROTATION)
+				constructor.set_meta("Constructor", direction / QUARTER_ROTATION)
 				in_world_clones.add_child(constructor)
 				constructor.clone = true
 				global.bitmap.set_bit(pos.x, pos.y, true)
-				global.bitmap.set_bit(pos.x+1, pos.y, true)
-				global.bitmap.set_bit(pos.x, pos.y+1, true)
-				global.bitmap.set_bit(pos.x+1, pos.y+1, true)
-		if Input.is_action_pressed("Left_click") \
-		and global.hotbar_slot == global.slot.STORAGE \
-		and not global.buildings_cant_place: # Storage_placement
-			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/TILE_SIZE)
+				global.bitmap.set_bit(pos.x + 1, pos.y, true)
+				global.bitmap.set_bit(pos.x, pos.y + 1, true)
+				global.bitmap.set_bit(pos.x + 1, pos.y + 1, true)
+		# Checks to see if the user has selected the Storage and it can be placed in world
+		if (
+				Input.is_action_pressed("Left_click") \
+				and global.hotbar_slot == global.slot.STORAGE \
+				and not global.buildings_cant_place
+		):
+			var pos: Vector2i = Vector2i(get_global_mouse_position().snapped(Vector2(16,16)) / TILE_SIZE)
+			# Creates an instansiated clone of the Storage and sets the bitmap
 			if not global.bitmap.get_bit(pos.x, pos.y):
 				print(pos)
-				var storage = storage_scene.instantiate()
-				storage.position = (get_global_mouse_position() - Vector2.ONE * 8).snapped(Vector2(16,16))
-				storage.position += Vector2.ONE * 8
+				var storage: Node = storage_scene.instantiate()
+				storage.position = (get_global_mouse_position() \
+				- Vector2.ONE * TILE_OFFSET).snapped(Vector2(16,16))
+				storage.position += Vector2.ONE * TILE_OFFSET
 				storage.modulate.a = 1
 				storage.rotation_degrees = direction
-				storage.direction = rotation/QUARTER_ROTATION
-				storage.set_meta("Storage", direction/QUARTER_ROTATION)
+				storage.direction = rotation / QUARTER_ROTATION
+				storage.set_meta("Storage", direction / QUARTER_ROTATION)
 				in_world_clones.add_child(storage)
 				storage.clone = true
 				global.bitmap.set_bit(pos.x, pos.y, true)
-		if Input.is_action_pressed("Left_click") \
-		and global.hotbar_slot == global.slot.COMBINER \
-		and not global.buildings_large_cant_place: # Combiner_placement
-			var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/TILE_SIZE)
-			if not global.bitmap.get_bit(pos.x, pos.y) \
-			and not global.bitmap.get_bit(pos.x+1, pos.y) \
-			and not global.bitmap.get_bit(pos.x, pos.y+1 ) \
-			and not global.bitmap.get_bit(pos.x+1, pos.y+1) \
-			and not global.bitmap.get_bit(pos.x-1, pos.y) \
-			and not global.bitmap.get_bit(pos.x-1, pos.y+1) \
-			and not global.bitmap.get_bit(pos.x-1, pos.y-1) \
-			and not global.bitmap.get_bit(pos.x, pos.y-1) \
-			and not global.bitmap.get_bit(pos.x+1, pos.y-1):
+		# Checks to see if the user has selected the Combiner and it can be placed in world
+		if (
+				Input.is_action_pressed("Left_click")
+				and global.hotbar_slot == global.slot.COMBINER
+				and not global.buildings_large_cant_place
+		):
+			var pos: Vector2i = Vector2i(get_global_mouse_position().snapped(Vector2(16,16)) / TILE_SIZE)
+			# Creates an instansiated clone of the Combiner and sets the bitmap
+			if (
+					not global.bitmap.get_bit(pos.x, pos.y)
+					and not global.bitmap.get_bit(pos.x + 1, pos.y)
+					and not global.bitmap.get_bit(pos.x, pos.y + 1) 
+					and not global.bitmap.get_bit(pos.x + 1, pos.y + 1)
+					and not global.bitmap.get_bit(pos.x - 1, pos.y)
+					and not global.bitmap.get_bit(pos.x - 1, pos.y + 1)
+					and not global.bitmap.get_bit(pos.x - 1, pos.y - 1)
+					and not global.bitmap.get_bit(pos.x, pos.y - 1)
+					and not global.bitmap.get_bit(pos.x + 1, pos.y - 1)
+			):
 				print(pos)
-				var combiner = combiner_scene.instantiate()
-				combiner.position = (get_global_mouse_position() - Vector2.ONE * 8).snapped(Vector2(16,16))
-				combiner.position += Vector2.ONE * 8
+				var combiner: Node = combiner_scene.instantiate()
+				combiner.position = (get_global_mouse_position() \
+				 - Vector2.ONE * TILE_OFFSET).snapped(Vector2(16,16))
+				combiner.position += Vector2.ONE * TILE_OFFSET
 				combiner.modulate.a = 1
-				combiner.set_meta("Combiner", direction/QUARTER_ROTATION)
+				combiner.set_meta("Combiner", direction / QUARTER_ROTATION)
 				in_world_clones.add_child(combiner)
 				combiner.clone = true
 				global.bitmap.set_bit(pos.x, pos.y, true)
 				global.bitmap.set_bit(pos.x+1, pos.y, true)
 				global.bitmap.set_bit(pos.x, pos.y+1, true)
-				global.bitmap.set_bit(pos.x+1, pos.y+1, true)
-				global.bitmap.set_bit(pos.x-1, pos.y, true)
-				global.bitmap.set_bit(pos.x-1, pos.y+1, true)
-				global.bitmap.set_bit(pos.x-1, pos.y-1, true)
-				global.bitmap.set_bit(pos.x, pos.y-1, true)
-				global.bitmap.set_bit(pos.x+1, pos.y-1, true)
+				global.bitmap.set_bit(pos.x + 1, pos.y + 1, true)
+				global.bitmap.set_bit(pos.x - 1, pos.y, true)
+				global.bitmap.set_bit(pos.x - 1, pos.y + 1, true)
+				global.bitmap.set_bit(pos.x - 1, pos.y - 1, true)
+				global.bitmap.set_bit(pos.x, pos.y - 1, true)
+				global.bitmap.set_bit(pos.x + 1, pos.y - 1, true)
+	# This deletes the placeable machinery and sets the deletes the bitmap
 	if Input.is_action_pressed("Right_click"):
-		var pos = Vector2i(get_global_mouse_position().snapped(Vector2(16,16))/TILE_SIZE)
+		var pos: Vector2i = Vector2i(get_global_mouse_position().snapped(Vector2(16,16)) / TILE_SIZE)
 		if global.bitmap.get_bit(pos.x, pos.y):
 			global.bitmap.set_bit(pos.x, pos.y, false)
+	# This controls the rotation of the placeable machinery
 	if Input.is_action_just_pressed("Rotate(R)"):
 		direction += QUARTER_ROTATION
 
@@ -309,29 +389,32 @@ func _on_resume_pressed():
 	get_tree().paused = false
 
 
-func _on_belt_timer_timeout() -> void: # Animates the conveyer belt
+# This updates the animations for the placeable objects in world
+func _on_placeable_animations_timer_timeout() -> void: # Animates the conveyer belt
 	if global.frames < NUM_ANIMATION_FRAMES:
 		global.frames += 1
 	else:
 		global.frames = 0
 
 
+# This updates the stopwatch seen in the top center of the World scene
 func update_time_display():
-	var minutes = int(elapsed_time / 60)
-	var seconds = int(fmod(elapsed_time, 60))
-	var milliseconds = int(fmod(elapsed_time, 1) * 100)
+	var minutes: int = int(elapsed_time / MINUTES_FACTOR)
+	var seconds: int = int(fmod(elapsed_time, MINUTES_FACTOR))
+	var milliseconds: int = int(fmod(elapsed_time, 1) * MILLISECONDS_FACTOR)
 	time_label.text = "%02d:%02d.%02d" % [minutes, seconds, milliseconds]
 	time_elasped_label.text = ("Time Elasped: " \
 	+ "%02d:%02d.%02d" % [minutes, seconds, milliseconds])
 
 
+# This saves best_time to the file containing the users best_time
 func save_game_data(best_time: float):
-	var save_data = {
+	var save_data: Dictionary = {
 		"best_time": best_time
 	}
 	
-	var json_string = JSON.stringify(save_data)
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	var json_string: String = JSON.stringify(save_data)
+	var file: FileAccess = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file:
 		file.store_string(json_string)
 		file.close()
@@ -339,15 +422,16 @@ func save_game_data(best_time: float):
 		print("Error opening file to save data")
 
 
+# This access the file which contains the users best time and sets best_time
 func load_game_data():
 	if FileAccess.file_exists(SAVE_PATH):
-		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+		var file: FileAccess = FileAccess.open(SAVE_PATH, FileAccess.READ)
 		if file:
-			var json_string = file.get_as_text()
+			var json_string: String = file.get_as_text()
 			file.close()
-			var parse_result = JSON.parse_string(json_string)
+			var parse_result: Dictionary = JSON.parse_string(json_string)
 			if parse_result is Dictionary:
-				var loaded_data = parse_result
+				var loaded_data: Dictionary = parse_result
 				best_time = loaded_data.get("best_time", null)
 				return loaded_data
 			else:
@@ -359,12 +443,13 @@ func load_game_data():
 	return {}
 
 
+# This saves the map seed to the file which contains the map seed
 func save_seed(Seed: int):
-	var save_data = {
+	var save_data: Dictionary = {
 		"Seed": Seed
 	}
-	var json_string = JSON.stringify(save_data)
-	var file = FileAccess.open(SAVE_SEED, FileAccess.WRITE)
+	var json_string: String = JSON.stringify(save_data)
+	var file: FileAccess = FileAccess.open(SAVE_SEED, FileAccess.WRITE)
 	if file:
 		file.store_string(json_string)
 		file.close()
@@ -372,15 +457,16 @@ func save_seed(Seed: int):
 		print("Error opening file to save data")
 
 
+# This access the file which contains the map seed and sets the seed to the saved seed
 func load_seed():
 	if FileAccess.file_exists(SAVE_SEED):
-		var file = FileAccess.open(SAVE_SEED, FileAccess.READ)
+		var file: FileAccess = FileAccess.open(SAVE_SEED, FileAccess.READ)
 		if file:
-			var json_string = file.get_as_text()
+			var json_string: String = file.get_as_text()
 			file.close()
-			var parse_result = JSON.parse_string(json_string)
+			var parse_result: Dictionary = JSON.parse_string(json_string)
 			if parse_result is Dictionary:
-				var loaded_data = parse_result
+				var loaded_data: Dictionary = parse_result
 				global.seed = loaded_data.get("Seed", 0)
 				return loaded_data
 			else:
@@ -396,7 +482,7 @@ func _on_save_button_pressed() -> void:
 	save_seed(global.seed)
 
 
-func _on_new_save_button_button_up() -> void:
+func _on_new_seed_button_pressed() -> void:
 	global.seed += 1
 	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))
 

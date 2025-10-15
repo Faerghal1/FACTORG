@@ -6,9 +6,9 @@ extends TileMapLayer
 var moisture: FastNoiseLite = FastNoiseLite.new()
 var temperature: FastNoiseLite = FastNoiseLite.new()
 var altitude: FastNoiseLite = FastNoiseLite.new()
-var biome: Dictionary = {}
-var objects: Dictionary = {}
-var tiles: Dictionary = {
+var biome = {}
+var objects = {}
+var tiles = {
 	"grass": Vector2i(0,0), "grass_tree": Vector2i(0,2),
 	"grass_rock": Vector2i(0,1), "grass_boulder": Vector2i(0,3),
 	"grass_iron": Vector2i(0,4),"grass_copper": Vector2i(0,5),
@@ -45,9 +45,9 @@ var tiles: Dictionary = {
 	"sand_rock": Vector2i(9,1), "sand_boulder": Vector2i(9,0),
 	"sand_gold": Vector2i(9,6),
 
-	"stone": Vector2i(10,0)
+	"stone": Vector2i(10,0),
 	}
-var biome_data: Dictionary = {
+var biome_data = {
 	"plains": {"grass": 0.8, "grass_tree": 0.15, "grass_rock": 0.025, "grass_boulder": 0.0125,
 	"grass_iron": 0.00625, "grass_copper": 0.00625},
 			
@@ -79,7 +79,7 @@ var biome_data: Dictionary = {
 
 	"beach":  {"sand": 0.99, "stone": 0.01},
 	}
-var object_data: Dictionary = {
+var object_data = {
 	"plains": {"tree": 0.03},
 	"beach": {"tree": 0.01}, 
 	"jungle": {"tree": 0.04},
@@ -87,10 +87,39 @@ var object_data: Dictionary = {
 	"lake": {},
 	"mountain": {"spruce_tree":0.02},
 	"snow": {"spruce_tree": 0.02},
-	"ocean":{}
+	"ocean":{},
 }
 const SAVE_SEED: String = "user://game_seed.json"
+const MOUNTAIN_MIN_ALT: float = 0.7
+const MOUNTAIN_MAX_ALT: float = 0.9
+const SPRUCE_MIN_MOIST: float = 0.5
+const SPRUCE_MIN_TEMP: float = -0.7
+const SPRUCE_MAX_TEMP: float = -0.2
+const MUD_MAX_MOIST: float = 0.5
+const MUD_MIN_MOIST: float = 0.0
+const MUD_MIN_TEMP: float = 0.2
+const MUD_MAX_TEMP: float = 0.4
+const SWAMP_MIN_TEMP: float = -0.3 
+const SWAMP_MAX_TEMP: float = 0.4 
+const SWAMP_MIN_MOIST: float = 0.6
+const LAKE_MIN_MOIST: float = 1.0
+const LAKE_MAX_MOIST: float = 0.6
+const LAKE_MAX_TEMP: float = -0.4
+const LAKE_MIN_TEMP: float = -0.7
+const DESERT_MAX_TEMP: float = 0.2
+const DESERT_MAX_MOIST: float = 0.0
+const JUNGLE_MIN_MOIST: float = 0.0 
+const JUNGLE_MAX_MOIST: float = 1.0
+const JUNGLE_MIN_TEMP: float = 0.5
+const PLAINS_MAX_MOIST: float = 0.5
+const PLAINS_MAX_TEMP: float = 0.1 
+const PLAINS_MIN_TEMP: float = -0.1
+const OTHER_BIOME_MAX_ALT: float = 0.7
+const OCEAN_MAX_ALT: float = -0.4
+const BEACH_MAX_ALT: float = -0.3
 
+
+# Generates random tiles with different data creating random map generation of biomes
 func random_tile(data, biome):
 	var current_biome = data[biome]
 	var rand_num = randf()
@@ -105,18 +134,20 @@ func random_tile(data, biome):
 func _ready():
 	print(global.seed)
 	seed(global.seed)
-	moisture.seed = randi() # Having three randi so that they are unique
+	# Having three randi so that they are unique
+	moisture.seed = randi() 
 	temperature.seed = randi()
 	altitude.seed = randi()
 	generate_chunk(player.position)
 	print(global.seed)
 
 
+# This access the file which contains the map seed and sets the seed to the saved seed
 func load_seed():
 	if FileAccess.file_exists(SAVE_SEED):
-		var file = FileAccess.open(SAVE_SEED, FileAccess.READ)
+		var file: FileAccess = FileAccess.open(SAVE_SEED, FileAccess.READ)
 		if file:
-			var json_string = file.get_as_text()
+			var json_string: String = file.get_as_text()
 			file.close()
 			var parse_result = JSON.parse_string(json_string)
 			if parse_result is Dictionary:
@@ -132,83 +163,112 @@ func load_seed():
 	return {}
 
 
+# Generates biomes based off moisture, altitude, and temperature then sets map tiles to biome tiles
 func generate_chunk(position):
-	var tile_pos = local_to_map(position) # gets the position in tilemap coords
+	var tile_pos: Vector2i = local_to_map(position) # Gets the position in tilemap coords
 	for x in global.width:
 		for y in global.height:
-			var pos = Vector2(x,y)
-			var moist = moisture.get_noise_2d(x, y)
-			var temp = temperature.get_noise_2d(x, y)
-			var alt = altitude.get_noise_2d(x, y)
-			#Ocean
-			if alt < -0.4:
+			var pos: Vector2 = Vector2(x,y)
+			var moist: float = moisture.get_noise_2d(x, y)
+			var temp: float = temperature.get_noise_2d(x, y)
+			var alt: float = altitude.get_noise_2d(x, y)
+			#Ocean_biome generation
+			if alt < OCEAN_MAX_ALT:
 				biome[pos] = "ocean"
 				set_cell(Vector2i(x, y), 0,
 				tiles[random_tile(biome_data, "ocean")])
-			#Beach
-			elif alt < -0.3:
+			#Beach_biome generation
+			elif alt < BEACH_MAX_ALT:
 				biome[pos] = "beach"
 				set_cell(Vector2i(x, y), 0,
 				tiles[random_tile(biome_data, "beach")])
-			#Other Biomes
-			elif alt < 0.7:
-				#plains
-				if moist <= 0.5 and temp <= 0.1 and temp > -0.1:
+			# Rest of the generatable biomes
+			elif alt < OTHER_BIOME_MAX_ALT:
+				# Plains_biome generation
+				if (
+						moist <= PLAINS_MAX_MOIST 
+						and temp <= PLAINS_MAX_TEMP
+						and temp > PLAINS_MIN_TEMP
+				):
 					biome[pos] = "plains"
 					set_cell(Vector2i(x, y), 0,
 					tiles[random_tile(biome_data, "plains")])
-				#jungle
-				elif  moist > 0.0 and moist <= 1.0 and temp > 0.5:
+				# Jungle biome generation
+				elif  (
+						moist > JUNGLE_MIN_MOIST
+						and moist <= JUNGLE_MAX_MOIST
+						and temp > JUNGLE_MIN_TEMP
+				):
 					biome[pos] = "jungle"
 					set_cell(Vector2i(x, y), 0,
 					tiles[random_tile(biome_data, "jungle")])
-				#desert
-				elif temp > 0.2 and moist <= 0.0:
+				# Desert_biome generation
+				elif temp > DESERT_MAX_TEMP and moist <= DESERT_MAX_MOIST:
 					biome[pos] = "desert"
 					set_cell(Vector2i(x, y), 0,
 					tiles[random_tile(biome_data, "desert")])
-				#lakes
-				elif moist <= 1.0 and moist > 0.6 and temp <= -0.4 and temp > -0.7:
+				# Lake_biome generation
+				elif (
+						moist <= LAKE_MIN_MOIST 
+						and moist > LAKE_MAX_MOIST
+						and temp <= LAKE_MAX_TEMP
+						and temp > LAKE_MIN_TEMP
+				):
 					biome[pos] = "lake"
 					set_cell(Vector2i(x, y), 0,
 					tiles[random_tile(biome_data, "lake")])
-				#Swamp
-				elif temp > -0.3 and temp <= 0.4 and moist > 0.6:
+				# Swamp_biome generation
+				elif (
+						temp > SWAMP_MIN_TEMP
+						and temp <= SWAMP_MAX_TEMP 
+						and moist > SWAMP_MIN_MOIST
+				):
 					biome[pos] = "swamp"
 					set_cell(Vector2i(x, y), 0,
 					tiles[random_tile(biome_data, "swamp")])
-				#Mud
-				elif moist <= 0.5 and moist > 0.0 and temp <= 0.4 and temp >0.2:
+				# Mud_biome generation
+				elif (
+						moist <= MUD_MAX_MOIST 
+						and moist > MUD_MIN_MOIST 
+						and temp <= MUD_MAX_TEMP 
+						and temp > MUD_MIN_TEMP
+				):
 					biome[pos] = "mud"
 					set_cell(Vector2i(x, y), 0,
 					tiles[random_tile(biome_data, "mud")])
-				#spruce
-				elif moist <= 0.5 and temp > -0.7 and temp<= -0.2:
+				# Spruce_biome generation
+				elif (
+						moist <= SPRUCE_MIN_MOIST 
+						and temp > SPRUCE_MIN_TEMP 
+						and temp <= SPRUCE_MAX_TEMP
+				):
 					biome[pos] = "spruce"
 					set_cell(Vector2i(x, y), 0,
 					tiles[random_tile(biome_data, "spruce")])
+				# Snow_biome generation
 				else :
 					biome[pos] = "snow"
 					set_cell(Vector2i(x, y), 0,
 					tiles[random_tile(biome_data, "snow")])
-			#Mountains
-			elif  alt>= 0.7 and alt <= 0.9:
+			# Mountain_biome generation
+			elif  alt >= MOUNTAIN_MIN_ALT and alt <= MOUNTAIN_MAX_ALT:
 				biome[pos] = "mountain"
 				set_cell(Vector2i(x, y), 0,
 				tiles[random_tile(biome_data, "mountain")])
-			#Snow
+			# Snow_biome generation
 			else:
 				biome[pos] = "snow"
 				set_cell(Vector2i(x, y), 0,
 				tiles[random_tile(biome_data, "snow")])
 
 
+# This saves the map seed to the file which contains the map seed
 func save_seed(seed: int):
 	var save_data = {
 		"Seed": seed
 	}
-	var json_string = JSON.stringify(save_data)
-	var file = FileAccess.open(SAVE_SEED, FileAccess.WRITE)
+	var json_string: String = JSON.stringify(save_data)
+	var file: FileAccess = FileAccess.open(SAVE_SEED, FileAccess.WRITE)
 	if file:
 		file.store_string(json_string)
 		file.close()

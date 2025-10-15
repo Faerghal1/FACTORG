@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ruyfkei3vd2f"]
 
-[ext_resource type="Script" uid="uid://dprxouw24n6mq" path="res://Scripts/Copper_wire.gd" id="1_7rqn3"]
+[ext_resource type="Script" uid="uid://dprxouw24n6mq" path="res://Scripts/Gold_wire.gd" id="1_7rqn3"]
 [ext_resource type="Texture2D" uid="uid://cwa67ouggcrk6" path="res://Assets/Gold_wire.png" id="2_b3idc"]
 [ext_resource type="Script" uid="uid://dg1svbbude2re" path="res://Scripts/Item_sprites.gd" id="3_s2dig"]
 

@@ -5,14 +5,17 @@ extends Node2D
 const SAVE_SEED: String = "user://game_seed.json"
 
 
-func _ready() :
+# Called when the node enters the scene tree for the first time.
+func _ready():
 	load_seed()
 
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	get_tree().change_scene_to_file("res://Scenes/Main_menu.tscn")
 
 
+# This access the file which contains the map seed and sets the seed to the saved seed
 func load_seed():
 	if FileAccess.file_exists(SAVE_SEED):
 		var file = FileAccess.open(SAVE_SEED, FileAccess.READ)

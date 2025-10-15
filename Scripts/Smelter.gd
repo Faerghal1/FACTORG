@@ -18,28 +18,34 @@ var pos: Vector2i = Vector2i(0,0)
 var clone: bool = false
 const QUARTER_ROTATION: int = 90
 const TILE_SIZE: int = 16
+const MAP_OFFSET: int = 2
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	# Controls Smelter animation. It's globally linked with all other placeables
 	if clone == true:
 		animation.set_frame(global.frames)
+	# Checks if the user has selected Smelter
 	if clone == false and global.hotbar_slot == global.slot.SMELTER:
 		var map = get_tree().current_scene.get_node("Generated_map")
-		var cell = map.local_to_map(position/2)
+		var cell = map.local_to_map(position / MAP_OFFSET)
 		var data = map.get_cell_tile_data(cell)
+		# Checks the tile Smelter is hovering over and if water or mountain don't allow placement
 		if not data.get_custom_data("World") == "Unplaceable":
 			global.buildings_large_cant_place = false
 		else:
 			global.buildings_large_cant_place = true
 		position = get_global_mouse_position().snapped(Vector2(16,16))
+	# Controls the deletion of placed Smelters and deletion of the bitmap Smelter occupied
 	if Input.is_action_pressed("Right_click") and clone and delete:
-		var pos = Vector2i(position.snapped(Vector2(16,16))/TILE_SIZE)
+		var pos = Vector2i(position.snapped(Vector2(16,16)) / TILE_SIZE)
 		global.bitmap.set_bit(pos.x, pos.y, false)
-		global.bitmap.set_bit(pos.x+1, pos.y, false)
-		global.bitmap.set_bit(pos.x, pos.y+1, false)
-		global.bitmap.set_bit(pos.x+1, pos.y+1, false)
+		global.bitmap.set_bit(pos.x + 1, pos.y, false)
+		global.bitmap.set_bit(pos.x, pos.y + 1, false)
+		global.bitmap.set_bit(pos.x + 1, pos.y + 1, false)
 		queue_free()
+	# Shows or hides the Smelter that follows the users cursor
 	if clone == false:
 		if global.hotbar_slot == global.slot.SMELTER:
 			show()
@@ -49,8 +55,12 @@ func _process(_delta):
 
 func _on_area_entered(area):
 	if clone == true:
-		if area.has_meta("Resource") and iron_ingot_recipe.visible == true \
-		and not raycast.get_collider():
+		# Instantiates Iron_ingot resource
+		if (
+				area.has_meta("Resource") 
+				and iron_ingot_recipe.visible == true
+				and not raycast.get_collider()
+		):
 			var ingot = ingot_scene.instantiate()
 			ingot.position = position
 			ingot.modulate.a = 1
@@ -58,8 +68,12 @@ func _on_area_entered(area):
 			ingot.direction = rotation/QUARTER_ROTATION
 			ingot.set_meta("Ingot", direction/QUARTER_ROTATION)
 			add_sibling.call_deferred(ingot)
-		if area.has_meta("Copper") and copper_ingot_recipe.visible == true \
-		and not raycast.get_collider():
+		# Instantiates Copper_ingot resource
+		if (
+				area.has_meta("Copper") 
+				and copper_ingot_recipe.visible == true
+				and not raycast.get_collider()
+		):
 			var copper_ingot = copper_ingot_scene.instantiate()
 			copper_ingot.position = position
 			copper_ingot.modulate.a = 1
@@ -67,8 +81,12 @@ func _on_area_entered(area):
 			copper_ingot.direction = rotation/QUARTER_ROTATION
 			copper_ingot.set_meta("Copper_ingot", direction/QUARTER_ROTATION)
 			add_sibling.call_deferred(copper_ingot)
-		if area.has_meta("Gold") and gold_ingot_recipe.visible == true \
-		and not raycast.get_collider():
+		# Instantiates Gold_ingot resource
+		if (
+				area.has_meta("Gold") 
+				and gold_ingot_recipe.visible == true
+				and not raycast.get_collider()
+		):
 			var gold_ingot = gold_ingot_scene.instantiate()
 			gold_ingot.position = position
 			gold_ingot.modulate.a = 1

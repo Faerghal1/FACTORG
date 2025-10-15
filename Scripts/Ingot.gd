@@ -9,29 +9,38 @@ var pos: Vector2i = Vector2i(0,0)
 var moving: bool = false
 const QUARTER_ROTATION: int = 90
 
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if moving == true:
+		# Stops resource from moving if collided with any other resource
 		if not test_move(transform, Vector2(16, 0).rotated(rotation)):
 			timer.start()
 			moving = false
+	# Deletes resource if the user is hovering over it and presses delete
 	if Input.is_action_pressed("Right_click") and delete == true:
 		queue_free()
 
 
 func _on_area_entered(area):
-	if area.has_meta("Belt") and area.get_meta("Belt")>=0:
+	# When this resource has detected Belt move the resource foward in the direction of the Belt
+	if area.has_meta("Belt") and area.get_meta("Belt") >= 0:
 		moving = true
 		var dir = area.get_meta("Belt")
 		rotation_degrees = dir * QUARTER_ROTATION
-	if area.has_meta("Constructor") and area.get_meta("Constructor")>=0:
+	# When this resource has detected Constructor delete even if recipe doens't involve resource
+	if area.has_meta("Constructor") and area.get_meta("Constructor") >= 0:
 		queue_free()
-	if area.has_meta("Storage") and area.get_meta("Storage")>=0:
+	# When this resource has detected Combiner delete even if recipe doens't involve resource
+	if area.has_meta("Combiner") and area.get_meta("Combiner") >= 0:
+		queue_free()
+	# When this resource has detected Storage, delete and increase global counter for resource
+	if area.has_meta("Storage") and area.get_meta("Storage") >= 0:
 		global.ingot += 1
 		queue_free()
-	if area.has_meta("Combiner") and area.get_meta("Combiner")>=0:
-		queue_free()
 
 
+# When this resource has moved off Belt stop the resource from moving
 func _on_area_exited(area):
 	if area.has_meta("Direction_belt"):
 		moving = false

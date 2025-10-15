@@ -14,29 +14,34 @@ extends Area2D
 var clone: bool = false
 var direction: int = 0
 var delete: bool = false
-var pos: Vector2i = Vector2i(0,0)
 var bitmap: BitMap = BitMap.new()
 const TILE_SIZE: int = 16
 const QUARTER_ROTATION: int = 90
+const MAP_OFFSET: int = 2
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	# Checks if the user has selected Constructor
 	if clone == false and global.hotbar_slot == global.slot.CONSTRUCTOR:
 		var map = get_tree().current_scene.get_node("Generated_map")
-		var cell = map.local_to_map(position/2)
+		var cell = map.local_to_map(position / MAP_OFFSET)
 		var data = map.get_cell_tile_data(cell)
+		# Checks the tile Constructor is hovering over and if water or mountain don't allow placement
 		if not data.get_custom_data("World") == "Unplaceable":
 			global.buildings_large_cant_place = false
 		else:
 			global.buildings_large_cant_place = true
 		position = get_global_mouse_position().snapped(Vector2(16,16))
+	# Controls the deletion of placed Constructors and deletion of the bitmap Constructor occupied
 	if Input.is_action_pressed("Right_click") and clone and delete:
-		var pos = Vector2i(position.snapped(Vector2(16,16))/TILE_SIZE)
+		var pos = Vector2i(position.snapped(Vector2(16,16)) / TILE_SIZE)
 		global.bitmap.set_bit(pos.x, pos.y, false)
-		global.bitmap.set_bit(pos.x+1, pos.y, false)
-		global.bitmap.set_bit(pos.x, pos.y+1, false)
-		global.bitmap.set_bit(pos.x+1, pos.y+1, false)
+		global.bitmap.set_bit(pos.x + 1, pos.y, false)
+		global.bitmap.set_bit(pos.x, pos.y + 1, false)
+		global.bitmap.set_bit(pos.x + 1, pos.y + 1, false)
 		queue_free()
+	# Shows or hides the Constructor that follows the users cursor
 	if clone == false:
 		if global.hotbar_slot == global.slot.CONSTRUCTOR:
 			show()
@@ -46,8 +51,12 @@ func _process(_delta):
 
 func _on_area_entered(area):
 	if clone == true:
-		if area.has_meta("Ingot") and iron_rod_recipe.visible == true \
-		and not raycast.get_collider():
+		# Instantiates Iron_rod resource
+		if (
+				area.has_meta("Ingot") 
+				and iron_rod_recipe.visible == true
+				and not raycast.get_collider()
+		):
 			var rod = rod_scene.instantiate()
 			rod.position = position
 			rod.modulate.a = 1
@@ -55,8 +64,12 @@ func _on_area_entered(area):
 			rod.direction = rotation/QUARTER_ROTATION
 			rod.set_meta("Rod", direction/QUARTER_ROTATION)
 			add_sibling.call_deferred(rod)
-		if area.has_meta("Copper_ingot") and copper_foil_recipe.visible == true \
-		and not raycast.get_collider():
+		# Instantiates Copper_foil resource
+		if (
+				area.has_meta("Copper_ingot") 
+				and copper_foil_recipe.visible == true
+				and not raycast.get_collider()
+		):
 			var copper_foil = copper_foil_scene.instantiate()
 			copper_foil.position = position
 			copper_foil.modulate.a = 1
@@ -64,8 +77,12 @@ func _on_area_entered(area):
 			copper_foil.direction = rotation/QUARTER_ROTATION
 			copper_foil.set_meta("Foil", direction/QUARTER_ROTATION)
 			add_sibling.call_deferred(copper_foil)
-		if area.has_meta("Gold_ingot") and gold_wire_recipe.visible == true \
-		and not raycast.get_collider():
+		# Instantiates Gold_wire resource
+		if (
+				area.has_meta("Gold_ingot") 
+				and gold_wire_recipe.visible == true
+				and not raycast.get_collider()
+		):
 			var gold_wire = gold_wire_scene.instantiate()
 			gold_wire.position = position
 			gold_wire.modulate.a = 1
