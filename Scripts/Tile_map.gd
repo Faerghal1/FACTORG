@@ -6,9 +6,9 @@ extends TileMapLayer
 var moisture: FastNoiseLite = FastNoiseLite.new()
 var temperature: FastNoiseLite = FastNoiseLite.new()
 var altitude: FastNoiseLite = FastNoiseLite.new()
-var biome = {}
-var objects = {}
-var tiles = {
+var biome: Dictionary = {}
+var objects: Dictionary = {}
+var tiles: Dictionary = {
 	"grass": Vector2i(0,0), "grass_tree": Vector2i(0,2),
 	"grass_rock": Vector2i(0,1), "grass_boulder": Vector2i(0,3),
 	"grass_iron": Vector2i(0,4),"grass_copper": Vector2i(0,5),
@@ -47,7 +47,7 @@ var tiles = {
 
 	"stone": Vector2i(10,0),
 	}
-var biome_data = {
+var biome_data: Dictionary = {
 	"plains": {"grass": 0.8, "grass_tree": 0.15, "grass_rock": 0.025, "grass_boulder": 0.0125,
 	"grass_iron": 0.00625, "grass_copper": 0.00625},
 			
@@ -79,7 +79,7 @@ var biome_data = {
 
 	"beach":  {"sand": 0.99, "stone": 0.01},
 	}
-var object_data = {
+var object_data: Dictionary = {
 	"plains": {"tree": 0.03},
 	"beach": {"tree": 0.01}, 
 	"jungle": {"tree": 0.04},
@@ -121,8 +121,8 @@ const BEACH_MAX_ALT: float = -0.3
 
 # Generates random tiles with different data creating random map generation of biomes
 func random_tile(data, biome):
-	var current_biome = data[biome]
-	var rand_num = randf()
+	var current_biome: Dictionary = data[biome]
+	var rand_num: float = randf()
 	var running_total = 0
 	for tile in current_biome:
 		running_total = running_total + current_biome[tile]
