@@ -14,7 +14,6 @@ extends Area2D
 @export var gold_ingot_scene: PackedScene
 var direction: int = 0
 var delete: bool = false
-var pos: Vector2i = Vector2i(0,0)
 var clone: bool = false
 const QUARTER_ROTATION: int = 90
 const TILE_SIZE: int = 16
