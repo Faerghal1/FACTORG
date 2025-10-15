@@ -14,7 +14,6 @@ extends Area2D
 var clone: bool = false
 var direction: int = 0
 var delete: bool = false
-var pos: Vector2i = Vector2i(0,0)
 var bitmap: BitMap = BitMap.new()
 const TILE_SIZE: int = 16
 const QUARTER_ROTATION: int = 90

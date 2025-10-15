@@ -6,7 +6,6 @@ extends Area2D
 @export var resource_scene: PackedScene
 @export var copper_scene: PackedScene
 @export var gold_scene: PackedScene
-var map: TileMapLayer
 var clone: bool = false
 var direction: int = 0
 var delete: bool = false

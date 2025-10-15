@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://cyr02t8xhb32u" path="res://Scripts/Camera.gd" id="1_0ib3v"]
 
 [node name="Camera2D" type="Camera2D"]
+limit_left = 0
+limit_top = 0
+limit_right = 8000
+limit_bottom = 8000
+limit_smoothed = true
 script = ExtResource("1_0ib3v")
 
 [node name="Timer" type="Timer" parent="."]

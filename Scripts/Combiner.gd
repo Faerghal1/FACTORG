@@ -13,7 +13,6 @@ extends Area2D
 var clone: bool = false
 var direction: int = 0
 var delete: bool = false
-var pos: Vector2i = Vector2i(0,0)
 var wire: bool = false
 var foil: bool = false
 var rod: bool = false
