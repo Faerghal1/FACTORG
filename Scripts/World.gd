@@ -231,6 +231,9 @@ func _process(delta):
 				belt.set_meta("Belt", direction / QUARTER_ROTATION)
 				in_world_clones.add_child(belt)
 				belt.clone = true
+				belt.hide()
+				if global.successful_place == true:
+					belt.show()
 				global.bitmap.set_bit(pos.x, pos.y, true)
 		# Checks to see if the user has selected the Extractor and it can be placed in world
 		if (
@@ -253,6 +256,9 @@ func _process(delta):
 				extractor.set_meta("Extractor", direction / QUARTER_ROTATION)
 				in_world_clones.add_child(extractor)
 				extractor.clone = true
+				extractor.hide()
+				if global.successful_place == true:
+					extractor.show()
 				global.bitmap.set_bit(pos.x, pos.y, true)
 				global.extractor_placed = true
 		# Checks to see if the user has selected the Smelter and it can be placed in world
@@ -263,12 +269,6 @@ func _process(delta):
 		):
 			var pos: Vector2i = Vector2i(get_global_mouse_position().snapped(Vector2(16,16)) / TILE_SIZE)
 			# Creates an instansiated clone of the Smelter and sets the bitmap
-			#if (
-					#not global.bitmap.get_bit(pos.x, pos.y) 
-					#and not global.bitmap.get_bit(pos.x + 1, pos.y)
-					#and not global.bitmap.get_bit(pos.x, pos.y + 1 ) 
-					#and not global.bitmap.get_bit(pos.x + 1, pos.y + 1)
-			#):
 			print(pos)
 			var smelter: Node = smelter_scene.instantiate()
 			smelter.position = pos * TILE_SIZE
@@ -276,6 +276,9 @@ func _process(delta):
 			smelter.set_meta("Smelter", direction / QUARTER_ROTATION)
 			in_world_clones.add_child(smelter)
 			smelter.clone = true
+			smelter.hide()
+			if global.successful_place == true:
+				smelter.show()
 			if (
 					not global.bitmap.get_bit(((smelter.position.x - TILE_OFFSET) 
 				/ TILE_SIZE), ((smelter.position.y - TILE_OFFSET) / TILE_SIZE)) 
@@ -311,6 +314,9 @@ func _process(delta):
 			constructor.set_meta("Constructor", direction / QUARTER_ROTATION)
 			in_world_clones.add_child(constructor)
 			constructor.clone = true
+			constructor.hide()
+			if global.successful_place == true:
+				constructor.show()
 			if (
 					not global.bitmap.get_bit(((constructor.position.x - TILE_OFFSET) 
 				/ TILE_SIZE), ((constructor.position.y - TILE_OFFSET) / TILE_SIZE)) 
@@ -352,6 +358,9 @@ func _process(delta):
 				storage.set_meta("Storage", direction / QUARTER_ROTATION)
 				in_world_clones.add_child(storage)
 				storage.clone = true
+				storage.hide()
+				if global.successful_place == true:
+					storage.show()
 				global.bitmap.set_bit(pos.x, pos.y, true)
 		# Checks to see if the user has selected the Combiner and it can be placed in world
 		if (
@@ -359,7 +368,8 @@ func _process(delta):
 				and global.hotbar_slot == global.slot.COMBINER
 				and not global.buildings_large_cant_place
 		):
-			var pos: Vector2i = Vector2i(get_global_mouse_position().snapped(Vector2(16,16)) / TILE_SIZE)
+			var pos: Vector2i = Vector2i((get_global_mouse_position() \
+				- Vector2.ONE * TILE_OFFSET).snapped(Vector2(16,16)) / TILE_SIZE)
 			# Creates an instansiated clone of the Combiner and sets the bitmap
 			if (
 					not global.bitmap.get_bit(pos.x, pos.y)
@@ -381,6 +391,9 @@ func _process(delta):
 				combiner.set_meta("Combiner", direction / QUARTER_ROTATION)
 				in_world_clones.add_child(combiner)
 				combiner.clone = true
+				combiner.hide()
+				if global.successful_place == true:
+					combiner.show()
 				global.bitmap.set_bit(pos.x, pos.y, true)
 				global.bitmap.set_bit(pos.x+1, pos.y, true)
 				global.bitmap.set_bit(pos.x, pos.y+1, true)

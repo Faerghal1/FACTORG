@@ -35,7 +35,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	# Checks if the user has selected Belt
+	# Checks if the user has selected Extractor
 	if clone == false and global.hotbar_slot == global.slot.EXTRACTOR:
 		var map = get_tree().current_scene.get_node("Generated_map")
 		var cell = map.local_to_map(position / MAP_OFFSET)

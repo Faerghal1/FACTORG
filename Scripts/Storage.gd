@@ -18,9 +18,22 @@ const TILE_SIZE: int = 16
 const MAP_OFFSET: int = 2
 
 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	# Checks what tile Storage occupies when Storage is placed in-world
+	var map = get_tree().current_scene.get_node("Generated_map")
+	var cell = map.local_to_map(position / MAP_OFFSET)
+	var data = map.get_cell_tile_data(cell)
+	# Detects if Storage can't be placed and either deletes or shows the Storage
+	if data.get_custom_data("World") == "Unplaceable":
+		queue_free()
+	else:
+		global.successful_place = true
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	# Checks if the user has selected Belt
+	# Checks if the user has selected Storage
 	if clone == false and global.hotbar_slot == global.slot.STORAGE:
 		var map = get_tree().current_scene.get_node("Generated_map")
 		var cell = map.local_to_map(position / MAP_OFFSET)

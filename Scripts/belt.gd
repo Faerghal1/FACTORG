@@ -12,6 +12,19 @@ const MAP_OFFSET: int = 2
 const TILE_SIZE: int = 16
 
 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	# Checks what tile Belt occupies when Belt is placed in-world
+	var map = get_tree().current_scene.get_node("Generated_map")
+	var cell = map.local_to_map(position / MAP_OFFSET)
+	var data = map.get_cell_tile_data(cell)
+	# Detects if Belt can't be placed and either deletes or shows the Belt
+	if data.get_custom_data("World") == "Unplaceable":
+		queue_free()
+	else:
+		global.successful_place = true
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	# Controls Belt animation. It's globally linked with all other placeables

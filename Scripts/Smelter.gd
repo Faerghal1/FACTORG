@@ -21,6 +21,19 @@ const MAP_OFFSET: int = 2
 const TILE_OFFSET: int = 8
 
 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	# Checks what tile Smelter occupies when Smelter is placed in-world
+	var map = get_tree().current_scene.get_node("Generated_map")
+	var cell = map.local_to_map(position / MAP_OFFSET)
+	var data = map.get_cell_tile_data(cell)
+	# Detects if Smelter can't be placed and either deletes or shows the Smelter
+	if data.get_custom_data("World") == "Unplaceable":
+		queue_free()
+	else:
+		global.successful_place = true
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	# Controls Smelter animation. It's globally linked with all other placeables

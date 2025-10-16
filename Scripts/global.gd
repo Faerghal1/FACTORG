@@ -33,3 +33,4 @@ var mouse_on_hotbar: bool = false
 var frames: int = 0
 var seed: int = 0
 var hotbar_slot: int = 0
+var successful_place: bool = false

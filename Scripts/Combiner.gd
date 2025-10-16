@@ -23,6 +23,19 @@ const TILE_SIZE: int = 16
 const MAP_OFFSET: int = 2
 
 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	# Checks what tile Combiner occupies when Combiner is placed in-world
+	var map = get_tree().current_scene.get_node("Generated_map")
+	var cell = map.local_to_map(position / MAP_OFFSET)
+	var data = map.get_cell_tile_data(cell)
+	# Detects if Combiner can't be placed and either deletes or shows the Combiner
+	if data.get_custom_data("World") == "Unplaceable":
+		queue_free()
+	else:
+		global.successful_place = true
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	# Instantiates Circuit_board resource
@@ -63,16 +76,16 @@ func _process(_delta):
 	# Checks if the user has selected Combiner
 	if clone == false and global.hotbar_slot == global.slot.COMBINER:
 		var map = get_tree().current_scene.get_node("Generated_map")
-		var cell = map.local_to_map(position/MAP_OFFSET)
+		var cell = map.local_to_map(position / MAP_OFFSET)
 		var data = map.get_cell_tile_data(cell)
 		# Checks the tile Combiner is hovering over and if water or mountain don't allow placement
 		if not data.get_custom_data("World") == "Unplaceable":
 			global.buildings_large_cant_place = false
 		else:
 			global.buildings_large_cant_place = true
-		position = get_global_mouse_position().snapped(Vector2(16,16))
-		position.x -= TILE_OFFSET
-		position.y -= TILE_OFFSET
+		position = (get_global_mouse_position() \
+		- Vector2.ONE * TILE_OFFSET).snapped(Vector2(16,16))
+		position += Vector2.ONE * TILE_OFFSET
 	# Controls the deletion of placed Combiners and deletion of the bitmap Combiner occupied
 	if Input.is_action_pressed("Right_click") and clone and delete:
 		var pos = Vector2i(position.snapped(Vector2(16,16)) / TILE_SIZE)
@@ -85,6 +98,10 @@ func _process(_delta):
 		global.bitmap.set_bit(pos.x - 1, pos.y - 1, false)
 		global.bitmap.set_bit(pos.x, pos.y - 1, false)
 		global.bitmap.set_bit(pos.x + 1, pos.y - 1, false)
+		position = (get_global_mouse_position() \
+		- Vector2.ONE * TILE_OFFSET).snapped(Vector2(16,16))
+		position += Vector2.ONE * TILE_OFFSET
+		queue_free()
 		queue_free()
 	# Shows or hides the Combiner that follows the users cursor
 	if clone == false:

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ch4dodtt3vdb7" path="res://Scenes/Resources/Rod.tscn" id="2_tl7yo"]
 [ext_resource type="PackedScene" uid="uid://ruyfkei3vd2f" path="res://Scenes/Resources/Gold_wire.tscn" id="3_nk0dk"]
 [ext_resource type="PackedScene" uid="uid://bgbpriagevdu3" path="res://Scenes/Resources/Copper_foil.tscn" id="4_0tltr"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="4_ywd4q"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="4_ywd4q"]
 [ext_resource type="FontFile" uid="uid://c0ad72ag67cg2" path="res://Assets/Philosopher-Regular.ttf" id="7_8deiw"]
 [ext_resource type="Texture2D" uid="uid://f4hipo5ajyxd" path="res://Assets/Copper_foil.png" id="9_g2bul"]
 [ext_resource type="Texture2D" uid="uid://cwa67ouggcrk6" path="res://Assets/Gold_wire.png" id="10_eel8y"]
