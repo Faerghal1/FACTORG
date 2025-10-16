@@ -216,7 +216,8 @@ func _process(delta):
 				and global.hotbar_slot == global.slot.BELT
 				and not global.buildings_cant_place
 		):
-			var pos: Vector2i = Vector2i(get_global_mouse_position().snapped(Vector2(16,16)) / TILE_SIZE)
+			var pos: Vector2i = Vector2i((get_global_mouse_position() \
+				- Vector2.ONE * TILE_OFFSET).snapped(Vector2(16,16)) / TILE_SIZE)
 			# Creates an instansiated clone of the Belt and sets the bitmap
 			if not global.bitmap.get_bit(pos.x, pos.y):
 				print(pos)
@@ -237,7 +238,8 @@ func _process(delta):
 				and global.hotbar_slot == global.slot.EXTRACTOR
 				and not global.extractor_cant_place
 		):
-			var pos: Vector2i = Vector2i(get_global_mouse_position().snapped(Vector2(16,16)) / TILE_SIZE)
+			var pos: Vector2i =  Vector2i((get_global_mouse_position() \
+				- Vector2.ONE * TILE_OFFSET).snapped(Vector2(16,16)) / TILE_SIZE)
 			# Creates an instansiated clone of the Extractor and sets the bitmap
 			if not global.bitmap.get_bit(pos.x, pos.y):
 				print(pos)
@@ -261,23 +263,39 @@ func _process(delta):
 		):
 			var pos: Vector2i = Vector2i(get_global_mouse_position().snapped(Vector2(16,16)) / TILE_SIZE)
 			# Creates an instansiated clone of the Smelter and sets the bitmap
+			#if (
+					#not global.bitmap.get_bit(pos.x, pos.y) 
+					#and not global.bitmap.get_bit(pos.x + 1, pos.y)
+					#and not global.bitmap.get_bit(pos.x, pos.y + 1 ) 
+					#and not global.bitmap.get_bit(pos.x + 1, pos.y + 1)
+			#):
+			print(pos)
+			var smelter: Node = smelter_scene.instantiate()
+			smelter.position = pos * TILE_SIZE
+			smelter.modulate.a = 1
+			smelter.set_meta("Smelter", direction / QUARTER_ROTATION)
+			in_world_clones.add_child(smelter)
+			smelter.clone = true
 			if (
-					not global.bitmap.get_bit(pos.x, pos.y) 
-					and not global.bitmap.get_bit(pos.x + 1, pos.y)
-					and not global.bitmap.get_bit(pos.x, pos.y + 1 ) 
-					and not global.bitmap.get_bit(pos.x + 1, pos.y + 1)
+					not global.bitmap.get_bit(((smelter.position.x - TILE_OFFSET) 
+				/ TILE_SIZE), ((smelter.position.y - TILE_OFFSET) / TILE_SIZE)) 
+					and not global.bitmap.get_bit(((smelter.position.x - TILE_OFFSET) 
+				/ TILE_SIZE), ((smelter.position.y + TILE_OFFSET) / TILE_SIZE))
+					and not global.bitmap.get_bit(((smelter.position.x + TILE_OFFSET) 
+				/ TILE_SIZE), ((smelter.position.y - TILE_OFFSET) / TILE_SIZE)) 
+					and not global.bitmap.get_bit(((smelter.position.x + TILE_OFFSET) 
+				/ TILE_SIZE), ((smelter.position.y + TILE_OFFSET) / TILE_SIZE))
 			):
-				print(pos)
-				var smelter: Node = smelter_scene.instantiate()
-				smelter.position = pos * TILE_SIZE
-				smelter.modulate.a = 1
-				smelter.set_meta("Smelter", direction / QUARTER_ROTATION)
-				in_world_clones.add_child(smelter)
-				smelter.clone = true
-				global.bitmap.set_bit(pos.x, pos.y, true)
-				global.bitmap.set_bit(pos.x + 1, pos.y, true)
-				global.bitmap.set_bit(pos.x, pos.y + 1, true)
-				global.bitmap.set_bit(pos.x + 1, pos.y + 1, true)
+				global.bitmap.set_bit(((smelter.position.x - TILE_OFFSET) 
+				/ TILE_SIZE), ((smelter.position.y - TILE_OFFSET) / TILE_SIZE), true)
+				global.bitmap.set_bit(((smelter.position.x + TILE_OFFSET) 
+				/ TILE_SIZE), ((smelter.position.y - TILE_OFFSET) / TILE_SIZE), true)
+				global.bitmap.set_bit(((smelter.position.x - TILE_OFFSET) 
+				/ TILE_SIZE), ((smelter.position.y + TILE_OFFSET) / TILE_SIZE), true)
+				global.bitmap.set_bit(((smelter.position.x + TILE_OFFSET) 
+				/ TILE_SIZE), ((smelter.position.y + TILE_OFFSET) / TILE_SIZE), true)
+			else:
+				smelter.queue_free()
 		# Checks to see if the user has selected the Constructor and it can be placed in world
 		if (
 				Input.is_action_pressed("Left_click") \
@@ -286,30 +304,41 @@ func _process(delta):
 		):
 			var pos: Vector2i = Vector2i(get_global_mouse_position().snapped(Vector2(16,16)) / TILE_SIZE)
 			# Creates an instansiated clone of the Constructor and sets the bitmap
+			print(pos)
+			var constructor: Node = constructor_scene.instantiate()
+			constructor.position = pos * TILE_SIZE
+			constructor.modulate.a = 1
+			constructor.set_meta("Constructor", direction / QUARTER_ROTATION)
+			in_world_clones.add_child(constructor)
+			constructor.clone = true
 			if (
-					not global.bitmap.get_bit(pos.x, pos.y) \
-					and not global.bitmap.get_bit(pos.x + 1, pos.y) \
-					and not global.bitmap.get_bit(pos.x, pos.y + 1) \
-					and not global.bitmap.get_bit(pos.x + 1, pos.y + 1)
+					not global.bitmap.get_bit(((constructor.position.x - TILE_OFFSET) 
+				/ TILE_SIZE), ((constructor.position.y - TILE_OFFSET) / TILE_SIZE)) 
+					and not global.bitmap.get_bit(((constructor.position.x - TILE_OFFSET) 
+				/ TILE_SIZE), ((constructor.position.y + TILE_OFFSET) / TILE_SIZE))
+					and not global.bitmap.get_bit(((constructor.position.x + TILE_OFFSET) 
+				/ TILE_SIZE), ((constructor.position.y - TILE_OFFSET) / TILE_SIZE)) 
+					and not global.bitmap.get_bit(((constructor.position.x + TILE_OFFSET) 
+				/ TILE_SIZE), ((constructor.position.y + TILE_OFFSET) / TILE_SIZE))
 			):
-				print(pos)
-				var constructor: Node = constructor_scene.instantiate()
-				constructor.position = pos * TILE_SIZE
-				constructor.modulate.a = 1
-				constructor.set_meta("Constructor", direction / QUARTER_ROTATION)
-				in_world_clones.add_child(constructor)
-				constructor.clone = true
-				global.bitmap.set_bit(pos.x, pos.y, true)
-				global.bitmap.set_bit(pos.x + 1, pos.y, true)
-				global.bitmap.set_bit(pos.x, pos.y + 1, true)
-				global.bitmap.set_bit(pos.x + 1, pos.y + 1, true)
+				global.bitmap.set_bit(((constructor.position.x - TILE_OFFSET) 
+				/ TILE_SIZE), ((constructor.position.y - TILE_OFFSET) / TILE_SIZE), true)
+				global.bitmap.set_bit(((constructor.position.x + TILE_OFFSET) 
+				/ TILE_SIZE), ((constructor.position.y - TILE_OFFSET) / TILE_SIZE), true)
+				global.bitmap.set_bit(((constructor.position.x - TILE_OFFSET) 
+				/ TILE_SIZE), ((constructor.position.y + TILE_OFFSET) / TILE_SIZE), true)
+				global.bitmap.set_bit(((constructor.position.x + TILE_OFFSET) 
+				/ TILE_SIZE), ((constructor.position.y + TILE_OFFSET) / TILE_SIZE), true)
+			else:
+				constructor.queue_free()
 		# Checks to see if the user has selected the Storage and it can be placed in world
 		if (
 				Input.is_action_pressed("Left_click") \
 				and global.hotbar_slot == global.slot.STORAGE \
 				and not global.buildings_cant_place
 		):
-			var pos: Vector2i = Vector2i(get_global_mouse_position().snapped(Vector2(16,16)) / TILE_SIZE)
+			var pos: Vector2i =  Vector2i((get_global_mouse_position() \
+				- Vector2.ONE * TILE_OFFSET).snapped(Vector2(16,16)) / TILE_SIZE)
 			# Creates an instansiated clone of the Storage and sets the bitmap
 			if not global.bitmap.get_bit(pos.x, pos.y):
 				print(pos)

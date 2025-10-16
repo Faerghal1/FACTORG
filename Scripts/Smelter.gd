@@ -18,6 +18,7 @@ var clone: bool = false
 const QUARTER_ROTATION: int = 90
 const TILE_SIZE: int = 16
 const MAP_OFFSET: int = 2
+const TILE_OFFSET: int = 8
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,10 +40,14 @@ func _process(_delta):
 	# Controls the deletion of placed Smelters and deletion of the bitmap Smelter occupied
 	if Input.is_action_pressed("Right_click") and clone and delete:
 		var pos = Vector2i(position.snapped(Vector2(16,16)) / TILE_SIZE)
-		global.bitmap.set_bit(pos.x, pos.y, false)
-		global.bitmap.set_bit(pos.x + 1, pos.y, false)
-		global.bitmap.set_bit(pos.x, pos.y + 1, false)
-		global.bitmap.set_bit(pos.x + 1, pos.y + 1, false)
+		global.bitmap.set_bit(((position.x - TILE_OFFSET) 
+		/ TILE_SIZE), ((position.y - TILE_OFFSET) / TILE_SIZE), false)
+		global.bitmap.set_bit(((position.x + TILE_OFFSET) 
+		/ TILE_SIZE), ((position.y - TILE_OFFSET) / TILE_SIZE), false)
+		global.bitmap.set_bit(((position.x - TILE_OFFSET) 
+		/ TILE_SIZE), ((position.y + TILE_OFFSET) / TILE_SIZE), false)
+		global.bitmap.set_bit(((position.x + TILE_OFFSET) 
+		/ TILE_SIZE), ((position.y + TILE_OFFSET) / TILE_SIZE), false)
 		queue_free()
 	# Shows or hides the Smelter that follows the users cursor
 	if clone == false:
