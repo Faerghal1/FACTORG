@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bxkrlcvlgmyk4" path="res://Assets/Index_Circuit_Board.png" id="12_jcutd"]
 [ext_resource type="Texture2D" uid="uid://dac1hff0lc02g" path="res://Assets/Circuit_board.png" id="12_lu501"]
 [ext_resource type="Texture2D" uid="uid://l2h4yfm8devt" path="res://Assets/Index_Metal_Frame.png" id="13_3w5tx"]
-[ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="13_lhddn"]
+[ext_resource type="Texture2D" uid="uid://dmgm3atv4g24r" path="res://Assets/Constructor.png" id="13_lhddn"]
 [ext_resource type="Texture2D" uid="uid://0ahtge75n5um" path="res://Assets/Metal_frame.png" id="13_uaysb"]
 [ext_resource type="Texture2D" uid="uid://cpter0w0l5kkx" path="res://Assets/UI_background.png" id="14_85vxe"]
 [ext_resource type="Texture2D" uid="uid://omt2sfe5q1h6" path="res://Assets/Gold_ingot.png" id="16_i3akh"]

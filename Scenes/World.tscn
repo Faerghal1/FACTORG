@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=72 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" uid="uid://fgq76fstefsg" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/1x1/Belt.tscn" id="2_0b5rt"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dk5lps7by7kvi" path="res://Assets/Tilemap_gen.png" id="8_mq4nq"]
 [ext_resource type="Texture2D" uid="uid://buh3wptotswsy" path="res://Assets/Smelter.png" id="9_kuaow"]
 [ext_resource type="PackedScene" uid="uid://cpql1vm2gnpml" path="res://Scenes/2x2/Smelter.tscn" id="10_glyoi"]
-[ext_resource type="Texture2D" uid="uid://wn4e4kty0wtl" path="res://Assets/Constructor.png" id="10_ydavp"]
+[ext_resource type="Texture2D" uid="uid://dmgm3atv4g24r" path="res://Assets/Constructor.png" id="10_ydavp"]
 [ext_resource type="Script" uid="uid://bium40xiudj1c" path="res://Scripts/Smelter_hotbar.gd" id="11_6dldg"]
 [ext_resource type="Texture2D" uid="uid://ccygs458s3gwr" path="res://Assets/Storage.png" id="12_gpcpt"]
 [ext_resource type="Texture2D" uid="uid://dn1m5futs03pm" path="res://Assets/Resume_button0.png" id="12_n1aqv"]
@@ -40,7 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://cpter0w0l5kkx" path="res://Assets/UI_background.png" id="26_y8a40"]
 [ext_resource type="PackedScene" uid="uid://bfwa2odjnu25x" path="res://Scenes/Index.tscn" id="29_0bcf6"]
 [ext_resource type="Texture2D" uid="uid://bld52wkaysfrs" path="res://Assets/Smelter_tooltip.png" id="32_371b6"]
-[ext_resource type="Texture2D" uid="uid://8ohjtfqtptld" path="res://Assets/Constructor_tooltip.png" id="33_371b6"]
+[ext_resource type="Texture2D" uid="uid://bqnurqq5ud7x8" path="res://Assets/Constructor_tooltip.png" id="33_371b6"]
 [ext_resource type="Texture2D" uid="uid://b7ny3qmeqlrpg" path="res://Assets/Combiner_tooltip.png" id="34_ao4cr"]
 [ext_resource type="Texture2D" uid="uid://dgf6jc1i306um" path="res://Assets/Save_button0.png" id="43_qtjmb"]
 [ext_resource type="Texture2D" uid="uid://8drgts4j85np" path="res://Assets/Seed_button0.png" id="44_ivbkn"]
@@ -311,10 +311,6 @@ sources/0 = SubResource("TileSetAtlasSource_371b6")
 default_font = ExtResource("22_y1bqn")
 default_font_size = 20
 
-[sub_resource type="Theme" id="Theme_fq1sc"]
-default_font = ExtResource("22_y1bqn")
-default_font_size = 20
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qtjmb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wi82k"]
@@ -513,7 +509,7 @@ mouse_filter = 2
 color = Color(0.408329, 0.408329, 0.408329, 0.647059)
 
 [node name="Quit_button" type="TextureButton" parent="Camera2D/Pause_menu"]
-z_index = 5
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -527,7 +523,6 @@ offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
-theme = SubResource("Theme_fq1sc")
 texture_normal = ExtResource("15_d4o7i")
 texture_pressed = ExtResource("16_bbwj2")
 texture_hover = ExtResource("17_ivfu3")
@@ -1072,6 +1067,7 @@ text = "00:00:00"
 horizontal_alignment = 1
 
 [node name="Win_screen" type="Control" parent="Camera2D"]
+process_mode = 3
 visible = false
 z_index = 4
 layout_mode = 3
@@ -1133,7 +1129,7 @@ text = "Best Time:"
 vertical_alignment = 1
 
 [node name="Win_screen_quit" type="TextureButton" parent="Camera2D/Win_screen"]
-z_index = 5
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1147,7 +1143,6 @@ offset_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
-theme = SubResource("Theme_fq1sc")
 texture_normal = ExtResource("15_d4o7i")
 texture_pressed = ExtResource("16_bbwj2")
 texture_hover = ExtResource("17_ivfu3")

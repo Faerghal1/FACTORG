@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmgm3atv4g24r"
-path="res://.godot/imported/Constructor.png-b408140ebeae298825ed6881df687b61.ctex"
+uid="uid://kuuyxpg3lg1l"
+path="res://.godot/imported/Constructor_Animation.png-07ff13766cbe9ff0ef6960d96dd6d7b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Constructor.png"
-dest_files=["res://.godot/imported/Constructor.png-b408140ebeae298825ed6881df687b61.ctex"]
+source_file="res://Assets/Constructor_Animation.png"
+dest_files=["res://.godot/imported/Constructor_Animation.png-07ff13766cbe9ff0ef6960d96dd6d7b3.ctex"]
 
 [params]
 

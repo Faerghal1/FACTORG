@@ -7,6 +7,7 @@ extends Area2D
 @onready var iron_rod_recipe: Sprite2D = $Rod
 @onready var copper_foil_recipe: Sprite2D = $Copper_foil
 @onready var gold_wire_recipe: Sprite2D = $Gold_wire
+@onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var rod_scene: PackedScene
 @export var gold_wire_scene: PackedScene
@@ -36,6 +37,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	# Controls Constructor animation. It's globally linked with all other placeables
+	if clone == true:
+		animation.set_frame(global.frames)
 	# Checks if the user has selected Constructor
 	if clone == false and global.hotbar_slot == global.slot.CONSTRUCTOR:
 		var map = get_tree().current_scene.get_node("Generated_map")
