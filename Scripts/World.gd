@@ -431,6 +431,14 @@ func _on_resume_pressed():
 	get_tree().paused = false
 
 
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()
+
+
+func _on_win_screen_quit_pressed():
+	get_tree().quit()
+
+
 # This updates the animations for the placeable objects in world
 func _on_placeable_animations_timer_timeout() -> void: # Animates the conveyer belt
 	if global.frames < NUM_ANIMATION_FRAMES:
@@ -527,7 +535,3 @@ func _on_save_button_pressed() -> void:
 func _on_new_seed_button_pressed() -> void:
 	global.seed += 1
 	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))
-
-
-func _on_quit_button_pressed() -> void:
-	get_tree().quit()
