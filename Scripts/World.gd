@@ -460,6 +460,7 @@ func _on_win_screen_new_seed_pressed():
 	global.buildings_large_cant_place = false
 	global.mouse_on_hotbar = false
 	global.successful_place = false
+	global.bitmap = BitMap.new()
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))
 
@@ -484,6 +485,7 @@ func _on_win_screen_play_again_pressed():
 	global.buildings_large_cant_place = false
 	global.mouse_on_hotbar = false
 	global.successful_place = false
+	global.bitmap = BitMap.new()
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(load("res://Scenes/Main_menu.tscn"))
 
