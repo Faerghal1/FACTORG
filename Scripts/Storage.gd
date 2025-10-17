@@ -9,7 +9,6 @@ var direction: int = 0
 var delete: bool = false
 var pos: Vector2i = Vector2i(0,0)
 var bitmap: BitMap = BitMap.new()
-var item_type: int = 0
 var amount: int = 1
 var has_item: bool = false
 const QUARTER_ROTATION: int = 90
@@ -73,10 +72,9 @@ func _on_area_entered(area):
 		if not has_item:
 			has_item = true
 			stored_sprite.show()
-			item_type = area.get_meta("Type")
 			stored_sprite.frame = area.get_meta("Type")
 			amount += 1
-		else:
+		elif area.get_meta("Type") == stored_sprite.frame:
 			amount += 1
 
 
