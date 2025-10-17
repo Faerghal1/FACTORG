@@ -535,3 +535,12 @@ func _on_save_button_pressed() -> void:
 func _on_new_seed_button_pressed() -> void:
 	global.seed += 1
 	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))
+
+
+func _on_play_again_pressed() -> void:
+	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))
+
+
+func _on_new_seed_pressed() -> void:
+	global.seed += 1
+	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))

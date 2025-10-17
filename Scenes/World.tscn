@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://csh41ocwjuk7"]
+[gd_scene load_steps=75 format=3 uid="uid://csh41ocwjuk7"]
 
 [ext_resource type="Script" uid="uid://fgq76fstefsg" path="res://Scripts/World.gd" id="1_pqhfs"]
 [ext_resource type="PackedScene" uid="uid://oiec24pi2b32" path="res://Scenes/1x1/Belt.tscn" id="2_0b5rt"]
@@ -39,15 +39,18 @@
 [ext_resource type="Texture2D" uid="uid://gp27vd07r7ei" path="res://Assets/Extractor_tooltip.png" id="26_w86vl"]
 [ext_resource type="Texture2D" uid="uid://cpter0w0l5kkx" path="res://Assets/UI_background.png" id="26_y8a40"]
 [ext_resource type="PackedScene" uid="uid://bfwa2odjnu25x" path="res://Scenes/Index.tscn" id="29_0bcf6"]
-[ext_resource type="Texture2D" uid="uid://bld52wkaysfrs" path="res://Assets/Smelter_tooltip.png" id="32_371b6"]
+[ext_resource type="Texture2D" uid="uid://bld52wkaysfrs" path="res://Assets/Smelter_Tooltip.png" id="32_371b6"]
 [ext_resource type="Texture2D" uid="uid://bqnurqq5ud7x8" path="res://Assets/Constructor_tooltip.png" id="33_371b6"]
 [ext_resource type="Texture2D" uid="uid://b7ny3qmeqlrpg" path="res://Assets/Combiner_tooltip.png" id="34_ao4cr"]
+[ext_resource type="Texture2D" uid="uid://gq8ftuu73pfx" path="res://Assets/Play_again_button0.png" id="43_7hrk4"]
 [ext_resource type="Texture2D" uid="uid://dgf6jc1i306um" path="res://Assets/Save_button0.png" id="43_qtjmb"]
 [ext_resource type="Texture2D" uid="uid://8drgts4j85np" path="res://Assets/Seed_button0.png" id="44_ivbkn"]
 [ext_resource type="Texture2D" uid="uid://bfm047avtigj6" path="res://Assets/Save_button2.png" id="44_wi82k"]
 [ext_resource type="Texture2D" uid="uid://lyalngfrde44" path="res://Assets/Seed_button2.png" id="45_0fglf"]
+[ext_resource type="Texture2D" uid="uid://qqad2fbcuwn0" path="res://Assets/Play_again_button1.png" id="45_irs1d"]
 [ext_resource type="Texture2D" uid="uid://bbyjv408v14lq" path="res://Assets/Save_button1.png" id="45_l7i8q"]
 [ext_resource type="Texture2D" uid="uid://u4gswc8vlyng" path="res://Assets/Seed_button1.png" id="46_qtjmb"]
+[ext_resource type="Texture2D" uid="uid://dxo3kxxmms1sn" path="res://Assets/Play_again_button_2.png" id="47_7hrk4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_371b6"]
 texture = ExtResource("8_mq4nq")
@@ -1136,16 +1139,38 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -105.0
-offset_top = 162.0
-offset_right = 35.0
-offset_bottom = 212.0
+offset_left = -107.0
+offset_top = 244.0
+offset_right = 33.0
+offset_bottom = 294.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("15_d4o7i")
 texture_pressed = ExtResource("16_bbwj2")
 texture_hover = ExtResource("17_ivfu3")
+
+[node name="New_seed" type="TextureButton" parent="Camera2D/Win_screen"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 196.0
+offset_right = 161.0
+offset_bottom = 246.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("44_ivbkn")
+texture_pressed = ExtResource("45_0fglf")
+texture_hover = ExtResource("46_qtjmb")
+
+[node name="Play_again" type="TextureButton" parent="Camera2D/Win_screen"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 110.0
+offset_right = 159.0
+offset_bottom = 155.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("43_7hrk4")
+texture_pressed = ExtResource("47_7hrk4")
+texture_hover = ExtResource("45_irs1d")
 
 [node name="Save Button" type="TextureButton" parent="Camera2D"]
 z_index = 3
@@ -1210,6 +1235,8 @@ autostart = true
 [connection signal="pressed" from="Camera2D/Hotbar/HotbarIcons/HBoxContainer/StorageButton" to="Camera2D/Hotbar/HotbarIcons/HBoxContainer/StorageButton" method="_on_storage_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/HotbarIcons/HBoxContainer/CombinerButton" to="Camera2D/Hotbar/HotbarIcons/HBoxContainer/CombinerButton" method="_on_combiner_selected"]
 [connection signal="pressed" from="Camera2D/Win_screen/Win_screen_quit" to="." method="_on_win_screen_quit_pressed"]
+[connection signal="pressed" from="Camera2D/Win_screen/New_seed" to="." method="_on_new_seed_pressed"]
+[connection signal="pressed" from="Camera2D/Win_screen/Play_again" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="Camera2D/Save Button" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="Camera2D/New_Seed_Button" to="." method="_on_new_seed_button_pressed"]
 [connection signal="timeout" from="Placeable_animations_timer" to="." method="_on_placeable_animations_timer_timeout"]

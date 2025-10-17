@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bld52wkaysfrs"
-path="res://.godot/imported/Smelter_Tooltip.png-32b55423019eeb13fc55507a105acf63.ctex"
+uid="uid://qqad2fbcuwn0"
+path="res://.godot/imported/Play_again_button1.png-0656d85fd2b029151aa863bede12d30d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Smelter_Tooltip.png"
-dest_files=["res://.godot/imported/Smelter_Tooltip.png-32b55423019eeb13fc55507a105acf63.ctex"]
+source_file="res://Assets/Play_again_button1.png"
+dest_files=["res://.godot/imported/Play_again_button1.png-0656d85fd2b029151aa863bede12d30d.ctex"]
 
 [params]
 
