@@ -455,9 +455,11 @@ func _on_win_screen_new_seed_pressed():
 	global.hotbar_slot = global.slot.NONE
 	global.frames = 0
 	global.hotbar_pressed = 0
-	global.extractor_cant_place = 0
-	global.buildings_cant_place = 0
-	global.buildings_large_cant_place
+	global.extractor_cant_place = false
+	global.buildings_cant_place = false
+	global.buildings_large_cant_place = false
+	global.mouse_on_hotbar = false
+	global.successful_place = false
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))
 
@@ -477,11 +479,13 @@ func _on_win_screen_play_again_pressed():
 	global.hotbar_slot = global.slot.NONE
 	global.frames = 0
 	global.hotbar_pressed = 0
-	global.extractor_cant_place = 0
-	global.buildings_cant_place = 0
-	global.buildings_large_cant_place
+	global.extractor_cant_place = false
+	global.buildings_cant_place = false
+	global.buildings_large_cant_place = false
+	global.mouse_on_hotbar = false
+	global.successful_place = false
 	get_tree().paused = false
-	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))
+	get_tree().change_scene_to_packed(load("res://Scenes/Main_menu.tscn"))
 
 
 # This updates the animations for the placeable objects in world
@@ -593,7 +597,9 @@ func _on_new_seed_button_pressed() -> void:
 	global.hotbar_slot = global.slot.NONE
 	global.frames = 0
 	global.hotbar_pressed = 0
-	global.extractor_cant_place = 0
-	global.buildings_cant_place = 0
-	global.buildings_large_cant_place
+	global.extractor_cant_place = false
+	global.buildings_cant_place = false
+	global.buildings_large_cant_place = false
+	global.mouse_on_hotbar = false
+	global.successful_place = false
 	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))
