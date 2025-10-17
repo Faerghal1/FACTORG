@@ -123,6 +123,7 @@ const BEACH_MAX_ALT: float = -0.3
 func random_tile(data, biome):
 	var current_biome: Dictionary = data[biome]
 	var rand_num: float = randf()
+	# assigning a type to this variable creates an error for some reason
 	var running_total = 0
 	for tile in current_biome:
 		running_total = running_total + current_biome[tile]
@@ -149,8 +150,10 @@ func load_seed():
 		if file:
 			var json_string: String = file.get_as_text()
 			file.close()
+			# assigning a type to this variable creates an error for some reason
 			var parse_result = JSON.parse_string(json_string)
 			if parse_result is Dictionary:
+				# assigning a type to this variable creates an error for some reason
 				var loaded_data = parse_result
 				global.seed = loaded_data.get("Seed", 0)
 				return loaded_data

@@ -132,6 +132,7 @@ func _on_iron_rod_pressed():
 	iron_rod_recipe.show()
 	recipe_list.hide()
 
+
 func _on_gold_wire_pressed():
 	gold_wire_recipe.show()
 	recipe_list.hide()
