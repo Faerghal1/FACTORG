@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bng8yk7xdn14c" path="res://Assets/Index_Copper_Ore.png" id="4_85vxe"]
 [ext_resource type="Texture2D" uid="uid://ce0tcpbq4wv05" path="res://Assets/Copper ingot.png" id="4_x6x8t"]
 [ext_resource type="Texture2D" uid="uid://baklkexyo6dhh" path="res://Assets/Index_Gold_Ore.png" id="5_doyfs"]
-[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_Rod.png" id="5_ethub"]
+[ext_resource type="Texture2D" uid="uid://c4hdggvv8jbe2" path="res://Assets/Iron_rod.png" id="5_ethub"]
 [ext_resource type="Texture2D" uid="uid://bunxefb1ux8da" path="res://Assets/Gold_ore.png" id="5_pcnie"]
 [ext_resource type="Texture2D" uid="uid://bo5dgni5f3f4d" path="res://Assets/Index_Iron_Ingot.png" id="6_5tb43"]
 [ext_resource type="Texture2D" uid="uid://cnb31gacmxk6d" path="res://Assets/Index_Copper_Ingot.png" id="7_4lwgu"]
