@@ -439,6 +439,55 @@ func _on_win_screen_quit_pressed():
 	get_tree().quit()
 
 
+func _on_win_screen_new_seed_pressed():
+	global.seed += 1
+	global.iron_ore = 0
+	global.copper_ore = 0
+	global.gold_ore = 0
+	global.ingot = 0
+	global.copper_ingot = 0
+	global.gold_ingot = 0
+	global.rod = 0
+	global.copper_foil = 0
+	global.gold_wire = 0
+	global.circuit_board = 0
+	global.metal_frame = 0
+	global.hotbar_slot = global.slot.NONE
+	global.frames = 0
+	global.hotbar_pressed = 0
+	global.extractor_cant_place = false
+	global.buildings_cant_place = false
+	global.buildings_large_cant_place = false
+	global.mouse_on_hotbar = false
+	global.successful_place = false
+	get_tree().paused = false
+	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))
+
+
+func _on_win_screen_play_again_pressed():
+	global.iron_ore = 0
+	global.copper_ore = 0
+	global.gold_ore = 0
+	global.ingot = 0
+	global.copper_ingot = 0
+	global.gold_ingot = 0
+	global.rod = 0
+	global.copper_foil = 0
+	global.gold_wire = 0
+	global.circuit_board = 0
+	global.metal_frame = 0
+	global.hotbar_slot = global.slot.NONE
+	global.frames = 0
+	global.hotbar_pressed = 0
+	global.extractor_cant_place = false
+	global.buildings_cant_place = false
+	global.buildings_large_cant_place = false
+	global.mouse_on_hotbar = false
+	global.successful_place = false
+	get_tree().paused = false
+	get_tree().change_scene_to_packed(load("res://Scenes/Main_menu.tscn"))
+
+
 # This updates the animations for the placeable objects in world
 func _on_placeable_animations_timer_timeout() -> void: # Animates the conveyer belt
 	if global.frames < NUM_ANIMATION_FRAMES:
@@ -534,13 +583,23 @@ func _on_save_button_pressed() -> void:
 
 func _on_new_seed_button_pressed() -> void:
 	global.seed += 1
-	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))
-
-
-func _on_play_again_pressed() -> void:
-	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))
-
-
-func _on_new_seed_pressed() -> void:
-	global.seed += 1
+	global.iron_ore = 0
+	global.copper_ore = 0
+	global.gold_ore = 0
+	global.ingot = 0
+	global.copper_ingot = 0
+	global.gold_ingot = 0
+	global.rod = 0
+	global.copper_foil = 0
+	global.gold_wire = 0
+	global.circuit_board = 0
+	global.metal_frame = 0
+	global.hotbar_slot = global.slot.NONE
+	global.frames = 0
+	global.hotbar_pressed = 0
+	global.extractor_cant_place = false
+	global.buildings_cant_place = false
+	global.buildings_large_cant_place = false
+	global.mouse_on_hotbar = false
+	global.successful_place = false
 	get_tree().change_scene_to_packed(load("res://Scenes/Loading_screen.tscn"))

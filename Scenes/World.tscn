@@ -39,7 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://gp27vd07r7ei" path="res://Assets/Extractor_tooltip.png" id="26_w86vl"]
 [ext_resource type="Texture2D" uid="uid://cpter0w0l5kkx" path="res://Assets/UI_background.png" id="26_y8a40"]
 [ext_resource type="PackedScene" uid="uid://bfwa2odjnu25x" path="res://Scenes/Index.tscn" id="29_0bcf6"]
-[ext_resource type="Texture2D" uid="uid://bld52wkaysfrs" path="res://Assets/Smelter_Tooltip.png" id="32_371b6"]
+[ext_resource type="Texture2D" uid="uid://bld52wkaysfrs" path="res://Assets/Smelter_tooltip.png" id="32_371b6"]
 [ext_resource type="Texture2D" uid="uid://bqnurqq5ud7x8" path="res://Assets/Constructor_tooltip.png" id="33_371b6"]
 [ext_resource type="Texture2D" uid="uid://b7ny3qmeqlrpg" path="res://Assets/Combiner_tooltip.png" id="34_ao4cr"]
 [ext_resource type="Texture2D" uid="uid://gq8ftuu73pfx" path="res://Assets/Play_again_button0.png" id="43_7hrk4"]
@@ -1150,7 +1150,7 @@ texture_normal = ExtResource("15_d4o7i")
 texture_pressed = ExtResource("16_bbwj2")
 texture_hover = ExtResource("17_ivfu3")
 
-[node name="New_seed" type="TextureButton" parent="Camera2D/Win_screen"]
+[node name="Win_screen_new_seed" type="TextureButton" parent="Camera2D/Win_screen"]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 196.0
@@ -1161,7 +1161,7 @@ texture_normal = ExtResource("44_ivbkn")
 texture_pressed = ExtResource("45_0fglf")
 texture_hover = ExtResource("46_qtjmb")
 
-[node name="Play_again" type="TextureButton" parent="Camera2D/Win_screen"]
+[node name="Win_screen_play_again" type="TextureButton" parent="Camera2D/Win_screen"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 110.0
@@ -1235,8 +1235,8 @@ autostart = true
 [connection signal="pressed" from="Camera2D/Hotbar/HotbarIcons/HBoxContainer/StorageButton" to="Camera2D/Hotbar/HotbarIcons/HBoxContainer/StorageButton" method="_on_storage_selected"]
 [connection signal="pressed" from="Camera2D/Hotbar/HotbarIcons/HBoxContainer/CombinerButton" to="Camera2D/Hotbar/HotbarIcons/HBoxContainer/CombinerButton" method="_on_combiner_selected"]
 [connection signal="pressed" from="Camera2D/Win_screen/Win_screen_quit" to="." method="_on_win_screen_quit_pressed"]
-[connection signal="pressed" from="Camera2D/Win_screen/New_seed" to="." method="_on_new_seed_pressed"]
-[connection signal="pressed" from="Camera2D/Win_screen/Play_again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Camera2D/Win_screen/Win_screen_new_seed" to="." method="_on_win_screen_new_seed_pressed"]
+[connection signal="pressed" from="Camera2D/Win_screen/Win_screen_play_again" to="." method="_on_win_screen_play_again_pressed"]
 [connection signal="pressed" from="Camera2D/Save Button" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="Camera2D/New_Seed_Button" to="." method="_on_new_seed_button_pressed"]
 [connection signal="timeout" from="Placeable_animations_timer" to="." method="_on_placeable_animations_timer_timeout"]
