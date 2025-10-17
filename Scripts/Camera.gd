@@ -22,7 +22,8 @@ func _process(_delta):
 		timer.start()
 		temppos_y = position.y - POSITION_Y
 		move_y = false
-	
+
+
 	if Input.is_action_pressed("Down") and move_y and position.y < MAX_UPPER:
 		timer.start()
 		temppos_y = position.y + POSITION_Y
@@ -35,7 +36,6 @@ func _process(_delta):
 		timer.start()
 		temppos_x = position.x - POSITION_X
 		move_x = false
-
 	position.y = lerp(position.y,temppos_y, 0.1)
 	position.x = lerp(position.x,temppos_x, 0.1)
 
