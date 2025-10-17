@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var global = get_node("/root/Global")
+@onready var global: Node = get_node("/root/Global")
 @onready var camera: Camera2D = $Camera2D
 @onready var controls: AnimatedSprite2D = $Camera2D/Controls/AnimatedSprite2D
 @onready var index: Control = $Camera2D/Index
@@ -35,10 +35,10 @@ var placed: bool = false
 var extractor_position: Vector2i = Vector2i(0,0)
 var elapsed_time: float = 0.0
 var is_running: bool = false
-var best_time = null
-var b_minutes: int = 0
-var b_seconds: int = 0
-var b_milliseconds: int = 0
+var best_time: float
+var best_minutes: int = 0
+var best_seconds: int = 0
+var best_milliseconds: int = 0
 # Numerical list of all control frames starting from 0 ending at 2
 enum control_frames {
 	DEFAULT_FRAME,
@@ -100,11 +100,11 @@ func _process(delta):
 			best_time = elapsed_time
 			save_game_data(best_time)
 		# Updates the best_time label seen in the Win_screen
-		b_minutes = int(best_time / MINUTES_FACTOR)
-		b_seconds = int(fmod(best_time, MINUTES_FACTOR))
-		b_milliseconds = int(fmod(best_time, 1) * MILLISECONDS_FACTOR)
+		best_minutes = int(best_time / MINUTES_FACTOR)
+		best_seconds = int(fmod(best_time, MINUTES_FACTOR))
+		best_milliseconds = int(fmod(best_time, 1) * MILLISECONDS_FACTOR)
 		best_time_label.text = ("Best Time: " \
-		+ "%02d:%02d.%02d" % [b_minutes, b_seconds, b_milliseconds])
+		+ "%02d:%02d.%02d" % [best_minutes, best_seconds, best_milliseconds])
 		win_screen.show()
 	# Checks to see if the user has inputted the 1 key and will select or deselect the Belt
 	if Input.is_action_just_pressed("Hotbar_1"):

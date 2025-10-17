@@ -24,15 +24,15 @@ func _process(_delta):
 
 func _on_area_entered(area):
 	# When this resource has detected Belt move the resource foward in the direction of the Belt
-	if area.has_meta("Belt") and area.get_meta("Belt") >=0 :
+	if area.has_meta("Belt") and area.get_meta("Belt") > 0:
 		moving = true
 		var dir = area.get_meta("Belt")
 		rotation_degrees = dir * QUARTER_ROTATION
 	# When this resource has detected Constructor delete even if recipe doens't involve resource
-	if area.has_meta("Constructor") and area.get_meta("Constructor") >= 0:
+	if area.has_meta("Constructor") and area.get_meta("Constructor") > 0:
 		queue_free()
 	# When this resource has detected Storage, delete and increase global counter for resource
-	if area.has_meta("Storage") and area.get_meta("Storage") >= 0:
+	if area.has_meta("Storage") and area.get_meta("Storage") > 0:
 		global.gold_ingot += 1
 		queue_free()
 
